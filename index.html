@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometri dan Pengukuran - VisualMath.Lim</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        .bg-pattern {
+            background-color: #f8fafc;
+            background-image: radial-gradient(#00d6d8 0.75px, transparent 0.75px), radial-gradient(#00d6d8 0.75px, #f8fafc 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            opacity: 0.6;
+        }
+        /* Kustomisasi scrollbar untuk list materi jika terlalu panjang */
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#022050',
+                            cyan: '#00d6d8',
+                            yellow: '#ffd300',
+                            light: '#e6fbfc',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col relative">
+    
+    <!-- Latar Belakang Pola -->
+    <div class="absolute inset-0 bg-pattern -z-10"></div>
+
+    <!-- Header / Hero Section -->
+    <header class="bg-brand-navy text-white pt-12 pb-20 px-6 rounded-b-[3rem] shadow-xl relative overflow-hidden text-center">
+        <!-- Efek Cahaya di Background Header -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-brand-cyan/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto flex flex-col items-center relative z-10">
+            <!-- Logo -->
+            <img src="logo.png" alt="Logo VisualMath.Lim" class="h-40 md:h-48 object-contain mb-4 drop-shadow-2xl hover:scale-105 transition-transform duration-300">
+            
+            <div class="inline-block bg-brand-yellow text-brand-navy font-bold px-6 py-2 rounded-full mb-4 shadow-lg text-sm md:text-base tracking-wide uppercase">
+                VisualMath.Lim - TKA Matematika Wajib SMA
+            </div>
+            
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-4 text-white drop-shadow-md">
+                Geometri dan Pengukuran
+            </h1>
+            <p class="text-slate-200 max-w-2xl mx-auto md:text-lg">
+                Visualisasikan bentuk, pahami ruang, dan hitung dengan presisi. Pilih modul di bawah ini untuk memulai eksplorasi geometri Anda.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content / Dashboard Navigasi -->
+    <main class="flex-grow max-w-6xl mx-auto px-4 sm:px-6 -mt-10 w-full mb-16 relative z-20">
+        <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+            
+            <!-- Materi 1: Objek Geometri -->
+            <a href="objek_geometri.html" class="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl border-t-8 border-slate-200 hover:border-brand-cyan transition-all duration-300 hover:-translate-y-2 flex flex-col h-full">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 bg-brand-light text-brand-cyan rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <!-- Ikon Bentuk/Geometri -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
+                    </div>
+                    <span class="bg-brand-navy text-white text-xs font-bold px-3 py-1 rounded-full group-hover:bg-brand-cyan transition-colors">Materi 1</span>
+                </div>
+                <h3 class="text-xl font-bold text-brand-navy mb-3 group-hover:text-brand-cyan transition-colors">
+                    Objek Geometri
+                </h3>
+                
+                <!-- List Sub-materi -->
+                <ul class="text-sm text-slate-600 mb-6 space-y-2 flex-grow custom-scrollbar overflow-y-auto pr-1">
+                    <li class="flex items-start">
+                        <svg class="w-4 h-4 text-brand-cyan mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        <span>Hubungan dua sudut, dua garis, dan dua bidang</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-4 h-4 text-brand-cyan mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        <span>Hubungan objek geometri pada bangun datar dan ruang</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-4 h-4 text-brand-cyan mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        <span>Kesebangunan atau kekongruenan bangun datar</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-4 h-4 text-brand-cyan mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        <span>Teorema Pythagoras</span>
+                    </li>
+                </ul>
+
+                <div class="flex items-center justify-center text-white bg-brand-navy w-full py-2 rounded-lg font-semibold text-sm group-hover:bg-brand-cyan transition-colors mt-auto">
+                    Buka Modul
+                </div>
+            </a>
+
+            <!-- Materi 2: Transformasi Geometri -->
+            <a href="transformasi_geometri.html" class="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl border-t-8 border-slate-200 hover:border-brand-yellow transition-all duration-300 hover:-translate-y-2 flex flex-col h-full">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 bg-[#fffbea] text-brand-yellow rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <!-- Ikon Transformasi/Perpindahan -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                    </div>
+                    <span class="bg-brand-navy text-white text-xs font-bold px-3 py-1 rounded-full group-hover:bg-brand-yellow group-hover:text-brand-navy transition-colors">Materi 2</span>
+                </div>
+                <h3 class="text-xl font-bold text-brand-navy mb-3 group-hover:text-brand-yellow transition-colors">
+                    Transformasi Geometri
+                </h3>
+                
+                <p class="text-sm text-slate-600 mb-6 flex-grow">
+                    Pelajari pergerakan dan perubahan objek geometri. Pahami konsep:
+                    <br><br>
+                    <span class="font-medium text-brand-navy">• Translasi (Pergeseran)</span><br>
+                    <span class="font-medium text-brand-navy">• Refleksi (Pencerminan)</span><br>
+                    <span class="font-medium text-brand-navy">• Rotasi (Perputaran)</span><br>
+                    <span class="font-medium text-brand-navy">• Dilatasi (Perkalian/Skala)</span>
+                </p>
+
+                <div class="flex items-center justify-center text-white bg-brand-navy w-full py-2 rounded-lg font-semibold text-sm group-hover:bg-brand-yellow group-hover:text-brand-navy transition-colors mt-auto">
+                    Buka Modul
+                </div>
+            </a>
+
+            <!-- Materi 3: Pengukuran -->
+            <a href="pengukuran.html" class="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl border-t-8 border-slate-200 hover:border-brand-cyan transition-all duration-300 hover:-translate-y-2 flex flex-col h-full">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 bg-brand-light text-brand-cyan rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <!-- Ikon Pengukuran/Penggaris/Volume -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+                    </div>
+                    <span class="bg-brand-navy text-white text-xs font-bold px-3 py-1 rounded-full group-hover:bg-brand-cyan transition-colors">Materi 3</span>
+                </div>
+                <h3 class="text-xl font-bold text-brand-navy mb-3 group-hover:text-brand-cyan transition-colors">
+                    Pengukuran
+                </h3>
+                
+                <!-- List Sub-materi -->
+                <ul class="text-sm text-slate-600 mb-6 space-y-3 flex-grow">
+                    <li class="flex items-start">
+                        <svg class="w-4 h-4 text-brand-cyan mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        <span>Keliling dan luas bangun datar</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-4 h-4 text-brand-cyan mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        <span>Volume dan luas permukaan bangun ruang</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-4 h-4 text-brand-cyan mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        <span>Jarak dua objek geometri (titik ke garis, titik ke bidang, dll)</span>
+                    </li>
+                </ul>
+
+                <div class="flex items-center justify-center text-white bg-brand-navy w-full py-2 rounded-lg font-semibold text-sm group-hover:bg-brand-cyan transition-colors mt-auto">
+                    Buka Modul
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-auto py-8">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <p class="text-slate-500 font-medium text-sm">
+                © 2026 VisualMath.Lim. Matematika Lebih Mudah, Lebih Seru, Lebih Bermakna!
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
