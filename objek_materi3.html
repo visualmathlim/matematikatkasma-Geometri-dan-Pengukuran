@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modul 3 · Kesebangunan dan Kekongruenan · VisualMath.Lim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<style>
+:root{--navy:#022050;--cyan:#00d6d8;--yel:#ffd300;--bg:#f3f8fb;--card:#fff;--tx:#10213f;--mut:#51627f;--ln:#d5e2ec;--ok:#0a8f4e;--no:#c62f3b}
+@media(prefers-color-scheme:dark){:root{--bg:#06122b;--card:#0d1f45;--tx:#e8f0fb;--mut:#9fb2d1;--ln:#25396a}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;font:16px/1.7 Lexend,system-ui,sans-serif;background:var(--bg);color:var(--tx)}
+header{position:sticky;top:0;z-index:9;background:var(--navy);color:#fff;border-bottom:4px solid var(--yel)}
+.bar{max-width:1100px;margin:auto;display:flex;align-items:center;gap:14px;padding:8px 16px;flex-wrap:wrap}
+.bar img{height:48px;width:48px;border-radius:50%}
+.brand{font-weight:800;font-size:1.05rem;line-height:1.25;flex:1;min-width:200px}
+.brand small{display:block;font-weight:400;color:var(--cyan);font-size:.8rem}
+nav a{color:#fff;text-decoration:none;padding:7px 14px;border-radius:99px;font-weight:600;font-size:.9rem;margin-left:4px}
+nav a:hover,nav a:focus-visible{background:var(--cyan);color:var(--navy);outline:0}
+nav a.d{background:var(--yel);color:var(--navy)}
+.toc{background:#0a2f6b;overflow-x:auto;white-space:nowrap;padding:6px 16px;text-align:center}
+.toc a{color:#bfeff0;text-decoration:none;font-size:.82rem;margin:0 9px}.toc a:hover{color:var(--yel)}
+main{max-width:900px;margin:auto;padding:20px 16px 60px}
+.hero{background:var(--navy);color:#fff;border-radius:18px;padding:28px;border-left:10px solid var(--yel)}
+.hero h1{margin:0 0 6px;font-size:clamp(1.5rem,4vw,2.2rem);line-height:1.2}.hero p{margin:0;color:var(--cyan)}
+h2{margin:44px 0 12px;font-size:1.5rem;color:var(--navy);border-bottom:3px solid var(--cyan);padding-bottom:4px}
+@media(prefers-color-scheme:dark){h2{color:var(--cyan)}}
+h3{margin:22px 0 8px;font-size:1.1rem}
+.box{background:var(--card);border:1px solid var(--ln);border-radius:12px;padding:14px 18px;margin:12px 0}
+.def{border-left:6px solid var(--cyan)}.warn{border-left:6px solid var(--no)}.tip{border-left:6px solid var(--yel)}
+.box b.t{display:block;margin-bottom:2px}
+table{border-collapse:collapse;width:100%;font-size:.92rem;display:block;overflow-x:auto}
+th{background:var(--navy);color:#fff}th,td{border:1px solid var(--ln);padding:7px 10px;text-align:left}
+.fig{margin:14px auto;text-align:center;max-width:420px}.fig svg{width:100%;height:auto;background:var(--card);border:1px solid var(--ln);border-radius:12px}
+.fig figcaption{font-size:.82rem;color:var(--mut)}
+svg text{font:600 12px Lexend,sans-serif;fill:var(--tx)}
+.s{fill:rgba(0,214,216,.2);stroke:var(--navy);stroke-width:2}.s2{fill:rgba(255,211,0,.35);stroke:var(--navy);stroke-width:2}.l{stroke:var(--no);stroke-width:2;fill:none}
+@media(prefers-color-scheme:dark){.s,.s2,.l{stroke:#9fe}}
+.cases{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:640px){.cases{grid-template-columns:1fr}}
+.cepat,.lengkap{border-radius:10px;padding:10px 14px;margin:8px 0}
+.cepat{background:rgba(255,211,0,.22);border-left:5px solid var(--yel)}
+.lengkap{background:rgba(0,214,216,.12);border-left:5px solid var(--cyan)}
+.cepat>b,.lengkap>b{display:block}
+ol{padding-left:22px;margin:4px 0}
+.q{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:16px 18px;margin:18px 0}
+.q .m{font-size:.8rem;color:var(--mut)}
+.opt{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;background:transparent;color:inherit;font:inherit;border:2px solid var(--ln);border-radius:10px;padding:8px 12px;margin:6px 0;cursor:pointer}
+.opt:hover:not(:disabled),.opt:focus-visible{border-color:var(--cyan);outline:0}
+.opt.sel{border-color:var(--cyan);background:rgba(0,214,216,.15)}
+.opt.ok{border-color:var(--ok);background:rgba(10,143,78,.15)}.opt.no{border-color:var(--no);background:rgba(198,47,59,.14)}
+.opt i{font-style:normal;font-weight:800;min-width:22px}
+.btn{background:var(--navy);color:#fff;border:0;border-radius:99px;padding:9px 22px;font:600 .95rem Lexend;cursor:pointer;margin-top:6px}
+.btn:hover{background:var(--cyan);color:var(--navy)}
+.bs{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap;padding:6px 0;border-bottom:1px dashed var(--ln)}
+.res{margin-top:10px;font-weight:600}.res.ok{color:var(--ok)}.res.no{color:var(--no)}
+.score{position:sticky;bottom:10px;margin:20px auto 0;max-width:300px;background:var(--navy);color:var(--yel);text-align:center;padding:8px;border-radius:99px;font-weight:800}
+.ex{display:none}.ex.on{display:block}
+footer{text-align:center;color:var(--mut);font-size:.85rem;padding:20px}
+</style>
+</head>
+<body>
+<header>
+ <div class="bar">
+  <img src="logo.png" alt="Logo VisualMath.Lim">
+  <div class="brand">VisualMath.Lim - TKA Matematika Wajib SMA<small>Bimbingan Belajar</small></div>
+  <nav><a href="index.html">Home</a><a class="d" href="objek_geometri.html">Dashboard</a></nav>
+ </div>
+ <div class="toc"><a href="#c">Prasyarat</a><a href="#d">Kekongruenan</a><a href="#e">Kesebangunan</a><a href="#f">Penerapan</a><a href="#g">Rumus</a><a href="#h">Latihan TKA</a></div>
+</header>
+<main>
+<section class="hero"><h1>Modul 3: Kesebangunan dan Kekongruenan Bangun Datar</h1><p>Materi, Contoh Soal, dan Prediksi Soal TKA Matematika · SMA Kelas 12 · Objek Geometri</p></section>
+
+<h2>Tujuan Pembelajaran</h2>
+<div class="box"><ol>
+<li>Mengidentifikasi bangun datar yang kongruen atau sebangun.</li>
+<li>Menghitung panjang sisi, keliling, dan luas pada bangun kongruen atau sebangun.</li>
+<li>Mengubah situasi nyata (bayangan, peta, miniatur) menjadi persamaan perbandingan.</li>
+<li>Menalar dan memberi alasan yang logis tentang kesebangunan.</li></ol>
+<p><b>Level TKA:</b> L1 Pengetahuan dan Pemahaman · L2 Aplikasi · L3 Penalaran.</p></div>
+
+<h2 id="c">C. Prasyarat: Segarkan Dasar</h2>
+<h3>C.1 Perbandingan dan perkalian silang</h3>
+<div class="box def">Jika $\frac{a}{b}=\frac{c}{d}$ maka $a\times d=b\times c$ (perkalian silang).</div>
+<div class="cases">
+<div class="box"><b class="t">Contoh 1</b>$\frac{3}{5}=\frac{x}{20}$ → $5x=60$ → $x=12$</div>
+<div class="box"><b class="t">Contoh 2</b>$4:6=10:y$ → $\frac46=\frac{10}{y}$ → $4y=60$ → $y=15$</div></div>
+<h3>C.2 Sudut</h3>
+<ul><li>Jumlah sudut dalam segitiga $=180^\circ$. Contoh: $180^\circ-50^\circ-60^\circ=70^\circ$.</li><li>Sudut bertolak belakang sama besar.</li><li>Dua garis sejajar dipotong garis lain: sudut <b>sehadap</b> sama besar, sudut <b>dalam berseberangan</b> sama besar.</li></ul>
+<h3>C.3 Teorema Pythagoras</h3>
+<div class="box def">Segitiga siku-siku: $a^2+b^2=c^2$ ($c$ sisi miring). Tripel populer: 3-4-5, 5-12-13, 6-8-10, 8-15-17.<br>Contoh: $a=6,\ b=8$ → $c^2=36+64=100$ → $c=10$.</div>
+<h3>C.4 Cek awal</h3>
+<ol><li>$\frac27=\frac6x$, tentukan $x$.</li><li>Dua sudut segitiga $40^\circ$ dan $75^\circ$. Sudut ketiga?</li><li>Sisi tegak 5 dan 12. Sisi miring?</li><li>Sederhanakan $12:18$.</li></ol>
+<details class="box"><summary>Lihat kunci</summary>(1) $x=21$ · (2) $65^\circ$ · (3) $13$ · (4) $2:3$</details>
+
+<h2 id="d">D. Kekongruenan Bangun Datar</h2>
+<p>Dua lembar uang Rp10.000 baru punya bentuk dan ukuran <b>sama persis</b>. Jika ditumpuk, keduanya pas. Bangun seperti ini <b>kongruen</b>, lambang $\cong$.</p>
+<i data-f="1"></i>
+<div class="box def"><b class="t">Definisi</b>Dua bangun kongruen jika semua sisi bersesuaian <b>sama panjang</b> dan semua sudut bersesuaian <b>sama besar</b>. Akibatnya keliling dan luasnya sama.</div>
+<h3>Menulis pasangan titik</h3>
+<p>$\triangle ABC\cong\triangle PQR$ berarti $A\leftrightarrow P,\ B\leftrightarrow Q,\ C\leftrightarrow R$. Maka $AB=PQ,\ BC=QR,\ AC=PR$ dan $\angle A=\angle P$, dst. <b>Urutan huruf menentukan pasangan.</b></p>
+<h3>Syarat dua segitiga kongruen</h3>
+<table><tr><th>Syarat</th><th>Artinya</th><th>Catatan</th></tr>
+<tr><td>S-S-S</td><td>Tiga pasang sisi sama panjang</td><td>Selalu cukup</td></tr>
+<tr><td>S-Sd-S</td><td>Dua sisi sama + sudut yang <b>diapit</b> sama</td><td>Sudut harus di antara kedua sisi</td></tr>
+<tr><td>Sd-S-Sd</td><td>Dua sudut sama + sisi di antaranya sama</td><td>Boleh Sd-Sd-S</td></tr>
+<tr><td>Hipotenusa-Kaki</td><td>Siku-siku: sisi miring dan satu sisi tegak sama</td><td>Hanya segitiga siku-siku</td></tr></table>
+<div class="box warn"><b class="t">Awas, TIDAK cukup</b>Sd-Sd-Sd (hanya sebangun) dan S-S-Sd dengan sudut yang tidak diapit.</div>
+<div class="cases">
+<div class="box"><b class="t">Contoh 1</b>$\triangle ABC\cong\triangle PQR$, $AB=8,\ BC=6,\ AC=10,\ \angle B=90^\circ$. Maka $PQ=8,\ QR=6,\ PR=10,\ \angle Q=90^\circ$. Keliling $=24$ cm.</div>
+<div class="box"><b class="t">Contoh 2</b>$AB=DE=5$, $BC=EF=7$, $\angle B=\angle E=40^\circ$ (sudut diapit) → kongruen menurut <b>S-Sd-S</b>.</div></div>
+<p><b>Bangun lain:</b> dua persegi kongruen jika sisinya sama; dua persegi panjang jika panjang dan lebarnya sama; dua lingkaran jika jari-jarinya sama.</p>
+<div class="box warn"><b class="t">Kesalahan umum</b>Mengira tiga sudut sama berarti kongruen · menulis $\triangle ABC\cong\triangle QRP$ padahal pasangannya $A\leftrightarrow P$ · memakai S-Sd-S dengan sudut yang tidak diapit.</div>
+
+<h2 id="e">E. Kesebangunan Bangun Datar</h2>
+<p>Foto diperbesar, peta, dan miniatur gedung punya bentuk sama dengan aslinya tetapi ukuran berbeda. Bangun ini <b>sebangun</b>, lambang $\sim$.</p>
+<i data-f="2"></i>
+<div class="box def"><b class="t">Syarat sebangun (keduanya harus terpenuhi)</b>1. Semua sudut bersesuaian sama besar.<br>2. Semua sisi bersesuaian sebanding (faktor skala $k$).</div>
+<i data-f="3"></i>
+<p>Foto $4\times6$ dan $6\times9$: $\frac64=\frac96=1{,}5$ → <b>sebangun</b>. Foto $4\times6$ dan $6\times8$: $\frac64=1{,}5$ tetapi $\frac86\approx1{,}33$ → <b>tidak sebangun</b>.</p>
+<h3>Syarat khusus segitiga (cukup salah satu)</h3>
+<table><tr><th>Syarat</th><th>Artinya</th></tr>
+<tr><td>Sd-Sd</td><td>Dua pasang sudut sama (sudut ketiga otomatis sama)</td></tr>
+<tr><td>S-S-S sebanding</td><td>Tiga pasang sisi punya rasio sama (4,6,8 dan 6,9,12)</td></tr>
+<tr><td>S-Sd-S sebanding</td><td>Dua sisi sebanding + sudut apit sama</td></tr></table>
+<h3>Faktor skala, keliling, luas</h3>
+<div class="box def">$k=\dfrac{\text{sisi bangun kedua}}{\text{sisi pasangannya pada bangun pertama}}$<br>Perbandingan <b>keliling</b> $=k$ · Perbandingan <b>luas</b> $=k^2$</div>
+<div class="box"><b class="t">Contoh 1: mencari sisi</b>$\triangle ABC\sim\triangle PQR$, $AB=6,\ BC=9,\ AC=12,\ PQ=4$.<br>
+<div class="cepat"><b>⚡ Cara cepat</b>$k=\frac46=\frac23$ → $QR=9\times\frac23=6$, $PR=12\times\frac23=8$.</div>
+<div class="lengkap"><b>📝 Cara lengkap</b><ol><li>Pasangkan: $AB\leftrightarrow PQ$.</li><li>Faktor skala $k=\frac{PQ}{AB}=\frac46=\frac23$.</li><li>$QR=BC\times k=9\times\frac23=6$.</li><li>$PR=AC\times k=12\times\frac23=8$.</li></ol></div></div>
+<div class="box"><b class="t">Contoh 2: perbandingan luas</b>Sisi $2:5$, luas kecil $12$ cm². Luas besar?<br>
+<div class="cepat"><b>⚡ Cara cepat</b>$12\times\frac{25}{4}=75$ cm².</div>
+<div class="lengkap"><b>📝 Cara lengkap</b><ol><li>Rasio luas $=k^2=2^2:5^2=4:25$.</li><li>$\frac{12}{L}=\frac4{25}$ → $4L=300$.</li><li>$L=75$ cm².</li></ol></div></div>
+<div class="box warn"><b class="t">Kesalahan umum</b>① <b>Menambah</b>, bukan mengalikan ($4\times6$ ditambah 2 menjadi $6\times8$ tidak sebangun). ② Skala sisi $1:3$ berarti skala luas $1:9$. ③ Salah memasangkan sisi. ④ Mengira semua persegi panjang atau belah ketupat pasti sebangun.</div>
+
+<h2 id="f">F. Penerapan Kesebangunan</h2>
+<div class="box tip"><b class="t">Kartu 4 langkah</b>1. Gambar ulang, tandai sudut sama. 2. Tulis pasangan sisi. 3. Susun perbandingan senilai. 4. Kalikan silang, cek masuk akal.</div>
+<h3>F.1 Garis sejajar alas</h3>
+<p>$DE\parallel BC$ → $\triangle ADE\sim\triangle ABC$ (∠A dipakai bersama, ∠ADE = ∠ABC sehadap).</p>
+<i data-f="4"></i>
+<div class="box def">$\dfrac{AD}{AB}=\dfrac{AE}{AC}=\dfrac{DE}{BC}$ dan $\dfrac{AD}{DB}=\dfrac{AE}{EC}$</div>
+<div class="box"><b class="t">Contoh</b>$AD=4,\ DB=6,\ DE=8$. Tentukan $BC$.
+<div class="cepat"><b>⚡ Cara cepat</b>$BC=8\times\frac{10}{4}=20$.</div>
+<div class="lengkap"><b>📝 Cara lengkap</b><ol><li>$AB=AD+DB=4+6=10$.</li><li>$\frac{AD}{AB}=\frac{DE}{BC}$ → $\frac4{10}=\frac8{BC}$.</li><li>$4\times BC=80$ → $BC=20$.</li></ol></div></div>
+<h3>F.2 Trapesium dan diagonal</h3>
+<p>$AB\parallel DC$ → $\triangle OAB\sim\triangle OCD$ (bertolak belakang + dalam berseberangan).</p>
+<i data-f="5"></i>
+<div class="box def">$\dfrac{OA}{OC}=\dfrac{OB}{OD}=\dfrac{AB}{DC}$</div>
+<div class="box"><b class="t">Contoh</b>$AB=4,\ DC=7,\ AC=22$.
+<div class="cepat"><b>⚡ Cara cepat</b>Bagi 22 dengan rasio 4:7 → $OA=\frac4{11}\times22=8$, $OC=\frac7{11}\times22=14$.</div>
+<div class="lengkap"><b>📝 Cara lengkap</b><ol><li>$OA:OC=AB:DC=4:7$.</li><li>Jumlah bagian $4+7=11$.</li><li>$OA=\frac4{11}\times22=8$.</li><li>$OC=\frac7{11}\times22=14$.</li></ol></div></div>
+<h3>F.3 Bayangan dan tinggi benda</h3>
+<p>Sinar matahari sejajar, sehingga benda dan bayangannya membentuk segitiga sebangun.</p>
+<i data-f="6"></i>
+<div class="box"><b class="t">Contoh</b>Tinggi pohon?
+<div class="cepat"><b>⚡ Cara cepat</b>$h=9\times\frac23=6$ m.</div>
+<div class="lengkap"><b>📝 Cara lengkap</b><ol><li>Tinggi : bayangan sama → $\frac23=\frac h9$.</li><li>$3h=18$.</li><li>$h=6$ m.</li></ol></div></div>
+<h3>F.4 Skala peta dan miniatur</h3>
+<div class="box def">Skala $1:n$ → jarak sebenarnya $=$ jarak gambar $\times\,n$.</div>
+<div class="box"><b class="t">Contoh</b>Peta 1 : 500.000, jarak 4 cm.
+<div class="cepat"><b>⚡ Cara cepat</b>$4\times5=20$ km (coret 5 nol: cm → km).</div>
+<div class="lengkap"><b>📝 Cara lengkap</b><ol><li>$4\times500.000=2.000.000$ cm.</li><li>$\div100=20.000$ m.</li><li>$\div1000=20$ km.</li></ol></div></div>
+<h3>F.5 Pengayaan: garis tinggi segitiga siku-siku</h3>
+<i data-f="7"></i>
+<div class="box def">$CD^2=AD\times DB$ · $AC^2=AD\times AB$ · $BC^2=DB\times AB$</div>
+<div class="box"><b class="t">Contoh</b>$AD=4,\ DB=9$.
+<div class="cepat"><b>⚡ Cara cepat</b>$CD=\sqrt{4\times9}=6$.</div>
+<div class="lengkap"><b>📝 Cara lengkap</b><ol><li>$CD^2=4\times9=36$ → $CD=6$.</li><li>$AB=13$; $AC^2=4\times13=52$; $BC^2=9\times13=117$.</li><li>Cek: $52+117=169=13^2$ ✓.</li></ol></div></div>
+
+<h2 id="g">G. Ringkasan Rumus</h2>
+<table><tr><th>Topik</th><th>Isi</th></tr>
+<tr><td>Kongruen ≅</td><td>Sisi dan sudut bersesuaian sama. S-S-S, S-Sd-S, Sd-S-Sd, Hipotenusa-Kaki</td></tr>
+<tr><td>Sebangun ∼</td><td>Sudut sama, sisi sebanding. Segitiga: cukup Sd-Sd</td></tr>
+<tr><td>Skala</td><td>$k=\frac{\text{sisi 2}}{\text{sisi 1}}$; keliling $k$; luas $k^2$</td></tr>
+<tr><td>$DE\parallel BC$</td><td>$\frac{AD}{AB}=\frac{AE}{AC}=\frac{DE}{BC}$</td></tr>
+<tr><td>Trapesium</td><td>$\frac{OA}{OC}=\frac{OB}{OD}=\frac{AB}{DC}$</td></tr>
+<tr><td>Bayangan</td><td>$\frac{\text{tinggi}_1}{\text{bayangan}_1}=\frac{\text{tinggi}_2}{\text{bayangan}_2}$</td></tr>
+<tr><td>Peta 1 : n</td><td>Sebenarnya $=$ gambar $\times n$</td></tr>
+<tr><td>Garis tinggi</td><td>$CD^2=AD\times DB$</td></tr></table>
+
+<h2 id="h">H. Latihan dan Prediksi Soal TKA</h2>
+<p>18 soal: Level 1 (no. 1–6), Level 2 (7–12), Level 3 (13–18). Jawab dulu, lalu tekan <b>Periksa</b> untuk melihat cara cepat dan cara lengkap.</p>
+<div id="qs"></div>
+<div class="score" id="sc">Skor: 0 / 18</div>
+</main>
+<footer>© VisualMath.Lim · Bimbingan Belajar</footer>
+
+<script>
+const P=(a,b)=>a;
+const F={
+1:['<svg viewBox="0 0 300 110"><polygon class="s" points="60,15 15,95 115,95"/><polygon class="s2" points="240,15 195,95 295,95"/><text x="55" y="12">A</text><text x="2" y="104">B</text><text x="118" y="104">C</text><text x="235" y="12">P</text><text x="182" y="104">Q</text><text x="298" y="104" text-anchor="end">R</text></svg>','Gambar 1. ΔABC ≅ ΔPQR: letak beda, bentuk dan ukuran sama.'],
+2:['<svg viewBox="0 0 300 120"><polygon class="s" points="80,10 10,110 150,110"/><polygon class="s2" points="225,60 190,110 260,110"/><text x="76" y="8">A</text><text x="0" y="119">B</text><text x="152" y="119">C</text><text x="221" y="56">D</text><text x="180" y="119">E</text><text x="262" y="119">F</text></svg>','Gambar 2. ΔABC ∼ ΔDEF dengan k = 1/2.'],
+3:['<svg viewBox="0 0 300 100"><rect class="s" x="20" y="30" width="60" height="40"/><rect class="s2" x="130" y="10" width="90" height="60"/><text x="38" y="55">4 × 6</text><text x="152" y="45">6 × 9</text><text x="40" y="92">Foto I</text><text x="152" y="92">Foto II (k = 1,5)</text></svg>','Gambar 3. Dua persegi panjang sebangun.'],
+4:['<svg viewBox="0 0 200 125"><polygon class="s" points="100,10 20,110 180,110"/><line class="l" x1="68" y1="50" x2="132" y2="50"/><text x="96" y="8">A</text><text x="8" y="122">B</text><text x="182" y="122">C</text><text x="50" y="52">D</text><text x="136" y="52">E</text></svg>','Gambar 4. DE ∥ BC → ΔADE ∼ ΔABC.'],
+5:['<svg viewBox="0 0 200 120"><polygon class="s" points="60,20 140,20 170,100 30,100"/><line class="l" x1="60" y1="20" x2="170" y2="100"/><line class="l" x1="140" y1="20" x2="30" y2="100"/><text x="52" y="16">A</text><text x="142" y="16">B</text><text x="174" y="112">C</text><text x="14" y="112">D</text><text x="104" y="48">O</text></svg>','Gambar 5. AB ∥ DC → ΔOAB ∼ ΔOCD.'],
+6:['<svg viewBox="0 0 320 120"><line x1="5" y1="105" x2="315" y2="105" stroke="currentColor"/><line stroke="#0a8f4e" stroke-width="5" x1="30" y1="105" x2="30" y2="75"/><line stroke="#0a8f4e" stroke-width="9" x1="140" y1="105" x2="140" y2="15"/><line class="l" x1="30" y1="75" x2="75" y2="105"/><line class="l" x1="140" y1="15" x2="275" y2="105"/><text x="38" y="92">2 m</text><text x="40" y="118">3 m</text><text x="150" y="60">h</text><text x="190" y="118">9 m</text></svg>','Gambar 6. Tiang 2 m berbayangan 3 m; pohon berbayangan 9 m.'],
+7:['<svg viewBox="0 0 220 120"><polygon class="s" points="76,16 20,100 202,100"/><line class="l" x1="76" y1="16" x2="76" y2="100"/><text x="72" y="12">C</text><text x="8" y="112">A</text><text x="204" y="112">B</text><text x="70" y="114">D</text></svg>','Gambar 7. Siku-siku di C, CD ⊥ AB.'],
+8:['<svg viewBox="0 0 200 115"><line x1="5" y1="100" x2="195" y2="100" stroke="currentColor"/><line stroke="var(--navy)" stroke-width="5" x1="30" y1="100" x2="30" y2="46"/><line stroke="var(--navy)" stroke-width="5" x1="170" y1="100" x2="170" y2="10"/><line class="l" x1="30" y1="46" x2="170" y2="100"/><line class="l" x1="170" y1="10" x2="30" y2="100"/><text x="36" y="40">6 m</text><text x="140" y="14">10 m</text><text x="84" y="64">P</text><text x="85" y="114">8 m</text></svg>','Dua tiang dan dua kawat yang berpotongan di P.']};
+document.querySelectorAll('[data-f]').forEach(e=>{const[s,c]=F[e.dataset.f];e.outerHTML=`<figure class="fig">${s}<figcaption>${c}</figcaption></figure>`});
+
+const Q=[
+{l:1,m:'Mengidentifikasi · Pilihan ganda',q:'Manakah yang <b>bukan</b> syarat cukup untuk membuktikan dua segitiga kongruen?',o:['Sisi-Sisi-Sisi','Sisi-Sudut-Sisi','Sudut-Sisi-Sudut','Sudut-Sudut-Sudut (tiga sudut sama)','Sisi miring dan satu sisi tegak (siku-siku)'],a:'D',f:'Tiga sudut sama hanya berarti <b>sebangun</b>, bukan kongruen.',s:['Kongruen = bentuk <b>dan</b> ukuran sama.','Tiga sudut sama hanya menjamin bentuk sama, ukuran bisa berbeda.','Jadi Sd-Sd-Sd bukan syarat kongruen → <b>D</b>.']},
+{l:1,m:'Menghitung · Pilihan ganda',q:'$\\triangle ABC\\sim\\triangle PQR$. $AB=6$ cm, $BC=8$ cm, $PQ=9$ cm. Panjang $QR$ adalah ….',o:['10 cm','12 cm','13,5 cm','14 cm','16 cm'],a:'B',f:'$QR=8\\times\\frac96=8\\times1{,}5=12$.',s:['Pasangan: $AB\\leftrightarrow PQ$, $BC\\leftrightarrow QR$.','Faktor skala $k=\\frac{PQ}{AB}=\\frac96=1{,}5$.','$QR=BC\\times k=8\\times1{,}5=12$ cm → <b>B</b>.']},
+{l:1,m:'Mengelompokkan · Pilihan ganda kompleks',t:'kk',q:'Pilih <b>semua</b> pasangan bangun yang <b>pasti</b> sebangun.',o:['Dua persegi','Dua persegi panjang','Dua lingkaran','Dua segitiga sama sisi','Dua belah ketupat'],a:'ACD',f:'Persegi, lingkaran, segitiga sama sisi: bentuknya hanya satu. Persegi panjang dan belah ketupat: bisa beda.',s:['A: semua sudut 90° dan sisi sebanding → pasti sebangun.','B: $2\\times4$ dan $3\\times4$ → $\\frac23\\ne\\frac44$ → tidak pasti.','C: lingkaran selalu sebangun.','D: semua sudut 60° → pasti sebangun.','E: sudut belah ketupat bisa berbeda → tidak pasti.','Jawaban: <b>A, C, D</b>.']},
+{l:1,m:'Memahami informasi · Pilihan ganda',q:'ΔABC bersisi 5, 12, 13. ΔDEF bersisi 10, 24, 26. Hubungan yang benar adalah ….',o:['Kongruen','Sebangun tetapi tidak kongruen, skala 2','Sebangun tetapi tidak kongruen, skala 3','Tidak sebangun dan tidak kongruen','Kongruen karena keduanya siku-siku'],a:'B',f:'$10\\div5=2$, $24\\div12=2$, $26\\div13=2$ → sebangun skala 2.',s:['Bagi sisi yang berpasangan: $\\frac{10}5=2$, $\\frac{24}{12}=2$, $\\frac{26}{13}=2$.','Rasio sama → sebangun, skala 2.','Ukuran berbeda → tidak kongruen → <b>B</b>.']},
+{l:1,m:'Menghitung · Benar/Salah',t:'bs',f_:1,fig:3,q:'Foto I berukuran $4\\times6$ dan foto II berukuran $6\\times9$. Tentukan Benar atau Salah.',o:['Kedua foto sebangun.','Perbandingan sisi bersesuaian adalah $2:3$.','Kedua foto kongruen.','Perbandingan luas foto I dan II adalah $2:3$.'],a:[1,1,0,0],f:'$k=\\frac23$ (sisi), luas $k^2=\\frac49$.',s:['(a) Benar: $\\frac64=\\frac96=1{,}5$ dan semua sudut 90°.','(b) Benar: $4:6=2:3$ dan $6:9=2:3$.','(c) Salah: ukuran berbeda.','(d) Salah: luas $24$ dan $54$ → $24:54=4:9$ (luas $=k^2$).']},
+{l:1,m:'Menghitung · Pilihan ganda',q:'Dua segitiga sebangun punya perbandingan sisi $3:5$. Keliling yang kecil 18 cm. Keliling yang besar adalah ….',o:['24 cm','27 cm','30 cm','36 cm','54 cm'],a:'C',f:'$18\\div3\\times5=30$.',s:['Perbandingan keliling = perbandingan sisi = $3:5$.','$\\frac{18}{K}=\\frac35$ → $3K=90$.','$K=30$ cm → <b>C</b>.']},
+{l:2,m:'Menerapkan · Pilihan ganda',fig:4,q:'Pada ΔABC, $DE\\parallel BC$. $AD=4$, $DB=6$, $DE=8$ cm. Panjang $BC$ adalah ….',o:['12 cm','16 cm','18 cm','20 cm','24 cm'],a:'D',f:'$BC=8\\times\\frac{10}{4}=20$.',s:['$AB=4+6=10$.','$\\triangle ADE\\sim\\triangle ABC$ → $\\frac{AD}{AB}=\\frac{DE}{BC}$ → $\\frac4{10}=\\frac8{BC}$.','$4\\times BC=80$ → $BC=20$ cm → <b>D</b>.']},
+{l:2,m:'Memodelkan · Pilihan ganda',fig:6,q:'Pada saat yang sama, tiang 2 m berbayangan 3 m, pohon berbayangan 9 m. Jika tinggi pohon $h$, model dan hasil yang benar adalah ….',o:['$\\frac23=\\frac9h$, $h=13{,}5$ m','$\\frac29=\\frac h3$, $h=\\frac23$ m','$\\frac23=\\frac h9$, $h=6$ m','$2+3=h-9$, $h=14$ m','$h=9-(3-2)=8$ m'],a:'C',f:'Tinggi ÷ bayangan: $\\frac23=\\frac h9$ → $h=6$.',s:['Segitiga sebangun: tinggi : bayangan sama.','$\\frac23=\\frac h9$.','$3h=18$ → $h=6$ m → <b>C</b>. (A membalik rasio hanya di satu sisi.)']},
+{l:2,m:'Menerapkan · Pilihan ganda',fig:5,q:'Trapesium ABCD, $AB\\parallel DC$, diagonal berpotongan di O. $AB=4$, $DC=7$, $AC=22$ cm. Panjang $OC$ adalah ….',o:['14 cm','8 cm','11 cm','12 cm','18 cm'],a:'A',f:'$OC=\\frac7{11}\\times22=14$.',s:['$\\triangle OAB\\sim\\triangle OCD$ → $OA:OC=AB:DC=4:7$.','Jumlah bagian $=11$.','$OC=\\frac7{11}\\times22=14$ cm → <b>A</b>.']},
+{l:2,m:'Memodelkan · Pilihan ganda',q:'Peta berskala $1:200.000$, jarak dua kota 6 cm. Jarak sebenarnya adalah ….',o:['120 km','12 km','6 km','3 km','1,2 km'],a:'B',f:'$6\\times2=12$ km (coret 5 nol).',s:['$6\\times200.000=1.200.000$ cm.','$\\div100=12.000$ m.','$\\div1000=12$ km → <b>B</b>.']},
+{l:2,m:'Menginterpretasikan · Pilihan ganda kompleks',t:'kk',q:'Miniatur gedung: tinggi 30 cm, lebar 12 cm. Tinggi gedung sebenarnya 60 m. Pilih <b>semua</b> pernyataan benar.',o:['Skala miniatur adalah $1:200$.','Lebar gedung sebenarnya 24 m.','Luas alas sebenarnya 200 kali luas alas miniatur.','Menara miniatur 15 cm → tinggi sebenarnya 30 m.'],a:'ABD',f:'Skala $=6000\\div30=200$. Luas pakai $200^2$, bukan 200.',s:['60 m $=6.000$ cm → skala $\\frac{6000}{30}=200$ → <b>A benar</b>.','Lebar $12\\times200=2.400$ cm $=24$ m → <b>B benar</b>.','Luas berbanding $k^2=40.000$, bukan 200 → <b>C salah</b>.','$15\\times200=3.000$ cm $=30$ m → <b>D benar</b>.','Jawaban: <b>A, B, D</b>.']},
+{l:2,m:'Menerapkan · Pilihan ganda',fig:7,q:'ΔABC siku-siku di C, $CD\\perp AB$. $AD=4$, $DB=9$ cm. Panjang $CD$ adalah ….',o:['13 cm','5 cm','6 cm','6,5 cm','36 cm'],a:'C',f:'$CD=\\sqrt{4\\times9}=6$.',s:['$\\triangle ACD\\sim\\triangle CBD$ → $CD^2=AD\\times DB$.','$CD^2=4\\times9=36$.','$CD=6$ cm → <b>C</b>.']},
+{l:3,m:'Menganalisis · Pilihan ganda',q:'ΔABC bersisi 5, 7, 9 cm. ΔPQR bersisi 10, 14, 16 cm. Pernyataan paling tepat ….',o:['Kongruen, karena sama-sama punya tiga sisi.','Sebangun dengan skala $1:2$.','Tidak sebangun, karena $9:16\\ne1:2$.','Sebangun, karena dua pasang sisi sebanding.','Tidak sebangun, karena panjang sisinya berbeda.'],a:'C',f:'$5\\to10$ (×2), $7\\to14$ (×2), $9\\to16$ (bukan ×2; harusnya 18).',s:['Pasangkan dari terpendek: $\\frac5{10}=\\frac12$, $\\frac7{14}=\\frac12$.','$\\frac9{16}\\ne\\frac12$ → tiga rasio tidak sama.','Tidak sebangun (sisi ketiga harusnya 18). Sisi berbeda saja bukan alasan cukup → <b>C</b>.']},
+{l:3,m:'Memecahkan masalah · Pilihan ganda',fig:8,q:'Dua tiang tegak berjarak 8 m, tinggi 6 m dan 10 m. Dari puncak tiap tiang dipasang kawat ke dasar tiang lain, berpotongan di P. Tinggi P dari tanah ….',o:['3,75 m','3 m','3,6 m','4 m','4,8 m'],a:'A',f:'$t=\\frac{6\\times10}{6+10}=3{,}75$ (tidak bergantung jarak tiang).',s:['Misalkan tinggi P $=t$, jarak mendatar P ke tiang 6 m $=x$.','Kawat dari puncak tiang 6 m: $\\frac t6=\\frac{8-x}8$. Dari puncak tiang 10 m: $\\frac t{10}=\\frac x8$.','Jumlahkan: $\\frac t6+\\frac t{10}=\\frac{8-x}8+\\frac x8=1$.','$t\\cdot\\frac{16}{60}=1$ → $t=\\frac{60}{16}=3{,}75$ m → <b>A</b>.']},
+{l:3,m:'Mengevaluasi · Pilihan ganda',q:'Tongkat 1,5 m berbayangan 2 m. Pohon berbayangan 10 m. Rina: $\\frac{1{,}5}2=\\frac h{10}$, $h=7{,}5$ m. Dito: $\\frac{1{,}5}2=\\frac{10}h$, $h\\approx13{,}3$ m. Penilaian tepat ….',o:['Dito benar, membandingkan tinggi tongkat dengan bayangan pohon.','Keduanya benar, hanya caranya berbeda.','Rina salah, tinggi pohon harus lebih besar dari bayangannya.','Keduanya salah, sinar matahari tidak sejajar.','Rina benar, karena yang dibandingkan tinggi : bayangan pada kedua benda.'],a:'E',f:'Pasangan harus sejenis: tinggi/bayangan = tinggi/bayangan.',s:['Rasio harus memasangkan unsur yang bersesuaian.','Rina: tongkat (tinggi/bayangan) = pohon (tinggi/bayangan) → $h=\\frac{1{,}5\\times10}2=7{,}5$ m.','Dito memasangkan tinggi tongkat dengan bayangan pohon (tidak bersesuaian).','Jawaban: <b>E</b>.']},
+{l:3,m:'Menyimpulkan · Pilihan ganda kompleks',t:'kk',q:'$\\triangle ABC\\sim\\triangle DEF$ dengan perbandingan sisi $1:3$. Pilih <b>semua</b> simpulan valid.',o:['Perbandingan keliling $1:3$.','Perbandingan luas $1:9$.','Perbandingan $\\angle A$ dan $\\angle D$ adalah $1:3$.','Luas ABC $=5$ cm² → luas DEF $=45$ cm².','Luas ABC $=5$ cm² → luas DEF $=15$ cm².'],a:'ABD',f:'$k=\\frac13$: keliling $1:3$, luas $1:9$, sudut tetap sama.',s:['Keliling berbanding $k=1:3$ → <b>A benar</b>.','Luas berbanding $k^2=1:9$ → <b>B benar</b>.','Sudut bersesuaian sama besar, bukan $1:3$ → <b>C salah</b>.','$5\\times9=45$ → <b>D benar</b>, sehingga E salah.','Jawaban: <b>A, B, D</b>.']},
+{l:3,m:'Melakukan generalisasi · Pilihan ganda',q:'Pola dua segitiga sebangun: $k=2$ → luas 4, keliling 2; $k=3$ → luas 9, keliling 3; $k=4$ → luas 16, keliling 4. Jika perbandingan sisi $m:n$, pernyataan umum yang benar ….',o:['Luas $m:n$, keliling $m^2:n^2$','Luas $m:n$, keliling $m:n$','Luas $\\sqrt m:\\sqrt n$, keliling $m:n$','Luas $m^2:n^2$, keliling $m:n$','Luas $m^2:n^2$, keliling $m^2:n^2$'],a:'D',f:'Keliling ikut $k$, luas ikut $k^2$.',s:['$k=2$: luas $4=2^2$; $k=3$: $9=3^2$; $k=4$: $16=4^2$.','Keliling selalu sama dengan $k$.','Untuk $m:n$: luas $m^2:n^2$, keliling $m:n$ → <b>D</b>.']},
+{l:3,m:'Menjustifikasi · Pilihan ganda',fig:4,q:'Pada gambar, $DE\\parallel BC$. Alasan tepat untuk $\\triangle ADE\\sim\\triangle ABC$ adalah ….',o:['$DE=BC$ karena sejajar, sehingga kongruen.','$\\angle A$ berimpit dan $\\angle ADE=\\angle ABC$ (sehadap), sehingga sebangun (Sd-Sd).','$\\angle ADE+\\angle ABC=180^\\circ$, sehingga sebangun.','$AD=DB$ dan $AE=EC$, sehingga sebangun.','Keduanya siku-siku, sehingga sebangun.'],a:'B',f:'Dua sudut sama (berimpit + sehadap) = Sd-Sd.',s:['$\\angle A$ dipakai bersama (sama besar).','$DE\\parallel BC$ → $\\angle ADE=\\angle ABC$ (sehadap, sama besar, bukan berjumlah 180°).','Dua pasang sudut sama → sebangun (Sd-Sd) → <b>B</b>.']}
+];
+const L='ABCDE',box=document.getElementById('qs');let score=0,done=0;
+Q.forEach((d,i)=>{
+ const t=d.t||'pg',sel=new Set(),bs=[];
+ const c=document.createElement('div');c.className='q';
+ let h=`<div class="m">Soal ${i+1} · Level ${d.l} · ${d.m}</div><p>${d.q}</p>`;
+ if(d.fig)h+=`<figure class="fig">${F[d.fig][0]}</figure>`;
+ if(t=='bs')d.o.forEach((x,j)=>h+=`<div class="bs"><span>(${'abcd'[j]}) ${x}</span><span><label><input type="radio" name="r${i}_${j}" value="1"> Benar</label> <label><input type="radio" name="r${i}_${j}" value="0"> Salah</label></span></div>`);
+ else d.o.forEach((x,j)=>h+=`<button class="opt" data-j="${j}"><i>${L[j]}.</i><span>${x}</span></button>`);
+ h+=`<button class="btn">Periksa</button><div class="res"></div><div class="ex"><div class="cepat"><b>⚡ Cara cepat</b>${d.f}</div><div class="lengkap"><b>📝 Cara lengkap</b><ol>${d.s.map(s=>`<li>${s}</li>`).join('')}</ol></div></div>`;
+ c.innerHTML=h;box.appendChild(c);
+ const ops=c.querySelectorAll('.opt'),res=c.querySelector('.res'),btn=c.querySelector('.btn');
+ ops.forEach(b=>b.onclick=()=>{const j=L[b.dataset.j];if(t=='pg'){sel.clear();ops.forEach(o=>o.classList.remove('sel'))}
+  if(sel.has(j)){sel.delete(j);b.classList.remove('sel')}else{sel.add(j);b.classList.add('sel')}});
+ btn.onclick=()=>{let ok;
+  if(t=='bs'){const v=d.o.map((_,j)=>{const r=c.querySelector(`input[name=r${i}_${j}]:checked`);return r?+r.value:-1});
+   if(v.includes(-1)){res.textContent='Pilih Benar atau Salah di setiap pernyataan.';res.className='res no';return}
+   ok=v.every((x,j)=>x==d.a[j]);c.querySelectorAll('input').forEach(x=>x.disabled=true)}
+  else{if(!sel.size){res.textContent='Pilih jawaban dulu.';res.className='res no';return}
+   ok=[...sel].sort().join('')==d.a;
+   ops.forEach(o=>{const j=L[o.dataset.j];o.disabled=true;o.classList.remove('sel');if(d.a.includes(j))o.classList.add('ok');else if(sel.has(j))o.classList.add('no')})}
+  res.className='res '+(ok?'ok':'no');
+  res.textContent=ok?'✅ Benar!':'❌ Belum tepat. Lihat pembahasan di bawah.';
+  btn.style.display='none';c.querySelector('.ex').classList.add('on');
+  if(ok)score++;done++;document.getElementById('sc').textContent=`Skor: ${score} / 18`+(done==18?' · Selesai!':'');};
+});
+window.addEventListener('load',()=>renderMathInElement(document.body,{delimiters:[{left:'$',right:'$',display:false}]}));
+</script>
+</body>
+</html>
