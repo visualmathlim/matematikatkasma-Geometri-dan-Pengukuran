@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Modul 1 – Hubungan Sudut, Garis, dan Bidang | VisualMath.Lim</title>
+<style>
+:root{--navy:#022050;--cy:#00d6d8;--yl:#ffd300;--ink:#14213d;--bg:#f2f7fb;--ok:#1b9c5a;--no:#d6336c}
+*{box-sizing:border-box}body{margin:0;font:16px/1.65 "Segoe UI",system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+header{background:var(--navy);color:#fff;position:sticky;top:0;z-index:20;border-bottom:4px solid var(--yl)}
+.hw{max-width:1000px;margin:auto;padding:8px 14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.hw img{height:52px;width:52px;border-radius:50%;background:#fff2}
+.hw h1{font-size:1.05rem;margin:0;flex:1;min-width:180px;line-height:1.3}.hw h1 span{color:var(--cy)}
+nav a{display:inline-block;color:#fff;text-decoration:none;font-weight:600;padding:7px 14px;border-radius:20px;margin-left:4px;border:2px solid var(--cy)}
+nav a:hover,nav a.on{background:var(--cy);color:var(--navy)}
+.pills{background:#fff;border-bottom:1px solid #d5e3ee;overflow-x:auto;white-space:nowrap;position:sticky;top:73px;z-index:15}
+.pills a{display:inline-block;padding:8px 13px;margin:6px 2px;border-radius:16px;font-size:.88rem;text-decoration:none;color:var(--navy);font-weight:600;background:#e7f6f8}
+.pills a:hover{background:var(--yl)}
+main{max-width:1000px;margin:auto;padding:14px}
+.hero{background:linear-gradient(120deg,var(--navy),#0a3a8c);color:#fff;border-radius:16px;padding:22px;margin:10px 0}
+.hero small{color:var(--yl);font-weight:700;letter-spacing:.06em}.hero h2{margin:4px 0 6px;font-size:1.6rem}.hero p{margin:0;color:#cfe6f5}
+section{background:#fff;border-radius:16px;padding:18px;margin:16px 0;box-shadow:0 2px 8px #02205014;scroll-margin-top:130px}
+h3.ms{background:var(--navy);color:#fff;margin:-18px -18px 14px;padding:12px 18px;border-radius:16px 16px 0 0;border-left:8px solid var(--yl);font-size:1.15rem}
+h4{color:var(--navy);margin:16px 0 6px;border-bottom:2px solid var(--cy);display:inline-block}
+table{border-collapse:collapse;width:100%;margin:8px 0;font-size:.93rem}th{background:var(--navy);color:#fff}
+th,td{border:1px solid #c9dbe8;padding:7px 9px;text-align:left;vertical-align:top}tr:nth-child(even) td{background:#f4fafc}
+.tw{overflow-x:auto}
+.box{border-radius:12px;padding:11px 14px;margin:12px 0;border-left:6px solid}
+.ing{background:#e6fbfb;border-color:var(--cy)}.cat{background:#eef3ff;border-color:#4263eb}.cep{background:#fff8d1;border-color:var(--yl)}.err{background:#ffeaf1;border-color:var(--no)}
+.box b.t{display:block;color:var(--navy)}
+.fig{text-align:center;margin:10px 0}.fig svg{max-width:100%;height:auto;background:#fbfeff;border:1px solid #d5e3ee;border-radius:12px}.fig figcaption{font-size:.85rem;color:#456;font-style:italic}
+.ex,.q{border:2px solid #d5e3ee;border-radius:14px;padding:12px 14px;margin:14px 0}
+.ex h4,.qh{margin-top:0}
+details{margin-top:8px}summary{cursor:pointer;font-weight:700;background:var(--cy);color:var(--navy);padding:8px 14px;border-radius:10px;list-style:none}
+summary:hover{background:var(--yl)}
+.cc{background:#fff8d1;border-left:6px solid var(--yl);border-radius:10px;padding:8px 12px;margin:10px 0}.cc p{margin:2px 0}
+.cl{background:#f3f9fb;border-left:6px solid var(--cy);border-radius:10px;padding:8px 12px;margin:10px 0}
+.cl ol{margin:6px 0 0;padding-left:0;list-style:none;counter-reset:s}
+.cl li{counter-increment:s;padding:7px 0 7px 38px;position:relative;border-bottom:1px dashed #c9dbe8}.cl li:last-child{border:0}
+.cl li:before{content:counter(s);position:absolute;left:0;top:8px;width:27px;height:27px;border-radius:50%;background:var(--navy);color:var(--yl);text-align:center;font-weight:700;line-height:27px;font-size:.85rem}
+code{display:block;margin:4px 0 0;background:#fff;border:1px solid #bcd;border-radius:8px;padding:5px 11px;font:1.02rem/1.5 "Cambria Math",Cambria,"Times New Roman",serif;color:var(--navy);width:fit-content;max-width:100%;overflow-x:auto}
+.ans{background:var(--navy);color:var(--yl);display:inline-block;padding:5px 14px;border-radius:20px;font-weight:700;margin:4px 0}
+i{font-family:Cambria,"Times New Roman",serif}
+.no{display:inline-block}.qh{display:flex;gap:8px;align-items:center;margin-bottom:4px}
+.qh .no{background:var(--navy);color:var(--yl);border-radius:50%;width:30px;height:30px;text-align:center;line-height:30px;font-weight:700}
+.lv{background:#e7f6f8;color:var(--navy);font-size:.78rem;font-weight:700;padding:2px 10px;border-radius:12px}
+.op{display:flex;gap:10px;align-items:center;width:100%;text-align:left;font:inherit;background:#fff;border:2px solid #c9dbe8;border-radius:10px;padding:8px 12px;margin:5px 0;cursor:pointer}
+.op b{background:#e7f6f8;border-radius:50%;width:26px;height:26px;text-align:center;flex:none;color:var(--navy)}
+.op:hover{border-color:var(--cy)}
+.op.ok,.tf button.ok{background:#dcf5e7;border-color:var(--ok)}.op.no,.tf button.no{background:#ffe0ea;border-color:var(--no)}.op.dim{opacity:.55}
+.tf{display:flex;gap:6px;align-items:center;border-bottom:1px solid #e1ebf2;padding:6px 0;flex-wrap:wrap}.tf span{flex:1;min-width:200px}
+.tf button{font:inherit;border:2px solid #c9dbe8;background:#fff;border-radius:8px;padding:4px 14px;cursor:pointer}
+.vd{font-weight:700;margin:10px 0 0}.vd.g{color:var(--ok)}.vd.r{color:var(--no)}
+.score{font-weight:700;color:var(--navy);background:#fff8d1;border-radius:10px;padding:6px 12px;display:inline-block}
+.chk label{display:block;padding:6px 0;cursor:pointer}
+footer{text-align:center;color:#fff;background:var(--navy);padding:16px;margin-top:20px;border-top:4px solid var(--cy)}footer b{color:var(--yl)}
+@media(max-width:600px){.pills{top:118px}}
+</style></head><body>
+<header><div class="hw"><img src="logo.png" alt="Logo VisualMath.Lim">
+<h1><span>VisualMath.Lim</span> - TKA Matematika Wajib SMA</h1>
+<nav><a href="index.html">🏠 Home</a><a href="objek_geometri.html">📊 Dashboard</a></nav></div></header>
+<div class="pills"><div class="hw" style="padding:0 10px"><a href="#peta">Peta Belajar</a><a href="#m0">Mission 0</a><a href="#m1">Mission 1</a><a href="#m2">Mission 2</a><a href="#m3">Mission 3</a><a href="#m4">Mission 4</a><a href="#lat">Latihan</a><a href="#pre">Prediksi TKA</a><a href="#chk">Master Check</a></div></div>
+<main>
+<div class="hero"><small>MODUL 1 dari 4</small><h2>Hubungan Dua Sudut, Dua Garis, dan Dua Bidang</h2><p>TKA Matematika SMA Kelas 12 • Elemen Geometri dan Pengukuran • Sub Materi Objek Geometri<br><b style="color:var(--yl)">Kompetensi 1</b></p></div>
+
+<section id="peta"><h3 class="ms">🗺️ Peta Belajar</h3>
+<p>Halo! Modul ini dibuat untuk kamu yang ingin <b>paham dari dasar</b>. Tidak apa-apa kalau dulu geometri terasa membingungkan. Kita belajar pelan-pelan: lihat gambarnya, pahami konsepnya, lalu selesaikan soalnya langkah demi langkah.</p>
+<h4>Setelah modul ini, kamu bisa:</h4>
+<ul><li>menentukan besar sudut yang <b>berpenyiku, berpelurus, dan bertolak belakang</b>, serta sudut pada segitiga;</li><li>menentukan besar sudut pada <b>dua garis sejajar yang dipotong garis lain</b> (sehadap, berseberangan, sepihak);</li><li>menentukan hubungan dua garis pada bangun ruang: <b>sejajar, berpotongan, atau bersilangan</b>;</li><li>menentukan hubungan dua bidang dan hubungan garis dengan bidang pada kubus dan balok.</li></ul>
+<h4>Alur belajar</h4><div class="tw"><table><tr><th>Tahap</th><th>Yang kamu lakukan</th></tr>
+<tr><td><b>SEE</b> (Lihat)</td><td>Perhatikan gambar. Tandai bagian yang penting.</td></tr>
+<tr><td><b>THINK</b> (Pikirkan)</td><td>Baca konsepnya. Hafalkan kotak INGAT! dan CARA CEPAT TKA.</td></tr>
+<tr><td><b>SOLVE</b> (Selesaikan)</td><td>Tiru contoh soal. Tulis ulang Cara Lengkap di bukumu, lalu coba sendiri.</td></tr>
+<tr><td><b>CHECK</b> (Periksa)</td><td>Kerjakan Latihan Mandiri dan Prediksi Soal TKA, lalu baca penjelasannya.</td></tr></table></div>
+<h4>Analisis Kompetensi TKA</h4><div class="tw"><table><tr><th>Level</th><th>Proses berpikir</th><th>Perkiraan bentuk soal</th></tr>
+<tr><td><b>Level 1</b> Pengetahuan &amp; Pemahaman</td><td>Menghitung, memahami informasi, mengelompokkan, mengidentifikasi</td><td>Menghitung sudut berpelurus/berpenyiku; menyebutkan rusuk sejajar, berpotongan, atau bersilangan.</td></tr>
+<tr><td><b>Level 2</b> Aplikasi</td><td>Memodelkan, menerapkan, menginterpretasikan</td><td>Membuat persamaan dari sudut pada garis sejajar, menerapkan sudut luar segitiga, membaca gambar kubus/balok.</td></tr>
+<tr><td><b>Level 3</b> Penalaran</td><td>Menganalisis, memecahkan masalah, mengevaluasi, menyimpulkan, menjustifikasi</td><td>Menghitung banyak pasangan rusuk bersilangan, menilai Benar/Salah beberapa pernyataan.</td></tr></table></div>
+<div class="box cat"><b class="t">CATATAN</b>Bentuk soal TKA berupa pilihan ganda dan pilihan ganda kompleks (beberapa pernyataan dinilai Benar/Salah). Cocokkan juga dengan contoh soal resmi TKA terbaru dari Kemendikdasmen.</div></section>
+
+<section id="m0"><h3 class="ms">🧰 MISSION 0 • Bekal Dasar (Wajib Dibaca!)</h3>
+<h4>A. Jenis-jenis sudut</h4><div class="tw"><table><tr><th>Nama sudut</th><th>Besarnya</th><th>Bayangkan</th></tr>
+<tr><td>Lancip</td><td>antara 0° dan 90°</td><td>sempit, lebih kecil dari sudut siku-siku</td></tr>
+<tr><td>Siku-siku</td><td>tepat 90°</td><td>sudut pojok buku atau pojok meja</td></tr>
+<tr><td>Tumpul</td><td>antara 90° dan 180°</td><td>lebih terbuka dari pojok buku</td></tr>
+<tr><td>Lurus</td><td>tepat 180°</td><td>berupa garis lurus</td></tr>
+<tr><td>Refleks</td><td>antara 180° dan 360°</td><td>sudut yang "memutar" sangat lebar</td></tr></table></div>
+<h4>B. Cara membaca notasi</h4>
+<ul><li>∠ABC dibaca "sudut ABC". Huruf <b>tengah (B)</b> adalah titik sudutnya.</li><li>AB bisa berarti <b>garis AB</b>, <b>ruas garis AB</b>, atau <b>panjang AB</b>, tergantung konteks soal.</li><li>Tanda <b>∥</b> artinya <b>sejajar</b>. Tanda <b>⊥</b> artinya <b>tegak lurus</b>. Tanda <b>Δ</b> artinya <b>segitiga</b>.</li></ul>
+<h4>C. Menyelesaikan persamaan sederhana</h4>
+<p>Soal sudut di TKA sering memakai huruf <i>x</i>. Triknya selalu sama: <b>buat persamaan, lalu cari <i>x</i></b>.</p>
+<div class="cl"><b>Contoh: 5<i>x</i> + 20 = 180</b><ol><li><span>Pindahkan 20 ke kanan (tanda berubah).</span><code>5<i>x</i> = 180 − 20 = 160</code></li><li><span>Bagi kedua ruas dengan 5.</span><code><i>x</i> = 160 : 5 = 32</code></li></ol></div>
+<div class="box ing"><b class="t">Cek Dasar (kerjakan dulu!)</b>1) 3<i>x</i> + 10 = 100. Berapa <i>x</i>? &nbsp; 2) 2<i>x</i> + 5 + 3<i>x</i> = 90. Berapa <i>x</i>? &nbsp; 3) 180 − 65 − 50 = ?
+<details><summary>Lihat jawaban</summary><p><b>1) <i>x</i> = 30 &nbsp; 2) <i>x</i> = 17 &nbsp; 3) 65.</b> Kalau salah, ulangi bagian C.</p></details></div></section>
+
+<section id="m1"><h3 class="ms">📐 MISSION 1 • Hubungan Dua Sudut</h3>
+<h4>SEE: Perhatikan gambar</h4>
+<figure class="fig"><svg viewBox="0 0 600 160" width="600" font-family="Segoe UI,sans-serif" font-size="14">
+<g stroke="#022050" stroke-width="3" fill="none"><path d="M40 115H140M40 115V25M40 115L100 45"/><path d="M215 115H385M300 115L345 40"/><path d="M440 120L560 40M440 40L560 120"/></g>
+<path d="M40 100h15v15" stroke="#00d6d8" stroke-width="2" fill="none"/>
+<g fill="#022050" font-weight="700"><text x="70" y="105">a</text><text x="52" y="75">b</text><text x="330" y="105">a</text><text x="268" y="105">b</text><text x="500" y="62">a</text><text x="500" y="112">a</text><text x="462" y="86">b</text><text x="535" y="86">b</text></g>
+<g fill="#b58900" font-weight="700"><text x="30" y="145">Berpenyiku: a + b = 90°</text><text x="228" y="145">Berpelurus: a + b = 180°</text><text x="438" y="145">Bertolak belakang: sama besar</text></g></svg>
+<figcaption>Gambar 1.1 Tiga hubungan dua sudut yang paling sering muncul</figcaption></figure>
+<h4>THINK: Pahami konsepnya</h4><div class="tw"><table><tr><th>Hubungan</th><th>Ciri pada gambar</th><th>Aturan</th></tr>
+<tr><td><b>Berpenyiku</b></td><td>dua sudut membentuk sudut siku-siku</td><td><i>a</i> + <i>b</i> = 90°</td></tr>
+<tr><td><b>Berpelurus</b></td><td>dua sudut membentuk garis lurus</td><td><i>a</i> + <i>b</i> = 180°</td></tr>
+<tr><td><b>Bertolak belakang</b></td><td>dua garis berpotongan, sudut saling berhadapan</td><td>sudut berhadapan <b>sama besar</b></td></tr>
+<tr><td><b>Segitiga</b></td><td>tiga sudut dalam</td><td>∠A + ∠B + ∠C = 180°</td></tr>
+<tr><td><b>Sudut luar segitiga</b></td><td>sudut di luar, hasil perpanjangan sisi</td><td>= jumlah <b>dua sudut dalam yang tidak bersisian</b> dengannya</td></tr></table></div>
+<div class="box ing"><b class="t">INGAT! (Konsep Kunci)</b>Berpenyiku = <b>90°</b> (seperti siku-siku). Berpelurus = <b>180°</b> (lurus). Jangan tertukar!</div>
+<h4>SOLVE: Contoh soal</h4><div id="e1"></div>
+<div class="box err"><b class="t">BANK KESALAHAN (awas jebakan!)</b>Sudut luar segitiga <b>bukan</b> 180° dikurangi sudut yang bersisian saja. Pakai <b>dua sudut dalam yang jauh darinya</b> (tidak bersisian).</div></section>
+
+<section id="m2"><h3 class="ms">↔️ MISSION 2 • Dua Garis Sejajar Dipotong Garis Lain</h3>
+<h4>SEE: Perhatikan gambar</h4>
+<figure class="fig"><svg viewBox="0 0 420 260" width="420" font-family="Segoe UI,sans-serif" font-size="15" font-weight="700">
+<g stroke-width="3"><path d="M20 90H400M20 190H400" stroke="#022050"/><path d="M110 20L290 250" stroke="#e8590c"/></g>
+<g fill="#022050"><text x="402" y="86">p</text><text x="402" y="186">q</text><text fill="#e8590c" x="96" y="22">t</text></g>
+<g fill="#00a0a2"><text x="128" y="80">1</text><text x="180" y="80">2</text><text x="128" y="112">3</text><text x="182" y="112">4</text><text x="206" y="180">5</text><text x="258" y="180">6</text><text x="206" y="212">7</text><text x="260" y="212">8</text></g>
+<text x="20" y="250" font-size="12" fill="#456" font-weight="400">p ∥ q • hanya ada 2 ukuran sudut: lancip &amp; tumpul</text></svg>
+<figcaption>Gambar 1.2 Garis <i>p</i> sejajar garis <i>q</i>, dipotong garis <i>t</i>. Terbentuk 8 sudut bernomor.</figcaption></figure>
+<h4>THINK: Pahami konsepnya</h4><p>Ketika dua garis <b>sejajar</b> dipotong garis lain, delapan sudutnya punya pola. Bayangkan huruf <b>F</b>, <b>Z</b>, dan <b>C</b>.</p>
+<div class="tw"><table><tr><th>Pasangan sudut</th><th>Contoh (Gambar 1.2)</th><th>Hubungan</th><th>Huruf</th></tr>
+<tr><td><b>Sehadap</b></td><td>∠1 &amp; ∠5, ∠2 &amp; ∠6, ∠3 &amp; ∠7, ∠4 &amp; ∠8</td><td><b>sama besar</b></td><td>F</td></tr>
+<tr><td><b>Dalam berseberangan</b></td><td>∠3 &amp; ∠6, ∠4 &amp; ∠5</td><td><b>sama besar</b></td><td>Z</td></tr>
+<tr><td><b>Luar berseberangan</b></td><td>∠1 &amp; ∠8, ∠2 &amp; ∠7</td><td><b>sama besar</b></td><td>Z (luar)</td></tr>
+<tr><td><b>Dalam sepihak</b></td><td>∠3 &amp; ∠5, ∠4 &amp; ∠6</td><td>jumlah <b>180°</b></td><td>C</td></tr>
+<tr><td><b>Luar sepihak</b></td><td>∠1 &amp; ∠7, ∠2 &amp; ∠8</td><td>jumlah <b>180°</b></td><td>C (luar)</td></tr>
+<tr><td><b>Bertolak belakang</b></td><td>∠1 &amp; ∠4, ∠2 &amp; ∠3, ∠5 &amp; ∠8, ∠6 &amp; ∠7</td><td><b>sama besar</b></td><td>X</td></tr></table></div>
+<div class="box cep"><b class="t">⚡ CARA CEPAT TKA</b>Sebelum menghitung, <b>tulis dulu nama hubungannya</b> (misal "dalam sepihak"), lalu pilih aturannya: sama besar atau jumlah 180°. Jangan menebak. Sudut yang sama jenisnya (sama-sama lancip atau sama-sama tumpul) pasti sama besar; beda jenis jumlahnya 180°.</div>
+<h4>SOLVE: Contoh soal</h4><div id="e2"></div>
+<div class="box err"><b class="t">BANK KESALAHAN</b>Tertukar <b>sehadap</b> dan <b>sepihak</b>: sehadap = sama besar, sepihak = jumlah 180°. Memakai aturan garis sejajar padahal soal <b>tidak menyatakan sejajar</b>. Cek dulu kalimat "p ∥ q".</div></section>
+
+<section id="m3"><h3 class="ms">🧊 MISSION 3 • Hubungan Dua Garis dalam Ruang</h3>
+<h4>SEE: Perhatikan kubus ABCD.EFGH</h4>
+<figure class="fig"><svg viewBox="0 0 280 200" width="340" font-family="Segoe UI,sans-serif" font-size="15" font-weight="700">
+<g fill="none" stroke-width="3"><path d="M40 170H160" stroke="#e63946" stroke-width="5"/>
+<path d="M40 60H160M80 20H200" stroke="#2b9348"/><path d="M80 130H200" stroke="#2b9348" stroke-dasharray="6 4"/>
+<path d="M160 170L200 130M40 170V60M160 170V60" stroke="#1c7ed6"/><path d="M80 130L40 170" stroke="#1c7ed6" stroke-dasharray="6 4"/>
+<path d="M200 130V20M160 60L200 20M40 60L80 20" stroke="#f08c00"/><path d="M80 130V20" stroke="#f08c00" stroke-dasharray="6 4"/></g>
+<g fill="#022050"><text x="22" y="182">A</text><text x="162" y="188">B</text><text x="204" y="140">C</text><text x="62" y="140">D</text><text x="22" y="56">E</text><text x="158" y="54">F</text><text x="204" y="20">G</text><text x="62" y="18">H</text></g>
+<g font-size="11" font-weight="400"><text x="215" y="60" fill="#e63946">AB</text><text x="215" y="80" fill="#2b9348">sejajar</text><text x="215" y="100" fill="#1c7ed6">berpotongan</text><text x="215" y="120" fill="#f08c00">bersilangan</text></g></svg>
+<figcaption>Gambar 1.3 Kubus ABCD.EFGH. Rusuk AB merah; warna lain menunjukkan hubungannya dengan AB. Garis putus-putus = rusuk tersembunyi.</figcaption></figure>
+<p><b>Cara membaca kubus:</b> ABCD adalah alas (bawah), EFGH adalah tutup (atas). E tepat di atas A, F di atas B, G di atas C, H di atas D.</p>
+<h4>THINK: Pahami konsepnya</h4><div class="tw"><table><tr><th>Hubungan</th><th>Artinya</th><th>Contoh dari rusuk AB</th></tr>
+<tr><td><b>Sejajar</b></td><td>searah, tidak pernah bertemu, berada pada satu bidang</td><td>EF, DC, HG</td></tr>
+<tr><td><b>Berpotongan</b></td><td>bertemu di <b>satu titik</b></td><td>AD, AE, BC, BF</td></tr>
+<tr><td><b>Bersilangan</b></td><td><b>tidak sejajar</b> dan <b>tidak bertemu</b>, pada bidang berbeda</td><td>CG, DH, EH, FG</td></tr>
+<tr><td><b>Berimpit</b></td><td>terletak pada garis yang sama</td><td>AB dengan AB</td></tr></table></div>
+<div class="box ing"><b class="t">INGAT! (Konsep Kunci)</b>Dua garis di ruang yang <b>tidak sejajar dan tidak berpotongan</b> disebut <b>bersilangan</b>. Setiap rusuk kubus: <b>3</b> rusuk sejajar, <b>4</b> berpotongan, <b>4</b> bersilangan. Cek: 1 + 3 + 4 + 4 = 12 rusuk.</div>
+<h4>SOLVE: Contoh soal</h4><div id="e3"></div>
+<div class="box err"><b class="t">BANK KESALAHAN</b>Mengira "bersilangan" sama dengan "berpotongan". Garis bersilangan <b>tidak pernah bertemu</b>. Menghitung pasangan dua kali (lupa dibagi 2).</div></section>
+
+<section id="m4"><h3 class="ms">🔲 MISSION 4 • Hubungan Dua Bidang dan Garis dengan Bidang</h3>
+<h4>SEE: Perhatikan gambar</h4>
+<figure class="fig"><svg viewBox="0 0 440 170" width="520" font-family="Segoe UI,sans-serif" font-size="13" font-weight="700">
+<g stroke="#022050" stroke-width="2.5"><path d="M20 140H140L180 110H60Z" fill="#00d6d8" fill-opacity=".35"/><path d="M20 70H140L180 40H60Z" fill="#ffd300" fill-opacity=".45"/><path d="M250 140H370L410 110H290Z" fill="#00d6d8" fill-opacity=".35"/><path d="M250 140H370V40H250Z" fill="#ffd300" fill-opacity=".45"/></g>
+<path d="M250 140H370" stroke="#e63946" stroke-width="5"/>
+<g fill="#022050"><text x="30" y="160">Dua bidang sejajar</text><text x="262" y="160">Dua bidang berpotongan</text></g><text x="372" y="92" fill="#e63946" font-size="11">garis potong</text></svg>
+<figcaption>Gambar 1.4 Kiri: dua bidang sejajar. Kanan: dua bidang berpotongan pada sebuah garis.</figcaption></figure>
+<h4>THINK: Pahami konsepnya</h4><div class="tw"><table><tr><th>Hubungan</th><th>Artinya</th><th>Contoh pada kubus ABCD.EFGH</th></tr>
+<tr><td><b>Dua bidang sejajar</b></td><td>tidak punya satu pun titik persekutuan</td><td>ABCD ∥ EFGH; ABFE ∥ DCGH; ADHE ∥ BCGF</td></tr>
+<tr><td><b>Dua bidang berpotongan</b></td><td>bertemu pada sebuah <b>garis potong</b></td><td>ABCD dan ABFE berpotongan di garis AB</td></tr>
+<tr><td><b>Garis sejajar bidang</b></td><td>tidak menyentuh bidang, searah dengan salah satu garis pada bidang</td><td>AB sejajar bidang EFGH</td></tr>
+<tr><td><b>Garis memotong bidang</b></td><td>menembus bidang di satu titik</td><td>AE memotong bidang ABCD di titik A</td></tr>
+<tr><td><b>Garis tegak lurus bidang</b></td><td>memotong bidang dan membentuk sudut 90°</td><td>AE ⊥ bidang ABCD</td></tr></table></div>
+<div class="box cep"><b class="t">⚡ CARA CEPAT TKA</b>Dua bidang <b>sejajar</b> pada kubus/balok = <b>sisi yang berhadapan</b> (tidak berbagi satu titik sudut pun). Garis potong dua bidang yang berdekatan = <b>rusuk persekutuan</b>: cari dua titik sudut yang dimiliki <b>kedua</b> bidang.</div>
+<h4>SOLVE: Contoh soal</h4><div id="e4"></div>
+<div class="box err"><b class="t">BANK KESALAHAN</b>Menganggap dua bidang sejajar hanya karena "kelihatan" sejajar di gambar; cek dengan <b>titik sudutnya</b>. Salah urutan titik bidang (misal "ABGH"); tulis <b>berurutan</b> mengelilingi bidang: ABFE, BCGF, dst.</div></section>
+
+<section id="lat"><h3 class="ms">✏️ LATIHAN MANDIRI • Kerjakan Sendiri Dulu</h3>
+<p>Pilih jawabanmu. Setelah memilih, muncul penjelasan <b>Cara Cepat</b> dan <b>Cara Lengkap</b>. Coba tulis dulu langkahmu di buku sebelum memilih!</p><div id="L"></div></section>
+
+<section id="pre"><h3 class="ms">🎯 PREDIKSI SOAL TKA • Geometri: Hubungan Sudut, Garis, Bidang</h3>
+<div class="box cat"><b class="t">CATATAN</b>Kerjakan dalam 20 menit tanpa melihat pembahasan. Jawab soal, lalu pelajari Cara Cepat dan Cara Lengkap yang muncul.</div><div id="P"></div></section>
+
+<section id="chk"><h3 class="ms">✅ MASTER CHECK • Centang jika sudah bisa</h3><div class="chk">
+<label><input type="checkbox"> membedakan sudut berpenyiku (90°), berpelurus (180°), dan bertolak belakang (sama besar).</label>
+<label><input type="checkbox"> menghitung sudut dalam dan sudut luar segitiga.</label>
+<label><input type="checkbox"> menyebut hubungan sudut pada garis sejajar (sehadap, berseberangan, sepihak) lalu memilih aturan yang benar.</label>
+<label><input type="checkbox"> menentukan rusuk yang sejajar, berpotongan, dan bersilangan pada kubus/balok.</label>
+<label><input type="checkbox"> menentukan bidang yang sejajar dan garis potong dua bidang dengan melihat titik sudutnya.</label></div></section>
+</main>
+<footer><b>VisualMath.Lim</b> • TKA Matematika Wajib SMA<br><a href="index.html" style="color:var(--cy)">Home</a> • <a href="objek_geometri.html" style="color:var(--cy)">Dashboard</a></footer>
+<script>
+function m(s){return s.replace(/\bx\b/g,'<i>x</i>')}
+function sol(c,s,a){return '<div class="cc"><b>⚡ Cara Cepat</b><p>'+m(c)+'</p></div><div class="cl"><b>📝 Cara Lengkap (step demi step)</b><ol>'+s.map(function(x){var p=x.split('§');return '<li><span>'+m(p[0])+'</span>'+(p[1]?'<code>'+m(p[1])+'</code>':'')+'</li>'}).join('')+'</ol></div>'+(a?'<p class="ans">Jawaban: '+m(a)+'</p>':'')}
+var E=[
+{t:'Contoh 1 • Level 1 • Sudut berpelurus',q:'Dua sudut saling berpelurus: (3x + 15)° dan (2x + 5)°. Tentukan besar sudut yang lebih besar.',c:'Berpelurus = jumlah 180°. 5x + 20 = 180, maka x = 32. Terbesar = 3(32) + 15 = 111°.',s:['Berpelurus: jumlah kedua sudut 180°. Tulis persamaan.§(3x + 15) + (2x + 5) = 180','Gabungkan suku sejenis (x dengan x, angka dengan angka).§5x + 20 = 180','Pindahkan 20 ke kanan (menjadi −20).§5x = 160','Bagi kedua ruas dengan 5.§x = 32','Masukkan x ke tiap sudut.§3(32) + 15 = 111° dan 2(32) + 5 = 69°','Periksa: 111° + 69° = 180° ✓'],a:'111°'},
+{t:'Contoh 2 • Level 1 • Sudut berpenyiku',q:'∠P = (4x)° dan ∠Q = (x + 10)° saling berpenyiku. Tentukan besar ∠Q.',c:'Berpenyiku = jumlah 90°: 5x + 10 = 90, x = 16. ∠Q = 16 + 10 = 26°.',s:['Berpenyiku: jumlah 90°.§4x + (x + 10) = 90','Gabungkan suku sejenis.§5x + 10 = 90','Pindahkan 10 ke kanan.§5x = 80','Bagi 5.§x = 16','Soal meminta ∠Q, masukkan x ke ∠Q.§∠Q = 16 + 10 = 26°','Cek: ∠P = 64°, dan 64° + 26° = 90° ✓'],a:'26°'},
+{t:'Contoh 3 • Level 2 • Sudut luar segitiga',q:'Pada segitiga ABC, ∠A = 50° dan ∠B = 65°. Sisi BC diperpanjang ke D sehingga terbentuk sudut luar ∠ACD. Tentukan ∠ACD.',c:'Sudut luar = dua sudut dalam yang tidak bersisian: ∠ACD = ∠A + ∠B = 50° + 65° = 115°.',s:['Jumlah sudut dalam segitiga 180°. Cari ∠ACB.§∠ACB = 180° − 50° − 65° = 65°','∠ACB dan ∠ACD pada garis lurus BD, jadi berpelurus.§∠ACD = 180° − 65° = 115°','Cek jalan pintas.§∠A + ∠B = 50° + 65° = 115° ✓'],a:'115°'},
+{t:'Contoh 4 • Level 2 • Dalam sepihak',q:'Pada Gambar 1.2, p ∥ q. Diketahui ∠3 = (3x + 10)° dan ∠5 = (2x + 30)°. Tentukan ∠3 dan ∠5.',c:'∠3 dan ∠5 dalam sepihak, jumlah 180°: 5x + 40 = 180, x = 28. ∠3 = 94°, ∠5 = 86°.',s:['Cari nama hubungan ∠3 dan ∠5 di tabel: <b>dalam sepihak</b>.','Dalam sepihak: jumlah 180°.§(3x + 10) + (2x + 30) = 180','Gabungkan suku sejenis.§5x + 40 = 180','Pindahkan 40 ke kanan.§5x = 140','Bagi 5.§x = 28','Hitung kedua sudut.§∠3 = 3(28) + 10 = 94° ; ∠5 = 2(28) + 30 = 86°','Periksa: 94° + 86° = 180° ✓'],a:'∠3 = 94° dan ∠5 = 86°'},
+{t:'Contoh 5 • Level 3 • Gabungan dua hubungan',q:'Pada Gambar 1.2, p ∥ q. Diketahui ∠4 = (3x + 10)° dan ∠5 = (5x − 30)°. Tentukan besar ∠6.',c:'∠4 &amp; ∠5 dalam berseberangan (sama): 3x + 10 = 5x − 30, x = 20, ∠5 = 70°. ∠6 berpelurus dengan ∠5: 180° − 70° = 110°.',s:['∠4 dan ∠5 <b>dalam berseberangan</b>, jadi sama besar.§3x + 10 = 5x − 30','Kumpulkan x di satu sisi, angka di sisi lain.§10 + 30 = 5x − 3x → 40 = 2x','Bagi 2.§x = 20','Hitung ∠5.§∠5 = 5(20) − 30 = 70°','∠5 dan ∠6 pada garis lurus q, jadi berpelurus.§∠6 = 180° − 70° = 110°','Cek: ∠4 = 70°, ∠6 dalam sepihak dengan ∠4: 70° + 110° = 180° ✓'],a:'110°'},
+{t:'Contoh 6 • Level 1 • Rusuk bersilangan',q:'Pada kubus ABCD.EFGH, sebutkan semua rusuk yang bersilangan dengan rusuk EF.',c:'Yang tidak menyentuh E atau F dan tidak searah dengan EF: AD, BC, CG, DH.',s:['Tulis 12 rusuk kubus.§AB, BC, CD, DA, EF, FG, GH, HE, AE, BF, CG, DH','Cari yang <b>sejajar</b> EF (searah).§AB, DC, HG','Cari yang <b>berpotongan</b> (punya titik E atau F).§EH, EA, FG, FB','Sisanya tidak sejajar dan tidak bertemu: <b>bersilangan</b>.§AD, BC, CG, DH','Periksa: ada 4 rusuk, sesuai aturan kubus ✓'],a:'AD, BC, CG, dan DH'},
+{t:'Contoh 7 • Level 3 • Menghitung banyak pasangan',q:'Ada berapa pasang rusuk pada kubus yang saling bersilangan?',c:'Tiap rusuk bersilangan dengan 4 rusuk. 12 × 4 = 48, bagi 2 karena tiap pasangan terhitung dua kali: 24 pasang.',s:['Dari Contoh 6, tiap rusuk bersilangan dengan tepat 4 rusuk lain.','Kubus punya 12 rusuk.§12 × 4 = 48','Pasangan (EF, AD) dan (AD, EF) adalah pasangan yang sama, terhitung <b>dua kali</b>.','Bagi 2 untuk membuang hitungan ganda.§48 : 2 = 24'],a:'24 pasang rusuk'},
+{t:'Contoh 8 • Level 2 • Hubungan dua bidang',q:'Pada balok ABCD.EFGH, tentukan: (a) bidang yang sejajar dengan bidang ABFE; (b) garis potong bidang ABCD dan bidang BCGF.',c:'(a) Yang berhadapan dengan ABFE adalah DCGH. (b) ABCD dan BCGF sama-sama memuat B dan C, jadi garis potongnya BC.',s:['Bidang ABFE memuat titik A, B, F, E.','Cari bidang yang <b>tidak memuat satu pun</b> titik itu.§DCGH (D, C, G, H) → ABFE ∥ DCGH','Untuk garis potong, tulis titik kedua bidang.§ABCD: A, B, C, D ; BCGF: B, C, G, F','Titik yang dimiliki <b>keduanya</b>: B dan C.','Garis yang melalui B dan C.§garis BC'],a:'(a) bidang DCGH; (b) garis BC'}];
+function exs(id,a,b){document.getElementById(id).innerHTML=E.slice(a,b).map(function(e){return '<article class="ex"><h4>'+e.t+'</h4><p>'+m(e.q)+'</p><details><summary>Lihat Cara Cepat &amp; Cara Lengkap</summary>'+sol(e.c.replace(/&amp;/g,'&'),e.s,e.a)+'</details></article>'}).join('')}
+exs('e1',0,3);exs('e2',3,5);exs('e3',5,7);exs('e4',7,8);
+var Q={},S={};
+function quiz(id,L){Q[id]=L;S[id]=0;var h='';L.forEach(function(q,i){h+='<div class="q" id="'+id+i+'"><div class="qh"><span class="no">'+(i+1)+'</span><span class="lv">'+q.lv+'</span></div><p>'+m(q.t)+'</p>';
+if(q.tf)q.tf.forEach(function(r,j){h+='<div class="tf"><span>'+m(r[0])+'</span><button onclick="ptf(\''+id+'\','+i+','+j+','+'true,this)">Benar</button><button onclick="ptf(\''+id+'\','+i+','+j+',false,this)">Salah</button></div>'});
+else q.o.forEach(function(o,j){h+='<button class="op" onclick="pk(\''+id+'\','+i+','+j+',this)"><b>'+'ABCDE'[j]+'</b><span>'+m(o)+'</span></button>'});
+h+='<div class="sol" hidden></div></div>'});
+document.getElementById(id).innerHTML=h+'<p class="score" id="'+id+'sc">Skor: 0 dari '+L.length+' soal</p>'}
+function pk(id,i,j,b){var q=Q[id][i],box=b.parentNode;if(box.dataset.d)return;box.dataset.d=1;box.querySelectorAll('.op').forEach(function(x,n){x.classList.add(n==q.k?'ok':(n==j?'no':'dim'))});rv(id,i,box,j==q.k)}
+function ptf(id,i,j,v,b){var q=Q[id][i],row=b.parentNode,box=row.parentNode;if(row.dataset.d)return;row.dataset.d=1;var t=q.tf[j][1],ok=v==t;b.classList.add(ok?'ok':'no');if(!ok){row.querySelectorAll('button')[t?0:1].classList.add('ok');box.dataset.bad=1}box.dataset.n=(+box.dataset.n||0)+1;if(box.dataset.n==q.tf.length)rv(id,i,box,!box.dataset.bad)}
+function rv(id,i,box,ok){var q=Q[id][i],s=box.querySelector('.sol');s.hidden=false;if(ok)S[id]++;s.innerHTML='<p class="vd '+(ok?'g':'r')+'">'+(ok?'✅ Benar! Jawabanmu tepat.':'❌ Belum tepat. Pelajari pembahasan berikut.')+'</p>'+sol(q.c,q.s,q.a||('ABCDE'[q.k]+'. '+q.o[q.k]));document.getElementById(id+'sc').textContent='Skor: '+S[id]+' benar dari '+Q[id].length+' soal'}
+quiz('L',[
+{lv:'Level 1',t:'Dua sudut berpenyiku, yaitu (2x + 5)° dan (3x − 5)°. Besar sudut yang lebih kecil adalah ....',o:['18°','31°','41°','49°','54°'],k:2,c:'5x = 90, x = 18. Sudutnya 41° dan 49°; yang kecil 41°.',s:['Berpenyiku: jumlah 90°.§(2x + 5) + (3x − 5) = 90','Gabungkan (+5 dan −5 habis).§5x = 90 → x = 18','Hitung kedua sudut.§2(18) + 5 = 41° ; 3(18) − 5 = 49°','Ambil yang lebih kecil: 41°. Cek: 41° + 49° = 90° ✓']},
+{lv:'Level 2',t:'Pada segitiga ABC, sudut luar di C besarnya 120° dan ∠A = 45°. Besar ∠B adalah ....',o:['60°','65°','75°','120°','165°'],k:2,c:'Sudut luar = ∠A + ∠B, maka ∠B = 120° − 45° = 75°.',s:['Sudut luar = dua sudut dalam yang tidak bersisian.§120° = ∠A + ∠B','Masukkan ∠A.§∠B = 120° − 45° = 75°','Cek: ∠C = 180° − 120° = 60°, dan 45° + 75° + 60° = 180° ✓']},
+{lv:'Level 2',t:'Garis p ∥ q dipotong garis t. Dua sudut dalam sepihak besarnya (2x + 10)° dan (4x + 20)°. Besar sudut yang lebih besar adalah ....',o:['60°','100°','120°','130°','150°'],k:2,c:'Sepihak jumlah 180°: 6x + 30 = 180, x = 25. Sudutnya 60° dan 120°.',s:['Dalam sepihak: jumlah 180°.§(2x + 10) + (4x + 20) = 180','Gabungkan.§6x + 30 = 180 → 6x = 150 → x = 25','Hitung.§2(25) + 10 = 60° ; 4(25) + 20 = 120°','Yang lebih besar: 120°. Cek: 60° + 120° = 180° ✓']},
+{lv:'Level 1',t:'Pada kubus ABCD.EFGH, rusuk-rusuk yang bersilangan dengan rusuk BC adalah ....',o:['AD, EH, FG, AB','AB, CD, BF, CG','AE, DH, EF, HG','AE, DH, EF, FG','AD, EH, BF, CG'],k:2,c:'Buang yang sejajar BC (AD, EH, FG) dan yang berpotongan (AB, CD, BF, CG). Sisanya AE, DH, EF, HG.',s:['Sejajar BC (searah).§AD, EH, FG','Berpotongan BC (ada titik B atau C).§AB, CD, BF, CG','Sisanya bersilangan.§AE, DH, EF, HG','Cek: ada 4 rusuk bersilangan ✓']},
+{lv:'Level 3',t:'Pada balok ABCD.EFGH, bidang yang sejajar dengan bidang ADHE dan garis potong bidang ABFE dengan bidang ADHE adalah ....',o:['ABCD; garis AB','BCGF; garis AE','DCGH; garis AD','BCGF; garis BF','EFGH; garis AE'],k:1,c:'Sejajar ADHE = yang berhadapan: BCGF. ABFE dan ADHE sama-sama memuat A dan E, jadi garis potongnya AE.',s:['Titik ADHE: A, D, H, E. Cari bidang tanpa satu pun titik itu.§BCGF (B, C, G, F)','Titik ABFE: A, B, F, E. Titik yang juga milik ADHE.§A dan E','Garis potongnya.§garis AE']}]);
+quiz('P',[
+{lv:'Level 1',t:'∠A = (2x + 10)° dan ∠B = (3x − 10)° saling berpelurus. Besar ∠B adalah ....',o:['72°','82°','98°','108°','118°'],k:2,c:'Berpelurus: 5x = 180, x = 36. ∠B = 3(36) − 10 = 98°.',s:['Berpelurus: jumlah 180°.§(2x + 10) + (3x − 10) = 180','Gabungkan (+10 dan −10 habis).§5x = 180 → x = 36','Soal meminta ∠B.§∠B = 3(36) − 10 = 108 − 10 = 98°','Jebakan: 72° dan 108° adalah 2x dan 3x, bukan jawabannya.']},
+{lv:'Level 1',t:'Pada kubus ABCD.EFGH, rusuk yang bersilangan dengan rusuk AB adalah ....',o:['AD','BF','CD','EF','DH'],k:4,c:'AD dan BF menyentuh A/B (berpotongan). CD dan EF searah AB (sejajar). Tersisa DH (bersilangan).',s:['Periksa tiap pilihan: searah? bertemu?','AD bertemu di A → berpotongan. BF bertemu di B → berpotongan.','CD dan EF searah dengan AB → sejajar.','DH tidak searah dan tidak bertemu AB → <b>bersilangan</b>.']},
+{lv:'Level 1',t:'Besar sudut-sudut sebuah segitiga adalah 2x, 3x, dan 4x. Besar sudut yang terbesar adalah ....',o:['80°','70°','60°','90°','100°'],k:0,c:'9x = 180, x = 20. Sudut terbesar 4x = 80°.',s:['Jumlah sudut segitiga 180°.§2x + 3x + 4x = 180 → 9x = 180 → x = 20','Terbesar adalah koefisien terbesar, yaitu 4x.§4(20) = 80°']},
+{lv:'Level 2',t:'Dua garis sejajar dipotong garis lain. Dua sudut sehadap besarnya (3x + 20)° dan (5x − 40)°. Besar sudut tersebut adalah ....',o:['70°','90°','100°','110°','120°'],k:3,c:'Sehadap sama besar: 3x + 20 = 5x − 40, x = 30. Sudutnya 3(30) + 20 = 110°.',s:['Sehadap pada garis sejajar <b>sama besar</b>.§3x + 20 = 5x − 40','Pindahkan x dan angka.§20 + 40 = 5x − 3x → 60 = 2x → x = 30','Hitung sudut.§3(30) + 20 = 110°','Cek sudut kedua: 5(30) − 40 = 110° ✓']},
+{lv:'Level 2',t:'Pada balok ABCD.EFGH, bidang yang sejajar dengan bidang ABFE adalah ....',o:['ABCD','DCGH','BCGF','ADHE','EFGH'],k:1,c:'Bidang sejajar = yang berhadapan. Lawan ABFE adalah DCGH.',s:['Titik ABFE: A, B, F, E. Sejajar = tidak berbagi titik sudut.','ABCD berbagi A, B; BCGF berbagi B, F; ADHE berbagi A, E; EFGH berbagi E, F → bukan.','DCGH (D, C, G, H) tidak berbagi satu pun → <b>sejajar</b>.']},
+{lv:'Level 3',t:'Banyak pasangan rusuk yang saling bersilangan pada sebuah kubus adalah ....',o:['12','16','24','36','48'],k:2,c:'Tiap rusuk bersilangan dengan 4 rusuk: (12 × 4) : 2 = 24.',s:['Tiap rusuk bersilangan dengan 4 rusuk lain.','Ada 12 rusuk.§12 × 4 = 48','Tiap pasangan terhitung dua kali, bagi 2.§48 : 2 = 24','Jebakan: 48 adalah jawaban jika lupa dibagi 2.']},
+{lv:'Level 3',t:'Perhatikan kubus ABCD.EFGH. Tentukan setiap pernyataan Benar atau Salah.',tf:[['Rusuk AB dan rusuk CG saling bersilangan.',true],['Garis BD dan garis EG saling berpotongan.',false],['Bidang ABFE sejajar dengan bidang DCGH.',true],['Garis AC dan garis BF saling berpotongan.',false]],c:'(1) Benar. (2) Salah, bersilangan. (3) Benar, sisi berhadapan. (4) Salah, bersilangan.',s:['<b>Pernyataan 1.</b> AB di alas, CG tegak di C. Tidak searah dan tidak bertemu → bersilangan. <b>Benar</b>','<b>Pernyataan 2.</b> BD di alas ABCD, EG di tutup EFGH. Kedua bidang sejajar sehingga tidak bertemu, dan arahnya berbeda → bersilangan, bukan berpotongan. <b>Salah</b>','<b>Pernyataan 3.</b> ABFE dan DCGH sisi berhadapan, tidak berbagi titik sudut. <b>Benar</b>','<b>Pernyataan 4.</b> AC di alas, BF tegak di B. B tidak terletak pada AC dan arahnya berbeda → bersilangan. <b>Salah</b>'],a:'(1) Benar; (2) Salah; (3) Benar; (4) Salah'},
+{lv:'Level 3',t:'Garis p ∥ q dipotong garis t (Gambar 1.2). Diketahui ∠3 = (4x + 5)° dan ∠6 = (2x + 55)°. Besar ∠5 adalah ....',o:['65°','75°','85°','95°','105°'],k:1,c:'∠3 &amp; ∠6 dalam berseberangan (sama): 4x + 5 = 2x + 55, x = 25, ∠3 = 105°. ∠5 sepihak dengan ∠3: 180° − 105° = 75°.'.replace(/&amp;/g,'&'),s:['∠3 dan ∠6 <b>dalam berseberangan</b>, sama besar.§4x + 5 = 2x + 55 → 2x = 50 → x = 25','Hitung ∠3.§∠3 = 4(25) + 5 = 105°','∠5 dan ∠3 <b>dalam sepihak</b>, jumlah 180°.§∠5 = 180° − 105° = 75°','Cek: ∠6 = 2(25) + 55 = 105°, ∠5 + ∠6 = 180° (berpelurus) ✓']}]);
+</script></body></html>
