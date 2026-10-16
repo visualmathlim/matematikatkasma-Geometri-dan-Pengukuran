@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jarak Dua Objek Geometri - VisualMath.Lim</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<style>
+:root{--navy:#022050;--cy:#00d6d8;--yl:#ffd300;--bg:#f3f7fb;--card:#fff;--tx:#14213d;--mut:#5b6b85;--bd:#d6e0ee;--ok:#16a34a;--bad:#e11d48}
+@media(prefers-color-scheme:dark){:root{--bg:#0b1428;--card:#122044;--tx:#e8eefb;--mut:#a5b4d0;--bd:#2a3c6b}}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--tx);line-height:1.7;font-size:16px}
+header{background:var(--navy);border-bottom:4px solid var(--yl);position:sticky;top:0;z-index:20}
+.hd{max-width:980px;margin:auto;padding:8px 14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.hd img{height:50px;width:50px;border-radius:50%;object-fit:contain}
+.brand{color:#fff;font-weight:700;font-size:1.05rem;flex:1;min-width:200px;line-height:1.3}
+.brand b{color:var(--cy)}
+nav a{color:#fff;text-decoration:none;font-weight:600;padding:7px 14px;border-radius:20px;margin-left:4px;display:inline-block}
+nav a:hover{background:var(--cy);color:var(--navy)}
+nav a.on{background:var(--yl);color:var(--navy)}
+.sub{background:var(--navy);border-top:1px solid #1d3a7a}
+.sub div{max-width:980px;margin:auto;padding:5px 14px;overflow-x:auto;white-space:nowrap}
+.sub a{color:var(--cy);text-decoration:none;font-size:.85rem;font-weight:600;margin-right:14px}
+.sub a:hover{color:var(--yl)}
+main{max-width:980px;margin:auto;padding:14px}
+.hero{background:linear-gradient(135deg,var(--navy),#0a3a8f);color:#fff;border-radius:16px;padding:22px;border-left:8px solid var(--yl)}
+.hero small{color:var(--cy);font-weight:600}.hero h1{margin:4px 0 6px;font-size:1.7rem}.hero p{margin:0;color:#dbe6ff}
+h2{color:var(--navy);background:var(--cy);padding:8px 14px;border-radius:10px;margin:30px 0 12px;font-size:1.2rem;scroll-margin-top:120px}
+@media(prefers-color-scheme:dark){h2{color:var(--navy)}}
+h3{margin:18px 0 6px;border-bottom:3px solid var(--yl);display:inline-block;padding-bottom:2px}
+h4{margin:10px 0 4px}
+.card,.box{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px 16px;margin:12px 0}
+.box{border-left:6px solid var(--cy)}.box.h{border-left-color:var(--yl)}.box.i{border-left-color:#6366f1}
+.fast{background:#e8fbee;border:1px solid #86efac;border-left:6px solid var(--ok);border-radius:10px;padding:10px 14px;margin-top:10px;color:#14301f}
+.fast .katex{color:#14301f}
+table{border-collapse:collapse;width:100%;font-size:.93rem;display:block;overflow-x:auto}
+th,td{border:1px solid var(--bd);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--navy);color:#fff}
+.figs{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:8px 0}
+.fig{width:100%;max-width:300px;height:auto;background:#fff;border:1px solid var(--bd);border-radius:10px}
+.fig text{font:700 14px system-ui,sans-serif;fill:#022050}
+.leg{font-size:.85rem;color:var(--mut)}
+.qh{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:center}
+.qh b{color:var(--navy);background:var(--yl);padding:2px 12px;border-radius:14px}
+.lv{font-size:.8rem;font-weight:600;padding:2px 10px;border-radius:12px;background:#dbeafe;color:#1e3a8a}
+.lv.l2{background:#fef3c7;color:#78350f}.lv.l3{background:#fee2e2;color:#7f1d1d}
+.ops{display:grid;gap:8px}
+.op{display:block;width:100%;text-align:left;font:inherit;color:var(--tx);background:var(--card);border:2px solid var(--bd);border-radius:10px;padding:8px 12px;cursor:pointer;margin:6px 0}
+.op:hover{border-color:var(--cy)}
+.op.ok{border-color:var(--ok);background:#dcfce7;color:#14301f}.op.no{border-color:var(--bad);background:#ffe4e6;color:#4c0519}
+.op.ok .katex,.op.no .katex{color:inherit}
+.go{font:inherit;font-weight:700;background:var(--cy);color:var(--navy);border:0;border-radius:20px;padding:8px 22px;cursor:pointer;margin-top:6px}
+.go:hover{background:var(--yl)}
+.in{font:inherit;padding:6px 10px;border:2px solid var(--bd);border-radius:8px;width:120px}
+.kt td:nth-child(n+2){white-space:nowrap}
+tr.ok td:first-child{background:#dcfce7;color:#14301f}tr.no td:first-child{background:#ffe4e6;color:#4c0519}
+.ex{margin-top:12px;border-top:2px dashed var(--bd);padding-top:8px}
+.res{font-weight:700;margin:0 0 6px}
+ol.st{list-style:none;counter-reset:s;padding:0;margin:0}
+ol.st li{counter-increment:s;position:relative;padding:8px 10px 8px 78px;margin:6px 0;background:rgba(0,214,216,.1);border-radius:8px;min-height:44px}
+ol.st li:before{content:"Langkah " counter(s);position:absolute;left:8px;top:8px;font-size:.72rem;font-weight:700;background:var(--navy);color:#fff;border-radius:10px;padding:2px 7px;width:62px;text-align:center}
+.katex-display{margin:.6em 0;overflow-x:auto;overflow-y:hidden}
+details{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:6px 12px;margin:6px 0}
+summary{cursor:pointer;font-weight:600}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin:28px 0}
+.foot a{background:var(--navy);color:#fff;text-decoration:none;padding:9px 20px;border-radius:22px;font-weight:600;border:2px solid var(--yl)}
+.foot a:hover{background:var(--yl);color:var(--navy)}
+footer{text-align:center;color:var(--mut);padding:16px;font-size:.85rem}
+</style>
+</head>
+<body>
+<header>
+ <div class="hd">
+  <img src="logo.png" alt="Logo Bimbel">
+  <div class="brand"><b>VisualMath.Lim</b> - TKA Matematika Wajib SMA</div>
+  <nav><a href="index.html">🏠 Home</a><a href="pengukuran.html" class="on">📊 Dashboard</a></nav>
+ </div>
+ <div class="sub"><div><a href="#A">A. Cek Kesiapan</a><a href="#B">B. Konsep Jarak</a><a href="#C">C. Level 1</a><a href="#D">D. Level 2</a><a href="#E">E. Level 3</a><a href="#F">F. Pola &amp; Ringkasan</a><a href="#G">G. Prediksi Soal</a></div></div>
+</header>
+
+<main>
+<section class="hero">
+ <small>MODUL 3 · Elemen Geometri dan Pengukuran · Kompetensi 3 dari 3</small>
+ <h1>Jarak Dua Objek Geometri</h1>
+ <p>Belajar jarak pada bangun ruang dengan gambar, langkah baku, dan pola. Dimulai dari mengenal unsur kubus sampai soal penalaran Level 3, ditutup 12 prediksi soal TKA.</p>
+</section>
+
+<div class="box i"><b>ℹ Cara memakai modul</b>
+ <ul>
+  <li>Gambarlah bangun ruangnya <b>sendiri</b> setiap mengerjakan. Sketsa membantu menemukan segitiga siku-siku.</li>
+  <li>Penamaan: <b>ABCD alas, EFGH atap, E tepat di atas A</b>, F di atas B, dan seterusnya.</li>
+  <li><b>Contoh soal dan prediksi soal</b>: pilih jawabanmu dulu, baru pembahasan muncul. Ada <b>Cara Lengkap</b> (langkah demi langkah) dan <b>⚡ Cara Cepat</b> (jika sudah paham).</li>
+  <li>Keterangan gambar: <span style="color:#e11d48"><b>garis merah tebal</b></span> = jarak yang dicari; <span style="color:#0891b2"><b>garis biru putus-putus</b></span> = garis bantu; <b>bidang berwarna</b> = bidang yang dibahas.</li>
+ </ul></div>
+
+<table><tr><th>Level</th><th>Proses berpikir</th><th>Wujud soal</th></tr>
+<tr><td><b>Level 1</b> Pengetahuan &amp; Pemahaman</td><td>Menghitung, memahami, mengelompokkan, mengidentifikasi</td><td>Jarak dua titik; menunjuk ruas jarak; menggolongkan jenis jarak</td></tr>
+<tr><td><b>Level 2</b> Aplikasi</td><td>Memodelkan, menerapkan, menginterpretasikan</td><td>Titik ke garis, titik ke bidang, dan garis ke garis pada kubus, balok, limas</td></tr>
+<tr><td><b>Level 3</b> Penalaran</td><td>Menganalisis, memecahkan masalah, mengevaluasi, menyimpulkan, menjustifikasi</td><td>Jarak ke bidang miring (BDG), dua bidang sejajar, garis bersilangan, memilih strategi</td></tr></table>
+<p class="leg">Cakupan: jarak <b>dua titik, dua garis, dua bidang, titik dan garis, serta titik dan bidang</b>, pada kubus, balok, dan limas beraturan.</p>
+
+<h2 id="A">A. Cek Kesiapan</h2>
+<h3>A.1 Mengenal unsur kubus dan balok</h3>
+<div class="figs" id="fA1"></div>
+<table><tr><th>Unsur</th><th>Arti</th><th>Contoh pada gambar</th></tr>
+<tr><td>Rusuk</td><td>Garis pertemuan dua sisi</td><td>AB, BC, AE</td></tr>
+<tr><td>Diagonal sisi</td><td>Garis yang menghubungkan dua titik sudut berseberangan dalam satu sisi</td><td>AC, BD, AF</td></tr>
+<tr><td>Diagonal ruang</td><td>Garis yang menghubungkan dua titik sudut berseberangan melalui ruang dalam</td><td>AG, BH, CE, DF</td></tr>
+<tr><td>Bidang diagonal</td><td>Bidang yang memuat dua rusuk sejajar dan dua diagonal sisi</td><td>ACGE, BDHF</td></tr></table>
+<p>Kubus memiliki <b>12 rusuk, 12 diagonal sisi, 4 diagonal ruang, dan 6 bidang diagonal</b>.</p>
+
+<h3>A.2 Pythagoras dan tripel</h3>
+<p>Pada segitiga siku-siku berlaku $c^2=a^2+b^2$, dengan $c$ sisi miring (sisi di depan sudut siku-siku). Hafalkan tripel: <b>3-4-5, 6-8-10, 5-12-13, 8-15-17, 7-24-25, 9-12-15</b>.</p>
+
+<h3>A.3 Diagonal sisi dan diagonal ruang</h3>
+<div class="figs" id="fA3"></div>
+<div class="box h"><b>★ Hafalkan</b><ul>
+<li>Kubus rusuk $s$: diagonal sisi $=s\sqrt{2}$, diagonal ruang $=s\sqrt{3}$.</li>
+<li>Balok $p\times l\times t$: diagonal ruang $=\sqrt{p^2+l^2+t^2}$.</li></ul></div>
+
+<h3>A.4 Bentuk akar yang sering muncul</h3>
+<table><tr><th>Menyederhanakan</th><th>Merasionalkan penyebut</th></tr>
+<tr><td>$\sqrt{8}=\sqrt{4\times2}=2\sqrt{2}$<br>$\sqrt{12}=2\sqrt{3}$, $\sqrt{18}=3\sqrt{2}$, $\sqrt{50}=5\sqrt{2}$</td>
+<td>$\dfrac{6}{\sqrt{2}}=\dfrac{6}{\sqrt{2}}\times\dfrac{\sqrt{2}}{\sqrt{2}}=\dfrac{6\sqrt{2}}{2}=3\sqrt{2}$<br>$\dfrac{8}{\sqrt{3}}=\dfrac{8\sqrt{3}}{3}$</td></tr>
+<tr><td>$\sqrt{2}\times\sqrt{3}=\sqrt{6}$<br>$\sqrt{2}\times\sqrt{2}=2$</td><td>$\dfrac{1}{2}\times6\sqrt{2}=3\sqrt{2}$</td></tr></table>
+
+<h3>A.5 Luas segitiga dari dua alas (kunci mencari tinggi)</h3>
+<p>Luas segitiga siku-siku dapat dihitung dengan dua cara: memakai sisi tegak sebagai alas, atau memakai sisi miring sebagai alas. Kedua cara memberi luas yang sama, sehingga <b>tinggi terhadap sisi miring</b> dapat dicari.</p>
+<div class="figs"><svg viewBox="0 0 290 230" class="fig"><polygon points="50,200 182,200 50,24" fill="#00d6d8" fill-opacity=".2" stroke="#022050" stroke-width="2"/><line x1="50" y1="200" x2="134.5" y2="136.6" stroke="#e11d48" stroke-width="3.5"/><path d="M50 188h12v12" fill="none" stroke="#022050"/><path d="M123 141l6 8 8-6" fill="none" stroke="#e11d48"/><text x="32" y="212">B</text><text x="186" y="212">C</text><text x="32" y="22">A</text><text x="140" y="130" fill="#e11d48">Q</text><text x="100" y="212" style="font-size:12px">6</text><text x="28" y="115" style="font-size:12px">8</text><text x="132" y="78" style="font-size:12px">10</text></svg>
+<div style="align-self:center;max-width:300px"><p>Luas $=\dfrac{1}{2}\times6\times8=\dfrac{1}{2}\times10\times BQ$</p><p>$BQ=\dfrac{48}{10}=4{,}8$</p></div></div>
+
+<h3>A.6 Uji Kesiapan</h3>
+<p class="leg">Coba jawab dulu, lalu klik untuk melihat jawaban.</p>
+<details><summary>1. Diagonal sisi kubus rusuk 5 cm</summary>$5\sqrt{2}$ cm</details>
+<details><summary>2. Diagonal ruang kubus rusuk 4 cm</summary>$4\sqrt{3}$ cm</details>
+<details><summary>3. Sederhanakan $\sqrt{72}$</summary>$\sqrt{72}=\sqrt{36\times2}=6\sqrt{2}$</details>
+<details><summary>4. Rasionalkan $\dfrac{12}{\sqrt{3}}$</summary>$\dfrac{12}{\sqrt{3}}\times\dfrac{\sqrt{3}}{\sqrt{3}}=\dfrac{12\sqrt{3}}{3}=4\sqrt{3}$</details>
+<details><summary>5. Segitiga siku-siku bersisi tegak 6 dan 8. Berapa tinggi terhadap sisi miring?</summary>Sisi miring $=10$; tinggi $=\dfrac{6\times8}{10}=4{,}8$</details>
+<p class="leg"><i>Kurang dari 4 benar? Ulangi A.3 sampai A.5 sebelum lanjut.</i></p>
+
+<h2 id="B">B. Konsep Jarak</h2>
+<h3>B.1 Jarak adalah yang terpendek, dan terpendek berarti tegak lurus</h3>
+<div class="figs"><svg viewBox="0 0 340 190" class="fig" style="max-width:420px"><line x1="20" y1="150" x2="320" y2="150" stroke="#022050" stroke-width="2.5"/><line x1="150" y1="40" x2="150" y2="150" stroke="#e11d48" stroke-width="4"/><line x1="150" y1="40" x2="240" y2="150" stroke="#0891b2" stroke-width="2" stroke-dasharray="5 3"/><line x1="150" y1="40" x2="70" y2="150" stroke="#0891b2" stroke-width="2" stroke-dasharray="5 3"/><path d="M150 138h12v12" fill="none" stroke="#022050"/><circle cx="150" cy="40" r="4" fill="#022050"/><text x="158" y="38">P</text><text x="144" y="170">H</text><text x="296" y="140">g</text><text x="160" y="105" fill="#e11d48">PH (terpendek)</text></svg></div>
+<p>Dari titik P ke garis g, ruas PH yang <b>tegak lurus</b> garis g paling pendek dibanding ruas miring lainnya. Karena itu jarak = ruas yang tegak lurus.</p>
+
+<h3>B.2 Enam jenis jarak</h3>
+<table><tr><th>Jenis jarak</th><th>Yang dicari</th><th>Cara menemukan</th></tr>
+<tr><td>Titik - titik</td><td>Panjang ruas yang menghubungkan</td><td>Pythagoras (diagonal sisi, diagonal ruang)</td></tr>
+<tr><td>Titik - garis</td><td>Ruas dari titik yang tegak lurus garis</td><td>Cari segitiga yang memuat titik dan garis, lalu hitung <b>tinggi</b>-nya</td></tr>
+<tr><td>Titik - bidang</td><td>Ruas dari titik yang tegak lurus bidang</td><td>Cari garis yang tegak lurus bidang, atau pakai volume limas</td></tr>
+<tr><td>Garis - garis sejajar</td><td>Ruas tegak lurus kedua garis</td><td>Pilih dua titik yang saling "berhadapan"</td></tr>
+<tr><td>Garis - garis bersilangan</td><td>Ruas tegak lurus kedua garis</td><td>Pindahkan ke jarak titik ke garis atau titik ke bidang</td></tr>
+<tr><td>Bidang - bidang sejajar</td><td>Ruas tegak lurus kedua bidang</td><td>Jarak satu titik pada bidang pertama ke bidang kedua</td></tr></table>
+
+<h3>B.3 Lima langkah baku</h3>
+<div class="box h"><b>★ Langkah menyelesaikan soal jarak</b><ol>
+<li><b>Gambar</b> bangun ruang dan tandai kedua objek yang dicari jaraknya.</li>
+<li><b>Cari ruas jarak</b>: ruas yang menghubungkan kedua objek dan <b>tegak lurus</b> terhadap keduanya.</li>
+<li><b>Temukan segitiga siku-siku</b> yang memuat ruas itu (atau segitiga yang tingginya adalah ruas itu).</li>
+<li><b>Hitung</b> dengan Pythagoras, atau luas dua cara, atau volume limas: $d=\dfrac{3V}{L}$.</li>
+<li><b>Periksa</b>: jarak harus lebih pendek daripada ruas lain yang menghubungkan kedua objek.</li></ol></div>
+
+<h2 id="C">C. Level 1 - Pengetahuan dan Pemahaman</h2>
+<div id="c"></div>
+<details><summary>✎ Coba sendiri: kubus rusuk 5 cm, jarak titik B ke titik H?</summary>$5\sqrt{3}$ cm (BH diagonal ruang).</details>
+
+<h2 id="D">D. Level 2 - Aplikasi</h2>
+<div id="d"></div>
+
+<h2 id="E">E. Level 3 - Penalaran</h2>
+<p>Pada level ini ruas jarak tidak lagi berupa rusuk atau diagonal yang mudah dilihat. Kamu perlu <b>memilih strategi</b>: Pythagoras, luas dua cara, atau volume limas.</p>
+<div id="e"></div>
+
+<h2 id="F">F. Tabel Pola, Kesalahan Umum, dan Ringkasan</h2>
+<h3>Pola jarak pada kubus berusuk $s$</h3>
+<table><tr><th>Jarak</th><th>Hasil</th></tr>
+<tr><td>Titik A ke titik C (diagonal sisi)</td><td>$s\sqrt{2}$</td></tr>
+<tr><td>Titik A ke titik G (diagonal ruang)</td><td>$s\sqrt{3}$</td></tr>
+<tr><td>Titik A ke garis BD</td><td>$\frac{1}{2}s\sqrt{2}$</td></tr>
+<tr><td>Titik E ke garis BD</td><td>$\frac{1}{2}s\sqrt{6}$</td></tr>
+<tr><td>Titik A ke bidang BDHF</td><td>$\frac{1}{2}s\sqrt{2}$</td></tr>
+<tr><td>Titik C (atau A) ke bidang BDG</td><td>$\frac{1}{3}s\sqrt{3}$</td></tr>
+<tr><td>Titik E ke bidang BDG</td><td>$\frac{2}{3}s\sqrt{3}$</td></tr>
+<tr><td>Garis AB ke garis HG (sejajar)</td><td>$s\sqrt{2}$</td></tr>
+<tr><td>Garis AB ke garis CG (bersilangan)</td><td>$s$</td></tr>
+<tr><td>Garis AC ke garis BF (bersilangan)</td><td>$\frac{1}{2}s\sqrt{2}$</td></tr>
+<tr><td>Bidang AFH ke bidang BDG (sejajar)</td><td>$\frac{1}{3}s\sqrt{3}$</td></tr>
+<tr><td>Bidang ABCD ke bidang EFGH (sejajar)</td><td>$s$</td></tr></table>
+
+<h3>Kesalahan umum</h3>
+<table><tr><th>Kesalahan</th><th>Yang benar</th></tr>
+<tr><td>Menganggap jarak titik ke garis sama dengan panjang ruas miring</td><td>Jarak harus <b>tegak lurus</b> garis (terpendek).</td></tr>
+<tr><td>Menggambar bangun ruang tanpa memberi nama titik</td><td>Selalu beri label ABCD.EFGH sebelum mencari ruas jarak.</td></tr>
+<tr><td>Menulis diagonal ruang sebagai $s\sqrt{2}$</td><td>Diagonal sisi $s\sqrt{2}$, diagonal ruang $s\sqrt{3}$.</td></tr>
+<tr><td>Tidak menyederhanakan akar atau penyebut</td><td>Tulis $\dfrac{8}{\sqrt{3}}$ sebagai $\dfrac{8\sqrt{3}}{3}$.</td></tr>
+<tr><td>Menyamakan garis bersilangan dengan garis sejajar</td><td>Bersilangan: tidak sejajar dan tidak berpotongan. Cari ruas yang tegak lurus keduanya.</td></tr>
+<tr><td>Menghitung jarak ke bidang BDG dengan rusuk $s$</td><td>Bidang BDG miring; gunakan volume atau pola $\frac{1}{3}$ diagonal ruang.</td></tr></table>
+
+<div class="box h"><b>★ Ringkasan 1 halaman</b><ul>
+<li>Jarak = ruas <b>tegak lurus</b> (terpendek).</li>
+<li>Titik - titik: Pythagoras. Diagonal sisi $s\sqrt{2}$, diagonal ruang $s\sqrt{3}$.</li>
+<li>Titik - garis: cari segitiga yang memuatnya, hitung tingginya (luas dua cara).</li>
+<li>Titik - bidang: cari garis yang tegak lurus bidang, atau pakai volume limas $d=\dfrac{3V}{L}$.</li>
+<li>Garis bersilangan: cari ruas yang tegak lurus keduanya, atau ubah ke titik - bidang.</li>
+<li>Bidang sejajar: jarak satu titik pada bidang pertama ke bidang kedua. Pada kubus, AFH dan BDG membagi diagonal ruang menjadi tiga bagian sama.</li></ul></div>
+
+<h2 id="G">G. Bank Prediksi Soal</h2>
+<p>Kerjakan tanpa melihat pembahasan, target <b>sekitar 3 menit per soal</b>. Pilih jawaban, lalu klik <b>Periksa</b> bila ada tombolnya. Pembahasan akan muncul setelah kamu menjawab.</p>
+<h3>Level 1</h3><div id="g1"></div>
+<h3>Level 2</h3><div id="g2"></div>
+<h3>Level 3</h3><div id="g3"></div>
+
+<div class="foot"><a href="index.html">🏠 Home</a><a href="pengukuran.html">📊 Kembali ke Dashboard</a></div>
+</main>
+<footer>© VisualMath.Lim · Bimbingan Belajar · TKA Matematika Wajib SMA</footer>
+
+<script>
+const r=String.raw,L='ABCDE';
+const V={A:[0,0,0],B:[1,0,0],C:[1,1,0],D:[0,1,0],E:[0,0,1],F:[1,0,1],G:[1,1,1],H:[0,1,1]};
+const LB={A:[-15,12],B:[6,14],C:[6,12],D:[-15,4],E:[-15,-4],F:[-4,-8],G:[6,-4],H:[-15,-4],T:[6,-6]};
+const COL={r:'#e11d48',h:'#0891b2'};
+function fig(c){
+ const [p,l,t]=c.d||[1,1,1],S=105,P={...V,...(c.x||{})};
+ if(c.pyr){P.T=[.5,.5,1]}
+ const pr=n=>{const[a,b,z]=P[n];return[44+(a*p+.45*b*l)*S,215-(z*t+.3*b*l)*S]};
+ const pt=n=>pr(n).map(v=>v.toFixed(0)).join(',');
+ const ln=(e,st)=>{const a=pr(e[0]),b=pr(e[1]);return `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" ${st}/>`};
+ let s='<svg viewBox="0 0 290 240" class="fig">';
+ (c.f||[]).forEach(([ns,col])=>s+=`<polygon points="${[...ns].map(pt).join(' ')}" fill="${col}" fill-opacity=".3" stroke="${col}" stroke-width="1.5"/>`);
+ const solid=c.pyr?'AB BC TA TB TC':'AB BC AE BF CG EF FG GH EH',hid=c.pyr?'AD CD TD':'AD CD DH';
+ solid.split(' ').forEach(e=>s+=ln(e,'stroke="#475569" stroke-width="1.8"'));
+ hid.split(' ').forEach(e=>s+=ln(e,'stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="4 3"'));
+ (c.seg||[]).forEach(([e,k])=>s+=ln(e,k=='r'?'stroke="#e11d48" stroke-width="3.6" stroke-linecap="round"':'stroke="#0891b2" stroke-width="2" stroke-dasharray="6 3"'));
+ const names=(c.pyr?'ABCDT':'ABCDEFGH')+Object.keys(c.x||{}).join('');
+ [...names].forEach(n=>{const[x,y]=pr(n),o=LB[n]||[7,-6];
+  if(!V[n]&&n!='T')s+=`<circle cx="${x}" cy="${y}" r="3" fill="#e11d48"/>`;
+  s+=`<text x="${x+o[0]}" y="${y+o[1]}">${n}</text>`});
+ return s+'</svg>';
+}
+const CY='#00a6a8',OR='#f97316',YL='#e0a800';
+const Q=[
+{g:'c',t:'Contoh 1',lv:'Level 1 · Menghitung',q:r`Kubus ABCD.EFGH memiliki rusuk $6$ cm. Jarak titik A ke titik G adalah ....`,
+ fig:[{seg:[['AC','h'],['CG','h'],['AG','r']]}],o:[r`$6$ cm`,r`$6\sqrt{2}$ cm`,r`$6\sqrt{3}$ cm`,r`$12$ cm`,r`$36$ cm`],a:2,
+ s:[r`AG menghubungkan dua titik sudut yang berseberangan lewat dalam kubus, jadi AG adalah <b>diagonal ruang</b>.`,
+ r`Cari diagonal alas AC. Segitiga ABC siku-siku di B: $$AC=\sqrt{AB^2+BC^2}=\sqrt{6^2+6^2}=\sqrt{72}=6\sqrt{2}$$`,
+ r`Segitiga ACG siku-siku di C (CG tegak lurus alas): $$AG^2=AC^2+CG^2=72+36=108$$`,
+ r`Tarik akar: $$AG=\sqrt{108}=\sqrt{36\times3}=6\sqrt{3}\text{ cm}$$`],
+ f:r`Diagonal ruang kubus: $AG=s\sqrt{3}=6\sqrt{3}$ cm. Pengecoh $6\sqrt{2}$ adalah diagonal sisi.`},
+{g:'c',t:'Contoh 2',lv:'Level 1 · Menghitung',q:r`Balok ABCD.EFGH memiliki $AB=4$ cm, $BC=3$ cm, dan $CG=12$ cm. Jarak titik A ke titik G adalah ....`,
+ fig:[{d:[.45,.34,1.1],seg:[['AC','h'],['CG','h'],['AG','r']]}],o:[r`$5$ cm`,r`$12$ cm`,r`$13$ cm`,r`$15$ cm`,r`$19$ cm`],a:2,
+ s:[r`AG adalah diagonal ruang balok.`,r`Diagonal alas: $$AC=\sqrt{4^2+3^2}=\sqrt{25}=5\text{ cm}$$ (tripel 3-4-5).`,
+ r`Segitiga ACG siku-siku di C: $$AG=\sqrt{AC^2+CG^2}=\sqrt{5^2+12^2}=\sqrt{169}=13\text{ cm}$$ (tripel 5-12-13).`],
+ f:r`Langsung: $AG=\sqrt{p^2+l^2+t^2}=\sqrt{16+9+144}=\sqrt{169}=13$ cm.`},
+{g:'c',t:'Contoh 3',lv:'Level 1 · Mengidentifikasi ruas jarak',q:r`Pada kubus ABCD.EFGH berusuk $7$ cm, jarak titik A ke bidang BCGF adalah ....`,
+ fig:[{f:[['BCGF',CY]],seg:[['AB','r']]}],o:[r`$7$ cm`,r`$7\sqrt{2}$ cm`,r`$7\sqrt{3}$ cm`,r`$14$ cm`,r`$49$ cm`],a:0,
+ s:[r`Jarak titik ke bidang = ruas dari titik itu yang <b>tegak lurus</b> bidang.`,
+ r`Cari garis dari A yang tegak lurus bidang BCGF. AB tegak lurus BC dan AB tegak lurus BF (keduanya terletak pada bidang BCGF), sehingga AB tegak lurus bidang BCGF.`,
+ r`Jadi jarak $=AB=7$ cm.`],
+ f:r`Pada kubus dan balok, <b>rusuk yang menuju sebuah sisi</b> tegak lurus sisi itu. Jadi langsung jawab: rusuk $=7$ cm.`},
+{g:'d',t:'Contoh 4',lv:'Level 2 · Menerapkan: titik ke garis',q:r`Pada kubus ABCD.EFGH berusuk $6$ cm, jarak titik A ke garis BD adalah ....`,
+ fig:[{x:{O:[.5,.5,0]},seg:[['BD','h'],['AO','r']]}],o:[r`$3$ cm`,r`$3\sqrt{2}$ cm`,r`$6$ cm`,r`$6\sqrt{2}$ cm`,r`$3\sqrt{6}$ cm`],a:1,
+ s:[r`Titik A dan garis BD sama-sama berada di alas ABCD. Pakai segitiga ABD, siku-siku di A dengan $AB=AD=6$.`,
+ r`$$BD=\sqrt{6^2+6^2}=6\sqrt{2}$$`,
+ r`Jarak A ke BD adalah garis dari A yang tegak lurus BD, yaitu AO dengan O titik tengah BD (diagonal persegi saling tegak lurus dan saling membagi dua).`,
+ r`$$AO=\dfrac{1}{2}\times BD=\dfrac{1}{2}\times6\sqrt{2}=3\sqrt{2}\text{ cm}$$`],
+ f:r`<b>Dengan luas:</b> $\dfrac{1}{2}\times6\times6=\dfrac{1}{2}\times6\sqrt{2}\times d$, sehingga $d=\dfrac{36}{6\sqrt{2}}=\dfrac{6}{\sqrt{2}}=3\sqrt{2}$. Atau pola: $\frac{1}{2}s\sqrt{2}$.`},
+{g:'d',t:'Contoh 5',lv:'Level 2 · Menerapkan: titik ke garis (segitiga sama sisi)',q:r`Pada kubus ABCD.EFGH berusuk $6$ cm, jarak titik E ke garis BD adalah ....`,
+ fig:[{f:[['EBD',YL]],x:{M:[.5,.5,0]},seg:[['EM','r']]}],o:[r`$3\sqrt{2}$ cm`,r`$6$ cm`,r`$3\sqrt{6}$ cm`,r`$6\sqrt{2}$ cm`,r`$6\sqrt{3}$ cm`],a:2,
+ s:[r`$EB$, $ED$, dan $BD$ semuanya diagonal sisi, panjangnya $6\sqrt{2}$. Jadi segitiga EBD <b>sama sisi</b>.`,
+ r`Jarak E ke BD = tinggi segitiga itu, yaitu EM dengan M titik tengah BD, sehingga $BM=3\sqrt{2}$.`,
+ r`Pythagoras pada segitiga EMB: $$EM^2=EB^2-BM^2=(6\sqrt{2})^2-(3\sqrt{2})^2=72-18=54$$`,
+ r`$$EM=\sqrt{54}=\sqrt{9\times6}=3\sqrt{6}\text{ cm}$$`],
+ f:r`Tinggi segitiga sama sisi bersisi $a$ adalah $\dfrac{a}{2}\sqrt{3}$. Di sini $\dfrac{6\sqrt{2}}{2}\sqrt{3}=3\sqrt{6}$.`},
+{g:'d',t:'Contoh 6',lv:'Level 2 · Menerapkan: titik ke bidang',q:r`Pada kubus ABCD.EFGH berusuk $6$ cm, jarak titik A ke bidang BDHF adalah ....`,
+ fig:[{f:[['BDHF',CY]],x:{O:[.5,.5,0]},seg:[['AC','h'],['AO','r']]}],o:[r`$3$ cm`,r`$3\sqrt{2}$ cm`,r`$6$ cm`,r`$6\sqrt{2}$ cm`,r`$3\sqrt{3}$ cm`],a:1,
+ s:[r`AC tegak lurus BD (diagonal persegi saling tegak lurus).`,
+ r`AC tegak lurus BF (BF tegak lurus alas, AC terletak di alas).`,
+ r`Karena AC tegak lurus dua garis pada bidang BDHF, maka AC tegak lurus bidang BDHF. AC memotong BD di O, sehingga jarak A ke bidang = AO.`,
+ r`$$AO=\dfrac{1}{2}AC=\dfrac{1}{2}\times6\sqrt{2}=3\sqrt{2}\text{ cm}$$`],
+ f:r`Pola: titik sudut ke bidang diagonal yang tidak memuatnya $=\frac{1}{2}s\sqrt{2}=3\sqrt{2}$.`},
+{g:'d',t:'Contoh 7',lv:'Level 2 · Menginterpretasikan: jarak dua garis',q:r`Pada kubus ABCD.EFGH berusuk $6$ cm, jarak garis AB ke garis HG dan jarak garis AB ke garis CG berturut-turut adalah ....`,
+ fig:[{seg:[['AB','h'],['HG','h'],['AH','r']]},{seg:[['AB','h'],['CG','h'],['BC','r']]}],
+ o:[r`$6\sqrt{2}$ cm dan $6$ cm`,r`$6$ cm dan $6\sqrt{2}$ cm`,r`$6\sqrt{2}$ cm dan $6\sqrt{2}$ cm`,r`$6$ cm dan $6$ cm`,r`$6\sqrt{3}$ cm dan $6$ cm`],a:0,
+ s:[r`<b>(a) AB dan HG sejajar.</b> Ruas yang tegak lurus keduanya adalah AH (AH tegak lurus AB dan HG). AH adalah diagonal sisi, jadi $AH=6\sqrt{2}$ cm.`,
+ r`<b>(b) AB dan CG bersilangan</b> (tidak sejajar dan tidak berpotongan). BC tegak lurus AB dan BC tegak lurus CG.`,
+ r`Jadi jaraknya $=BC=6$ cm.`],
+ f:r`Garis bersilangan: carilah <b>rusuk lain</b> yang tegak lurus keduanya; sering kali itulah jaraknya.`},
+{g:'d',t:'Contoh 8',lv:'Level 2 · Menerapkan: limas',q:r`Limas beraturan T.ABCD beralas persegi bersisi $6$ cm dan tinggi $4$ cm. Jarak titik T ke garis BC adalah ....`,
+ fig:[{pyr:1,d:[1,1,.67],x:{O:[.5,.5,0],M:[1,.5,0]},seg:[['TO','h'],['OM','h'],['TM','r']]}],o:[r`$3$ cm`,r`$4$ cm`,r`$5$ cm`,r`$6$ cm`,r`$\sqrt{52}$ cm`],a:2,
+ s:[r`M titik tengah BC. Pada limas beraturan, TM tegak lurus BC, jadi jarak T ke BC adalah TM.`,
+ r`O pusat alas, TO tegak lurus alas. Segitiga TOM siku-siku di O dengan $OM=\dfrac{6}{2}=3$ dan $TO=4$.`,
+ r`$$TM=\sqrt{OM^2+TO^2}=\sqrt{3^2+4^2}=\sqrt{25}=5\text{ cm}$$`],
+ f:r`Tripel 3-4-5. TM juga disebut tinggi sisi tegak limas.`},
+{g:'e',t:'Contoh 9',lv:'Level 3 · Memecahkan masalah: titik ke bidang miring',q:r`Pada kubus ABCD.EFGH berusuk $8$ cm, jarak titik C ke bidang BDG adalah ....`,
+ fig:[{f:[['BDG',OR]],x:{P:[2/3,2/3,1/3]},seg:[['CE','h'],['CP','r']]}],o:[r`$\dfrac{8}{3}$ cm`,r`$\dfrac{8\sqrt{3}}{3}$ cm`,r`$\dfrac{8\sqrt{2}}{3}$ cm`,r`$4\sqrt{3}$ cm`,r`$8\sqrt{3}$ cm`],a:1,
+ s:[r`Bidang BDG miring, tidak ada rusuk yang tegak lurus padanya. Pakai <b>volume limas C.BDG</b> yang dihitung dengan dua cara.`,
+ r`<b>Cara 1</b> (alas CBD, tinggi CG): $$V=\dfrac{1}{3}\times\left(\dfrac{1}{2}\times8\times8\right)\times8=\dfrac{256}{3}$$`,
+ r`Segitiga BDG sama sisi dengan sisi $8\sqrt{2}$, luasnya $$L=\dfrac{\sqrt{3}}{4}(8\sqrt{2})^2=\dfrac{\sqrt{3}}{4}\times128=32\sqrt{3}$$`,
+ r`<b>Cara 2</b> (alas BDG, tinggi $d$): $V=\dfrac{1}{3}\times32\sqrt{3}\times d$. Samakan kedua volume: $$\dfrac{1}{3}\times32\sqrt{3}\times d=\dfrac{256}{3}\;\Rightarrow\;d=\dfrac{8}{\sqrt{3}}=\dfrac{8\sqrt{3}}{3}\text{ cm}$$`],
+ f:r`<b>Pola:</b> jarak titik sudut kubus (C atau A) ke bidang BDG $=\dfrac{1}{3}$ diagonal ruang $=\dfrac{1}{3}\times8\sqrt{3}$. Garis tegak lurusnya berada pada diagonal ruang CE.`},
+{g:'e',t:'Contoh 10',lv:'Level 3 · Menyimpulkan: dua bidang sejajar',q:r`Pada kubus ABCD.EFGH berusuk $6$ cm, bidang AFH sejajar bidang BDG. Jarak kedua bidang itu adalah ....`,
+ fig:[{f:[['AFH',CY],['BDG',OR]],x:{Q:[1/3,1/3,2/3],P:[2/3,2/3,1/3]},seg:[['EC','h'],['QP','r']]}],o:[r`$\sqrt{3}$ cm`,r`$2\sqrt{3}$ cm`,r`$3\sqrt{3}$ cm`,r`$6$ cm`,r`$2\sqrt{6}$ cm`],a:1,
+ s:[r`Diagonal ruang <b>EC</b> tegak lurus bidang AFH dan bidang BDG. Jarak kedua bidang adalah bagian EC yang berada di antara kedua bidang (QP pada gambar).`,
+ r`Dari Contoh 9: jarak C ke bidang BDG adalah $\frac{1}{3}$ diagonal ruang. Dengan simetri, jarak E ke bidang AFH juga $\frac{1}{3}$ diagonal ruang.`,
+ r`Jadi EC terbagi <b>tiga bagian sama panjang</b>, dan bagian tengah adalah jarak kedua bidang. $$EC=6\sqrt{3}\;\Rightarrow\;d=\dfrac{1}{3}\times6\sqrt{3}=2\sqrt{3}\text{ cm}$$`],
+ f:r`Akibatnya, jarak titik A (yang terletak pada bidang AFH) ke bidang BDG juga $2\sqrt{3}$ cm. Rumus: $\dfrac{s\sqrt{3}}{3}$.`},
+{g:'e',t:'Contoh 11',lv:'Level 3 · Menjustifikasi: garis bersilangan',q:r`Pada kubus ABCD.EFGH berusuk $6$ cm, jarak garis AC ke garis BF adalah ....`,
+ fig:[{x:{O:[.5,.5,0]},seg:[['AC','h'],['BF','h'],['OB','r']]}],o:[r`$3$ cm`,r`$3\sqrt{2}$ cm`,r`$6$ cm`,r`$6\sqrt{2}$ cm`,r`$3\sqrt{3}$ cm`],a:1,
+ s:[r`AC dan BF tidak sejajar dan tidak berpotongan, jadi <b>bersilangan</b>. Kita cari ruas yang tegak lurus keduanya.`,
+ r`BF tegak lurus alas, sehingga BF tegak lurus setiap garis pada alas, termasuk OB.`,
+ r`OB tegak lurus AC (diagonal persegi saling tegak lurus di O). Jadi OB tegak lurus AC dan BF sekaligus, sehingga OB adalah jarak kedua garis.`,
+ r`$$OB=\dfrac{1}{2}BD=\dfrac{1}{2}\times6\sqrt{2}=3\sqrt{2}\text{ cm}$$`],
+ f:r`BF tegak lurus alas, jadi jarak AC ke BF = jarak titik B ke garis AC di alas $=\frac{1}{2}s\sqrt{2}$.`},
+{g:'e',t:'Contoh 12',lv:'Level 3 · Mengevaluasi strategi: dua cara',q:r`Limas beraturan T.ABCD beralas persegi bersisi $6$ cm dan tinggi $4$ cm. Jarak titik A ke bidang TBC adalah ....`,
+ fig:[{pyr:1,d:[1,1,.67],f:[['TBC',OR]],x:{M:[1,.5,0],N:[0,.5,0],Q:[.64,.5,.72]},seg:[['TM','h'],['NM','h'],['NQ','r']]}],o:[r`$3$ cm`,r`$4$ cm`,r`$4{,}5$ cm`,r`$4{,}8$ cm`,r`$5$ cm`],a:3,
+ s:[r`Dari Contoh 8: $TM=5$ (M titik tengah BC).`,
+ r`<b>Cara 1 (volume).</b> Volume limas A.TBC sama dengan volume T.ABC: $$V=\dfrac{1}{3}\times\left(\dfrac{1}{2}\times6\times6\right)\times4=24$$`,
+ r`Luas segitiga TBC: $$L=\dfrac{1}{2}\times6\times5=15$$`,
+ r`Jarak: $$d=\dfrac{3V}{L}=\dfrac{3\times24}{15}=\dfrac{72}{15}=4{,}8\text{ cm}$$`,
+ r`<b>Cara 2 (penampang).</b> AD sejajar BC, jadi AD sejajar bidang TBC. Jarak A ke bidang TBC sama dengan jarak N (titik tengah AD) ke bidang TBC, yaitu tinggi NQ pada segitiga TMN (dengan $TM=TN=5$, $MN=6$, $TO=4$): $$\dfrac{1}{2}\times TM\times NQ=\dfrac{1}{2}\times MN\times TO\;\Rightarrow\;5\times NQ=6\times4\;\Rightarrow\;NQ=4{,}8$$`],
+ f:r`Cara volume cocok untuk bidang miring. Cara penampang cepat jika ada garis sejajar bidang (AD sejajar BC). Keduanya memberi <b>4,8 cm</b>.`},
+
+{g:'g1',t:'Soal 1',lv:'Level 1 · Menghitung',q:r`Kubus ABCD.EFGH memiliki rusuk $8$ cm. Jarak titik A ke titik G adalah ....`,
+ fig:[{seg:[['AG','r']]}],o:[r`$8$ cm`,r`$8\sqrt{2}$ cm`,r`$8\sqrt{3}$ cm`,r`$16$ cm`,r`$24$ cm`],a:2,
+ s:[r`AG adalah diagonal ruang kubus.`,r`$AC=8\sqrt{2}$, lalu $$AG^2=AC^2+CG^2=128+64=192$$`,r`$$AG=\sqrt{192}=\sqrt{64\times3}=8\sqrt{3}\text{ cm}$$`],
+ f:r`$AG=s\sqrt{3}=8\sqrt{3}$. Pengecoh $8\sqrt{2}$ adalah diagonal sisi.`},
+{g:'g1',t:'Soal 2',lv:'Level 1 · Menghitung',q:r`Balok ABCD.EFGH memiliki $AB=6$ cm dan $BC=8$ cm. Jarak titik A ke titik C adalah ....`,
+ fig:[{d:[.6,.8,.6],seg:[['AC','r']]}],o:[r`$6$ cm`,r`$8$ cm`,r`$10$ cm`,r`$14$ cm`,r`$100$ cm`],a:2,
+ s:[r`AC adalah diagonal alas, sehingga ABC siku-siku di B.`,r`$$AC=\sqrt{6^2+8^2}=\sqrt{36+64}=\sqrt{100}=10\text{ cm}$$`],
+ f:r`Tripel 6-8-10, langsung 10 cm. Pengecoh 14 adalah $6+8$ (salah: itu bukan Pythagoras).`},
+{g:'g1',t:'Soal 3',lv:'Level 1 · Mengidentifikasi',q:r`Pada kubus ABCD.EFGH, ruas garis yang menyatakan jarak titik E ke bidang ABCD adalah ....`,
+ fig:[{f:[['ABCD',CY]],seg:[['EA','r']]}],o:['EA','EB','EC','ED','EF'],a:0,
+ s:[r`Jarak titik ke bidang = ruas yang tegak lurus bidang.`,r`EA tegak lurus AB dan AD (keduanya di bidang ABCD), jadi EA tegak lurus bidang ABCD.`,r`EB, EC, ED adalah ruas miring, bukan yang terpendek. EF sejajar bidang ABCD.`],
+ f:r`Rusuk tegak dari E menuju alas adalah EA.`},
+{g:'g1',t:'Soal 4',lv:'Level 1 · Mengelompokkan · Benar/Salah',ty:'k',q:r`Perhatikan kubus ABCD.EFGH. Tentukan Benar atau Salah untuk setiap pernyataan.`,fig:[{}],
+ k:[[r`(a) Jarak titik A ke garis CG termasuk jarak titik ke garis.`,1],[r`(b) Garis AB dan garis EH sejajar.`,0],[r`(c) Bidang ABCD dan bidang EFGH sejajar.`,1]],
+ s:[r`<b>(a) Benar.</b> Titik A dan garis CG: itulah jarak titik ke garis.`,r`<b>(b) Salah.</b> AB sejajar sumbu panjang di alas, sedangkan EH di atap arahnya menuju belakang. Keduanya tidak sejajar dan tidak berpotongan, jadi <b>bersilangan</b>.`,r`<b>(c) Benar.</b> Alas dan atap kubus sejajar.`],
+ f:r`Sejajar = searah dan tidak bertemu. Bersilangan = tidak searah dan tidak bertemu.`},
+{g:'g2',t:'Soal 5',lv:'Level 2 · Menerapkan',q:r`Pada kubus ABCD.EFGH berusuk $10$ cm, jarak titik A ke garis CG adalah ....`,
+ fig:[{seg:[['AC','r'],['CG','h']]}],o:[r`$10$ cm`,r`$10\sqrt{2}$ cm`,r`$10\sqrt{3}$ cm`,r`$20$ cm`,r`$5\sqrt{2}$ cm`],a:1,
+ s:[r`CG tegak lurus bidang ABCD, jadi CG tegak lurus AC (AC ada di bidang ABCD).`,r`Maka jarak A ke garis CG adalah AC, yaitu diagonal sisi.`,r`$$AC=10\sqrt{2}\text{ cm}$$`],
+ f:r`Pengecoh 10 cm adalah rusuk, bukan jarak A ke CG.`},
+{g:'g2',t:'Soal 6',lv:'Level 2 · Menerapkan',q:r`Limas beraturan T.ABCD beralas persegi bersisi $8$ cm dan tinggi $3$ cm. Jarak titik T ke garis AB adalah ....`,
+ fig:[{pyr:1,d:[1,1,.6],x:{O:[.5,.5,0],M:[.5,0,0]},seg:[['TO','h'],['OM','h'],['TM','r']]}],o:[r`$3$ cm`,r`$4$ cm`,r`$5$ cm`,r`$7$ cm`,r`$8$ cm`],a:2,
+ s:[r`M titik tengah AB. TM tegak lurus AB.`,r`O pusat alas, sehingga $OM=\dfrac{8}{2}=4$ dan $TO=3$.`,r`$$TM=\sqrt{4^2+3^2}=\sqrt{25}=5\text{ cm}$$`],
+ f:r`Tripel 3-4-5.`},
+{g:'g2',t:'Soal 7',lv:'Level 2 · Memodelkan',q:r`Balok ABCD.EFGH memiliki $AB=8$ cm dan $BC=6$ cm. Jarak titik B ke garis AC adalah ....`,
+ fig:[{d:[.8,.6,.5],x:{Q:[.64,.64,0]},seg:[['AC','h'],['BQ','r']]}],o:[r`$3{,}6$ cm`,r`$4{,}0$ cm`,r`$4{,}8$ cm`,r`$5{,}0$ cm`,r`$6{,}0$ cm`],a:2,
+ s:[r`Segitiga ABC siku-siku di B, dengan $AC=\sqrt{8^2+6^2}=10$.`,r`Jarak B ke AC adalah tinggi dari B ke sisi miring. Hitung luas dua cara: $$\dfrac{1}{2}\times8\times6=\dfrac{1}{2}\times10\times d$$`,r`$$24=5d\;\Rightarrow\;d=\dfrac{48}{10}=4{,}8\text{ cm}$$`],
+ f:r`$d=\dfrac{\text{sisi tegak}_1\times\text{sisi tegak}_2}{\text{sisi miring}}=\dfrac{8\times6}{10}=4{,}8$.`},
+{g:'g2',t:'Soal 8',lv:'Level 2 · Menginterpretasikan · Pilihan ganda kompleks',ty:'m',q:r`Kubus ABCD.EFGH berusuk $6$ cm. Pilih <b>semua</b> pernyataan yang benar.`,fig:[{}],
+ o:[r`Jarak titik A ke titik C adalah $6\sqrt{2}$ cm.`,r`Jarak titik A ke garis CG adalah $6$ cm.`,r`Jarak bidang ABCD ke bidang EFGH adalah $6$ cm.`,r`Jarak garis AB ke garis EH adalah $6$ cm.`],a:[0,2,3],
+ s:[r`<b>A benar:</b> AC diagonal sisi $=6\sqrt{2}$.`,r`<b>B salah:</b> CG tegak lurus AC, jadi jarak A ke CG adalah $AC=6\sqrt{2}$, bukan $6$.`,r`<b>C benar:</b> alas dan atap sejajar dan berjarak sama dengan rusuk, yaitu $6$ cm.`,r`<b>D benar:</b> AB dan EH bersilangan; AE tegak lurus keduanya, jadi jaraknya $AE=6$ cm.`],
+ f:r`Periksa satu per satu. Ingat: titik ke garis lewat sisi miring (diagonal), bukan rusuk.`},
+{g:'g3',t:'Soal 9',lv:'Level 3 · Memecahkan masalah',q:r`Pada kubus ABCD.EFGH berusuk $6$ cm, jarak titik E ke bidang BDG adalah ....`,
+ fig:[{f:[['BDG',OR]],x:{P:[2/3,2/3,1/3]},seg:[['EC','h'],['EP','r']]}],o:[r`$2\sqrt{3}$ cm`,r`$3\sqrt{3}$ cm`,r`$4\sqrt{3}$ cm`,r`$5\sqrt{3}$ cm`,r`$6\sqrt{3}$ cm`],a:2,
+ s:[r`Diagonal ruang $EC=6\sqrt{3}$ tegak lurus bidang BDG dan memotongnya di P.`,r`Bidang BDG berjarak $\dfrac{1}{3}$ diagonal dari C, sehingga CP $=\dfrac{1}{3}\times6\sqrt{3}=2\sqrt{3}$.`,r`$$EP=EC-CP=6\sqrt{3}-2\sqrt{3}=4\sqrt{3}\text{ cm}$$ atau $\dfrac{2}{3}\times6\sqrt{3}=4\sqrt{3}$.`],
+ f:r`Pengecoh $2\sqrt{3}$ adalah jarak <b>C</b> ke BDG (sepertiga), bukan E. E berjarak dua pertiga.`},
+{g:'g3',t:'Soal 10',lv:'Level 3 · Menjustifikasi · Benar/Salah',ty:'k',q:r`Pada kubus ABCD.EFGH berusuk $6$ cm, tentukan Benar atau Salah.`,fig:[{}],
+ k:[[r`(a) Garis AC dan garis BF bersilangan, dan jaraknya $3\sqrt{2}$ cm.`,1],[r`(b) Bidang AFH sejajar bidang BDG, dan jaraknya $2\sqrt{3}$ cm.`,1],[r`(c) Jarak garis AB ke garis HG adalah $6$ cm.`,0]],
+ s:[r`<b>(a) Benar.</b> AC dan BF bersilangan; jarak $=OB=\dfrac{1}{2}BD=3\sqrt{2}$.`,r`<b>(b) Benar.</b> Bidang AFH sejajar BDG; jarak $=\dfrac{1}{3}\times6\sqrt{3}=2\sqrt{3}$.`,r`<b>(c) Salah.</b> AB dan HG sejajar; jarak $=AH=6\sqrt{2}$, bukan $6$.`],
+ f:r`Gunakan tabel pola di bagian F untuk memeriksa cepat.`},
+{g:'g3',t:'Soal 11',lv:'Level 3 · Menganalisis',q:r`Balok ABCD.EFGH memiliki $AB=12$ cm, $BC=9$ cm, dan $AE=20$ cm. Jarak garis AC ke garis BF adalah ....`,
+ fig:[{d:[.6,.45,1],x:{Q:[.64,.64,0]},seg:[['AC','h'],['BF','h'],['BQ','r']]}],o:[r`$6{,}0$ cm`,r`$7{,}2$ cm`,r`$7{,}5$ cm`,r`$9{,}0$ cm`,r`$12{,}0$ cm`],a:1,
+ s:[r`BF tegak lurus alas. Jadi jarak garis AC ke garis BF sama dengan jarak titik B ke garis AC pada alas.`,r`$AC=\sqrt{12^2+9^2}=\sqrt{225}=15$ (tripel 9-12-15).`,r`Luas segitiga ABC dua cara: $$\dfrac{1}{2}\times12\times9=\dfrac{1}{2}\times15\times d$$`,r`$$d=\dfrac{108}{15}=7{,}2\text{ cm}$$ Tinggi $AE=20$ hanya pengecoh.`],
+ f:r`$d=\dfrac{12\times9}{15}=7{,}2$.`},
+{g:'g3',t:'Soal 12',lv:'Level 3 · Memecahkan masalah · Isian singkat',ty:'i',q:r`Pada kubus ABCD.EFGH berusuk $9$ cm, bidang ACH sejajar bidang BEG. Jarak kedua bidang itu adalah $k\sqrt{3}$ cm. Nilai $k$ adalah ....`,
+ fig:[{f:[['ACH',CY],['BEG',OR]],x:{P:[1/3,2/3,1/3],Q:[2/3,1/3,2/3]},seg:[['DF','h'],['PQ','r']]}],a:3,
+ s:[r`Diagonal ruang DF tegak lurus bidang ACH dan bidang BEG, dan kedua bidang membagi DF menjadi tiga bagian sama panjang.`,r`Panjang $DF=9\sqrt{3}$.`,r`Jarak kedua bidang $=\dfrac{1}{3}\times9\sqrt{3}=3\sqrt{3}$.`,r`Jadi $k=3$.`],
+ f:r`Rumus langsung: bidang sejajar sejenis ini berjarak $\dfrac{s\sqrt{3}}{3}$. Untuk $s=9$ diperoleh $3\sqrt{3}$.`}
+];
+
+function build(q){
+ const d=document.createElement('div');d.className='card';
+ const ty=q.ty||'c';
+ let h=`<div class="qh"><b>${q.t}</b><span class="lv l${q.lv[6]}">${q.lv}</span></div><p>${q.q}</p><div class="figs">${(q.fig||[]).map(fig).join('')}</div>`;
+ if(ty=='c')h+='<div class="ops">'+q.o.map((o,i)=>`<button class="op" data-i="${i}"><b>${L[i]}.</b> ${o}</button>`).join('')+'</div>';
+ if(ty=='m')h+=q.o.map((o,i)=>`<label class="op"><input type="checkbox" value="${i}"> <b>${L[i]}.</b> ${o}</label>`).join('')+'<button class="go">Periksa</button>';
+ if(ty=='k')h+='<table class="kt">'+q.k.map((s,i)=>`<tr><td>${s[0]}</td><td><label><input type="radio" name="${q.t}${i}" value="1"> Benar</label></td><td><label><input type="radio" name="${q.t}${i}" value="0"> Salah</label></td></tr>`).join('')+'</table><button class="go">Periksa</button>';
+ if(ty=='i')h+='<p>Jawaban $k=$ <input class="in" inputmode="decimal"></p><button class="go">Periksa</button>';
+ h+=`<div class="ex" hidden><p class="res"></p><h4>Cara Lengkap</h4><ol class="st">${q.s.map(x=>`<li>${x}</li>`).join('')}</ol><div class="fast"><b>⚡ Cara Cepat</b><br>${q.f}</div></div>`;
+ d.innerHTML=h;
+ let done=false;
+ const fin=(ok,ans)=>{done=true;const e=d.querySelector('.ex');e.hidden=false;
+  e.querySelector('.res').innerHTML=ok?'✅ Benar! Perhatikan pembahasannya agar paham langkahnya.':'❌ Belum tepat. '+ans+' Pelajari langkah berikut.';};
+ if(ty=='c')d.querySelectorAll('.op').forEach(b=>b.onclick=()=>{if(done)return;const i=+b.dataset.i;
+  b.classList.add(i==q.a?'ok':'no');if(i!=q.a)d.querySelectorAll('.op')[q.a].classList.add('ok');
+  fin(i==q.a,'Jawaban yang benar: '+L[q.a]+'.')});
+ if(ty=='m')d.querySelector('.go').onclick=()=>{if(done)return;let ok=true;
+  d.querySelectorAll('input').forEach((c,i)=>{const want=q.a.includes(i);if(c.checked!=want)ok=false;c.parentNode.classList.add(want?'ok':(c.checked?'no':'x'))});
+  fin(ok,'Jawaban yang benar: '+q.a.map(i=>L[i]).join(', ')+'.')};
+ if(ty=='k')d.querySelector('.go').onclick=()=>{if(done)return;let ok=true;
+  d.querySelectorAll('tr').forEach((tr,i)=>{const v=tr.querySelector('input:checked');const good=v&&+v.value==q.k[i][1];if(!good)ok=false;tr.classList.add(good?'ok':'no')});
+  fin(ok,'Kunci: '+q.k.map((k,i)=>'('+'abc'[i]+') '+(k[1]?'Benar':'Salah')).join(', ')+'.')};
+ if(ty=='i')d.querySelector('.go').onclick=()=>{if(done)return;const v=parseFloat(d.querySelector('.in').value.replace(',','.'));
+  fin(v==q.a,'Jawaban yang benar: '+q.a+'.')};
+ return d;
+}
+window.addEventListener('load',()=>{
+ document.getElementById('fA1').innerHTML=fig({});
+ document.getElementById('fA3').innerHTML=fig({seg:[['AC','h'],['CG','h'],['AG','r']]})+'<p class="leg" style="align-self:center;max-width:280px">Garis biru = diagonal sisi AC ($s\\sqrt{2}$). Garis merah = diagonal ruang AG ($s\\sqrt{3}$).</p>';
+ Q.forEach(q=>document.getElementById(q.g).appendChild(build(q)));
+ renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+});
+</script>
+</body>
+</html>
