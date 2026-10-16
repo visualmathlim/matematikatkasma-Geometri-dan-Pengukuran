@@ -1,356 +1,243 @@
 <!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Modul 2: Volume dan Luas Permukaan Bangun Ruang - VisualMath.Lim</title>
-<link rel="icon" href="logo.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Modul 2: Volume dan Luas Permukaan Bangun Ruang | VisualMath.Lim</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
 <style>
-:root{--navy:#022050;--cyan:#00d6d8;--yel:#ffd300;--bg:#f2fbfc;--ink:#0b1f3a;--mut:#4a5d78;--ok:#12805c;--okb:#e3f7ee;--bad:#b3261e;--badb:#fdeceb;--line:#cfe6ea}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:120px}
-body{margin:0;font-family:Nunito,"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:17px}
-header{background:var(--navy);color:#fff;position:sticky;top:0;z-index:50;border-bottom:4px solid var(--yel)}
-.top{max-width:1100px;margin:auto;display:flex;align-items:center;gap:14px;padding:8px 16px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;flex:1;min-width:240px}
-.brand img{height:52px;width:52px;border-radius:50%;object-fit:cover;background:#fff2}
-.brand b{font-size:1.15rem;line-height:1.25}.brand b span{color:var(--cyan)}.brand small{display:block;color:var(--yel);font-weight:600;font-size:.8rem}
-nav.main{display:flex;gap:8px}
-nav.main a{color:#fff;text-decoration:none;font-weight:700;padding:8px 16px;border-radius:99px;border:2px solid var(--cyan);transition:.2s}
-nav.main a:hover,nav.main a:focus-visible{background:var(--cyan);color:var(--navy);outline:none}
-nav.main a.cur{background:var(--yel);border-color:var(--yel);color:var(--navy)}
-.sub{background:#03307a;overflow-x:auto;white-space:nowrap}
-.sub div{max-width:1100px;margin:auto;padding:4px 12px}
-.sub a{color:#d8f7f8;text-decoration:none;font-weight:700;font-size:.9rem;padding:6px 12px;display:inline-block;border-radius:8px}
-.sub a:hover{background:var(--cyan);color:var(--navy)}
-main{max-width:1000px;margin:auto;padding:20px 16px 60px}
-.hero{background:linear-gradient(135deg,var(--navy),#0a3a8c);color:#fff;border-radius:20px;padding:28px;border-left:10px solid var(--yel)}
-.hero h1{margin:.2em 0;font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.2}.hero p{margin:.4em 0;color:#dff}
-.chip{display:inline-block;background:var(--cyan);color:var(--navy);font-weight:800;border-radius:99px;padding:2px 14px;font-size:.85rem}
-section{margin-top:34px}
-h2{font-size:1.6rem;color:var(--navy);border-bottom:4px solid var(--cyan);padding-bottom:6px;margin:0 0 14px}
-h3{color:var(--navy);margin:22px 0 8px;font-size:1.2rem}
-.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;margin:14px 0}
-table{border-collapse:collapse;width:100%;background:#fff;margin:10px 0;font-size:.95rem}
-th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
-th{background:var(--navy);color:#fff}
-.wrap{overflow-x:auto}
-.box{border-radius:12px;padding:12px 16px;margin:12px 0;border-left:6px solid}
-.info{background:#e6f4ff;border-color:#2a7fd4}.warn{background:#fff6cc;border-color:var(--yel)}.star{background:#e4fbfb;border-color:var(--cyan)}
-.fig{display:block;max-width:100%;height:auto;margin:10px auto}
-figcaption{text-align:center;font-size:.88rem;color:var(--mut);font-style:italic}
-figure{margin:12px 0;background:#fbfeff;border:1px dashed var(--line);border-radius:12px;padding:8px}
-.formula{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
-.formula div{background:#fff;border:2px solid var(--cyan);border-radius:12px;padding:10px 14px}
-.formula b{color:var(--navy)}
-.ex h4{margin:0 0 6px;font-size:1.1rem;color:var(--navy)}
-.lv{display:inline-block;font-size:.78rem;font-weight:800;padding:2px 10px;border-radius:99px;background:var(--yel);color:var(--navy);margin-right:6px}
-.tabs{display:flex;gap:6px;margin:12px 0 0}
-.tabs button{font:inherit;font-weight:800;border:2px solid var(--navy);background:#fff;color:var(--navy);padding:6px 14px;border-radius:10px 10px 0 0;cursor:pointer}
-.tabs button.on{background:var(--navy);color:#fff}.tabs button[data-t=c].on{background:var(--yel);color:var(--navy);border-color:var(--yel)}
-.p{border:2px solid var(--navy);border-radius:0 12px 12px 12px;padding:12px 16px;background:#fcffff}
-.p.c{border-color:var(--yel);background:#fffbe0}
-ol.steps{list-style:none;counter-reset:s;margin:0;padding:0}
-ol.steps li{counter-increment:s;position:relative;padding:6px 0 10px 44px;border-left:3px solid var(--cyan);margin-left:14px}
-ol.steps li::before{content:counter(s);position:absolute;left:-15px;top:6px;width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;font-weight:800;display:grid;place-items:center;font-size:.9rem}
-.ans{background:var(--okb);border:2px solid var(--ok);border-radius:10px;padding:8px 12px;margin:8px 0 0;font-weight:700}
-details.try{background:#eef1f5;border-radius:10px;padding:8px 14px;margin-top:10px}details.try summary{cursor:pointer;font-weight:800}
-.opts{display:grid;gap:8px;margin:10px 0}
-.opt{font:inherit;text-align:left;background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px 14px;cursor:pointer;display:flex;gap:10px;align-items:center}
-.opt:hover:not(:disabled){border-color:var(--cyan);background:#e9fdfd}
-.opt:focus-visible,.tabs button:focus-visible,.btn:focus-visible{outline:3px solid var(--yel);outline-offset:2px}
-.opt.right{background:var(--okb);border-color:var(--ok)}.opt.wrong{background:var(--badb);border-color:var(--bad)}
-.opt:disabled{cursor:default}
-.btn{font:inherit;font-weight:800;background:var(--cyan);color:var(--navy);border:0;border-radius:10px;padding:8px 18px;cursor:pointer}
-.btn:hover{background:var(--yel)}
-.fb{font-weight:800;margin:8px 0}.fb.ok{color:var(--ok)}.fb.no{color:var(--bad)}
-.bsrow{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;border-bottom:1px solid var(--line);padding:8px 0}
-.bsrow .opt{padding:6px 12px}
-input.in{font:inherit;padding:8px 12px;border:2px solid var(--navy);border-radius:10px;width:180px}
-.score{position:sticky;top:112px;z-index:5;background:var(--navy);color:#fff;border-radius:12px;padding:8px 16px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
-.score b{color:var(--yel)}
-footer{background:var(--navy);color:#cfeff0;text-align:center;padding:18px;border-top:4px solid var(--yel)}
-@media(max-width:600px){body{font-size:16px}.score{top:150px}html{scroll-padding-top:170px}.brand b{font-size:1rem}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
-</style>
-</head>
-<body>
-<header>
- <div class="top">
-  <a class="brand" href="index.html"><img src="logo.png" alt="Logo VisualMath.Lim" onerror="this.style.display='none'"><b><span>VisualMath.Lim</span> - TKA Matematika Wajib SMA<small>Bimbingan Belajar</small></b></a>
-  <nav class="main" aria-label="Menu utama"><a href="index.html">Home</a><a href="pengukuran.html">Dashboard</a></nav>
- </div>
- <div class="sub"><div id="sub"></div></div>
-</header>
-<main id="app"></main>
-<footer>© VisualMath.Lim · Modul 2 · Geometri dan Pengukuran</footer>
+:root{--navy:#022050;--cy:#00d6d8;--ye:#ffd300;--bg:#f2fbfc;--tx:#14233f}
+*{box-sizing:border-box}body{margin:0;font:16px/1.65 system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--tx)}
+header{background:var(--navy);border-bottom:4px solid var(--ye);position:sticky;top:0;z-index:50}
+.hd{max-width:1100px;margin:auto;padding:8px 14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.hd img{height:52px;width:52px;border-radius:50%;background:#fff}
+.brand{color:#fff;font-weight:800;font-size:1.05rem;line-height:1.2;flex:1;min-width:200px}.brand b{color:var(--cy)}.brand small{display:block;color:var(--ye);font-weight:600;font-size:.78rem}
+nav a{color:#fff;text-decoration:none;font-weight:700;padding:8px 14px;border-radius:99px;margin-left:4px;display:inline-block}
+nav a:hover{background:var(--cy);color:var(--navy)}nav a.on{background:var(--ye);color:var(--navy)}
+.sub{background:#fff;border-bottom:1px solid #cfe;overflow-x:auto;white-space:nowrap;position:sticky;top:73px;z-index:40}
+.sub a{display:inline-block;padding:9px 13px;color:var(--navy);font-weight:700;font-size:.9rem;text-decoration:none}.sub a:hover{background:var(--cy)}
+main{max-width:1000px;margin:auto;padding:16px}
+.hero{background:linear-gradient(135deg,var(--navy),#0a3a8a);color:#fff;border-radius:18px;padding:26px;margin:14px 0;border-left:10px solid var(--ye)}
+.hero h1{margin:.2em 0;font-size:1.8rem}.hero .k{color:var(--cy);font-weight:700}
+h2{color:var(--navy);border-bottom:4px solid var(--cy);padding-bottom:4px;margin-top:2.2em}h3{color:var(--navy);margin-top:1.6em}
+.card{background:#fff;border-radius:14px;padding:16px;margin:12px 0;box-shadow:0 2px 8px #02205018}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.tip,.warn,.fast,.sum{border-radius:10px;padding:12px 14px;margin:12px 0}
+.tip{background:#e3fbfb;border-left:6px solid var(--cy)}.warn{background:#fff4c2;border-left:6px solid var(--ye)}
+.fast{background:#e6f9e8;border-left:6px solid #1c9a3b}.sum{background:var(--navy);color:#fff}.sum .katex{color:#fff}
+table{border-collapse:collapse;width:100%;background:#fff}td,th{border:1px solid #bde;padding:7px 9px;text-align:left}th{background:var(--navy);color:#fff}
+.fig{text-align:center;margin:8px 0}.fig svg{max-width:100%;width:260px;height:auto;background:#fff;border:1px solid #cde;border-radius:10px}
+.fig .row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}.fig small{display:block;color:#456;font-style:italic}
+.q{background:#fff;border-radius:14px;padding:16px;margin:16px 0;border-top:6px solid var(--cy);box-shadow:0 2px 8px #02205018}
+.tag{display:inline-block;background:var(--navy);color:var(--ye);font-weight:700;border-radius:99px;padding:2px 12px;font-size:.82rem}
+.opt{display:flex;gap:10px;align-items:center;width:100%;text-align:left;background:#f4fcfc;border:2px solid #bde;border-radius:10px;padding:9px 12px;margin:6px 0;font:inherit;cursor:pointer;color:inherit}
+.opt:hover:not(:disabled){border-color:var(--cy);background:#dff}.opt b{background:var(--navy);color:#fff;border-radius:50%;min-width:28px;height:28px;display:grid;place-items:center}
+.opt.ok{background:#d6f5dc;border-color:#1c9a3b}.opt.no{background:#ffd9d9;border-color:#d33}.opt.sel{border-color:var(--ye);background:#fff8d1}
+.st{display:flex;flex-wrap:wrap;gap:8px;align-items:center;border-bottom:1px dashed #bde;padding:6px 0}.st span{flex:1;min-width:220px}
+.st label{margin-right:8px;cursor:pointer}
+button.go,.fill input{font:inherit;padding:8px 16px;border-radius:10px;border:2px solid var(--navy)}button.go{background:var(--ye);color:var(--navy);font-weight:800;cursor:pointer;margin-top:8px}
+.ex{margin-top:12px;border-top:3px dashed var(--cy);padding-top:10px}.v{font-weight:800;padding:8px 12px;border-radius:8px}.v.ok{background:#d6f5dc}.v.no{background:#ffd9d9}
+ol.steps{list-style:none;padding:0;counter-reset:s}ol.steps li{counter-increment:s;position:relative;margin:0 0 10px 18px;padding:8px 12px 8px 44px;background:#f4fcfc;border-radius:10px;border-left:4px solid var(--cy)}
+ol.steps li:before{content:counter(s);position:absolute;left:-12px;top:6px;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--ye);font-weight:800;display:grid;place-items:center}
+.score{position:fixed;right:12px;bottom:12px;background:var(--navy);color:var(--ye);padding:8px 14px;border-radius:99px;font-weight:800;z-index:60;box-shadow:0 3px 10px #0004}
+footer{background:var(--navy);color:#fff;text-align:center;padding:18px;margin-top:40px;border-top:4px solid var(--ye)}
+@media(max-width:640px){.sub{top:118px}.hero h1{font-size:1.4rem}}
+</style></head><body>
+<header><div class="hd"><img src="logo.png" alt="Logo VisualMath.Lim">
+<div class="brand"><b>VisualMath.Lim</b> - TKA Matematika Wajib SMA<small>Bimbingan Belajar</small></div>
+<nav><a href="index.html">🏠 Home</a><a href="pengukuran.html">📊 Dashboard</a><a class="on" href="#top">Modul 2</a></nav></div></header>
+<div class="sub"><a href="#A">A. Cek Kesiapan</a><a href="#B">B. Rumus</a><a href="#C">C. Level 1</a><a href="#D">D. Level 2</a><a href="#E">E. Level 3</a><a href="#F">F. Kesalahan</a><a href="#G">G. Prediksi TKA</a></div>
+<main id="top">
+<div class="hero"><span class="k">MODUL BELAJAR TKA MATEMATIKA · Modul 2</span><h1>Volume dan Luas Permukaan Bangun Ruang</h1>
+<div>Elemen Geometri dan Pengukuran · Objek Geometri · Kompetensi 2 dari 3</div>
+<p>Belajar dari pertanyaan paling dasar ("apa itu volume?") sampai soal penalaran Level 3. Setiap soal pilihan ganda: <b>jawab dulu</b>, baru muncul pembahasan <b>Cara Lengkap</b> (langkah demi langkah) dan <b>Cara Cepat</b>.</p></div>
+<div class="tip"><b>ℹ Cara memakai modul.</b> Kerjakan A. Cek Kesiapan dulu. Bayangkan: <b>volume = isi</b>, <b>luas permukaan = kulit/kemasan luar</b>. Kotak hijau <b>⚡ Cara Cepat</b> dipakai bila sudah paham. Jangan menghafal rumus tanpa gambar.</div>
+<div class="g"><div class="card"><b>Level 1</b> Pengetahuan &amp; Pemahaman: menghitung, mengelompokkan, mengidentifikasi unsur.</div><div class="card"><b>Level 2</b> Aplikasi: bangun gabungan, kemasan tanpa tutup, liter, memindahkan air.</div><div class="card"><b>Level 3</b> Penalaran: perubahan ukuran, membandingkan, benda dicelup.</div></div>
 
-<script>
-const r=String.raw;
-/* ===== GAMBAR (SVG buatan HTML) ===== */
-const st='stroke="#022050" stroke-width="2" stroke-linejoin="round"',F1='#c9f7f8',F2='#8eeaec',F3='#eafdfd',WT='#6fc9ff';
-const dsh='stroke="#022050" stroke-width="1.6" stroke-dasharray="5 4" fill="none"';
-const P=(p,f)=>`<polygon points="${p}" fill="${f}" ${st}/>`;
-const T=(x,y,s,a='middle')=>`<text x="${x}" y="${y}" font-size="13" font-weight="700" fill="#022050" text-anchor="${a}">${s}</text>`;
-const D=(a,b,c,d)=>`<line x1="${a}" y1="${b}" x2="${c}" y2="${d}" ${dsh}/>`;
-const G=(x,y,s,k=1)=>`<g transform="translate(${x},${y}) scale(${k})">${s}</g>`;
-const V=a=>`<svg class="fig" viewBox="0 0 ${a[0]} ${a[1]}" style="width:${Math.min(a[0],a[2]||a[0])}px" role="img">${a[3]||''}</svg>`;
-const gl=(a,b,c,d)=>`<line x1="${a}" y1="${b}" x2="${c}" y2="${d}" stroke="#022050" stroke-width="1" opacity=".45"/>`;
-function box(w,h,d,la,lb,lc,g,wl,th){const dx=d*.7,dy=d*.45,x=40,y=14,fy=y+dy;let s='';
- s+=P(`${x},${fy} ${x+dx},${y} ${x+w+dx},${y} ${x+w},${fy}`,F3)+P(`${x},${fy} ${x+w},${fy} ${x+w},${fy+h} ${x},${fy+h}`,F1)+P(`${x+w},${fy} ${x+w+dx},${y} ${x+w+dx},${y+h} ${x+w},${fy+h}`,F2);
- if(wl){const wh=h*wl;s+=`<polygon points="${x},${fy+h-wh} ${x+w},${fy+h-wh} ${x+w},${fy+h} ${x},${fy+h}" fill="${WT}" opacity=".75"/><polygon points="${x+w},${fy+h-wh} ${x+w+dx},${y+h-wh} ${x+w+dx},${y+h} ${x+w},${fy+h}" fill="${WT}" opacity=".75"/>`+T(x+w/2,fy+h-wh/2+4,'air')}
- if(g){const[a,b,c]=g;for(let i=1;i<a;i++){s+=gl(x+i*w/a,fy,x+i*w/a,fy+h)+gl(x+i*w/a,fy,x+i*w/a+dx,y)}
-  for(let j=1;j<c;j++){s+=gl(x,fy+j*h/c,x+w,fy+j*h/c)+gl(x+w,fy+j*h/c,x+w+dx,y+j*h/c)}
-  for(let k=1;k<b;k++){s+=gl(x+dx*k/b,fy-dy*k/b,x+w+dx*k/b,fy-dy*k/b)+gl(x+w+dx*k/b,fy-dy*k/b,x+w+dx*k/b,fy-dy*k/b+h)}}
- let ex=0;if(th){const cx=x+w/2+dx/2,ay=y-th;s+=`<polygon points="${x},${fy} ${x+w},${fy} ${cx},${ay}" fill="${F1}" ${st}/><polygon points="${x+w},${fy} ${x+w+dx},${y} ${cx},${ay}" fill="${F2}" ${st}/><line x1="${x}" y1="${fy}" x2="${x+dx}" y2="${y}" ${dsh}/><line x1="${x+dx}" y1="${y}" x2="${cx}" y2="${ay}" ${dsh}/>`+D(cx,ay,cx,y+(fy-y)/2)+T(cx+6,ay+th/2+4,th.l||'t','start');ex=th}
- s+=T(x+w/2,fy+h+17,la)+T(x+w+dx/2+16,fy+h-dy/2+20,lb)+T(x-6,fy+h/2+4,lc,'end');
- return[x+w+dx+50,fy+h+30+ex,w+dx+90,th?G(0,th,s.replace(/<g/,'<g')):s]}
-/* box dengan limas: th adalah objek angka */
-function boxP(w,h,d,la,lb,lc,t,lt){const a=box(w,h,d,la,lb,lc);const dx=d*.7,dy=d*.45,x=40,y=14,fy=y+dy,cx=x+w/2+dx/2,ay=y-t;
- const ap=`<polygon points="${x},${fy} ${x+w},${fy} ${cx},${ay}" fill="${F1}" ${st}/><polygon points="${x+w},${fy} ${x+w+dx},${y} ${cx},${ay}" fill="${F2}" ${st}/><polygon points="${x},${fy} ${x+dx},${y} ${cx},${ay}" fill="${F3}" ${st}/>`+D(cx,ay,cx,fy-dy/2+ (dy/2))+T(cx+8,ay+t*.6,lt,'start');
- return[a[0],a[1]+t,a[2],G(0,t,a[3]+ap)]}
-function cyl(r,h,lr,lt,o={}){const ry=r*.35,cx=r+30,c0=ry+12;let s=`<path d="M${cx-r},${c0} V${c0+h} A${r},${ry} 0 0 0 ${cx+r},${c0+h} V${c0} Z" fill="${F1}" ${st}/>`;
- if(o.w){const wy=c0+h*(1-o.w);s+=`<path d="M${cx-r},${wy} V${c0+h} A${r},${ry} 0 0 0 ${cx+r},${c0+h} V${wy} A${r},${ry} 0 0 1 ${cx-r},${wy}Z" fill="${WT}" opacity=".8"/>`}
- s+=`<ellipse cx="${cx}" cy="${c0}" rx="${r}" ry="${ry}" fill="${o.open?'#fff':F3}" ${st}/>`;
- if(o.ball){s+=`<circle cx="${cx}" cy="${c0+h/2}" r="${r}" fill="${F2}" opacity=".85" ${st}/>`+T(cx,c0+h/2+4,'bola')}
- s+=D(cx,c0,cx+r,c0)+T(cx+r/2,c0-ry-3,lr)+D(cx+r+14,c0,cx+r+14,c0+h)+T(cx+r+20,c0+h/2+4,lt,'start');
- return[cx+r+70,c0+h+ry+14,cx+r+70,s]}
-function cone(r,h,lr,lt){const ry=r*.35,cx=r+30,by=12+h;let s=`<path d="M${cx-r},${by} A${r},${ry} 0 0 1 ${cx+r},${by}" ${dsh}/><path d="M${cx-r},${by} A${r},${ry} 0 0 0 ${cx+r},${by} L${cx},12 Z" fill="${F1}" ${st}/>`+D(cx,12,cx,by)+D(cx,by,cx+r,by)+T(cx+4,12+h/2,lt,'start')+T(cx+r/2,by+ry+16,lr);
- return[2*r+70,by+ry+26,2*r+70,s]}
-function sph(r,lr,half){const cx=r+25,cy=r+14;let s=half?`<path d="M${cx-r},${cy} A${r},${r} 0 0 1 ${cx+r},${cy}Z" fill="${F1}" ${st}/><ellipse cx="${cx}" cy="${cy}" rx="${r}" ry="${r*.3}" fill="${F3}" ${st}/>`+D(cx,cy,cx+r,cy)+T(cx+r/2,cy+r*.3+16,lr):`<circle cx="${cx}" cy="${cy}" r="${r}" fill="${F1}" ${st}/><path d="M${cx-r},${cy} A${r},${r*.3} 0 0 1 ${cx+r},${cy}" ${dsh}/><path d="M${cx-r},${cy} A${r},${r*.3} 0 0 0 ${cx+r},${cy}" fill="none" ${st}/>`+D(cx,cy,cx+r,cy)+`<circle cx="${cx}" cy="${cy}" r="2.5" fill="#022050"/>`+T(cx+r/2,cy-6,lr);
- return[2*r+50,half?cy+r*.3+28:2*r+30,2*r+50,s]}
-function pyr(w,h,lw,lt,lts){const x=30,by=h+30,dx=w*.5,dy=-w*.3,ax=x+w/2+dx/2;let s=P(`${x},${by} ${x+dx},${by+dy} ${ax},12`,F3)+P(`${x},${by} ${x+w},${by} ${ax},12`,F1)+P(`${x+w},${by} ${x+w+dx},${by+dy} ${ax},12`,F2)+D(ax,12,ax,by+dy/2)+T(ax-6,12+h/2,lt,'end')+T(x+w/2,by+17,lw);
- if(lts)s+=`<line x1="${ax}" y1="12" x2="${x+w/2}" y2="${by}" stroke="#d6336c" stroke-width="2.2"/>`+T(x+w/4+ax/2-34,12+h*.6,lts,'end');
- return[x+w+dx+40,by+30,x+w+dx+40,s]}
-function prism(){const A=[30,120],B=[130,120],C=[80,66],d=[60,-30];const q=p=>p.join(',');const S=(p,k)=>[p[0]+d[0],p[1]+d[1]];
- let s=P(`${q(A)} ${q(S(A))} ${q(S(C))} ${q(C)}`,F3)+P(`${q(B)} ${q(S(B))} ${q(S(C))} ${q(C)}`,F2)+P(`${q(A)} ${q(B)} ${q(C)}`,F1)+T(80,138,'alas (segitiga)')+T(168,100,'t');
- return[250,160,250,s]}
-function cubepyr(){return boxP(80,80,80,'6 cm','6 cm','6 cm',60,'4 cm')}
-function silo(r,h,lr,lt){const cx=r+30,c0=r+14,ry=r*.3;let s=`<path d="M${cx-r},${c0} V${c0+h} A${r},${ry} 0 0 0 ${cx+r},${c0+h} V${c0} Z" fill="${F1}" ${st}/><path d="M${cx-r},${c0} A${r},${r} 0 0 1 ${cx+r},${c0}Z" fill="${F2}" ${st}/>`+D(cx,c0,cx+r,c0)+T(cx+r/2,c0+14,lr)+D(cx+r+14,c0,cx+r+14,c0+h)+T(cx+r+20,c0+h/2,lt,'start');
- return[cx+r+70,c0+h+ry+14,cx+r+70,s]}
-function tent(){const r=44,cx=74,ry=15,ct=105,cb=150;let s=`<path d="M${cx-r},${ct} V${cb} A${r},${ry} 0 0 0 ${cx+r},${cb} V${ct} Z" fill="${F1}" ${st}/><path d="M${cx-r},${ct} A${r},${ry} 0 0 0 ${cx+r},${ct} L${cx},12 Z" fill="${F2}" ${st}/>`+D(cx,12,cx,ct)+T(cx+5,62,'12 m','start')+D(cx,ct,cx+r,ct)+T(cx+r/2,ct+ry+14,'3,5 m')+T(cx-r-4,128,'2 m','end')+T(cx+r-20,52,'s = 12,5 m','start');
- return[260,190,260,s]}
-function net(){const a=34;let s='';[[1,0],[0,1],[1,1],[2,1],[3,1],[1,2]].forEach(([i,j])=>s+=`<rect x="${10+i*a}" y="${10+j*a}" width="${a}" height="${a}" fill="${(i+j)%2?F1:F3}" ${st}/>`);return[150,120,150,s]}
-function cylnet(){let s=`<circle cx="75" cy="30" r="20" fill="${F3}" ${st}/><rect x="10" y="50" width="130" height="50" fill="${F1}" ${st}/><circle cx="75" cy="120" r="20" fill="${F3}" ${st}/>`+T(75,80,'2πr × t')+T(75,32,'alas')+T(75,124,'tutup');return[150,150,150,s]}
-function conenet(){const R=60,cx=80,cy=12,an=200*Math.PI/180,a0=(Math.PI-an)/2+Math.PI/2*0;const x1=cx+R*Math.cos(a0),y1=cy+R*Math.sin(a0),x2=cx+R*Math.cos(a0+an),y2=cy+R*Math.sin(a0+an);
- return[170,170,170,`<path d="M${cx},${cy} L${x1},${y1} A${R},${R} 0 1 1 ${x2},${y2} Z" fill="${F1}" ${st}/>`+T(cx,cy+34,'selimut')+`<circle cx="125" cy="140" r="20" fill="${F3}" ${st}/>`+T(125,144,'alas')]}
-function many(list,H,W){let x=0,b='';list.forEach(([s,cap,k])=>{k=k||1;b+=G(x,0,s[3],k)+T(x+(s[0]*k)/2-10,H-6,cap);x+=s[0]*k+10});return[W||x,H,W||x,b]}
-function water(){const c=cyl(40,70,'r = 7 cm','15 cm'),b=box(70,40,50,'14 cm','11 cm','');return[330,150,330,G(0,10,c[3],1)+`<path d="M175 80 H215" stroke="#022050" stroke-width="3"/><polygon points="215,72 230,80 215,88" fill="#022050"/>`+G(230,50,b[3],.9)]}
-function two(){const a=cyl(20,60,'r','t'),b=cyl(60,20,'3r','t/3');return[360,130,360,G(0,10,a[3])+G(110,50,b[3])]}
-function ballset(){let s=`<circle cx="60" cy="60" r="50" fill="${F1}" ${st}/>`+T(60,64,'r = 6 cm')+`<text x="130" y="68" font-size="30">→</text>`;for(let i=0;i<8;i++)s+=`<circle cx="${180+(i%4)*34}" cy="${48+Math.floor(i/4)*34}" r="14" fill="${F2}" ${st}/>`;return[330,125,330,s+T(248,115,'8 bola kecil')]}
-function boxes3(){const a=box(60,60,60,'10','10','10'),b=box(100,25,50,'20','10','5'),c=box(140,25,25,'40','5','5');return[600,150,600,G(0,0,a[3])+G(150,35,b[3])+G(360,40,c[3])]}
-function chart(){const rs=[3,4,5,6,7,8,10],ls=[723,601,557,560,594,652,828];const X=r=>50+(r-2)*44,Y=l=>230-(l-500)*.62;let s=`<line x1="50" y1="230" x2="400" y2="230" stroke="#022050" stroke-width="2"/><line x1="50" y1="30" x2="50" y2="230" stroke="#022050" stroke-width="2"/>`;
- [500,600,700,800].forEach(l=>s+=gl(50,Y(l),400,Y(l))+T(44,Y(l)+4,l,'end'));
- s+=`<polyline fill="none" stroke="#00a9ab" stroke-width="3" points="${rs.map((r,i)=>X(r)+','+Y(ls[i])).join(' ')}"/>`;
- rs.forEach((r,i)=>s+=`<circle cx="${X(r)}" cy="${Y(ls[i])}" r="5" fill="#ffd300" ${st}/>`+T(X(r),248,r)+T(X(r),Y(ls[i])-10,ls[i]));
- return[430,270,430,s+T(225,266,'r (cm)')+T(14,22,'L (cm²)','start')]}
-function cylTrio(){const a=cyl(25,40,'r','t'),b=cyl(50,40,'2r','t'),c=cyl(50,80,'2r','2t');return[560,170,560,G(0,40,a[3])+G(150,40,b[3])+G(300,0,c[3])]}
-function klas(){const L=[[box(60,50,50,'','','')[3],'(1) balok'],[cyl(30,50,'','')[3],'(2) tabung'],[cone(30,60,'','')[3],'(3) kerucut'],[pyr(60,60,'','')[3],'(4) limas'],[sph(32,'')[3],'(5) bola']];let s='';L.forEach(([b,c],i)=>s+=G(i*165,0,b,1)+T(i*165+70,200,c));return[840,210,840,s]}
-const IMG={
- vol:V(box(120,60,90,'4','3','2',[4,3,2])),liter:V(box(80,80,80,'10 cm','10 cm','10 cm')),
- jar:V(many([[net(),'jaring kubus'],[box(80,50,60,'p','l','t'),'balok']],140)),prisma:V(prism()),
- tabung:V(many([[cyl(40,70,'r','t'),'tabung'],[cylnet(),'jaring-jaring']],170)),limas:V(pyr(100,100,'a','t','tₛ')),
- kerucut:V(many([[cone(40,80,'r','t'),'kerucut'],[conenet(),'jaring-jaring']],190)),bola:V(many([[sph(50,'r'),'bola'],[sph(50,'r',1),'setengah bola']],150)),klas:V(klas()),
- b1:V(box(120,50,80,'12 cm','8 cm','5 cm')),t1:V(cyl(50,80,'r = 14','t = 20')),
- akv:V(box(130,70,90,'80 cm','50 cm','40 cm',null,.75)),silo:V(silo(48,80,'r = 3 m','7 m')),tent:V(tent()),
- ember:V(cyl(50,70,'r = 14','30 cm',{open:1})),kp:V(cubepyr()),
- c10:V(cylTrio()),c11:V(boxes3()),c12:V(cyl(45,90,'r = 3','6 cm',{ball:1})),c13:V(cyl(60,90,'r = 6','',{w:.6,ball:1})),
- s1:V(box(80,80,80,'9 cm','9 cm','9 cm')),s2:V(cyl(45,70,'r = 7','10 cm')),s3:V(cone(45,90,'r = 7','12 cm')),
- s5:V(box(140,35,80,'25 m','12 m','1,5 m')),s6:V(boxP(80,100,80,'10 cm','10 cm','15 cm',45,'6 cm')),s7:V(water()),s8:V(cone(40,110,'r = 7','24 cm')),
- s9:V(two()),s10:V(chart()),s11:V(ballset()),s12:V(cyl(50,100,'r = 6','12 cm',{ball:1}))};
-
-/* ===== DATA CONTOH ===== */
-const EX=[
-{lv:'Level 1 · Menghitung (balok)',q:r`Sebuah balok berukuran $12\text{ cm}\times8\text{ cm}\times5\text{ cm}$. Tentukan volume dan luas permukaannya.`,fig:'b1',
- s:[r`Tulis yang diketahui: $p=12$, $l=8$, $t=5$ (satuan cm).`,r`Volume balok: $V=p\times l\times t$.`,r`$V=12\times8\times5=480$`,r`Luas permukaan: $L=2(pl+pt+lt)$.`,r`$L=2(12\times8+12\times5+8\times5)=2(96+60+40)=2\times196=392$`],
- a:r`Volume $480\text{ cm}^3$ dan luas permukaan $392\text{ cm}^2$.`,c:r`Hitung tiga pasang sisi dulu: $96,\ 60,\ 40$. Jumlahkan ($196$), lalu kalikan $2$. Volume: kalikan tiga ukuran.`,
- t:r`Kubus rusuk 5 cm. Volume dan luas permukaan? <b>Jawab: $125\text{ cm}^3$ dan $150\text{ cm}^2$.</b>`},
-{lv:'Level 1 · Menghitung (tabung)',q:r`Tabung berjari-jari $14$ cm dan tinggi $20$ cm. Tentukan volume dan luas permukaannya. ($\pi=\frac{22}{7}$)`,fig:'t1',
- s:[r`Diketahui $r=14$, $t=20$, $\pi=\frac{22}{7}$ (karena $r$ kelipatan 7).`,r`Volume: $V=\pi r^2t=\frac{22}{7}\times14\times14\times20$`,r`Coret dulu: $\frac{22}{7}\times14=44$, lalu $44\times14\times20=12.320$`,r`Luas permukaan: $L=2\pi r(r+t)$`,r`$2\pi r=2\times\frac{22}{7}\times14=88$, maka $L=88\times(14+20)=88\times34=2.992$`],
- a:r`Volume $12.320\text{ cm}^3$, luas permukaan $2.992\text{ cm}^2$.`,c:r`$2\pi r=88$ muncul berkali-kali (keliling alas). Hitung sekali, pakai ulang: $L=88\times34$.`},
-{lv:'Level 1 · Mengidentifikasi unsur lalu menghitung (kerucut)',q:r`Kerucut berjari-jari $3$ cm dan tinggi $4$ cm. Tentukan garis pelukis, volume, dan luas permukaannya. ($\pi=3,14$)`,fig:'s3x',
- s:[r`Cari garis pelukis dengan Pythagoras: $s=\sqrt{r^2+t^2}=\sqrt{3^2+4^2}=\sqrt{25}=5$ cm.`,r`Volume memakai <b>tinggi</b>: $V=\frac{1}{3}\pi r^2t=\frac{1}{3}\times3,14\times3\times3\times4$`,r`$V=3,14\times12=37,68$`,r`Luas permukaan memakai <b>garis pelukis</b>: $L=\pi r(r+s)=3,14\times3\times(3+5)$`,r`$L=3,14\times24=75,36$`],
- a:r`$s=5$ cm, $V=37,68\text{ cm}^3$, $L=75,36\text{ cm}^2$.`,c:r`Kenali tripel 3-4-5 agar $s$ langsung $5$. Volume pakai $t$ (4), selimut pakai $s$ (5).`},
-{lv:'Level 1 · Menghitung (bola)',q:r`Bola berdiameter $42$ cm. Tentukan volume dan luas permukaannya. ($\pi=\frac{22}{7}$)`,fig:'bola',
- s:[r`Jari-jari: $r=d\div2=42\div2=21$ cm.`,r`Volume: $V=\frac{4}{3}\pi r^3=\frac{4}{3}\times\frac{22}{7}\times21\times21\times21$`,r`Coret: $21\div3=7$ dan $21\div7=3$, sehingga $V=4\times22\times7\times3\times21=38.808$`,r`Luas: $L=4\pi r^2=4\times\frac{22}{7}\times21\times21=4\times22\times3\times21=5.544$`],
- a:r`Volume $38.808\text{ cm}^3$, luas permukaan $5.544\text{ cm}^2$.`,c:r`Sebelum mengalikan, <b>coret dulu</b>: $21$ dibagi $3$ jadi $7$; $21$ dibagi $7$ jadi $3$.`},
-{lv:'Level 2 · Memodelkan: akuarium dan liter',q:r`Akuarium balok berukuran $80\times50\times40$ cm diisi air setinggi $30$ cm. Berapa liter air di dalamnya, dan berapa liter lagi agar penuh?`,fig:'akv',
- s:[r`Air membentuk balok setinggi <b>30 cm</b> (bukan 40 cm).`,r`$V_{air}=80\times50\times30=120.000\text{ cm}^3$`,r`Ubah ke liter: $120.000\div1.000=120$ liter.`,r`Kapasitas penuh: $80\times50\times40=160.000\text{ cm}^3=160$ liter.`,r`Sisa: $160-120=40$ liter.`],
- a:r`Air $120$ liter, masih perlu $40$ liter.`,c:r`Sisa = bagian kosong saja: $80\times50\times10=40.000\text{ cm}^3=40$ liter (tinggi kosong $40-30=10$ cm).`},
-{lv:'Level 2 · Menerapkan: tabung + setengah bola',q:r`Silo berbentuk tabung berjari-jari $3$ m dan tinggi $7$ m, beratap setengah bola berjari-jari sama. Tentukan volume seluruhnya. ($\pi=3,14$)`,fig:'silo',
- s:[r`Volume gabungan = volume tabung + volume setengah bola.`,r`Tabung: $\pi r^2t=3,14\times3\times3\times7=197,82\text{ m}^3$`,r`Setengah bola: $\frac{2}{3}\pi r^3=\frac{2}{3}\times3,14\times27=18\times3,14=56,52\text{ m}^3$`,r`Jumlahkan: $197,82+56,52=254,34$`],
- a:r`$254,34\text{ m}^3$.`,c:r`Pakai $\pi$ sekali: $V=\pi r^2(t+\frac{2}{3}r)=3,14\times9\times9=254,34$.`},
-{lv:'Level 2 · Menerapkan: luas permukaan gabungan',q:r`Tenda berbentuk tabung (jari-jari $3,5$ m, tinggi $2$ m) beratap kerucut setinggi $12$ m dengan garis pelukis $12,5$ m. Berapa luas kain (tanpa alas)? ($\pi=\frac{22}{7}$)`,fig:'tent',
- s:[r`Kain hanya menutup <b>selimut tabung</b> dan <b>selimut kerucut</b>. Tutup tabung/alas kerucut menempel (hilang), lantai tidak ditutup.`,r`Selimut tabung: $2\pi rt=2\times\frac{22}{7}\times3,5\times2=44\text{ m}^2$`,r`Selimut kerucut: $\pi rs=\frac{22}{7}\times3,5\times12,5=11\times12,5=137,5\text{ m}^2$`,r`$L=44+137,5=181,5$`],
- a:r`$181,5\text{ m}^2$.`,c:r`Tulis hanya yang terlihat: $\text{selimut}+\text{selimut}$. Tinggi kerucut (12) tidak dipakai karena $s$ sudah diberikan.`},
-{lv:'Level 2 · Menginterpretasikan: tanpa tutup',q:r`Ember tanpa tutup berbentuk tabung berjari-jari $14$ cm dan tinggi $30$ cm dibuat dari seng. Berapa luas seng yang diperlukan? ($\pi=\frac{22}{7}$)`,fig:'ember',
- s:[r`"Tanpa tutup" berarti hitung <b>alas + selimut</b> saja.`,r`Alas: $\pi r^2=\frac{22}{7}\times14\times14=616\text{ cm}^2$`,r`Selimut: $2\pi rt=2\times\frac{22}{7}\times14\times30=88\times30=2.640\text{ cm}^2$`,r`$L=616+2.640=3.256$`],
- a:r`$3.256\text{ cm}^2$.`,c:r`Rumus siap pakai: $L_{\text{tanpa tutup}}=\pi r^2+2\pi rt$ (hanya satu lingkaran).`},
-{lv:'Level 2 · Menerapkan: kubus + limas',q:r`Bangun terdiri dari kubus berusuk $6$ cm dengan limas segiempat di atasnya (alas limas = sisi atas kubus), tinggi limas $4$ cm. Tentukan volume dan luas permukaannya.`,fig:'kp',
- s:[r`Tinggi sisi tegak limas: setengah alas $=3$, tinggi $=4$, maka $t_s=\sqrt{3^2+4^2}=5$ cm.`,r`Volume kubus: $6^3=216$. Volume limas: $\frac{1}{3}\times36\times4=48$.`,r`$V=216+48=264$`,r`Luas: sisi atas kubus tertutup limas (hilang), jadi kubus tinggal 5 sisi: $5\times36=180$.`,r`Empat sisi tegak limas: $4\times\left(\frac{1}{2}\times6\times5\right)=60$.`,r`$L=180+60=240$`],
- a:r`Volume $264\text{ cm}^3$, luas permukaan $240\text{ cm}^2$.`,c:r`Sisi menempel dibuang: $5\times36+4\times15=240$. Volume tinggal dijumlah: $216+48$.`},
-{lv:'Level 3 · Generalisasi: perubahan ukuran',q:r`Tabung berjari-jari $7$ cm dan tinggi $10$ cm. Bagaimana volumenya jika (a) $r$ menjadi 2 kali, (b) $t$ menjadi 2 kali, (c) keduanya 2 kali?`,fig:'c10',
- s:[r`Mula-mula: $V=\frac{22}{7}\times7\times7\times10=1.540\text{ cm}^3$.`,r`(a) $r=14$: $V=6.160=4\times1.540$.`,r`(b) $t=20$: $V=3.080=2\times1.540$.`,r`(c) keduanya: $V=12.320=8\times1.540$.`,r`Alasan: $V=\pi r^2t$. $r$ dikuadratkan, jadi $\times2$ menjadi $2^2=4$; $t$ muncul sekali, tetap $\times2$.`],
- a:r`(a) 4 kali, (b) 2 kali, (c) 8 kali.`,c:r`Semua ukuran $\times k$: <b>luas $\times k^2$, volume $\times k^3$</b>. Kubus rusuk 3 jadi 6: volume 27 jadi 216 ($\times8$), luas 54 jadi 216 ($\times4$).`},
-{lv:'Level 3 · Mengevaluasi: membandingkan kemasan',q:r`Tiga balok sama-sama berisi $1.000\text{ cm}^3$ (ukuran pada gambar). Mana yang paling hemat bahan, dan apakah volume sama berarti luas permukaan sama?`,fig:'c11',
- s:[r`Cek volume: $10\times10\times10=1.000$; $20\times10\times5=1.000$; $40\times5\times5=1.000$.`,r`$L_1=6\times100=600$`,r`$L_2=2(200+100+50)=700$`,r`$L_3=2(200+200+25)=850$`,r`Kesimpulan: kubus paling hemat ($600\text{ cm}^2$). <b>Volume sama belum tentu luas permukaan sama.</b> Makin pipih/panjang, makin boros bahan.`],
- a:r`Kotak 1 (kubus) paling hemat, $600\text{ cm}^2$.`,c:r`Bentuk yang paling "mendekati kubus" memakai bahan paling sedikit.`},
-{lv:'Level 3 · Menyimpulkan: bola dalam tabung',q:r`Bola berjari-jari $3$ cm tepat masuk ke tabung (menyentuh alas, tutup, dan dinding). Berapa perbandingan volume bola terhadap tabung, dan berapa bagian tabung yang kosong? ($\pi=3,14$)`,fig:'c12',
- s:[r`Tinggi tabung $=2r=6$ cm.`,r`Volume tabung: $\pi r^2\times2r=2\pi r^3=2\pi\times27=54\pi$.`,r`Volume bola: $\frac{4}{3}\pi r^3=\frac{4}{3}\pi\times27=36\pi$.`,r`Perbandingan bola : tabung $=36\pi:54\pi=2:3$.`,r`Ruang kosong: $54\pi-36\pi=18\pi=56,52\text{ cm}^3$, yaitu $\frac{1}{3}$ bagian tabung.`],
- a:r`Perbandingan $2:3$; ruang kosong $56,52\text{ cm}^3$ ($\frac{1}{3}$ tabung).`,c:r`Hafalkan: bola yang tepat masuk tabung selalu $\frac{2}{3}$ volume tabung, berapa pun $r$-nya.`},
-{lv:'Level 3 · Memecahkan masalah: benda dicelup',q:r`Gelas tabung berjari-jari $6$ cm berisi air. Bola besi berjari-jari $3$ cm dimasukkan hingga tenggelam seluruhnya. Berapa cm kenaikan tinggi air?`,fig:'c13',
- s:[r`Gagasan kunci: volume air yang naik $=$ volume bola.`,r`Volume bola: $\frac{4}{3}\pi\times27=36\pi$.`,r`Kenaikan air membentuk tabung tipis: $\pi\times6^2\times h=36\pi h$.`,r`Samakan: $36\pi h=36\pi$, maka $h=1$.`],
- a:r`Air naik $1$ cm.`,c:r`Tidak perlu mengganti $\pi$ dengan angka: $\pi$ ada di kedua ruas lalu saling coret.`}
-];
-EX[2].fig='kerucut';
-
-/* ===== DATA SOAL ===== */
-const Q=[
-{n:1,lv:'Level 1 · Menghitung',t:'pg',q:r`Luas permukaan kubus dengan rusuk $9$ cm adalah ….`,fig:'s1',o:[r`$81\text{ cm}^2$`,r`$243\text{ cm}^2$`,r`$486\text{ cm}^2$`,r`$729\text{ cm}^2$`,r`$972\text{ cm}^2$`],k:2,
- s:[r`Rumus luas permukaan kubus: $L=6s^2$.`,r`$L=6\times9^2=6\times81=486\text{ cm}^2$`],c:r`Pengecoh $729$ adalah <b>volume</b> ($9^3$), bukan luas permukaan. Hitung $9\times9=81$, lalu $\times6$.`},
-{n:2,lv:'Level 1 · Menghitung',t:'pg',q:r`Volume tabung pada gambar adalah …. ($\pi=\frac{22}{7}$)`,fig:'s2',o:[r`$440\text{ cm}^3$`,r`$748\text{ cm}^3$`,r`$770\text{ cm}^3$`,r`$1.540\text{ cm}^3$`,r`$3.080\text{ cm}^3$`],k:3,
- s:[r`$V=\pi r^2t$`,r`$V=\frac{22}{7}\times7\times7\times10=22\times7\times10=1.540\text{ cm}^3$`],c:r`Coret $7$ dengan $\frac{22}{7}$: sisa $22\times7\times10$. Pengecoh: $440$ = selimut, $748$ = luas permukaan, $3.080$ = dua kali volume.`},
-{n:3,lv:'Level 1 · Menghitung',t:'pg',q:r`Volume kerucut pada gambar adalah …. ($\pi=\frac{22}{7}$)`,fig:'s3',o:[r`$154\text{ cm}^3$`,r`$308\text{ cm}^3$`,r`$616\text{ cm}^3$`,r`$1.232\text{ cm}^3$`,r`$1.848\text{ cm}^3$`],k:2,
- s:[r`$V=\frac{1}{3}\pi r^2t$`,r`$V=\frac{1}{3}\times\frac{22}{7}\times49\times12=22\times7\times4=616\text{ cm}^3$`],c:r`Bagi $12$ dengan $3$ jadi $4$, coret $49$ dengan $7$ jadi $7$. Pengecoh $1.848$ muncul bila lupa $\frac{1}{3}$.`},
-{n:4,lv:'Level 1 · Mengelompokkan · Benar/Salah',t:'bs',q:r`Perhatikan lima bangun ruang: (1) balok, (2) tabung, (3) kerucut, (4) limas, (5) bola. Tentukan Benar atau Salah.`,fig:'klas',
- o:[r`(a) Bangun (1) dan (4) hanya memiliki sisi datar.`,r`(b) Bangun (2) hanya memiliki sisi lengkung.`,r`(c) Bangun (3) memiliki satu sisi datar dan satu sisi lengkung.`],k:[1,0,1],
- s:[r`(a) Balok dan limas semua sisinya datar. <b>Benar.</b>`,r`(b) Tabung punya 2 sisi datar (alas, tutup) dan 1 sisi lengkung (selimut). <b>Salah.</b>`,r`(c) Kerucut: alas datar dan selimut lengkung. <b>Benar.</b>`],c:r`Cara cepat: hitung sisi datarnya. Balok, limas: semua datar. Tabung: 2 datar + 1 lengkung. Kerucut: 1 datar + 1 lengkung. Bola: hanya lengkung.`},
-{n:5,lv:'Level 2 · Memodelkan',t:'pg',q:r`Kolam renang balok berukuran $25\text{ m}\times12\text{ m}$ dengan kedalaman $1,5$ m diisi air penuh memakai pompa berdebit $50\text{ m}^3$ per jam. Waktu yang dibutuhkan adalah ….`,fig:'s5',o:['6 jam','7,5 jam','9 jam','12 jam','15 jam'],k:2,
- s:[r`Volume kolam: $V=25\times12\times1,5=450\text{ m}^3$.`,r`Waktu $=\frac{\text{volume}}{\text{debit}}=\frac{450}{50}=9$ jam.`],c:r`$25\times12=300$, lalu $300\times1,5=450$. Bagi $50$: $9$ jam. Satuan sudah sama ($\text{m}^3$), tidak perlu diubah.`},
-{n:6,lv:'Level 2 · Menerapkan',t:'pg',q:r`Bangun tersusun dari balok $10\times10\times15$ cm dan limas segiempat beraturan setinggi $6$ cm di atasnya (alas limas = sisi atas balok). Volume bangun adalah ….`,fig:'s6',o:[r`$1.500\text{ cm}^3$`,r`$1.600\text{ cm}^3$`,r`$1.700\text{ cm}^3$`,r`$1.800\text{ cm}^3$`,r`$1.900\text{ cm}^3$`],k:2,
- s:[r`Balok: $10\times10\times15=1.500$.`,r`Limas: $\frac{1}{3}\times(10\times10)\times6=200$.`,r`$V=1.500+200=1.700\text{ cm}^3$`],c:r`Limas $=\frac{1}{3}\times100\times6=200$ (bagi $6$ dengan $3$ dulu). Tinggal tambah $1.500$.`},
-{n:7,lv:'Level 2 · Memodelkan',t:'pg',q:r`Tabung berjari-jari $7$ cm dan tinggi $15$ cm penuh berisi air. Seluruh air dituang ke wadah balok beralas $14\text{ cm}\times11\text{ cm}$. Tinggi air dalam balok adalah …. ($\pi=\frac{22}{7}$)`,fig:'s7',o:['10 cm','12 cm','14 cm','15 cm','18 cm'],k:3,
- s:[r`Volume air tidak berubah, hanya wadahnya.`,r`$V_{air}=\frac{22}{7}\times7\times7\times15=2.310\text{ cm}^3$`,r`Luas alas balok: $14\times11=154\text{ cm}^2$.`,r`Tinggi air $=\frac{2.310}{154}=15$ cm.`],c:r`Volume air tetap: $\pi r^2t_1=L_{alas}\times t_2$. Hitung $154\times15=2.310$ (cocok), jadi $t_2=15$.`},
-{n:8,lv:'Level 2 · Menginterpretasikan · Pilihan ganda kompleks',t:'multi',q:r`Kerucut berjari-jari $7$ cm dan tinggi $24$ cm. Pilih <b>semua</b> pernyataan yang benar. ($\pi=\frac{22}{7}$)`,fig:'s8',
- o:[r`Garis pelukis kerucut adalah $25$ cm.`,r`Volume kerucut adalah $1.232\text{ cm}^3$.`,r`Luas selimut kerucut adalah $\pi\times7\times24=528\text{ cm}^2$.`,r`Luas permukaan kerucut adalah $704\text{ cm}^2$.`,r`Volume kerucut adalah $\pi r^2t=3.696\text{ cm}^3$.`],k:[1,1,0,1,0],
- s:[r`<b>A benar:</b> $s=\sqrt{7^2+24^2}=\sqrt{625}=25$ cm (tripel 7-24-25).`,r`<b>B benar:</b> $V=\frac{1}{3}\times\frac{22}{7}\times49\times24=22\times7\times8=1.232\text{ cm}^3$.`,r`<b>C salah:</b> selimut memakai $s$: $\pi rs=\frac{22}{7}\times7\times25=550\text{ cm}^2$ (bukan 528).`,r`<b>D benar:</b> $L=\pi r(r+s)=\frac{22}{7}\times7\times32=704\text{ cm}^2$.`,r`<b>E salah:</b> lupa $\frac{1}{3}$; volume yang benar $1.232\text{ cm}^3$.`],c:r`Hafal tripel $7,24,25$ lalu $\pi r=22$. Selimut $=22\times25=550$; luas $=22\times32=704$; volume $=\frac{1}{3}\times22\times7\times24=1.232$.`},
-{n:9,lv:'Level 3 · Menganalisis',t:'pg',q:r`Tabung memiliki jari-jari $r$ dan tinggi $t$. Tabung lain berjari-jari $3$ kali semula dan tinggi sepertiga tinggi semula. Volume tabung kedua dibanding tabung pertama adalah ….`,fig:'s9',o:['Tetap sama','2 kali','3 kali','6 kali','9 kali'],k:2,
- s:[r`$V_1=\pi r^2t$`,r`$V_2=\pi(3r)^2\times\frac{t}{3}=\pi\times9r^2\times\frac{t}{3}=3\pi r^2t=3V_1$`],c:r`Jari-jari dikuadratkan ($\times9$), tinggi $\times\frac{1}{3}$. Hasil: $9\times\frac{1}{3}=3$.`},
-{n:10,lv:'Level 3 · Menyimpulkan · Benar/Salah',t:'bs',q:r`Kaleng tabung bervolume tetap $1.000\text{ cm}^3$. Tabel dan grafik menunjukkan luas permukaannya untuk beberapa jari-jari. Tentukan Benar atau Salah.`,fig:'s10',
- tbl:r`<div class="wrap"><table><tr><th>r (cm)</th><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>10</td></tr><tr><th>L (cm²)</th><td>723</td><td>601</td><td>557</td><td>560</td><td>594</td><td>652</td><td>828</td></tr></table></div>`,
- o:[r`(a) Untuk $r=5$ cm, luas permukaan lebih kecil daripada untuk $r=3$ cm.`,r`(b) Memperbesar jari-jari selalu memperkecil luas permukaan.`,r`(c) Luas permukaan paling kecil terjadi pada jari-jari di antara $4$ cm dan $7$ cm.`],k:[1,0,1],
- s:[r`(a) $L(5)=557<L(3)=723$. <b>Benar.</b>`,r`(b) Dari $r=3$ ke $5$ luas turun, tetapi dari $r=6$ ke $10$ luas <b>naik</b> ($560$ menjadi $828$). <b>Salah.</b>`,r`(c) Luas turun sampai sekitar $r=5$ lalu naik lagi; nilai terkecil ada di antara $4$ dan $7$. <b>Benar.</b>`],c:r`Cukup <b>baca tabel/grafik</b>: cari titik terendah ($557$ di $r=5$). Tidak perlu menghitung ulang.`},
-{n:11,lv:'Level 3 · Menganalisis',t:'pg',q:r`Bola logam berjari-jari $6$ cm dilebur seluruhnya lalu dicetak menjadi $8$ bola kecil identik tanpa ada logam terbuang. Perbandingan jumlah luas permukaan seluruh bola kecil terhadap bola semula adalah ….`,fig:'s11',o:['1 : 1','2 : 1','4 : 1','8 : 1','1 : 2'],k:1,
- s:[r`Volume tetap: $8\times\frac{4}{3}\pi r_k^3=\frac{4}{3}\pi\times6^3$, sehingga $8r_k^3=216$.`,r`$r_k^3=27$, maka $r_k=3$ cm.`,r`Luas 8 bola kecil: $8\times4\pi\times3^2=288\pi$.`,r`Luas bola besar: $4\pi\times6^2=144\pi$.`,r`Perbandingan $=288\pi:144\pi=2:1$.`],c:r`Jari-jari bola kecil <b>setengah</b> bola besar, luas satu bola kecil $=\frac{1}{4}$ bola besar. Ada 8 bola: $8\times\frac{1}{4}=2$.`},
-{n:12,lv:'Level 3 · Memecahkan masalah · Isian singkat',t:'isi',q:r`Bola berjari-jari $6$ cm tepat berada di dalam tabung (menyentuh alas, tutup, dan dinding). Volume ruang kosong di antara bola dan tabung adalah … $\text{cm}^3$. ($\pi=3,14$)`,fig:'s12',k:'452.16',
- s:[r`Tinggi tabung $=2r=12$ cm.`,r`Volume tabung: $\pi\times6^2\times12=432\pi$.`,r`Volume bola: $\frac{4}{3}\pi\times6^3=288\pi$.`,r`Ruang kosong: $432\pi-288\pi=144\pi=144\times3,14=452,16$.`],c:r`Ruang kosong selalu $\frac{1}{3}$ volume tabung: $\frac{1}{3}\times432\pi=144\pi$.`,u:'452,16'}
-];
-IMG.s3x=IMG.kerucut;
-const KUNCI=['C','D','C','B S B','C','C','D','A, B, D','C','B S B','B','452,16'];
-
-/* ===== RENDER ===== */
-const sol=(s,c,a)=>`<div class="sol"><div class="tabs"><button class="on" data-t="l">Cara Lengkap</button><button data-t="c">⚡ Cara Cepat</button></div><div class="p l"><ol class="steps">${s.map(x=>`<li>${x}</li>`).join('')}</ol>${a?`<p class="ans">Jawaban: ${a}</p>`:''}</div><div class="p c" hidden>${c}</div></div>`;
-const fig=(k,cap)=>`<figure>${IMG[k]}<figcaption>${cap}</figcaption></figure>`;
-const box_=(c,t)=>`<div class="box ${c}">${t}</div>`;
-const exCard=(e,i)=>`<div class="card ex"><h4><span class="lv">Contoh ${i+1}</span>${e.lv}</h4><p>${e.q}</p>${e.fig?fig(e.fig,'Gambar contoh '+(i+1)):''}${sol(e.s,e.c,e.a)}${e.t?`<details class="try"><summary>✎ Coba sendiri</summary><p>${e.t}</p></details>`:''}</div>`;
-const exs=(a,b)=>EX.slice(a,b).map((e,i)=>exCard(e,a+i)).join('');
-const secs=[
-['a','A. Cek Kesiapan',r`
+<h2 id="A">A. Cek Kesiapan</h2>
 <h3>A.1 Volume dan luas permukaan itu apa?</h3>
-<p><b>Volume</b> adalah banyaknya ruang di dalam bangun (isi), diukur dengan <b>kubus satuan</b>. <b>Luas permukaan</b> adalah luas seluruh "kulit" bangun (jumlah luas semua sisinya), seperti kertas pembungkus kado.</p>
-${fig('vol','Gambar 2.1. Volume = banyaknya kubus satuan yang mengisi balok ($4\\times3\\times2=24$)')}
-<div class="wrap"><table><tr><th></th><th>Volume</th><th>Luas permukaan</th></tr><tr><td>Yang diukur</td><td>Isi di dalam bangun</td><td>Semua sisi di luar bangun</td></tr><tr><td>Satuan</td><td>cm³, m³, liter</td><td>cm², m²</td></tr><tr><td>Kata kunci soal</td><td>isi, kapasitas, daya tampung, air yang mengisi, bahan yang dilebur</td><td>kain, kertas pembungkus, cat, bahan pembuat kaleng, kulit</td></tr></table></div>
+<p><b>Volume</b> adalah banyaknya ruang di dalam bangun (isi), diukur dengan kubus satuan. <b>Luas permukaan</b> adalah luas seluruh "kulit" bangun (jumlah luas semua sisi), seperti kertas pembungkus kado.</p>
+<div class="fig" id="f1"></div>
+<table><tr><th></th><th>Volume</th><th>Luas permukaan</th></tr><tr><td>Yang diukur</td><td>Isi di dalam bangun</td><td>Semua sisi di luar bangun</td></tr><tr><td>Satuan</td><td>cm³, m³, liter</td><td>cm², m²</td></tr><tr><td>Kata kunci</td><td>isi, kapasitas, daya tampung, air</td><td>kain, kertas pembungkus, cat, bahan kaleng</td></tr></table>
 <h3>A.2 Satuan volume dan liter</h3>
-${fig('liter','Gambar 2.2. Satu kubus bersisi 10 cm berisi tepat 1 liter')}
-<div class="wrap"><table><tr><th>Yang harus dihafal</th><th>Keterangan</th></tr><tr><td>$1\text{ cm}^3=1\text{ mL}$</td><td>kubus kecil $1\times1\times1$ cm</td></tr><tr><td>$1\text{ liter}=1\text{ dm}^3=1.000\text{ cm}^3$</td><td>$1\text{ dm}=10\text{ cm}$, sehingga $10\times10\times10=1.000$</td></tr><tr><td>$1\text{ m}^3=1.000\text{ liter}$</td><td>$1\text{ m}=10\text{ dm}$, sehingga $10\times10\times10=1.000\text{ dm}^3$</td></tr></table></div>
-${box_('warn',r`<b>⚠ Awas jebakan satuan.</b> Satuan volume berubah dengan <b>×1.000</b> (bukan ×10 atau ×100). Contoh: $120.000\text{ cm}^3=120$ liter.`)}
+<table><tr><th>Hafalkan</th><th>Alasan</th></tr><tr><td>$1\ \text{cm}^3 = 1\ \text{mL}$</td><td>kubus kecil $1\times1\times1$ cm</td></tr><tr><td>$1\ \text{liter} = 1\ \text{dm}^3 = 1.000\ \text{cm}^3$</td><td>$1\ \text{dm}=10\ \text{cm}$, jadi $10\times10\times10=1.000$</td></tr><tr><td>$1\ \text{m}^3 = 1.000\ \text{liter}$</td><td>$1\ \text{m}=10\ \text{dm}$, jadi $10\times10\times10=1.000$</td></tr></table>
+<div class="warn"><b>⚠ Awas jebakan satuan.</b> Satuan volume berubah dengan <b>×1.000</b> (bukan ×10 atau ×100). Contoh: $120.000\ \text{cm}^3 = 120$ liter.</div>
 <h3>A.3 Bekal dari Modul 1</h3>
-<ul><li>Luas persegi panjang $=p\times l$, luas segitiga $=\frac{1}{2}at$, luas lingkaran $=\pi r^2$, keliling lingkaran $=2\pi r$.</li>
-<li>Pythagoras: $c^2=a^2+b^2$ (untuk garis pelukis kerucut dan tinggi sisi tegak limas). Tripel: $3\text{-}4\text{-}5$, $5\text{-}12\text{-}13$, $7\text{-}24\text{-}25$.</li>
-<li>Pilih $\pi=\frac{22}{7}$ bila $r$ kelipatan 7, selain itu $\pi=3,14$.</li></ul>
-<h3>A.4 Uji kesiapan</h3>
-<div class="wrap"><table><tr><th>No</th><th>Soal</th><th>Jawaban (klik)</th></tr>
-<tr><td>1</td><td>1 liter = … cm³</td><td><details><summary>lihat</summary>1.000 cm³</details></td></tr>
-<tr><td>2</td><td>$2,5\text{ m}^3=$ … liter</td><td><details><summary>lihat</summary>2.500 liter</details></td></tr>
-<tr><td>3</td><td>$5^3=\dots$</td><td><details><summary>lihat</summary>125</details></td></tr>
-<tr><td>4</td><td>Luas lingkaran $r=7$ cm, $\pi=\frac{22}{7}$</td><td><details><summary>lihat</summary>154 cm²</details></td></tr>
-<tr><td>5</td><td>Segitiga siku-siku bersisi tegak 6 dan 8. Sisi miringnya …</td><td><details><summary>lihat</summary>10</details></td></tr></table></div>
-<p><i>Kurang dari 4 benar? Ulangi A.2 dan A.3 sebelum lanjut.</i></p>`],
-['b','B. Rumus Bangun Ruang',r`
-<h3>B.1 Kubus dan balok</h3>
-<p>Volume balok adalah banyaknya kubus satuan yang tersusun: <b>panjang × lebar × tinggi</b>. Luas permukaannya adalah luas jaring-jaring: enam sisi yang berpasangan sama besar.</p>
-${fig('jar','Gambar 2.3. Jaring-jaring kubus dan balok: luas permukaan = jumlah luas semua sisi')}
-<ul><li><b>Kubus</b> (rusuk $s$): $V=s^3$, $L=6s^2$.</li><li><b>Balok</b> ($p,l,t$): $V=p\times l\times t$, $L=2(pl+pt+lt)$.</li></ul>
-<h3>B.2 Prisma</h3>
-<p>Prisma punya alas dan tutup sama bentuk, disatukan sisi-sisi tegak berbentuk persegi panjang. Prisma seperti <b>tumpukan</b> alas setinggi $t$, sehingga volumenya selalu <b>luas alas × tinggi</b>.</p>
-${fig('prisma','Gambar 2.4. Prisma segitiga: volume = luas alas × tinggi prisma')}
-<ul><li>$V=L_{alas}\times t$ dan $L=2\times L_{alas}+(K_{alas}\times t)$ ($K$ = keliling).</li></ul>
-<h3>B.3 Tabung</h3>
-<p>Tabung adalah prisma beralas lingkaran. Jaring-jaringnya: dua lingkaran (alas dan tutup) dan satu persegi panjang (selimut) yang <b>panjangnya sama dengan keliling alas</b> $2\pi r$ dan lebarnya tinggi $t$.</p>
-${fig('tabung','Gambar 2.5. Tabung dan jaring-jaringnya')}
-<ul><li>$V=\pi r^2t$.</li><li>Luas selimut $=2\pi rt$. Luas permukaan $L=2\pi r^2+2\pi rt=2\pi r(r+t)$.</li></ul>
-<h3>B.4 Limas</h3>
-${fig('limas','Gambar 2.6. Limas: tinggi limas (t, garis putus-putus) berbeda dengan tinggi sisi tegak (tₛ, garis merah)')}
-<ul><li>$V=\frac{1}{3}\times L_{alas}\times t$. (Tiga limas yang sama membentuk satu prisma beralas dan setinggi sama.)</li><li>$L=L_{alas}+$ jumlah luas sisi tegak. Tiap sisi tegak berbentuk segitiga, luasnya $\frac{1}{2}\times\text{alas}\times t_s$.</li></ul>
-${box_('warn',r`<b>⚠ Dua "tinggi" pada limas.</b> <b>Tinggi limas</b> $t$ tegak lurus alas (menuju titik tengah alas). <b>Tinggi sisi tegak</b> $t_s$ berada pada bidang sisi tegak. Hubungannya (Pythagoras): $t_s^2=t^2+\left(\frac{a}{2}\right)^2$ untuk alas persegi bersisi $a$. Luas sisi tegak memakai $t_s$, volume memakai $t$.`)}
-<h3>B.5 Kerucut</h3>
-${fig('kerucut','Gambar 2.7. Kerucut dan jaring-jaringnya')}
-<ul><li>Garis pelukis $s=\sqrt{r^2+t^2}$.</li><li>$V=\frac{1}{3}\pi r^2t$.</li><li>Luas selimut $=\pi rs$. Luas permukaan $L=\pi r^2+\pi rs=\pi r(r+s)$.</li></ul>
-<h3>B.6 Bola</h3>
-${fig('bola','Gambar 2.8. Bola dan setengah bola')}
-<ul><li>Bola: $V=\frac{4}{3}\pi r^3$, $L=4\pi r^2$.</li><li>Setengah bola: $V=\frac{2}{3}\pi r^3$; luas lengkungnya $2\pi r^2$, dan bila bagian datar (tutup) dihitung, $L=3\pi r^2$.</li></ul>
-<h3>B.7 Mengelompokkan: sisi datar atau lengkung?</h3>
-${fig('klas','Gambar 2.9. Bangun ruang bersisi datar (balok, limas) dan bersisi lengkung (tabung, kerucut, bola)')}
-<div class="box star"><b>★ Ringkasan rumus</b><div class="formula">
-<div><b>Kubus</b><br>$V=s^3$, $L=6s^2$</div><div><b>Balok</b><br>$V=plt$, $L=2(pl+pt+lt)$</div><div><b>Prisma</b><br>$V=L_{alas}\times t$</div>
-<div><b>Tabung</b><br>$V=\pi r^2t$, $L=2\pi r(r+t)$</div><div><b>Limas</b><br>$V=\frac{1}{3}L_{alas}t$</div><div><b>Kerucut</b><br>$V=\frac{1}{3}\pi r^2t$, $L=\pi r(r+s)$, $s=\sqrt{r^2+t^2}$</div><div><b>Bola</b><br>$V=\frac{4}{3}\pi r^3$, $L=4\pi r^2$</div></div></div>`],
-['c','C. Level 1 — Pengetahuan dan Pemahaman',()=>exs(0,4)],
-['d','D. Level 2 — Aplikasi',()=>box_('star',r`<b>★ Strategi bangun ruang gabungan dan soal cerita</b><br>1. <b>Volume gabungan</b> = jumlah volume tiap bagian.<br>2. <b>Luas permukaan gabungan</b>: hitung hanya bagian yang <b>tampak di luar</b>. Sisi yang saling menempel hilang.<br>3. <b>"Tanpa tutup"</b> berarti satu sisi tidak dihitung. <b>"Terisi sebagian"</b> berarti pakai tinggi isi, bukan tinggi wadah.<br>4. <b>Samakan satuan</b> dahulu. Ingat $1\text{ liter}=1.000\text{ cm}^3$.`)+exs(4,9)],
-['e','E. Level 3 — Penalaran',()=>exs(9,13)],
-['f','F. Kesalahan yang Sering Terjadi',r`
-<div class="wrap"><table><tr><th>Kesalahan</th><th>Yang benar</th></tr>
-<tr><td>Tertukar volume dan luas permukaan</td><td>Volume = isi (cm³, liter). Luas permukaan = kulit (cm²).</td></tr>
-<tr><td>Memakai $s$ untuk volume kerucut, atau $t$ untuk selimut</td><td>Volume memakai tinggi $t$; selimut memakai garis pelukis $s$.</td></tr>
-<tr><td>Lupa $\frac{1}{3}$ pada limas dan kerucut</td><td>Keduanya $\frac{1}{3}\times L_{alas}\times t$.</td></tr>
-<tr><td>Memakai tinggi sisi tegak limas untuk volume</td><td>Volume memakai tinggi limas (tegak lurus alas).</td></tr>
-<tr><td>Memakai diameter sebagai jari-jari</td><td>$r=d\div2$.</td></tr>
-<tr><td>1 liter dianggap 100 cm³</td><td>1 liter = 1.000 cm³.</td></tr>
-<tr><td>Pada gabungan, ikut menghitung sisi yang menempel</td><td>Sisi yang menempel dibuang dari luas permukaan.</td></tr>
-<tr><td>Pada "tanpa tutup", tetap menghitung dua lingkaran</td><td>Hanya satu lingkaran (alas).</td></tr>
-<tr><td>Menganggap ukuran ×2 membuat volume ×2</td><td>Semua ukuran $\times k$: volume $\times k^3$, luas $\times k^2$.</td></tr></table></div>
-${box_('star',r`<b>★ Ringkasan 1 halaman</b><br>Prisma/tabung: $V=L_{alas}\times t$. Limas/kerucut: $V=\frac{1}{3}L_{alas}\times t$. Bola: $V=\frac{4}{3}\pi r^3$.<br>Luas permukaan = jumlah luas semua sisi (jaring-jaring). Tabung: $2\pi r(r+t)$. Kerucut: $\pi r(r+s)$. Bola: $4\pi r^2$.<br>Gabungan: volume dijumlahkan; luas permukaan hanya bagian luar. "Tanpa tutup" = satu sisi dibuang.<br>$1\text{ liter}=1.000\text{ cm}^3$; $1\text{ m}^3=1.000$ liter. Benda dicelup: volume benda = volume air yang naik.`)}`],
-['g','G. Latihan dan Prediksi Soal TKA',()=>`<p>Kerjakan tanpa melihat pembahasan, target <b>sekitar 3 menit per soal</b>. Pilih jawaban, lalu pembahasan (cara lengkap dan cara cepat) akan muncul.</p><div class="score"><span>Skor: <b id="sc">0</b> / 12 &nbsp; Terjawab: <b id="an">0</b> / 12</span><button class="btn" id="rs">Ulangi Latihan</button></div><div id="qs"></div>`]
-];
-const app=document.getElementById('app');
-app.innerHTML=`<div class="hero"><span class="chip">Modul 2 · Geometri dan Pengukuran</span><h1>Volume dan Luas Permukaan Bangun Ruang</h1><p>Elemen Geometri dan Pengukuran · Sub materi Objek Geometri · Kompetensi 2 dari 3</p><p>Modul ini membantu siswa mengingat konsep dasar bangun ruang. Kamu belajar dari pertanyaan paling mendasar ("apa itu volume?") sampai soal penalaran Level 3, dengan gambar di setiap konsep dan <b>12 prediksi soal</b> lengkap dengan pembahasan.</p></div>
-<section><h2>Isi Modul</h2><div class="wrap"><table><tr><th>Bagian</th><th>Isi</th></tr><tr><td>A</td><td>Cek Kesiapan: apa itu volume dan luas permukaan, satuan, bekal dari Modul 1</td></tr><tr><td>B</td><td>Rumus: kubus, balok, prisma, tabung, limas, kerucut, bola</td></tr><tr><td>C</td><td>Level 1: menghitung, mengelompokkan, mengidentifikasi</td></tr><tr><td>D</td><td>Level 2: bangun gabungan dan soal cerita (liter, air, kemasan)</td></tr><tr><td>E</td><td>Level 3: penalaran (perubahan ukuran, membandingkan, benda dicelup)</td></tr><tr><td>F</td><td>Kesalahan yang sering terjadi dan ringkasan</td></tr><tr><td>G</td><td>Bank Prediksi Soal (12 soal) serta kunci dan pembahasan</td></tr></table></div>
-<h3>Peta kompetensi</h3><p>Cakupan: bangun ruang beraturan bersisi <b>datar</b> (kubus, balok, prisma, limas) dan bersisi <b>lengkung</b> (tabung, kerucut, bola), termasuk gabungannya.</p>
-<div class="wrap"><table><tr><th>Level</th><th>Proses berpikir</th><th>Wujud soal</th></tr><tr><td><b>Level 1</b> Pengetahuan dan Pemahaman</td><td>Menghitung, memahami informasi, mengelompokkan, mengidentifikasi</td><td>Volume dan luas permukaan satu bangun; mengelompokkan sisi datar dan lengkung; menentukan unsur</td></tr><tr><td><b>Level 2</b> Aplikasi</td><td>Memodelkan, menerapkan, menginterpretasikan</td><td>Bangun gabungan, kemasan tanpa tutup, akuarium dan kolam (liter), memindahkan air</td></tr><tr><td><b>Level 3</b> Penalaran</td><td>Menganalisis, memecahkan masalah, mengevaluasi, menyimpulkan, generalisasi</td><td>Pengaruh perubahan ukuran, membandingkan kemasan, bola dalam tabung, benda dicelup, membaca tabel/grafik</td></tr></table></div>
-${box_('info',r`<b>ℹ Cara memakai modul.</b> Kerjakan <b>A. Cek Kesiapan</b> dulu. Setiap contoh ditulis <b>bertahap</b> (tab <b>Cara Lengkap</b>); tab kuning <b>⚡ Cara Cepat</b> dipakai jika sudah paham, dan <b>✎ Coba sendiri</b> memuat jawaban untuk dicocokkan. Jangan menghafal rumus tanpa gambar. Bayangkan: <b>volume = isi</b>, <b>luas permukaan = kulit/kemasan luar</b>.`)}</section>`
-+secs.map(([id,t,c])=>`<section id="${id}"><h2>${t}</h2>${typeof c==='function'?c():c}</section>`).join('');
-document.getElementById('sub').innerHTML=secs.map(([id,t])=>`<a href="#${id}">${t.split('.')[0]}. ${t.split(/[.—]\s*/).pop().replace(/^ /,'').slice(0,18)}</a>`).join('');
+<ul><li>Luas persegi panjang $=p\times l$; segitiga $=\frac{1}{2}\times a\times t$; lingkaran $=\pi r^2$; keliling lingkaran $=2\pi r$.</li>
+<li>Pythagoras: $c^2=a^2+b^2$. Tripel: 3-4-5, 5-12-13, 7-24-25.</li>
+<li>Pilih $\pi=\frac{22}{7}$ bila $r$ kelipatan 7, selain itu $\pi=3{,}14$.</li></ul>
+<h3>A.4 Uji Kesiapan <small>(kurang dari 4 benar? ulangi A.2 dan A.3)</small></h3>
+<table><tr><th>No</th><th>Soal</th><th>Jawaban</th></tr>
+<tr><td>1</td><td>1 liter = … cm³</td><td><details><summary>Lihat</summary>1.000 cm³</details></td></tr>
+<tr><td>2</td><td>2,5 m³ = … liter</td><td><details><summary>Lihat</summary>$2{,}5\times1.000=2.500$ liter</details></td></tr>
+<tr><td>3</td><td>$5^3$ = …</td><td><details><summary>Lihat</summary>$5\times5\times5=125$</details></td></tr>
+<tr><td>4</td><td>Luas lingkaran $r=7$ cm, $\pi=\frac{22}{7}$</td><td><details><summary>Lihat</summary>$\frac{22}{7}\times7\times7=154\ \text{cm}^2$</details></td></tr>
+<tr><td>5</td><td>Segitiga siku-siku sisi tegak 6 dan 8; sisi miringnya …</td><td><details><summary>Lihat</summary>$\sqrt{36+64}=10$</details></td></tr></table>
 
-/* ===== LATIHAN INTERAKTIF ===== */
-let state={};
-const L='ABCDE';
-function drawQs(){state={};document.getElementById('qs').innerHTML=Q.map(q=>{let h=`<div class="card" id="q${q.n}"><h4><span class="lv">Soal ${q.n}</span>${q.lv}</h4><p>${q.q}</p>`+(q.fig?fig(q.fig,'Gambar soal '+q.n):'')+(q.tbl||'');
- if(q.t==='pg')h+=`<div class="opts">${q.o.map((o,i)=>`<button class="opt" data-q="${q.n}" data-i="${i}"><b>${L[i]}.</b> <span>${o.includes('$')?o:o}</span></button>`).join('')}</div>`;
- if(q.t==='bs')h+=q.o.map((o,i)=>`<div class="bsrow" data-q="${q.n}" data-r="${i}"><span>${o}</span><span><button class="opt" data-v="1">Benar</button> <button class="opt" data-v="0">Salah</button></span></div>`).join('');
- if(q.t==='multi')h+=`<div class="opts">${q.o.map((o,i)=>`<label class="opt"><input type="checkbox" data-q="${q.n}" data-i="${i}"> <span><b>${L[i]}.</b> ${o}</span></label>`).join('')}</div><button class="btn" data-chk="${q.n}">Periksa Jawaban</button>`;
- if(q.t==='isi')h+=`<p>Jawaban: <input class="in" id="in${q.n}" inputmode="decimal" placeholder="contoh: 123,45"> <button class="btn" data-chk="${q.n}">Periksa</button></p>`;
- return h+`<div class="fb" id="fb${q.n}"></div><div id="ex${q.n}" hidden></div></div>`}).join('');
- upd();render()}
-function upd(){let s=0,a=0;Object.values(state).forEach(v=>{a++;if(v)s++});document.getElementById('sc').textContent=s;document.getElementById('an').textContent=a}
-function fin(q,ok,msg){state[q.n]=ok;const f=document.getElementById('fb'+q.n);f.className='fb '+(ok?'ok':'no');f.innerHTML=(ok?'✔ Benar! ':'✘ Belum tepat. ')+(msg||'');
- const e=document.getElementById('ex'+q.n);e.hidden=false;e.innerHTML=sol(q.s,q.c,q.t==='pg'?`${L[q.k]}. ${q.o[q.k]}`:q.t==='isi'?`${q.u} $\\text{cm}^3$`:`Kunci: ${KUNCI[q.n-1]}`);upd();render(e)}
-function render(el){if(window.renderMathInElement)renderMathInElement(el||document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})}
-document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
- if(b.dataset.t){const s=b.closest('.sol');s.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===b));s.querySelector('.p.l').hidden=b.dataset.t!=='l';s.querySelector('.p.c').hidden=b.dataset.t!=='c';return}
- if(b.id==='rs'){drawQs();return}
- if(b.classList.contains('opt')&&b.dataset.q){const q=Q[b.dataset.q-1];if(state[q.n]!==undefined)return;const i=+b.dataset.i;document.querySelectorAll(`#q${q.n} .opt`).forEach((o,j)=>{o.disabled=true;if(j===q.k)o.classList.add('right');else if(j===i)o.classList.add('wrong')});fin(q,i===q.k,i===q.k?'':`Jawaban yang tepat: ${L[q.k]}.`);return}
- if(b.classList.contains('opt')&&b.dataset.v!==undefined){const row=b.closest('.bsrow'),q=Q[row.dataset.q-1],i=+row.dataset.r;if(row.dataset.d)return;row.dataset.d=1;const ok=+b.dataset.v===q.k[i];row.querySelectorAll('.opt').forEach(o=>{o.disabled=true;if(+o.dataset.v===q.k[i])o.classList.add('right');else if(o===b)o.classList.add('wrong')});
-  const rows=[...document.querySelectorAll(`#q${q.n} .bsrow`)];row.dataset.ok=ok?1:0;if(rows.every(x=>x.dataset.d)){const all=rows.every(x=>x.dataset.ok==='1');fin(q,all,all?'':'Lihat tanda merah dan baca pembahasan.')}return}
- if(b.dataset.chk){const q=Q[b.dataset.chk-1];if(state[q.n]!==undefined)return;
-  if(q.t==='multi'){const cs=[...document.querySelectorAll(`#q${q.n} input`)];let ok=true;cs.forEach((c,i)=>{const w=!!q.k[i];if(c.checked!==w)ok=false;c.disabled=true;c.closest('label').classList.add(w?'right':(c.checked?'wrong':''))});fin(q,ok,ok?'':'Kunci: A, B, D.')}
-  else{const v=document.getElementById('in'+q.n).value.trim().replace(/\./g,'').replace(',','.');if(!v)return;const ok=Math.abs(parseFloat(v)-parseFloat(q.k))<.005;document.getElementById('in'+q.n).disabled=true;fin(q,ok,ok?'':`Jawaban yang tepat: ${q.u}.`)}}
-});
-drawQs();
-window.addEventListener('load',()=>render());
-</script>
-</body>
-</html>
+<h2 id="B">B. Rumus Bangun Ruang</h2>
+<div id="rumus" class="g"></div>
+<div class="warn"><b>⚠ Dua "tinggi" pada limas.</b> Tinggi limas $t$ tegak lurus alas (dipakai untuk <b>volume</b>). Tinggi sisi tegak $t_s$ ada pada bidang sisi tegak (dipakai untuk <b>luas sisi tegak</b>). Hubungannya: $t_s^2=t^2+\left(\frac{a}{2}\right)^2$.</div>
+<div class="sum"><b>★ Ringkasan rumus</b><br>Kubus: $V=s^3,\ L=6s^2$ · Balok: $V=plt,\ L=2(pl+pt+lt)$ · Prisma: $V=L_{alas}\times t$ · Tabung: $V=\pi r^2t,\ L=2\pi r(r+t)$ · Limas: $V=\frac{1}{3}L_{alas}\,t$ · Kerucut: $V=\frac{1}{3}\pi r^2t,\ L=\pi r(r+s),\ s=\sqrt{r^2+t^2}$ · Bola: $V=\frac{4}{3}\pi r^3,\ L=4\pi r^2$</div>
+<h3>B.7 Sisi datar atau lengkung?</h3>
+<table><tr><th>Bersisi datar</th><th>Bersisi lengkung</th></tr><tr><td>Kubus, balok, prisma, limas</td><td>Tabung (2 datar + 1 lengkung), kerucut (1 datar + 1 lengkung), bola (lengkung semua)</td></tr></table>
+
+<h2 id="C">C. Level 1: Pengetahuan dan Pemahaman</h2><div id="sC"></div>
+<h2 id="D">D. Level 2: Aplikasi</h2>
+<div class="tip"><b>★ Strategi.</b> (1) Volume gabungan = jumlah volume tiap bagian. (2) Luas permukaan gabungan: hitung hanya bagian yang tampak; sisi yang menempel <b>hilang</b>. (3) "Tanpa tutup" = satu sisi tidak dihitung. (4) Samakan satuan dulu: 1 liter = 1.000 cm³.</div><div id="sD"></div>
+<h2 id="E">E. Level 3: Penalaran</h2><div id="sE"></div>
+<h2 id="F">F. Kesalahan yang Sering Terjadi</h2>
+<table><tr><th>Kesalahan</th><th>Yang benar</th></tr>
+<tr><td>Tertukar volume dan luas permukaan</td><td>Volume = isi (cm³, liter). Luas = kulit (cm²).</td></tr>
+<tr><td>Kerucut: pakai $s$ untuk volume / $t$ untuk selimut</td><td>Volume pakai $t$; selimut pakai $s$.</td></tr>
+<tr><td>Lupa $\frac{1}{3}$ pada limas dan kerucut</td><td>Keduanya $\frac{1}{3}\times L_{alas}\times t$.</td></tr>
+<tr><td>Diameter dipakai sebagai jari-jari</td><td>$r=d\div2$.</td></tr>
+<tr><td>1 liter dianggap 100 cm³</td><td>1 liter = 1.000 cm³.</td></tr>
+<tr><td>Gabungan: sisi menempel ikut dihitung</td><td>Sisi menempel dibuang.</td></tr>
+<tr><td>"Tanpa tutup" tetap hitung dua lingkaran</td><td>Hanya satu lingkaran (alas).</td></tr>
+<tr><td>Ukuran ×2 dikira volume ×2</td><td>Semua ukuran ×k: volume ×k³, luas ×k².</td></tr></table>
+
+<h2 id="G">G. Bank Prediksi Soal TKA (12 soal)</h2>
+<p>Target sekitar 3 menit per soal. Jawab dulu, lalu baca pembahasannya.</p><div id="sG"></div>
+</main>
+<footer>© VisualMath.Lim · TKA Matematika Wajib SMA · <a href="index.html" style="color:#ffd300">Home</a> · <a href="pengukuran.html" style="color:#00d6d8">Dashboard</a></footer>
+<div class="score" id="score">Skor: 0 / 0</div>
+<script>
+const R=String.raw,$id=i=>document.getElementById(i);
+/* ===== GAMBAR (SVG) ===== */
+const S='stroke="#022050" stroke-width="1.6" stroke-linejoin="round"',D=S+' stroke-dasharray="5 4" fill="none"';
+const tx=(x,y,s,a='middle')=>`<text x="${x}" y="${y}" text-anchor="${a}" font-size="13" font-weight="700" fill="#022050" stroke="#fff" stroke-width="3" paint-order="stroke">${s}</text>`;
+const W=b=>`<svg viewBox="0 0 220 160">${b}</svg>`,P=(p,f)=>`<polygon points="${p}" fill="${f}" ${S}/>`,Ln=(a,b,c,d)=>`<line x1="${a}" y1="${b}" x2="${c}" y2="${d}" ${D}/>`;
+const FF={
+box:(a,b,c,g)=>{let o=P('20,50 120,50 170,22 70,22','#bff3f4')+P('120,50 170,22 170,92 120,120','#8de6e8')+P('20,50 120,50 120,120 20,120','#e6fbfc');
+ if(g){for(let i=1;i<4;i++)o+=`<line x1="${20+i*25}" y1="50" x2="${20+i*25}" y2="120" stroke="#022050" opacity=".4"/>`;for(let j=1;j<3;j++)o+=`<line x1="20" y1="${50+j*23.3}" x2="120" y2="${50+j*23.3}" stroke="#022050" opacity=".4"/>`}
+ return W(o+tx(70,138,a)+tx(158,115,b,'start')+tx(14,90,c,'end'))},
+cyl:(r,t,w)=>{let o='<path d="M35,30 V120 A45,14 0 0 0 125,120 V30" fill="#e6fbfc" '+S+'/>';
+ if(w)o+=`<path d="M35,${w} V120 A45,14 0 0 0 125,120 V${w} A45,14 0 0 1 35,${w}Z" fill="#00d6d8" opacity=".55"/>`;
+ return W(o+`<ellipse cx="80" cy="30" rx="45" ry="14" fill="#bff3f4" ${S}/>`+Ln(80,30,125,30)+Ln(80,134,125,120)+tx(103,24,r)+tx(130,80,t,'start'))},
+cone:(r,t,s)=>W(`<path d="M80,12 L35,118 A45,14 0 0 0 125,118 Z" fill="#e6fbfc" ${S}/><path d="M35,118 A45,14 0 0 1 125,118" ${D}/>`+Ln(80,12,80,118)+Ln(80,118,125,118)+tx(104,112,r)+tx(74,70,t,'end')+tx(112,60,s,'start')),
+sph:(r)=>W(`<circle cx="110" cy="80" r="55" fill="#bff3f4" ${S}/><path d="M55,80 A55,15 0 0 0 165,80" fill="none" ${S}/><path d="M55,80 A55,15 0 0 1 165,80" ${D}/>`+Ln(110,80,165,80)+tx(138,74,r)),
+pyr:(a,t,ts)=>W(`<polygon points="25,125 125,125 165,100 65,100" fill="#e6fbfc" ${S}/><polygon points="25,125 125,125 95,18" fill="#bff3f4" ${S}/><polygon points="125,125 165,100 95,18" fill="#8de6e8" ${S}/>`+Ln(95,18,95,112)+Ln(95,18,65,100)+Ln(65,100,25,125)+Ln(65,100,165,100)+tx(88,70,t,'end')+tx(60,70,ts,'end')+tx(75,145,a)),
+chart:()=>{let d=[[3,723],[4,601],[5,557],[6,560],[7,594],[8,652],[10,828]],X=r=>30+(r-2)*24,Y=l=>150-(l-500)*.4,o='';
+ for(let l=500;l<=800;l+=100)o+=`<line x1="30" x2="215" y1="${Y(l)}" y2="${Y(l)}" stroke="#bde"/>${tx(26,Y(l)+4,l,'end')}`;
+ o+=`<polyline fill="none" stroke="#00d6d8" stroke-width="3" points="${d.map(p=>X(p[0])+','+Y(p[1])).join(' ')}"/>`;
+ d.forEach(p=>o+=`<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="4" fill="#ffd300" ${S}/>`+tx(X(p[0]),158,p[0]));return `<svg viewBox="0 0 230 175">${o}<line x1="30" y1="10" x2="30" y2="150" ${S}/>${tx(122,12,'L (cm²) terhadap r (cm)')}</svg>`}
+};
+const fg=(sp,cap)=>`<div class="fig"><div class="row">${sp.map(s=>FF[s[0]](...s.slice(1))).join('')}</div>${cap?`<small>${cap}</small>`:''}</div>`;
+$id('f1').innerHTML=fg([['box','4 satuan','3 satuan','2 satuan',1]],'Gambar 2.1. Volume = banyak kubus satuan: 4 × 3 × 2 = 24');
+
+/* ===== RUMUS ===== */
+const RM=[
+['Kubus dan balok',[['box','p','l','t']],R`Balok: $V=p\times l\times t$ dan $L=2(pl+pt+lt)$.<br>Kubus (rusuk $s$): $V=s^3$, $L=6s^2$.<div class="tip">Luas = jumlah luas jaring-jaring: 6 sisi, berpasangan sama besar.</div>`],
+['Prisma',[],R`Alas dan tutup sama; disatukan sisi tegak persegi panjang. Seperti <b>tumpukan</b> alas setinggi $t$:<br>$V=L_{alas}\times t$, $L=2L_{alas}+(K_{alas}\times t)$.`],
+['Tabung',[['cyl','r','t']],R`Jaring-jaring: 2 lingkaran + 1 persegi panjang ($2\pi r\times t$).<br>$V=\pi r^2t$<br>Selimut $=2\pi rt$<br>$L=2\pi r^2+2\pi rt=2\pi r(r+t)$`],
+['Limas',[['pyr','a','t','tₛ']],R`$V=\frac{1}{3}\times L_{alas}\times t$<br>$L=L_{alas}+$ jumlah luas sisi tegak (tiap segitiga $\frac{1}{2}\times a\times t_s$)`],
+['Kerucut',[['cone','r','t','s']],R`$s=\sqrt{r^2+t^2}$<br>$V=\frac{1}{3}\pi r^2t$<br>Selimut $=\pi rs$, $L=\pi r^2+\pi rs=\pi r(r+s)$`],
+['Bola',[['sph','r']],R`$V=\frac{4}{3}\pi r^3$, $L=4\pi r^2$<br>Setengah bola: $V=\frac{2}{3}\pi r^3$; luas lengkung $2\pi r^2$, dengan tutup $L=3\pi r^2$.`]];
+$id('rumus').innerHTML=RM.map((r,i)=>`<div class="card"><h3 style="margin-top:0">B.${i+1} ${r[0]}</h3>${r[1].length?fg(r[1]):''}${r[2]}</div>`).join('');
+
+/* ===== SOAL ===== */
+const L='ABCDE';let tot=0,ok=0;
+const sc=()=>$id('score').textContent=`Skor: ${ok} / ${tot}`;
+function typeset(el){if(window.renderMathInElement)renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})}
+function explain(q,box,good,msg){const e=document.createElement('div');e.className='ex';
+ e.innerHTML=`<div class="v ${good?'ok':'no'}">${good?'✅ Benar! ':'❌ Belum tepat. '}${msg}</div><h4>📝 Cara Lengkap (langkah demi langkah)</h4><ol class="steps">${q.st.map(s=>`<li>${s}</li>`).join('')}</ol>${q.c?`<div class="fast"><b>⚡ Cara Cepat</b><br>${q.c}</div>`:''}`;
+ box.appendChild(e);typeset(e);tot++;if(good)ok++;sc()}
+function build(q,i,host){const d=document.createElement('div');d.className='q';
+ let h=`<span class="tag">${q.lv}</span> <b>${q.no}</b><p>${q.t}</p>${q.f?fg(q.f,q.cap):''}`;
+ if(q.k=='s')h+=q.o.map((o,j)=>`<button class="opt" data-j="${j}"><b>${L[j]}</b><span>${o}</span></button>`).join('');
+ if(q.k=='m')h+=q.o.map((o,j)=>`<label class="opt"><input type="checkbox" value="${L[j]}"><b>${L[j]}</b><span>${o}</span></label>`).join('')+'<button class="go">Periksa jawaban</button>';
+ if(q.k=='b')h+=q.o.map((o,j)=>`<div class="st"><span>${o}</span><label><input type="radio" name="${i}${j}" value="B"> Benar</label><label><input type="radio" name="${i}${j}" value="S"> Salah</label></div>`).join('')+'<button class="go">Periksa jawaban</button>';
+ if(q.k=='f')h+='<div class="fill">Jawaban: <input type="text" inputmode="decimal" placeholder="mis. 123,45"> cm³</div><button class="go">Periksa jawaban</button>';
+ d.innerHTML=h;host.appendChild(d);typeset(d);
+ if(q.k=='s')d.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const j=+b.dataset.j,g=L[j]==q.a;d.querySelectorAll('.opt').forEach(x=>x.disabled=true);
+  d.querySelectorAll('.opt')[L.indexOf(q.a)].classList.add('ok');if(!g)b.classList.add('no');explain(q,d,g,`Jawaban yang benar: <b>${q.a}</b>.`)});
+ else d.querySelector('.go').onclick=function(){this.disabled=true;let g;
+  if(q.k=='m'){const v=[...d.querySelectorAll('input:checked')].map(x=>x.value).join('');g=v==q.a;d.querySelectorAll('input').forEach(x=>x.disabled=true);
+   d.querySelectorAll('.opt').forEach((o,j)=>o.classList.add(q.a.includes(L[j])?'ok':'no'));}
+  if(q.k=='b'){g=q.a.every((a,j)=>{const x=d.querySelector(`input[name="${i}${j}"]:checked`);return x&&x.value==a});d.querySelectorAll('input').forEach(x=>x.disabled=true)}
+  if(q.k=='f'){const v=parseFloat(d.querySelector('input').value.replace(',','.'));g=Math.abs(v-q.a)<.01;d.querySelector('input').disabled=true}
+  explain(q,d,g,q.k=='b'?`Kunci: ${q.a.map((a,j)=>'('+'abc'[j]+') '+(a=='B'?'Benar':'Salah')).join(', ')}.`:q.k=='m'?`Kunci: <b>${q.a.split('').join(', ')}</b>.`:`Kunci: <b>${String(q.a).replace('.',',')}</b>.`)}}
+const mkAll=(id,arr,pre)=>arr.forEach((q,i)=>build(q,pre+i,$id(id)));
+
+/* ===== CONTOH (Level 1-3) ===== */
+const C1=[
+{no:'Contoh 1',lv:'Level 1 · Menghitung (balok)',k:'s',t:R`Sebuah balok berukuran $12\ \text{cm}\times8\ \text{cm}\times5\ \text{cm}$. Volume dan luas permukaannya adalah …`,f:[['box','12 cm','8 cm','5 cm']],cap:'Gambar 2.10. Balok 12 × 8 × 5',
+ o:[R`$V=480\ \text{cm}^3$ dan $L=196\ \text{cm}^2$`,R`$V=480\ \text{cm}^3$ dan $L=392\ \text{cm}^2$`,R`$V=392\ \text{cm}^3$ dan $L=480\ \text{cm}^2$`,R`$V=96\ \text{cm}^3$ dan $L=392\ \text{cm}^2$`,R`$V=240\ \text{cm}^3$ dan $L=196\ \text{cm}^2$`],a:'B',
+ st:[R`Tulis rumus: $V=p\times l\times t$ dan $L=2(pl+pt+lt)$.`,R`Isi ukuran: $p=12$, $l=8$, $t=5$.`,R`Volume: $V=12\times8\times5=480\ \text{cm}^3$.`,R`Luas: $L=2(12\times8+12\times5+8\times5)=2(96+60+40)=392\ \text{cm}^2$.`],c:R`Hitung tiga luas sisi berbeda (96, 60, 40), jumlahkan, kalikan 2. Pengecoh 196 = lupa dikali 2.`},
+{no:'Contoh 2',lv:'Level 1 · Menghitung (tabung)',k:'s',t:R`Tabung berjari-jari 14 cm dan tinggi 20 cm. Volume dan luas permukaannya ($\pi=\frac{22}{7}$) adalah …`,f:[['cyl','r = 14 cm','t = 20 cm']],cap:'Gambar 2.11',
+ o:[R`$12.320\ \text{cm}^3$ dan $1.760\ \text{cm}^2$`,R`$2.992\ \text{cm}^3$ dan $12.320\ \text{cm}^2$`,R`$49.280\ \text{cm}^3$ dan $8.448\ \text{cm}^2$`,R`$12.320\ \text{cm}^3$ dan $2.992\ \text{cm}^2$`,R`$6.160\ \text{cm}^3$ dan $2.992\ \text{cm}^2$`],a:'D',
+ st:[R`Volume: $V=\pi r^2t=\frac{22}{7}\times14\times14\times20$.`,R`Coret: $\frac{14}{7}=2$, sehingga $V=22\times2\times14\times20=12.320$.`,R`Luas: $L=2\pi r(r+t)=2\times\frac{22}{7}\times14\times(14+20)$.`,R`$2\times\frac{22}{7}\times14=88$, maka $L=88\times34=2.992$.`],c:R`$2\pi r=88$ muncul berkali-kali. Hitung sekali, pakai ulang. Pengecoh 1.760 = hanya selimut; 49.280 = memakai diameter.`},
+{no:'Contoh 3',lv:'Level 1 · Mengidentifikasi unsur (kerucut)',k:'s',t:R`Kerucut berjari-jari 3 cm dan tinggi 4 cm ($\pi=3{,}14$). Garis pelukis, volume, dan luas permukaannya …`,f:[['cone','r = 3','t = 4','s = ?']],
+ o:[R`$s=5$; $V=37{,}68$; $L=75{,}36$`,R`$s=4$; $V=37{,}68$; $L=75{,}36$`,R`$s=5$; $V=113{,}04$; $L=75{,}36$`,R`$s=5$; $V=37{,}68$; $L=47{,}1$`,R`$s=7$; $V=37{,}68$; $L=94{,}2$`],a:'A',
+ st:[R`Garis pelukis: $s=\sqrt{r^2+t^2}=\sqrt{3^2+4^2}=\sqrt{25}=5$ (tripel 3-4-5).`,R`Volume: $V=\frac{1}{3}\times3{,}14\times3\times3\times4=3{,}14\times12=37{,}68$.`,R`Luas: $L=\pi r(r+s)=3{,}14\times3\times(3+5)=75{,}36$.`],c:R`Volume pakai tinggi $t$, selimut pakai garis pelukis $s$. Pengecoh 113,04 = lupa $\frac{1}{3}$.`},
+{no:'Contoh 4',lv:'Level 1 · Menghitung (bola)',k:'s',t:R`Bola berdiameter 42 cm ($\pi=\frac{22}{7}$). Volume dan luas permukaannya …`,f:[['sph','r = 21 cm']],
+ o:[R`$310.464\ \text{cm}^3$ dan $22.176\ \text{cm}^2$`,R`$5.544\ \text{cm}^3$ dan $38.808\ \text{cm}^2$`,R`$38.808\ \text{cm}^3$ dan $5.544\ \text{cm}^2$`,R`$29.106\ \text{cm}^3$ dan $5.544\ \text{cm}^2$`,R`$38.808\ \text{cm}^3$ dan $1.386\ \text{cm}^2$`],a:'C',
+ st:[R`Jari-jari: $r=42\div2=21$ cm.`,R`$V=\frac{4}{3}\pi r^3=\frac{4}{3}\times\frac{22}{7}\times21\times21\times21=4\times22\times7\times3\times21\div21$... hitung bertahap: $=4\times22\times7\times21\times\frac{21}{21}$`,R`Coret: $\frac{21}{3}=7$ dan $\frac{21}{7}=3$, sehingga $V=4\times22\times7\times21\times\frac{3\times7\times\ldots}{}$`,R`Hasil akhir: $V=38.808\ \text{cm}^3$.`,R`$L=4\pi r^2=4\times\frac{22}{7}\times21\times21=4\times22\times3\times21=5.544\ \text{cm}^2$.`],c:R`Sebelum mengalikan, <b>coret dulu</b>: 21 dibagi 3 = 7, 21 dibagi 7 = 3. Pengecoh 310.464 = memakai diameter sebagai $r$.`}
+];
+C1[3].st=[R`Jari-jari: $r=42\div2=21$ cm.`,R`Rumus volume: $V=\frac{4}{3}\pi r^3=\frac{4}{3}\times\frac{22}{7}\times21\times21\times21$.`,R`Coret dulu: $\frac{22}{7}\times21=22\times3=66$.`,R`$V=\frac{4}{3}\times66\times21\times21=4\times22\times21\times21=88\times441=38.808\ \text{cm}^3$.`,R`Luas: $L=4\pi r^2=4\times66\times21=5.544\ \text{cm}^2$.`];
+mkAll('sC',C1,'c');
+
+const C2=[
+{no:'Contoh 5',lv:'Level 2 · Memodelkan: akuarium dan liter',k:'s',t:R`Akuarium balok $80\times50\times40$ cm diisi air setinggi 30 cm. Air di dalamnya dan tambahan air agar penuh adalah …`,f:[['box','80 cm','50 cm','40 cm']],cap:'Air setinggi 30 cm',
+ o:[R`160 liter dan 0 liter`,R`120.000 liter dan 40.000 liter`,R`12 liter dan 4 liter`,R`160 liter dan 40 liter`,R`120 liter dan 40 liter`],a:'E',
+ st:[R`Air membentuk balok setinggi <b>30 cm</b> (bukan 40 cm).`,R`$V_{air}=80\times50\times30=120.000\ \text{cm}^3$.`,R`Ubah ke liter: $120.000\div1.000=120$ liter.`,R`Kapasitas penuh: $80\times50\times40=160.000\ \text{cm}^3=160$ liter. Sisa: $160-120=40$ liter.`],c:R`Sisa saja: tinggi kosong $=40-30=10$ cm, jadi $80\times50\times10=40.000\ \text{cm}^3=40$ liter.`},
+{no:'Contoh 6',lv:'Level 2 · Tabung + setengah bola',k:'s',t:R`Silo berbentuk tabung ($r=3$ m, $t=7$ m) beratap setengah bola berjari-jari sama. Volume seluruhnya ($\pi=3{,}14$) …`,f:[['cyl','r = 3 m','t = 7 m'],['sph','r = 3 m']],
+ o:[R`$197{,}82\ \text{m}^3$`,R`$310{,}86\ \text{m}^3$`,R`$56{,}52\ \text{m}^3$`,R`$254{,}34\ \text{m}^3$`,R`$226{,}08\ \text{m}^3$`],a:'D',
+ st:[R`Bagi bangun: tabung + setengah bola.`,R`Tabung: $V=\pi r^2t=3{,}14\times3\times3\times7=197{,}82$.`,R`Setengah bola: $V=\frac{2}{3}\pi r^3=\frac{2}{3}\times3{,}14\times27=18\times3{,}14=56{,}52$.`,R`Jumlahkan: $197{,}82+56{,}52=254{,}34\ \text{m}^3$.`],c:R`Volume gabungan = jumlah volume tiap bagian. Pengecoh 310,86 = memakai bola penuh.`},
+{no:'Contoh 7',lv:'Level 2 · Luas permukaan gabungan',k:'s',t:R`Tenda: tabung ($r=3{,}5$ m, $t=2$ m) beratap kerucut (tinggi 12 m, garis pelukis 12,5 m). Luas kain tanpa alas ($\pi=\frac{22}{7}$) …`,f:[['cyl','r = 3,5','t = 2'],['cone','r = 3,5','t = 12','s = 12,5']],
+ o:[R`$176\ \text{m}^2$`,R`$181{,}5\ \text{m}^2$`,R`$220\ \text{m}^2$`,R`$137{,}5\ \text{m}^2$`,R`$258{,}5\ \text{m}^2$`],a:'B',
+ st:[R`Kain hanya menutup <b>selimut tabung</b> dan <b>selimut kerucut</b> (tutup tabung dan alas kerucut menempel, alas lantai tidak ditutup).`,R`Selimut tabung: $2\pi rt=2\times\frac{22}{7}\times3{,}5\times2=44\ \text{m}^2$.`,R`Selimut kerucut: $\pi rs=\frac{22}{7}\times3{,}5\times12{,}5=11\times12{,}5=137{,}5\ \text{m}^2$.`,R`Jumlah: $44+137{,}5=181{,}5\ \text{m}^2$.`],c:R`Selimut kerucut memakai $s=12{,}5$ (bukan $t=12$; itu menghasilkan 176).`},
+{no:'Contoh 8',lv:'Level 2 · Tanpa tutup',k:'s',t:R`Ember tanpa tutup berbentuk tabung ($r=14$ cm, $t=30$ cm). Seng yang diperlukan ($\pi=\frac{22}{7}$) …`,f:[['cyl','r = 14','t = 30']],
+ o:[R`$2.640\ \text{cm}^2$`,R`$3.872\ \text{cm}^2$`,R`$3.256\ \text{cm}^2$`,R`$616\ \text{cm}^2$`,R`$18.480\ \text{cm}^2$`],a:'C',
+ st:[R`"Tanpa tutup" berarti dihitung <b>alas + selimut</b>.`,R`Alas: $\pi r^2=\frac{22}{7}\times14\times14=616$.`,R`Selimut: $2\pi rt=2\times\frac{22}{7}\times14\times30=88\times30=2.640$.`,R`Jumlah: $616+2.640=3.256\ \text{cm}^2$.`],c:R`Rumus siap pakai: $L=\pi r^2+2\pi rt$. Pengecoh 3.872 = dua lingkaran; 18.480 = volume.`},
+{no:'Contoh 9',lv:'Level 2 · Kubus + limas',k:'s',t:R`Kubus rusuk 6 cm dengan limas segiempat di atasnya (alas = sisi atas kubus, tinggi limas 4 cm). Volume dan luas permukaan bangun …`,f:[['box','6','6','6'],['pyr','6','t = 4','tₛ']],
+ o:[R`$V=264$ dan $L=276$`,R`$V=216$ dan $L=240$`,R`$V=264$ dan $L=240$`,R`$V=360$ dan $L=240$`,R`$V=264$ dan $L=228$`],a:'C',
+ st:[R`Tinggi sisi tegak limas: $t_s=\sqrt{3^2+4^2}=5$ cm (setengah alas = 3).`,R`Volume: kubus $6^3=216$; limas $\frac{1}{3}\times36\times4=48$. Total $=264\ \text{cm}^3$.`,R`Luas: sisi atas kubus tertutup limas (hilang), jadi kubus 5 sisi: $5\times36=180$.`,R`Empat sisi tegak limas: $4\times\left(\frac{1}{2}\times6\times5\right)=60$. Total $L=180+60=240\ \text{cm}^2$.`],c:R`Luas sisi tegak memakai $t_s=5$, volume memakai $t=4$. Pengecoh 276 = sisi menempel ikut dihitung.`}
+];mkAll('sD',C2,'d');
+
+const C3=[
+{no:'Contoh 10',lv:'Level 3 · Generalisasi',k:'s',t:R`Tabung $r=7$ cm, $t=10$ cm. Jika <b>jari-jari dan tinggi sama-sama menjadi 2 kali</b>, volumenya menjadi … kali semula.`,f:[['cyl','r','t'],['cyl','2r','2t']],
+ o:['2','4','6','8','16'],a:'D',
+ st:[R`Mula-mula: $V=\frac{22}{7}\times7\times7\times10=1.540\ \text{cm}^3$.`,R`(a) Hanya $r=14$: $V=6.160=4\times1.540$.`,R`(b) Hanya $t=20$: $V=3.080=2\times1.540$.`,R`(c) Keduanya: $V=12.320=8\times1.540$.`,R`Alasan: $V=\pi r^2t$. $r$ dikuadratkan ($2^2=4$), $t$ satu kali ($\times2$). Jadi $4\times2=8$.`],c:R`Semua ukuran diperbesar $k$ kali: <b>luas $\times k^2$</b>, <b>volume $\times k^3$</b>. Contoh kubus rusuk 3 menjadi 6: volume 27→216 (×8), luas 54→216 (×4).`},
+{no:'Contoh 11',lv:'Level 3 · Mengevaluasi kemasan',k:'s',t:R`Tiga balok, masing-masing bervolume $1.000\ \text{cm}^3$: $10\times10\times10$, $20\times10\times5$, $40\times5\times5$. Mana yang paling hemat bahan?`,f:[['box','10','10','10'],['box','20','10','5'],['box','40','5','5']],cap:'Gambar 2.18',
+ o:[R`$10\times10\times10$ ($L=600\ \text{cm}^2$)`,R`$20\times10\times5$ ($L=700\ \text{cm}^2$)`,R`$40\times5\times5$ ($L=850\ \text{cm}^2$)`,R`Semua sama karena volume sama`,R`Tidak dapat ditentukan`],a:'A',
+ st:[R`Cek volume: $10^3=1.000$; $20\times10\times5=1.000$; $40\times5\times5=1.000$.`,R`$L_1=6\times100=600$.`,R`$L_2=2(200+100+50)=700$.`,R`$L_3=2(200+200+25)=850$.`,R`Kesimpulan: kubus paling hemat. <b>Volume sama tidak berarti luas permukaan sama</b>; makin pipih/panjang, makin boros bahan.`],c:R`Untuk volume tetap, bentuk paling "bulat/kubus" memakai bahan paling sedikit.`},
+{no:'Contoh 12',lv:'Level 3 · Bola dalam tabung',k:'s',t:R`Bola berjari-jari 3 cm tepat masuk ke tabung (menyentuh alas, tutup, dinding). Perbandingan volume bola : volume tabung adalah …`,f:[['cyl','r = 3','t = 2r = 6'],['sph','r = 3']],
+ o:['1 : 2','2 : 3','3 : 4','1 : 3','3 : 2'],a:'B',
+ st:[R`Tinggi tabung $=2r=6$ cm.`,R`$V_{tabung}=\pi r^2\times2r=2\pi r^3=2\pi\times27=54\pi$.`,R`$V_{bola}=\frac{4}{3}\pi r^3=\frac{4}{3}\pi\times27=36\pi$.`,R`Perbandingan $36\pi:54\pi=2:3$. Ruang kosong $=18\pi=56{,}52\ \text{cm}^3$, yaitu $\frac{1}{3}$ bagian tabung.`],c:R`Bola yang tepat masuk tabung: volume bola selalu $\frac{2}{3}$ volume tabung, berapa pun $r$.`},
+{no:'Contoh 13',lv:'Level 3 · Benda dicelup',k:'s',t:R`Gelas tabung berjari-jari 6 cm berisi air. Bola besi berjari-jari 3 cm dimasukkan hingga tenggelam seluruhnya. Kenaikan tinggi air …`,f:[['cyl','r = 6','naik h','90'],['sph','r = 3']],
+ o:['0,5 cm','1 cm','1,5 cm','2 cm','3 cm'],a:'B',
+ st:[R`Kunci: volume air yang naik $=$ volume bola.`,R`$V_{bola}=\frac{4}{3}\pi\times3^3=36\pi$.`,R`Kenaikan air membentuk tabung tipis: $\pi\times6^2\times h=36\pi h$.`,R`Samakan: $36\pi h=36\pi\Rightarrow h=1$ cm.`],c:R`Tidak perlu mengganti $\pi$ dengan angka: $\pi$ ada di kedua ruas lalu saling coret.`}
+];mkAll('sE',C3,'e');
+
+/* ===== BANK PREDIKSI TKA ===== */
+const G=[
+{no:'Soal 1',lv:'Level 1 · Menghitung',k:'s',t:R`Luas permukaan kubus dengan rusuk 9 cm adalah …`,f:[['box','9 cm','9 cm','9 cm']],o:[R`$81\ \text{cm}^2$`,R`$243\ \text{cm}^2$`,R`$486\ \text{cm}^2$`,R`$729\ \text{cm}^2$`,R`$972\ \text{cm}^2$`],a:'C',
+ st:[R`Rumus luas permukaan kubus: $L=6s^2$.`,R`Isi $s=9$: $L=6\times9^2$.`,R`$9^2=81$, maka $L=6\times81=486\ \text{cm}^2$.`],c:R`Pengecoh 729 adalah <b>volume</b> ($9^3$), bukan luas permukaan.`},
+{no:'Soal 2',lv:'Level 1 · Menghitung',k:'s',t:R`Volume tabung pada gambar adalah … ($\pi=\frac{22}{7}$)`,f:[['cyl','r = 7 cm','t = 10 cm']],o:[R`$440\ \text{cm}^3$`,R`$748\ \text{cm}^3$`,R`$770\ \text{cm}^3$`,R`$1.540\ \text{cm}^3$`,R`$3.080\ \text{cm}^3$`],a:'D',
+ st:[R`Rumus: $V=\pi r^2t$.`,R`Isi: $V=\frac{22}{7}\times7\times7\times10$.`,R`Coret 7: $V=22\times7\times10=1.540\ \text{cm}^3$.`],c:R`Pengecoh: 440 = selimut ($2\pi rt$), 748 = luas permukaan, 3.080 = dua kali volume.`},
+{no:'Soal 3',lv:'Level 1 · Menghitung',k:'s',t:R`Volume kerucut pada gambar adalah … ($\pi=\frac{22}{7}$)`,f:[['cone','r = 7 cm','t = 12 cm','s']],o:[R`$154\ \text{cm}^3$`,R`$308\ \text{cm}^3$`,R`$616\ \text{cm}^3$`,R`$1.232\ \text{cm}^3$`,R`$1.848\ \text{cm}^3$`],a:'C',
+ st:[R`Rumus: $V=\frac{1}{3}\pi r^2t$ (pakai tinggi $t=12$, bukan $s$).`,R`Isi: $V=\frac{1}{3}\times\frac{22}{7}\times7\times7\times12$.`,R`$\frac{12}{3}=4$ dan $\frac{7}{7}=1$, maka $V=22\times7\times4=616\ \text{cm}^3$.`],c:R`Pengecoh 1.848 muncul bila lupa $\frac{1}{3}$.`},
+{no:'Soal 4',lv:'Level 1 · Mengelompokkan (Benar/Salah)',k:'b',t:'Perhatikan bangun ruang: (1) balok, (2) tabung, (3) kerucut, (4) limas, (5) bola. Tentukan Benar atau Salah.',f:[['box','1','',''],['cyl','2',''],['cone','3','',''],['pyr','4','',''],['sph','5']],cap:'Gambar 2.24',
+ o:['(a) Bangun (1) dan (4) hanya memiliki sisi datar.','(b) Bangun (2) hanya memiliki sisi lengkung.','(c) Bangun (3) memiliki satu sisi datar dan satu sisi lengkung.'],a:['B','S','B'],
+ st:[R`(a) Balok dan limas semua sisinya datar. <b>Benar.</b>`,R`(b) Tabung punya 2 sisi datar (alas, tutup) dan 1 sisi lengkung (selimut). Bukan "hanya lengkung". <b>Salah.</b>`,R`(c) Kerucut: alas datar, selimut lengkung. <b>Benar.</b>`],c:R`Hanya bola yang seluruhnya lengkung; tabung dan kerucut campuran datar + lengkung.`},
+{no:'Soal 5',lv:'Level 2 · Memodelkan',k:'s',t:R`Kolam renang balok $25\ \text{m}\times12\ \text{m}$, kedalaman 1,5 m, diisi penuh dengan pompa berdebit $50\ \text{m}^3$ per jam. Waktu yang dibutuhkan …`,f:[['box','25 m','12 m','1,5 m']],o:['6 jam','7,5 jam','9 jam','12 jam','15 jam'],a:'C',
+ st:[R`Volume kolam: $V=25\times12\times1{,}5=450\ \text{m}^3$.`,R`Waktu $=\frac{\text{volume}}{\text{debit}}=\frac{450}{50}$.`,R`$=9$ jam.`],c:R`$25\times12=300$; $300\times1{,}5=450$; lalu $450\div50=9$. Satuan sudah m³, tidak perlu diubah.`},
+{no:'Soal 6',lv:'Level 2 · Menerapkan',k:'s',t:R`Balok $10\times10\times15$ cm dengan limas segiempat beraturan setinggi 6 cm di atasnya (alas limas = sisi atas balok). Volume bangun …`,f:[['box','10','10','15'],['pyr','10','t = 6','']],o:[R`$1.500\ \text{cm}^3$`,R`$1.600\ \text{cm}^3$`,R`$1.700\ \text{cm}^3$`,R`$1.800\ \text{cm}^3$`,R`$1.900\ \text{cm}^3$`],a:'C',
+ st:[R`Balok: $10\times10\times15=1.500$.`,R`Limas: $\frac{1}{3}\times(10\times10)\times6=200$.`,R`Total: $1.500+200=1.700\ \text{cm}^3$.`],c:R`$\frac{1}{3}\times6=2$, lalu $2\times100=200$. Tinggal tambah 1.500.`},
+{no:'Soal 7',lv:'Level 2 · Memodelkan',k:'s',t:R`Tabung $r=7$ cm, $t=15$ cm penuh air, seluruh air dituang ke wadah balok beralas $14\times11$ cm. Tinggi air dalam balok … ($\pi=\frac{22}{7}$)`,f:[['cyl','r = 7','t = 15'],['box','14','11','tinggi?']],o:['10 cm','12 cm','14 cm','15 cm','18 cm'],a:'D',
+ st:[R`Volume air: $\frac{22}{7}\times7\times7\times15=2.310\ \text{cm}^3$.`,R`Luas alas balok: $14\times11=154\ \text{cm}^2$.`,R`Tinggi air $=\frac{V}{L_{alas}}=\frac{2.310}{154}=15$ cm.`],c:R`Volume air <b>tetap</b>, hanya wadahnya yang berubah.`},
+{no:'Soal 8',lv:'Level 2 · Pilihan ganda kompleks',k:'m',t:R`Kerucut $r=7$ cm, $t=24$ cm ($\pi=\frac{22}{7}$). Pilih <b>semua</b> pernyataan yang benar.`,f:[['cone','r = 7','t = 24','s']],
+ o:['Garis pelukis kerucut adalah 25 cm.',R`Volume kerucut adalah $1.232\ \text{cm}^3$.`,R`Luas selimut kerucut adalah $\pi\times7\times24=528\ \text{cm}^2$.`,R`Luas permukaan kerucut adalah $704\ \text{cm}^2$.`,R`Volume kerucut adalah $\pi r^2t=3.696\ \text{cm}^3$.`],a:'ABD',
+ st:[R`<b>A benar:</b> $s=\sqrt{7^2+24^2}=\sqrt{625}=25$ cm (tripel 7-24-25).`,R`<b>B benar:</b> $V=\frac{1}{3}\times\frac{22}{7}\times49\times24=22\times7\times8=1.232$.`,R`<b>C salah:</b> selimut memakai $s$: $\pi rs=\frac{22}{7}\times7\times25=550$ (bukan 528).`,R`<b>D benar:</b> $L=\pi r(r+s)=\frac{22}{7}\times7\times32=704$.`,R`<b>E salah:</b> lupa $\frac{1}{3}$; yang benar 1.232.`],c:R`Hafal tripel 7-24-25 lalu periksa tiap pilihan satu per satu. Jawaban: A, B, D.`},
+{no:'Soal 9',lv:'Level 3 · Menganalisis',k:'s',t:R`Tabung kedua berjari-jari 3 kali jari-jari tabung pertama dan tinggi sepertiga tinggi semula. Volume tabung kedua dibanding tabung pertama adalah …`,f:[['cyl','r','t'],['cyl','3r','t/3']],o:['Tetap sama','2 kali','3 kali','6 kali','9 kali'],a:'C',
+ st:[R`Tabung 1: $V_1=\pi r^2t$.`,R`Tabung 2: $V_2=\pi(3r)^2\times\frac{t}{3}=\pi\times9r^2\times\frac{t}{3}$.`,R`$V_2=3\pi r^2t=3V_1$.`],c:R`Jari-jari dikuadratkan ($\times9$), tinggi $\times\frac{1}{3}$. Hasil: $9\times\frac{1}{3}=3$.`},
+{no:'Soal 10',lv:'Level 3 · Menyimpulkan (Benar/Salah)',k:'b',t:R`Kaleng tabung bervolume tetap $1.000\ \text{cm}^3$. Tabel dan grafik menunjukkan luas permukaannya untuk beberapa jari-jari.<table><tr><th>r (cm)</th><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>10</td></tr><tr><th>L (cm²)</th><td>723</td><td>601</td><td>557</td><td>560</td><td>594</td><td>652</td><td>828</td></tr></table>`,f:[['chart']],cap:'Gambar 2.30',
+ o:['(a) Untuk r = 5 cm, luas permukaan lebih kecil daripada untuk r = 3 cm.','(b) Memperbesar jari-jari selalu memperkecil luas permukaan.','(c) Luas permukaan paling kecil terjadi pada jari-jari di antara 4 cm dan 7 cm.'],a:['B','S','B'],
+ st:[R`(a) $L(5)=557<L(3)=723$. <b>Benar.</b>`,R`(b) Dari $r=3$ ke 5 luas turun, tetapi dari $r=6$ ke 10 luas <b>naik</b> ($560\to828$). <b>Salah.</b>`,R`(c) Luas turun sampai sekitar $r=5$, lalu naik lagi; nilai terkecil ada di antara 4 dan 7. <b>Benar.</b>`],c:R`Cukup <b>membaca tabel atau grafik</b>; tidak perlu menghitung ulang.`},
+{no:'Soal 11',lv:'Level 3 · Menganalisis',k:'s',t:R`Bola logam berjari-jari 6 cm dilebur lalu dicetak menjadi 8 bola kecil identik tanpa ada yang terbuang. Perbandingan jumlah luas permukaan bola kecil terhadap bola semula …`,f:[['sph','r = 6'],['sph','r = ?']],o:['1 : 1','2 : 1','4 : 1','8 : 1','1 : 2'],a:'B',
+ st:[R`Volume tetap: $8\times\frac{4}{3}\pi r_k^3=\frac{4}{3}\pi\times6^3$.`,R`$8r_k^3=216\Rightarrow r_k^3=27\Rightarrow r_k=3$ cm.`,R`Luas 8 bola kecil: $8\times4\pi\times3^2=288\pi$.`,R`Luas bola besar: $4\pi\times6^2=144\pi$.`,R`Perbandingan $288\pi:144\pi=2:1$.`],c:R`Jari-jari bola kecil setengah bola besar. Luas memakai $r^2$ dan ada 8 bola: $8\times\frac{1}{4}=2$.`},
+{no:'Soal 12',lv:'Level 3 · Isian singkat',k:'f',t:R`Bola berjari-jari 6 cm tepat berada di dalam tabung (menyentuh alas, tutup, dinding). Volume ruang kosong di antara bola dan tabung adalah … $\text{cm}^3$ ($\pi=3{,}14$).`,f:[['cyl','r = 6','t = 12'],['sph','r = 6']],a:452.16,
+ st:[R`Tinggi tabung $=2r=12$ cm.`,R`$V_{tabung}=\pi\times6^2\times12=432\pi$.`,R`$V_{bola}=\frac{4}{3}\pi\times6^3=288\pi$.`,R`Ruang kosong $=432\pi-288\pi=144\pi=144\times3{,}14=452{,}16\ \text{cm}^3$.`],c:R`Ruang kosong selalu $\frac{1}{3}$ volume tabung: $\frac{1}{3}\times432\pi=144\pi$.`}
+];mkAll('sG',G,'g');
+window.addEventListener('load',()=>typeset(document.body));
+</script></body></html>
