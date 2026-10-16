@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keliling dan Luas Bangun Datar – VisualMath.Lim</title>
+<meta name="description" content="Modul 1 TKA Matematika Wajib SMA: Keliling dan Luas Bangun Datar, lengkap dengan cara lengkap, cara cepat, dan 12 prediksi soal.">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<style>
+:root{
+  --navy:#022050; --navy2:#0b3a86; --cyan:#00d6d8; --cyan-d:#007c84; --cyan-l:#e0fbfb;
+  --yellow:#ffd300; --yellow-l:#fff7cc;
+  --bg:#f2f7fc; --card:#fff; --ink:#12223f; --muted:#5b6b86; --line:#d9e4f2;
+  --ok:#0f9d58; --ok-l:#e3f7ec; --bad:#d63a4a; --bad-l:#fdebed; --purple:#6b4ce6;
+  --radius:16px; --shadow:0 6px 22px rgba(2,32,80,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;-webkit-text-size-adjust:100%}
+img,svg{max-width:100%}
+a{color:var(--cyan-d)}
+h1,h2,h3,h4{font-family:'Poppins','Nunito',sans-serif;color:var(--navy);line-height:1.3;margin:0 0 .5em}
+
+/* ---------- Header ---------- */
+.site-header{position:sticky;top:0;z-index:50;background:var(--navy);border-bottom:4px solid var(--yellow);color:#fff}
+.hd-in{max-width:1040px;margin:0 auto;padding:8px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;min-width:0;flex:1 1 auto}
+.brand img{width:52px;height:52px;border-radius:50%;background:var(--navy);border:2px solid var(--cyan);object-fit:cover;flex:none}
+.brand .logo-fallback{width:52px;height:52px;border-radius:50%;border:2px solid var(--cyan);display:none;place-items:center;font:800 18px Poppins,sans-serif;color:var(--yellow);flex:none}
+.brand-t{display:flex;flex-direction:column;line-height:1.2;min-width:0}
+.brand-t b{font:800 19px/1.2 Poppins,sans-serif;letter-spacing:.2px}
+.brand-t b em{font-style:normal;color:var(--cyan)}
+.brand-t span{font-size:13.5px;color:#cfe0ff;font-weight:700}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{display:inline-flex;align-items:center;gap:6px;padding:8px 15px;border-radius:999px;font:700 14.5px 'Nunito',sans-serif;text-decoration:none;color:#fff;border:1.5px solid rgba(255,255,255,.28);transition:.15s}
+.nav a:hover,.nav a:focus-visible{background:var(--cyan);color:var(--navy);border-color:var(--cyan);outline:none}
+.nav a.on{background:var(--yellow);color:var(--navy);border-color:var(--yellow)}
+.nav svg{width:16px;height:16px;flex:none}
+.progress{height:4px;background:rgba(255,255,255,.12)}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--yellow))}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:940px;margin:0 auto;padding:22px 16px 60px}
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;border-radius:22px;padding:28px 24px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.hero::after{content:"π  ½  ²  √";position:absolute;right:-6px;bottom:-18px;font:800 70px/1 Poppins;color:rgba(0,214,216,.13);letter-spacing:10px;white-space:nowrap}
+.hero .tag{display:inline-block;background:var(--yellow);color:var(--navy);font:800 13px Poppins,sans-serif;padding:4px 12px;border-radius:999px;letter-spacing:.4px}
+.hero h1{color:#fff;font-size:clamp(26px,5.5vw,38px);margin:12px 0 6px}
+.hero p{margin:0;color:#d6e4ff;max-width:640px}
+.hero .meta{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+.hero .meta span{background:rgba(0,214,216,.16);border:1px solid rgba(0,214,216,.5);color:#bff8f9;padding:3px 12px;border-radius:999px;font-weight:700;font-size:14px}
+
+.toc{position:sticky;top:var(--hdh,82px);z-index:40;margin:14px -16px 6px;padding:8px 16px;background:rgba(242,247,252,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.toc::-webkit-scrollbar{display:none}
+.toc a{flex:none;text-decoration:none;font:700 14px Nunito,sans-serif;color:var(--navy);background:#fff;border:1.5px solid var(--line);padding:6px 13px;border-radius:999px}
+.toc a b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--navy);color:var(--yellow);font:800 12px Poppins,sans-serif;margin-right:6px}
+.toc a.act,.toc a:hover{background:var(--cyan);border-color:var(--cyan)}
+
+section.sec{margin-top:34px;scroll-margin-top:calc(var(--hdh,82px) + 56px)}
+.sec-title{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.sec-title .letter{width:46px;height:46px;border-radius:14px;background:var(--navy);color:var(--yellow);font:800 22px Poppins,sans-serif;display:grid;place-items:center;flex:none;box-shadow:0 4px 0 var(--cyan)}
+.sec-title h2{margin:0;font-size:clamp(21px,4.4vw,27px)}
+h3.sub{font-size:19px;margin:26px 0 8px;padding-left:12px;border-left:5px solid var(--cyan)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 18px;box-shadow:var(--shadow);margin:14px 0}
+p{margin:.55em 0}
+ul,ol{padding-left:1.3em;margin:.5em 0}
+li{margin:.3em 0}
+
+/* ---------- Boxes ---------- */
+.box{border-radius:14px;padding:12px 16px;margin:14px 0;border-left:6px solid;position:relative}
+.box>b.bt{display:block;font:800 15.5px Poppins,sans-serif;margin-bottom:4px}
+.box.info{background:var(--cyan-l);border-color:var(--cyan)}
+.box.info>b.bt{color:var(--cyan-d)}
+.box.warn{background:var(--yellow-l);border-color:var(--yellow)}
+.box.warn>b.bt{color:#8a6b00}
+.box.tip{background:#eef2ff;border-color:var(--navy2)}
+.box.tip>b.bt{color:var(--navy2)}
+.box.cepat{background:var(--ok-l);border-color:var(--ok)}
+.box.cepat>b.bt{color:var(--ok)}
+.box.try{background:#f1f3f7;border-color:#8b97ad}
+.box.try>b.bt{color:#4a566d}
+.box>p:first-of-type{margin-top:0}.box>*:last-child{margin-bottom:0}
+details.reveal{margin-top:8px}
+details.reveal>summary{cursor:pointer;display:inline-block;font:700 14.5px Nunito,sans-serif;color:var(--navy);background:#fff;border:1.5px solid var(--navy);border-radius:999px;padding:4px 14px;list-style:none}
+details.reveal>summary::-webkit-details-marker{display:none}
+details.reveal>summary:hover{background:var(--yellow)}
+details.reveal[open]>summary{background:var(--navy);color:#fff}
+details.reveal .ans{margin-top:8px}
+
+/* ---------- Tables ---------- */
+.tbl-wrap{overflow-x:auto;margin:12px 0;border-radius:12px;border:1px solid var(--line);background:#fff}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th{background:var(--navy);color:#fff;font:700 14.5px Poppins,sans-serif;text-align:left;padding:9px 12px}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:#f8fbff}
+
+/* ---------- Figures ---------- */
+figure.fig{margin:14px auto;text-align:center;background:#fff;border:1px dashed #b9cbe5;border-radius:14px;padding:12px 8px 8px}
+figure.fig svg{display:block;margin:0 auto;height:auto}
+figure.fig figcaption{font-size:14px;color:var(--muted);font-style:italic;margin-top:6px}
+.sv .ln{stroke:#022050;stroke-width:2;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.sv .fc{fill:rgba(0,214,216,.25);stroke:#022050;stroke-width:2;stroke-linejoin:round}
+.sv .fy{fill:rgba(255,211,0,.5);stroke:#022050;stroke-width:2;stroke-linejoin:round}
+.sv .fw{fill:#fff;stroke:#022050;stroke-width:2;stroke-linejoin:round}
+.sv .fn{fill:#022050;stroke:#022050;stroke-width:2}
+.sv .dsh{stroke:#d63a4a;stroke-width:2;stroke-dasharray:6 4;fill:none}
+.sv .gr{stroke:#022050;stroke-opacity:.28;stroke-width:1;fill:none}
+.sv .thick{stroke:#e6a400;stroke-width:6;fill:none;stroke-linejoin:round}
+.sv .rt{stroke:#d63a4a;stroke-width:1.8;fill:none}
+.sv text{font:700 13px Nunito,sans-serif;fill:#022050}
+.sv text.s{font-size:11.5px}
+.sv text.b{font-size:15px;font-family:Poppins,sans-serif}
+.sv text.r{fill:#d63a4a}
+.sv text.m{text-anchor:middle}
+.sv text.e{text-anchor:end}
+.shapes6{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin:14px 0}
+.shape{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center;box-shadow:var(--shadow)}
+.shape h4{font-size:16px;margin:2px 0}
+.shape .fm{font-size:16px;line-height:1.9}
+
+/* ---------- Example ---------- */
+.example{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;margin:22px 0;box-shadow:var(--shadow)}
+.ex-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.ex-no{font:800 15px Poppins,sans-serif;background:var(--navy);color:#fff;padding:3px 13px;border-radius:10px}
+.lv{font:800 12.5px Poppins,sans-serif;padding:3px 10px;border-radius:999px;color:var(--navy)}
+.lv1{background:var(--cyan)}.lv2{background:var(--yellow)}.lv3{background:var(--purple);color:#fff}
+.ex-kind{font-weight:700;color:var(--muted);font-size:14.5px}
+.q{font-weight:600;font-size:17.5px}
+.solution{margin-top:12px;border-top:2px dotted var(--line);padding-top:10px}
+.sol-h{font:800 15px Poppins,sans-serif;color:var(--navy);display:flex;align-items:center;gap:8px;margin:6px 0 12px}
+.sol-h .pill{background:var(--navy);color:var(--yellow);padding:3px 12px;border-radius:999px;font-size:13px}
+.sol-h .pill.g{background:var(--ok);color:#fff}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+.steps>li{position:relative;padding:0 0 16px 52px;counter-increment:s;margin:0}
+.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:34px;height:34px;border-radius:50%;background:var(--navy);color:var(--yellow);font:800 15px Poppins,sans-serif;display:grid;place-items:center}
+.steps>li::after{content:"";position:absolute;left:16px;top:38px;bottom:4px;width:2px;background:linear-gradient(var(--cyan),rgba(0,214,216,.1))}
+.steps>li:last-child::after{display:none}
+.st-t{font:800 16px Poppins,sans-serif;color:var(--navy);line-height:1.35;padding-top:4px}
+.st-b{margin-top:2px}
+.st-b p{margin:.3em 0}
+.st-b .katex-display{margin:.45em 0}
+.st-b .katex-display,.q .katex-display{overflow-x:auto;overflow-y:hidden;padding:2px 0}
+.ans-final{background:var(--navy);color:#fff;border-radius:12px;padding:10px 14px;margin-top:4px;font-weight:700}
+.ans-final .katex{color:#fff}
+.ans-final b{color:var(--yellow)}
+.formula{background:var(--yellow-l);border:1.5px solid var(--yellow);border-radius:12px;padding:4px 12px;margin:8px 0;text-align:center;overflow-x:auto}
+
+/* ---------- Quiz ---------- */
+.qcard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;margin:20px 0;box-shadow:var(--shadow)}
+.qcard.done-ok{border-color:var(--ok)}
+.qcard.done-bad{border-color:var(--bad)}
+.opts{display:grid;gap:8px;margin:12px 0}
+.opt{display:flex;gap:12px;align-items:center;text-align:left;width:100%;background:#f7faff;border:2px solid var(--line);border-radius:12px;padding:10px 14px;font:700 16.5px Nunito,sans-serif;color:var(--ink);cursor:pointer;transition:.12s}
+.opt:hover:not(:disabled){border-color:var(--cyan);background:var(--cyan-l)}
+.opt .k{flex:none;width:32px;height:32px;border-radius:50%;background:var(--navy);color:var(--yellow);display:grid;place-items:center;font:800 14px Poppins}
+.opt.sel{border-color:var(--navy2);background:#eaf0ff}
+.opt.ok{border-color:var(--ok);background:var(--ok-l)}
+.opt.bad{border-color:var(--bad);background:var(--bad-l)}
+.opt:disabled{cursor:default}
+.cat-row,.multi-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.cat-row .pick{display:flex;gap:6px}
+.pick label{cursor:pointer}
+.pick input{position:absolute;opacity:0;pointer-events:none}
+.pick span{display:inline-block;min-width:74px;text-align:center;padding:6px 10px;border-radius:999px;border:2px solid var(--line);font:800 14px Nunito,sans-serif;background:#f7faff}
+.pick input:checked+span{background:var(--navy);border-color:var(--navy);color:#fff}
+.pick input:focus-visible+span{outline:3px solid var(--cyan)}
+.cat-row.ok,.multi-row.ok{background:var(--ok-l)}
+.cat-row.bad,.multi-row.bad{background:var(--bad-l)}
+.cat-row .why,.multi-row .why{grid-column:1/-1;font-size:15px;color:var(--muted)}
+.multi-row{grid-template-columns:auto 1fr;cursor:pointer}
+.multi-row input{width:22px;height:22px;accent-color:var(--navy)}
+.short-in{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0}
+.short-in input[type=text]{font:700 18px Nunito,sans-serif;padding:9px 14px;border:2px solid var(--line);border-radius:12px;width:min(240px,100%);color:var(--navy)}
+.short-in input:focus{outline:none;border-color:var(--cyan)}
+.btn{font:800 15px Poppins,sans-serif;border:0;border-radius:999px;padding:10px 22px;cursor:pointer;background:var(--cyan);color:var(--navy);box-shadow:0 3px 0 #009a9c;transition:.12s}
+.btn:hover{background:var(--yellow);box-shadow:0 3px 0 #c9a600}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.btn.ghost{background:#fff;border:2px solid var(--navy);box-shadow:none;padding:8px 18px}
+.btn.ghost:hover{background:var(--yellow)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.verdict{display:none;margin-top:12px;border-radius:12px;padding:10px 14px;font-weight:800}
+.verdict.ok{display:block;background:var(--ok-l);color:#0a6b3b;border:1.5px solid var(--ok)}
+.verdict.bad{display:block;background:var(--bad-l);color:#a1202e;border:1.5px solid var(--bad)}
+.explain{display:none;margin-top:14px;border-top:2px dotted var(--line);padding-top:12px}
+.explain.show{display:block}
+.trap{font-size:15.5px}
+.scorebar{position:sticky;top:calc(var(--hdh,82px) + 52px);z-index:30;background:var(--navy);color:#fff;border-radius:14px;padding:10px 16px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;box-shadow:var(--shadow)}
+.scorebar b{color:var(--yellow);font:800 18px Poppins}
+.scorebar .bar{flex:1 1 140px;height:10px;border-radius:999px;background:rgba(255,255,255,.2);overflow:hidden}
+.scorebar .bar i{display:block;height:100%;width:0;background:var(--cyan);transition:width .4s}
+.lvl-head{display:flex;align-items:center;gap:10px;margin:28px 0 0;font:800 20px Poppins,sans-serif;color:var(--navy)}
+.lvl-head .lv{font-size:14px;padding:4px 14px}
+
+footer{margin-top:44px;background:var(--navy);color:#cfe0ff;text-align:center;padding:22px 16px;border-top:4px solid var(--yellow);font-size:15px}
+footer b{color:var(--cyan)}
+footer a{color:var(--yellow);font-weight:700}
+.pager{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:30px}
+
+@media (max-width:640px){
+  body{font-size:16.5px}
+  .brand img,.brand .logo-fallback{width:44px;height:44px}
+  .brand-t b{font-size:16px}.brand-t span{font-size:12.5px}
+  .hd-in{padding:8px 12px;gap:8px}
+  .nav{width:100%}.nav a{flex:1;justify-content:center;padding:7px 8px}
+  .hero{padding:22px 18px}
+  .card,.example,.qcard{padding:14px}
+  .toc{top:var(--hdh,120px)}
+  .scorebar{top:calc(var(--hdh,120px) + 52px)}
+  .steps>li{padding-left:46px}
+}
+@media print{.site-header,.toc,.scorebar{position:static}.explain{display:block!important}}
+</style>
+</head>
+<body>
+
+<header class="site-header" id="hd">
+  <div class="hd-in">
+    <a class="brand" href="index.html" aria-label="VisualMath.Lim – ke beranda">
+      <img src="logo.png" alt="Logo Bimbel VisualMath.Lim" width="52" height="52" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+      <span class="logo-fallback" aria-hidden="true">VM</span>
+      <span class="brand-t"><b>VisualMath<em>.Lim</em></b><span>TKA Matematika Wajib SMA</span></span>
+    </a>
+    <nav class="nav" aria-label="Menu utama">
+      <a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg>Home</a>
+      <a href="pengukuran.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Dashboard</a>
+      <a class="on" href="pengukuran_materi1.html" aria-current="page">Materi 1</a>
+    </nav>
+  </div>
+  <div class="progress" aria-hidden="true"><i id="pg"></i></div>
+</header>
+
+<main class="wrap">
+
+<div class="hero">
+  <span class="tag">MODUL 1 · TKA MATEMATIKA</span>
+  <h1>Keliling dan Luas Bangun Datar</h1>
+  <p>Elemen Geometri dan Pengukuran · Sub materi Objek Geometri · Kompetensi 1 dari 3</p>
+  <div class="meta"><span>Dari dasar sekali</span><span>Cara Lengkap + Cara Cepat</span><span>12 Prediksi Soal</span></div>
+</div>
+
+<div class="card">
+  <p>Modul ini disusun untuk siswa SMA kelas 12 (termasuk jurusan IPS) yang ingin menguatkan dasar sebelum menghadapi soal TKA Matematika. Setiap konsep dijelaskan dari yang paling dasar, disertai gambar, contoh bertahap, latihan kecil, lalu <b>12 prediksi soal</b> berlevel 1 sampai 3 lengkap dengan pembahasan.</p>
+</div>
+
+<nav class="toc" id="toc" aria-label="Isi modul">
+  <a href="#A"><b>A</b>Cek Kesiapan</a>
+  <a href="#B"><b>B</b>Rumus</a>
+  <a href="#C"><b>C</b>Level 1</a>
+  <a href="#D"><b>D</b>Level 2</a>
+  <a href="#E"><b>E</b>Level 3</a>
+  <a href="#F"><b>F</b>Kesalahan &amp; Ringkasan</a>
+  <a href="#G"><b>G</b>Prediksi Soal</a>
+</nav>
+
+<div class="tbl-wrap">
+<table>
+<thead><tr><th style="width:80px">Bagian</th><th>Isi</th></tr></thead>
+<tbody>
+<tr><td><b>A</b></td><td>Cek Kesiapan: kamus simbol, keliling vs luas, satuan, Pythagoras, nilai π</td></tr>
+<tr><td><b>B</b></td><td>Rumus bangun datar: segitiga, segi empat, lingkaran (dengan gambar)</td></tr>
+<tr><td><b>C</b></td><td>Level 1 — contoh menghitung, mengidentifikasi, memahami informasi</td></tr>
+<tr><td><b>D</b></td><td>Level 2 — bangun gabungan, daerah arsiran, soal cerita</td></tr>
+<tr><td><b>E</b></td><td>Level 3 — penalaran: membandingkan, menjustifikasi, generalisasi</td></tr>
+<tr><td><b>F</b></td><td>Kesalahan yang sering terjadi dan ringkasan</td></tr>
+<tr><td><b>G</b></td><td>Bank Prediksi Soal (12 soal) beserta kunci dan pembahasan</td></tr>
+</tbody></table></div>
+
+<h3 class="sub">Peta Kompetensi untuk Sub-Elemen Ini</h3>
+<p><b>Cakupan (batasan):</b> bangun datar meliputi <b>segitiga, segi empat, lingkaran, dan bangun gabungan dari segitiga dan lingkaran.</b></p>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Level</th><th>Proses berpikir</th><th>Wujud soal pada modul ini</th></tr></thead>
+<tbody>
+<tr><td><span class="lv lv1">Level 1</span><br><b>Pengetahuan dan Pemahaman</b></td><td>Menghitung, memahami informasi, mengelompokkan, mengidentifikasi</td><td>Keliling dan luas bangun sederhana; menentukan alas dan tinggi; membaca ukuran dari gambar atau tabel; mengubah satuan</td></tr>
+<tr><td><span class="lv lv2">Level 2</span><br><b>Aplikasi</b></td><td>Memodelkan, menerapkan, menginterpretasikan</td><td>Bangun gabungan, daerah arsiran, soal cerita (keramik, jendela, lintasan, bingkai)</td></tr>
+<tr><td><span class="lv lv3">Level 3</span><br><b>Penalaran</b></td><td>Menganalisis, memecahkan masalah, mengevaluasi, menyimpulkan, generalisasi, menjustifikasi</td><td>Membandingkan bentuk berkeliling sama, pengaruh perubahan ukuran, menilai pernyataan, soal bertahap dengan aljabar sederhana</td></tr>
+</tbody></table></div>
+
+<div class="box info"><b class="bt">ℹ Cara memakai modul</b>
+<ul>
+<li>Kerjakan <b>A. Cek Kesiapan</b> lebih dulu. Jika ada yang salah, pelajari lagi bagian itu sebelum lanjut.</li>
+<li>Setiap contoh ditulis <b>bertahap</b>. Tutup pembahasannya, coba kerjakan sendiri, lalu tekan tombol <b>Lihat pembahasan</b> untuk mencocokkan. Ada dua cara: <b>Cara Lengkap</b> (langkah demi langkah, untuk memahami) dan <b>Cara Cepat</b> (kotak hijau, dipakai saat sudah paham).</li>
+<li>Kotak abu-abu <b>Coba sendiri</b> berisi soal kecil beserta jawabannya agar langsung bisa mengecek pemahaman.</li>
+<li>Bentuk soal TKA bermacam-macam: pilihan ganda, pilihan ganda kompleks (jawaban benar lebih dari satu), pilihan ganda kategori (Benar/Salah), dan isian singkat. Bank soal modul ini memakai keempatnya. <b>Jawab dulu, baru pembahasan muncul.</b></li>
+</ul></div>
+
+<!-- ===================== A ===================== -->
+<section class="sec" id="A">
+<div class="sec-title"><span class="letter">A</span><h2>Cek Kesiapan</h2></div>
+
+<h3 class="sub">A.0 Kamus simbol: cara membaca rumus</h3>
+<p>Sebelum mulai, kenali dulu "bahasa" rumusnya. Di matematika, <b>tanda kali sering tidak ditulis</b>: $at$ artinya $a \times t$, dan $2\pi r$ artinya $2 \times \pi \times r$.</p>
+<div class="tbl-wrap"><table>
+<thead><tr><th>Simbol</th><th>Dibaca</th><th>Artinya</th></tr></thead>
+<tbody>
+<tr><td>$K$</td><td>"ka"</td><td><b>Keliling</b>: panjang garis tepi</td></tr>
+<tr><td>$L$</td><td>"el"</td><td><b>Luas</b>: besar daerah di dalam bangun</td></tr>
+<tr><td>$s$</td><td>"sisi"</td><td>panjang sisi persegi</td></tr>
+<tr><td>$p$ dan $l$</td><td>"panjang" dan "lebar"</td><td>ukuran persegi panjang</td></tr>
+<tr><td>$a$ dan $t$</td><td>"alas" dan "tinggi"</td><td>ukuran segitiga, jajargenjang, trapesium</td></tr>
+<tr><td>$r$ dan $d$</td><td>"jari-jari" dan "diameter"</td><td>ukuran lingkaran; $d = 2r$</td></tr>
+<tr><td>$\pi$</td><td>"pi"</td><td>bilangan tetap lingkaran: $\frac{22}{7}$ atau $3{,}14$</td></tr>
+<tr><td>$\frac{1}{2}$</td><td>"setengah"</td><td>sama dengan dibagi 2</td></tr>
+<tr><td>$r^{2}$</td><td>"r kuadrat"</td><td>$r \times r$ (bukan $r \times 2$)</td></tr>
+<tr><td>$\text{cm}^{2}$</td><td>"sentimeter persegi"</td><td>satuan luas</td></tr>
+<tr><td>$\sqrt{100}$</td><td>"akar 100"</td><td>bilangan yang jika dikuadratkan menjadi 100, yaitu 10</td></tr>
+<tr><td>$\approx$</td><td>"kira-kira"</td><td>hasil pembulatan</td></tr>
+<tr><td>$\theta$</td><td>"teta"</td><td>besar sudut</td></tr>
+</tbody></table></div>
+
+<h3 class="sub">A.1 Keliling dan luas itu berbeda</h3>
+<p>Banyak kesalahan terjadi karena tertukar. Bayangkan sebuah lapangan: <b>keliling</b> adalah panjang pagar yang mengelilinginya, sedangkan <b>luas</b> adalah banyaknya keramik (petak) yang menutupi lantainya.</p>
+
+<figure class="fig"><svg class="sv" viewBox="0 0 540 200" width="540" role="img" aria-label="Keliling adalah garis tepi, luas adalah isi permukaan">
+<defs><pattern id="g11" width="20" height="20" patternUnits="userSpaceOnUse" x="320" y="40"><path d="M20 0H0V20" class="gr"/></pattern></defs>
+<rect x="40" y="40" width="160" height="110" fill="#fff" class="thick"/>
+<rect x="40" y="40" width="160" height="110" fill="none" stroke="#022050" stroke-width="1" stroke-dasharray="3 3" opacity=".0"/>
+<text x="120" y="102" class="m b">Keliling</text>
+<text x="120" y="172" class="m">garis tepi = pagar</text>
+<text x="120" y="24" class="m s">diukur dengan cm, m, km</text>
+<rect x="320" y="40" width="160" height="120" class="fc"/>
+<rect x="320" y="40" width="160" height="120" fill="url(#g11)"/>
+<text x="400" y="106" class="m b">Luas</text>
+<text x="400" y="182" class="m">isi permukaan = keramik</text>
+<text x="400" y="24" class="m s">diukur dengan cm², m², km²</text>
+</svg><figcaption>Gambar 1.1. Keliling mengukur garis tepi, luas mengukur isi permukaan</figcaption></figure>
+
+<div class="tbl-wrap"><table>
+<thead><tr><th></th><th>Keliling</th><th>Luas</th></tr></thead>
+<tbody>
+<tr><td><b>Yang diukur</b></td><td>Panjang garis tepi</td><td>Besar daerah di dalam</td></tr>
+<tr><td><b>Satuan</b></td><td>cm, m, km</td><td>$\text{cm}^2$, $\text{m}^2$, $\text{km}^2$</td></tr>
+<tr><td><b>Kata kunci soal</b></td><td>pagar, tali, kawat, lintasan, bingkai (tepi), lari mengelilingi</td><td>keramik, cat, rumput, kaca, kain, tanah, lantai</td></tr>
+</tbody></table></div>
+
+<h3 class="sub">A.2 Satuan dan mengubah satuan</h3>
+<p>Sebelum menghitung, <b>semua ukuran harus memakai satuan yang sama.</b> Tabel berikut sering dipakai:</p>
+<div class="tbl-wrap"><table>
+<thead><tr><th>Panjang</th><th>Luas</th></tr></thead>
+<tbody>
+<tr><td>1 m = 100 cm</td><td>$1\ \text{m}^2 = 100 \times 100 = \mathbf{10.000}\ \text{cm}^2$</td></tr>
+<tr><td>1 km = 1.000 m</td><td>1 hektare = $10.000\ \text{m}^2$</td></tr>
+<tr><td>Contoh: $2{,}5\ \text{m} = 250\ \text{cm}$</td><td>Contoh: $3\ \text{m}^2 = 30.000\ \text{cm}^2$</td></tr>
+</tbody></table></div>
+
+<figure class="fig"><svg class="sv" viewBox="0 0 320 310" width="300" role="img" aria-label="Satu meter persegi berisi 10.000 sentimeter persegi">
+<defs><pattern id="g12" width="22" height="22" patternUnits="userSpaceOnUse" x="50" y="40"><path d="M22 0H0V22" class="gr"/></pattern></defs>
+<rect x="50" y="40" width="220" height="220" class="fc"/><rect x="50" y="40" width="220" height="220" fill="url(#g12)"/>
+<rect x="50" y="40" width="22" height="22" class="fy"/>
+<text x="160" y="28" class="m b">1 m = 100 cm</text>
+<text x="30" y="150" class="m b" transform="rotate(-90 30 150)">1 m = 100 cm</text>
+<text x="160" y="140" class="m b">1 m² = 10.000 cm²</text>
+<text x="160" y="162" class="m s">10 × 10 blok,</text>
+<text x="160" y="177" class="m s">tiap blok 10 cm × 10 cm = 100 cm²</text>
+<text x="160" y="284" class="m s">(blok kuning = 100 cm²; ada 100 blok → 10.000 cm²)</text>
+</svg><figcaption>Gambar 1.2. Satu meter persegi berisi 10.000 sentimeter persegi</figcaption></figure>
+
+<div class="box warn"><b class="bt">⚠ Awas jebakan satuan luas</b>
+Panjang diubah dengan <b>×100</b>, tetapi luas diubah dengan <b>×10.000</b> karena dikalikan dua kali ($100 \times 100$). Banyak siswa lupa ini.</div>
+
+<h3 class="sub">A.3 Teorema Pythagoras</h3>
+<p>Pada segitiga <b>siku-siku</b>, kuadrat sisi miring sama dengan jumlah kuadrat kedua sisi tegaknya:</p>
+<div class="formula">$$c^{2} = a^{2} + b^{2}$$</div>
+<p>Di sini $a$ dan $b$ adalah dua sisi yang membentuk sudut siku-siku, sedangkan $c$ adalah sisi miring (sisi terpanjang, di seberang sudut siku-siku).</p>
+
+<figure class="fig"><svg class="sv" viewBox="20 -40 300 300" width="320" role="img" aria-label="Pythagoras dengan persegi pada tiap sisi segitiga 3-4-5">
+<polygon class="fy" points="120,150 220,150 220,250 120,250"/>
+<polygon class="fc" points="120,75 120,150 45,150 45,75"/>
+<polygon class="fw" points="220,150 120,75 195,-25 295,50" style="fill:rgba(214,58,74,.14)"/>
+<polygon class="fw" points="120,150 220,150 120,75" style="fill:#fff"/>
+<path class="rt" d="M120 138H132V150"/>
+<text x="170" y="206" class="m b">4² = 16</text><text x="170" y="226" class="m s">(sisi tegak 4)</text>
+<text x="82" y="108" class="m b">3² = 9</text><text x="82" y="126" class="m s">(sisi tegak 3)</text>
+<text x="207" y="58" class="m b">5² = 25</text><text x="207" y="76" class="m s">(sisi miring 5)</text>
+<text x="170" y="142" class="m s">4</text><text x="128" y="118" class="s">3</text>
+</svg><figcaption>Gambar 1.3. Luas persegi pada sisi miring sama dengan jumlah luas dua persegi lainnya: 9 + 16 = 25</figcaption></figure>
+
+<p>Hafalkan "tripel Pythagoras" agar tidak perlu menghitung akar: <b>3-4-5, 6-8-10, 5-12-13, 8-15-17, 7-24-25</b> (dan kelipatannya).</p>
+<div class="box tip"><b class="bt">✎ Contoh singkat</b>
+Sisi tegak 6 cm dan 8 cm. Maka $c = \sqrt{6^{2} + 8^{2}} = \sqrt{36 + 64} = \sqrt{100} = 10$ cm.</div>
+
+<h3 class="sub">A.4 Nilai π (pi)</h3>
+<ul>
+<li>Jika jari-jari atau diameter <b>kelipatan 7</b> (7, 14, 21, 28, ...), pakai $\pi = \frac{22}{7}$ sebab angka 7 habis dicoret.</li>
+<li>Jika bukan kelipatan 7, pakai $\pi = 3{,}14$ (kecuali soal menyebut lain).</li>
+<li>Contoh: $\frac{22}{7} \times 14 = 22 \times 2 = 44$.</li>
+</ul>
+
+<h3 class="sub">A.5 Uji Kesiapan (5 soal)</h3>
+<p>Ketik jawabanmu (angka saja), lalu tekan <b>Periksa</b>.</p>
+<div id="ready"></div>
+<p><i>Kurang dari 4 benar? Ulangi bagian A.2 sampai A.4 sebelum lanjut.</i></p>
+</section>
+
+<!-- ===================== B ===================== -->
+<section class="sec" id="B">
+<div class="sec-title"><span class="letter">B</span><h2>Rumus Bangun Datar</h2></div>
+
+<h3 class="sub">B.1 Persegi dan persegi panjang</h3>
+<ul>
+<li><b>Persegi</b> (sisi $s$): keliling $K = 4s$, luas $L = s \times s = s^{2}$.</li>
+<li><b>Persegi panjang</b> (panjang $p$, lebar $l$): keliling $K = 2(p + l)$, luas $L = p \times l$.</li>
+</ul>
+
+<h3 class="sub">B.2 Segitiga: kenali alas dan tinggi</h3>
+<p>Alas bisa sisi mana saja. <b>Tinggi adalah garis dari titik sudut di seberang alas yang tegak lurus (membentuk sudut siku-siku) terhadap alas.</b> Pada segitiga tumpul, tinggi jatuh di luar segitiga, sehingga alas perlu "diperpanjang".</p>
+
+<figure class="fig"><svg class="sv" viewBox="0 0 540 175" width="540" role="img" aria-label="Tinggi pada segitiga lancip, siku-siku, dan tumpul">
+<polygon class="fc" points="30,140 170,140 90,30"/><line class="dsh" x1="90" y1="30" x2="90" y2="140"/><path class="rt" d="M90 128H102V140"/>
+<text x="100" y="92" class="s r">t</text><text x="100" y="162" class="m">alas</text><text x="100" y="18" class="m s">segitiga lancip</text>
+<polygon class="fc" points="210,140 330,140 210,30"/><path class="rt" d="M210 128H222V140"/>
+<text x="196" y="92" class="s r e">t</text><text x="270" y="162" class="m">alas</text><text x="270" y="18" class="m s">segitiga siku-siku</text>
+<polygon class="fc" points="370,140 470,140 505,30"/><line class="dsh" x1="505" y1="30" x2="505" y2="140"/><line class="dsh" x1="470" y1="140" x2="505" y2="140"/><path class="rt" d="M505 128H493V140"/>
+<text x="514" y="92" class="s r">t</text><text x="420" y="162" class="m">alas</text><text x="445" y="18" class="m s">segitiga tumpul (tinggi di luar)</text>
+</svg><figcaption>Gambar 1.4. Tinggi segitiga selalu tegak lurus dengan alas</figcaption></figure>
+
+<div class="box warn"><b class="bt">⚠ Tinggi bukan sisi miring</b>
+Pada segitiga lancip dan tumpul, sisi miring <b>bukan</b> tinggi. Cari tanda siku-siku atau garis putus-putus pada gambar. Hanya pada segitiga siku-siku, salah satu sisi tegaknya sekaligus menjadi tinggi.</div>
+
+<p>Mengapa luas segitiga memakai $\frac{1}{2}$? Karena dua segitiga yang sama besar menyusun satu persegi panjang. Jajargenjang juga bisa "dipotong dan dipindah" menjadi persegi panjang.</p>
+
+<figure class="fig"><svg class="sv" viewBox="0 0 610 175" width="600" role="img" aria-label="Asal usul rumus luas segitiga dan jajargenjang">
+<polygon class="fc" points="20,130 170,130 170,30"/><polygon class="fy" points="20,130 20,30 170,30"/>
+<line class="ln" x1="20" y1="130" x2="170" y2="30"/>
+<text x="95" y="150" class="m">alas (a)</text><text x="10" y="84" class="e s">t</text>
+<text x="95" y="16" class="m s">2 segitiga = 1 persegi panjang</text>
+<text x="95" y="168" class="m b">L segitiga = ½ × a × t</text>
+<polygon class="fc" points="240,130 360,130 400,30 280,30"/><polygon class="fy" points="240,130 280,30 280,130"/>
+<line class="dsh" x1="280" y1="30" x2="280" y2="130"/><path class="rt" d="M280 118H292V130"/>
+<text x="300" y="150" class="m">alas (a)</text><text x="268" y="84" class="s e">t</text><text x="320" y="16" class="m s">jajargenjang</text>
+<path d="M410 82h28" stroke="#022050" stroke-width="2.5" fill="none"/><path d="M432 74l10 8-10 8" stroke="#022050" stroke-width="2.5" fill="none"/>
+<text x="426" y="104" class="s m">potong,</text><text x="426" y="118" class="s m">geser</text>
+<polygon class="fc" points="460,30 580,30 540,130 460,130"/><polygon class="fy" points="540,130 580,30 580,130"/>
+<text x="520" y="150" class="m">a</text><text x="590" y="84" class="s">t</text><text x="520" y="16" class="m s">persegi panjang</text>
+<text x="520" y="168" class="m b">L = a × t</text>
+</svg><figcaption>Gambar 1.5. Asal usul rumus luas segitiga dan luas jajargenjang</figcaption></figure>
+
+<ul><li><b>Segitiga</b>: keliling $K = a + b + c$, luas $L = \frac{1}{2} \times a \times t$.</li></ul>
+
+<h3 class="sub">B.3 Jajargenjang, trapesium, belah ketupat, layang-layang</h3>
+<div class="shapes6">
+<div class="shape"><h4>Persegi</h4><svg class="sv" viewBox="0 0 170 120" width="170"><rect class="fc" x="45" y="12" width="80" height="80"/><text x="85" y="108" class="m">s</text><text x="136" y="56">s</text></svg><div class="fm">$K = 4s$<br>$L = s \times s = s^{2}$</div></div>
+<div class="shape"><h4>Persegi panjang</h4><svg class="sv" viewBox="0 0 170 120" width="170"><rect class="fc" x="20" y="22" width="130" height="68"/><text x="85" y="108" class="m">p</text><text x="158" y="60">l</text></svg><div class="fm">$K = 2(p + l)$<br>$L = p \times l$</div></div>
+<div class="shape"><h4>Jajargenjang</h4><svg class="sv" viewBox="0 0 170 120" width="170"><polygon class="fc" points="15,92 115,92 155,22 55,22"/><line class="dsh" x1="55" y1="22" x2="55" y2="92"/><path class="rt" d="M55 82H65V92"/><text x="70" y="108" class="m">a</text><text x="44" y="62" class="e">t</text><text x="146" y="62">b</text></svg><div class="fm">$K = 2(a + b)$<br>$L = a \times t$</div></div>
+<div class="shape"><h4>Trapesium</h4><svg class="sv" viewBox="0 0 170 120" width="170"><polygon class="fc" points="12,92 158,92 118,22 52,22"/><line class="dsh" x1="52" y1="22" x2="52" y2="92"/><path class="rt" d="M52 82H62V92"/><text x="85" y="15" class="m">a (sejajar)</text><text x="85" y="108" class="m">b (sejajar)</text><text x="42" y="62" class="e">t</text></svg><div class="fm">$K$ = jumlah keempat sisi<br>$L = \frac{1}{2}(a + b) \times t$</div></div>
+<div class="shape"><h4>Belah ketupat</h4><svg class="sv" viewBox="0 0 170 120" width="170"><polygon class="fc" points="85,6 150,56 85,106 20,56"/><line class="dsh" x1="85" y1="6" x2="85" y2="106"/><line class="dsh" x1="20" y1="56" x2="150" y2="56"/><text x="92" y="36">d₂</text><text x="46" y="50">d₁</text><text x="128" y="36">s</text></svg><div class="fm">$K = 4s$<br>$L = \frac{1}{2} \times d_{1} \times d_{2}$</div></div>
+<div class="shape"><h4>Layang-layang</h4><svg class="sv" viewBox="0 0 170 120" width="170"><polygon class="fc" points="85,6 140,42 85,112 30,42"/><line class="dsh" x1="85" y1="6" x2="85" y2="112"/><line class="dsh" x1="30" y1="42" x2="140" y2="42"/><text x="92" y="84">d₂</text><text x="50" y="36">d₁</text><text x="134" y="24">a</text><text x="122" y="84">b</text></svg><div class="fm">$K = 2(a + b)$<br>$L = \frac{1}{2} \times d_{1} \times d_{2}$</div></div>
+</div>
+<p class="fig-cap" style="text-align:center;color:var(--muted);font-size:14px;font-style:italic">Gambar 1.6. Enam bangun segi empat beserta rumus keliling dan luasnya</p>
+
+<div class="box tip"><b class="bt">★ Ingat</b>
+<ul>
+<li><b>Jajargenjang</b>: tinggi $t$ tegak lurus alas, bukan sisi miringnya.</li>
+<li><b>Trapesium</b>: $a$ dan $b$ adalah <b>dua sisi sejajar</b>; tinggi $t$ adalah jarak antara keduanya.</li>
+<li><b>Belah ketupat dan layang-layang</b>: $d_{1}$ dan $d_{2}$ adalah diagonal, dan luasnya memakai $\frac{1}{2}$.</li>
+</ul></div>
+
+<h3 class="sub">B.4 Lingkaran, busur, dan juring</h3>
+<figure class="fig"><svg class="sv" viewBox="0 0 540 235" width="540" role="img" aria-label="Unsur lingkaran, busur, dan juring">
+<circle class="fc" cx="130" cy="115" r="90"/>
+<line class="ln" x1="40" y1="115" x2="220" y2="115"/>
+<line class="ln" x1="130" y1="115" x2="194" y2="51"/>
+<circle class="fn" cx="130" cy="115" r="3.5"/>
+<text x="124" y="132" class="e">O</text>
+<text x="86" y="108" class="m s">d = 2r</text>
+<text x="168" y="92" class="b">r</text>
+<text x="130" y="226" class="m">Lingkaran: pusat O, jari-jari r, diameter d</text>
+<path class="fy" d="M390 115L480 115A90 90 0 0 0 435 37.04Z"/>
+<circle cx="390" cy="115" r="90" class="ln"/>
+<path d="M480 115A90 90 0 0 0 435 37.04" class="thick" style="stroke:#d63a4a"/>
+<path d="M390 115L480 115M390 115L435 37.04" class="ln"/>
+<path d="M418 115A28 28 0 0 0 404 90.8" class="ln" style="stroke-width:1.5"/>
+<text x="424" y="108" class="s">θ</text>
+<text x="470" y="62" class="r">busur</text>
+<text x="452" y="94" class="m s">juring</text>
+<text x="390" y="226" class="m">Busur (garis merah) dan juring (kuning)</text>
+</svg><figcaption>Gambar 1.7. Unsur lingkaran dan bagian-bagiannya (busur dan juring)</figcaption></figure>
+
+<ul>
+<li>Diameter $d = 2r$. Keliling $K = 2\pi r = \pi d$. Luas $L = \pi r^{2}$.</li>
+<li><b>Busur</b> adalah bagian garis lengkung. Panjang busur $= \frac{\theta}{360^\circ} \times 2\pi r$.</li>
+<li><b>Juring</b> adalah "irisan pizza". Luas juring $= \frac{\theta}{360^\circ} \times \pi r^{2}$. Setengah lingkaran berarti $\theta = 180^\circ$, jadi pakai $\frac{1}{2}$.</li>
+</ul>
+<div class="box warn"><b class="bt">⚠ Awas: jari-jari atau diameter?</b>
+Soal sering memberi <b>diameter</b>. Selalu ubah dahulu: $r = d \div 2$. Contoh: diameter 28 cm berarti $r = 14$ cm.</div>
+</section>
+
+<!-- ===================== C ===================== -->
+<section class="sec" id="C">
+<div class="sec-title"><span class="letter">C</span><h2>Level 1 — Pengetahuan dan Pemahaman</h2></div>
+<p>Pada level ini kamu diminta <b>menghitung</b> dengan rumus, <b>memahami informasi</b> dari gambar atau tabel, <b>mengelompokkan</b>, dan <b>mengidentifikasi</b> unsur bangun.</p>
+
+<!-- Contoh 1 -->
+<div class="example" id="c1">
+<div class="ex-head"><span class="ex-no">Contoh 1</span><span class="lv lv1">Level 1</span><span class="ex-kind">Menghitung</span></div>
+<p class="q">Sebuah persegi panjang berukuran 14 cm × 9 cm. Tentukan keliling dan luasnya.</p>
+<figure class="fig"><svg class="sv" viewBox="0 0 250 160" width="250" role="img" aria-label="Persegi panjang 14 cm kali 9 cm">
+<rect class="fc" x="30" y="20" width="168" height="108"/>
+<text x="114" y="147" class="m b">14 cm</text><text x="206" y="80" class="b">9 cm</text>
+<path class="rt" d="M30 116H42V128"/>
+</svg><figcaption>Gambar 1.8. Persegi panjang 14 cm × 9 cm</figcaption></figure>
+<details class="reveal"><summary>Lihat pembahasan</summary><div class="solution">
+<div class="sol-h"><span class="pill">Cara Lengkap</span> langkah demi langkah</div>
+<ol class="steps">
+<li><div class="st-t">Tulis yang diketahui dan ditanyakan</div><div class="st-b">Diketahui: panjang $p = 14$ cm, lebar $l = 9$ cm.<br>Ditanya: keliling $K$ dan luas $L$.</div></li>
+<li><div class="st-t">Hitung keliling (pagar di sekeliling)</div><div class="st-b">Rumus: $K = 2(p + l)$. Kerjakan isi kurung lebih dulu.
+$$\begin{aligned}K &= 2(14 + 9)\\ &= 2 \times 23\\ &= 46\end{aligned}$$</div></li>
+<li><div class="st-t">Hitung luas (isi permukaan)</div><div class="st-b">Rumus: $L = p \times l$.
+$$\begin{aligned}L &= 14 \times 9\\ &= 126\end{aligned}$$</div></li>
+<li><div class="st-t">Tulis jawaban dengan satuan yang benar</div><div class="st-b"><div class="ans-final"><b>Jawaban:</b> keliling $46$ cm dan luas $126\ \text{cm}^2$.</div>Keliling satuannya cm, luas satuannya $\text{cm}^2$.</div></li>
+</ol>
+<div class="box cepat"><b class="bt">⚡ Cara Cepat</b>
+Keliling = dua kali (panjang + lebar): $14 + 9 = 23$, lalu $\times 2 = 46$. Luas: $14 \times 9 = (10 \times 9) + (4 \times 9) = 90 + 36 = 126$.</div>
+</div></details>
+<div class="box try"><b class="bt">✎ Coba sendiri</b>Persegi bersisi 12 cm. Keliling dan luasnya?
+<details class="reveal"><summary>Lihat jawaban</summary><div class="ans">$K = 4 \times 12 = 48$ cm dan $L = 12 \times 12 = 144\ \text{cm}^2$.</div></details></div>
+</div>
+
+<!-- Contoh 2 -->
+<div class="example" id="c2">
+<div class="ex-head"><span class="ex-no">Contoh 2</span><span class="lv lv1">Level 1</span><span class="ex-kind">Mengidentifikasi, lalu menghitung</span></div>
+<p class="q">Perhatikan segitiga ABC. Tentukan (a) alas dan tingginya, (b) keliling, (c) luas.</p>
+<figure class="fig"><svg class="sv" viewBox="0 0 290 235" width="290" role="img" aria-label="Segitiga ABC dengan tinggi AD sama dengan 12 cm">
+<polygon class="fc" points="30,200 240,200 105,20"/>
+<line class="dsh" x1="105" y1="20" x2="105" y2="200"/><path class="rt" d="M105 188H117V200"/>
+<text x="105" y="12" class="m b">A</text><text x="18" y="212" class="b">B</text><text x="244" y="212" class="b">C</text><text x="105" y="218" class="m b">D</text>
+<text x="52" y="100" class="e">13 cm</text><text x="190" y="100">15 cm</text>
+<text x="170" y="218" class="m">14 cm</text><text x="112" y="120" class="r">12 cm</text>
+</svg><figcaption>Gambar 1.9. Segitiga ABC dengan tinggi AD = 12 cm</figcaption></figure>
+<details class="reveal"><summary>Lihat pembahasan</summary><div class="solution">
+<div class="sol-h"><span class="pill">Cara Lengkap</span> langkah demi langkah</div>
+<ol class="steps">
+<li><div class="st-t">Kenali alas dan tinggi dari gambar</div><div class="st-b">Garis AD memiliki tanda siku-siku di D, jadi AD tegak lurus BC. Maka <b>AD adalah tinggi (12 cm)</b> dan <b>alasnya BC = 14 cm</b>.<br>Sisi 13 cm dan 15 cm <b>bukan</b> tinggi karena tidak membentuk sudut siku-siku dengan alas.</div></li>
+<li><div class="st-t">Hitung keliling</div><div class="st-b">Keliling = jumlah ketiga sisi.
+$$K = 13 + 14 + 15 = 42\ \text{cm}$$</div></li>
+<li><div class="st-t">Hitung luas</div><div class="st-b">Rumus: $L = \frac{1}{2} \times a \times t$.
+$$\begin{aligned}L &= \frac{1}{2} \times 14 \times 12\\ &= 7 \times 12\\ &= 84\end{aligned}$$</div></li>
+<li><div class="st-t">Tulis jawaban</div><div class="st-b"><div class="ans-final"><b>Jawaban:</b> (a) alas 14 cm, tinggi 12 cm; (b) keliling 42 cm; (c) luas $84\ \text{cm}^2$.</div></div></li>
+</ol>
+<div class="box cepat"><b class="bt">⚡ Cara Cepat</b>
+Cari tanda siku-siku dulu: itulah tinggi. Untuk luas, <b>setengahkan angka yang genap lebih dulu</b>: $\frac{1}{2} \times 14 = 7$, lalu $7 \times 12 = 84$. Keliling cukup menjumlahkan tiga sisi: $13 + 14 + 15 = 42$.</div>
+</div></details>
+<div class="box try"><b class="bt">✎ Coba sendiri</b>Segitiga beralas 10 cm dan tinggi 7 cm. Luasnya?
+<details class="reveal"><summary>Lihat jawaban</summary><div class="ans">$L = \frac{1}{2} \times 10 \times 7 = 5 \times 7 = 35\ \text{cm}^2$.</div></details></div>
+</div>
+
+<!-- Contoh 3 -->
+<div class="example" id="c3">
+<div class="ex-head"><span class="ex-no">Contoh 3</span><span class="lv lv1">Level 1</span><span class="ex-kind">Menghitung (lingkaran)</span></div>
+<p class="q">Sebuah lingkaran berdiameter 28 cm. Tentukan keliling dan luasnya. (Gunakan $\pi = \frac{22}{7}$)</p>
+<details class="reveal"><summary>Lihat pembahasan</summary><div class="solution">
+<div class="sol-h"><span class="pill">Cara Lengkap</span> langkah demi langkah</div>
+<ol class="steps">
+<li><div class="st-t">Tulis yang diketahui</div><div class="st-b">Diameter $d = 28$ cm dan $\pi = \frac{22}{7}$.</div></li>
+<li><div class="st-t">Ubah diameter menjadi jari-jari</div><div class="st-b">$$r = d \div 2 = 28 \div 2 = 14\ \text{cm}$$ Angka 14 adalah kelipatan 7, jadi $\pi = \frac{22}{7}$ memang cocok.</div></li>
+<li><div class="st-t">Hitung keliling</div><div class="st-b">Rumus: $K = \pi d$.
+$$\begin{aligned}K &= \frac{22}{7} \times 28\\ &= 22 \times 4\\ &= 88\end{aligned}$$ (28 dibagi 7 sama dengan 4.)</div></li>
+<li><div class="st-t">Hitung luas</div><div class="st-b">Rumus: $L = \pi r^{2}$.
+$$\begin{aligned}L &= \frac{22}{7} \times 14 \times 14\\ &= 22 \times 2 \times 14\\ &= 616\end{aligned}$$ (14 dibagi 7 sama dengan 2.)</div></li>
+<li><div class="st-t">Tulis jawaban</div><div class="st-b"><div class="ans-final"><b>Jawaban:</b> keliling $88$ cm dan luas $616\ \text{cm}^2$.</div></div></li>
+</ol>
+<div class="box cepat"><b class="bt">⚡ Cara Cepat</b>
+$K = \pi d$ langsung memakai diameter, jadi tidak perlu mengubah ke $r$ untuk keliling. Untuk luas, coret angka 7 dengan salah satu angka 14 lebih dulu, sehingga hitungannya hanya $22 \times 2 \times 14$.</div>
+</div></details>
+<div class="box try"><b class="bt">✎ Coba sendiri</b>Lingkaran jari-jari 7 cm. Keliling dan luasnya?
+<details class="reveal"><summary>Lihat jawaban</summary><div class="ans">$K = 2 \times \frac{22}{7} \times 7 = 44$ cm dan $L = \frac{22}{7} \times 7 \times 7 = 154\ \text{cm}^2$.</div></details></div>
+</div>
+</section>
+
+<!-- ===================== D ===================== -->
+<section class="sec" id="D">
+<div class="sec-title"><span class="letter">D</span><h2>Level 2 — Aplikasi</h2></div>
+<p>Pada level ini kamu <b>memodelkan</b> cerita menjadi gambar dan hitungan, lalu <b>menerapkan</b> rumus pada <b>bangun gabungan</b> (misalnya persegi panjang + segitiga, atau segitiga + lingkaran).</p>
+
+<div class="box tip"><b class="bt">★ Strategi 4 langkah untuk bangun gabungan</b>
+<ol>
+<li><b>Gambar dan beri nama</b> tiap bagian bangun.</li>
+<li><b>Pecah</b> menjadi bangun dasar (persegi panjang, segitiga, setengah lingkaran, ...).</li>
+<li><b>Luas</b>: hitung tiap bagian lalu <b>jumlahkan</b>. Jika ada bagian yang dilubangi atau diarsir, <b>kurangkan</b>.</li>
+<li><b>Keliling</b>: jumlahkan hanya <b>garis tepi luar</b>. Sisi tempat dua bagian menempel <b>tidak dihitung</b>.</li>
+</ol></div>
+
+<!-- Contoh 4 -->
+<div class="example" id="c4">
+<div class="ex-head"><span class="ex-no">Contoh 4</span><span class="lv lv2">Level 2</span><span class="ex-kind">Menerapkan: persegi panjang + segitiga</span></div>
+<p class="q">Gambar berikut menunjukkan denah rumah-rumahan: persegi panjang 12 m × 5 m dengan segitiga sama kaki di atasnya (alas 12 m, tinggi 8 m, sisi miring 10 m). Tentukan keliling dan luasnya.</p>
+<figure class="fig"><svg class="sv" viewBox="-10 0 330 315" width="320" role="img" aria-label="Persegi panjang ditambah segitiga">
+<polygon class="fy" points="30,185 270,185 150,25"/>
+<rect class="fc" x="30" y="185" width="240" height="100"/>
+<line class="dsh" x1="150" y1="25" x2="150" y2="185"/><path class="rt" d="M150 173H162V185"/>
+<text x="144" y="110" class="e r">8 m</text>
+<text x="76" y="100" class="e">10 m</text><text x="224" y="100">10 m</text>
+<text x="150" y="238" class="m b">persegi panjang</text>
+<text x="150" y="304" class="m">12 m</text><text x="18" y="240" class="e">5 m</text><text x="278" y="240">5 m</text>
+<text x="150" y="152" class="m s">segitiga</text>
+</svg><figcaption>Gambar 1.10. Persegi panjang ditambah segitiga</figcaption></figure>
+<details class="reveal"><summary>Lihat pembahasan</summary><div class="solution">
+<div class="sol-h"><span class="pill">Cara Lengkap</span> langkah demi langkah</div>
+<ol class="steps">
+<li><div class="st-t">Pecah bangun menjadi dua bagian</div><div class="st-b">Bagian bawah: persegi panjang $12 \times 5$. Bagian atas: segitiga beralas 12 m, tinggi 8 m.</div></li>
+<li><div class="st-t">Hitung luas tiap bagian</div><div class="st-b">$$\begin{aligned}L_{\text{persegi panjang}} &= 12 \times 5 = 60\ \text{m}^2\\ L_{\text{segitiga}} &= \tfrac{1}{2} \times 12 \times 8 = 48\ \text{m}^2\end{aligned}$$</div></li>
+<li><div class="st-t">Jumlahkan luas</div><div class="st-b">$$L = 60 + 48 = 108\ \text{m}^2$$</div></li>
+<li><div class="st-t">Tentukan sisi yang membentuk garis tepi luar</div><div class="st-b">Sisi atas persegi panjang (12 m) <b>menempel</b> pada alas segitiga, sehingga <b>tidak dihitung</b>.<br>Garis tepi luar: sisi bawah 12, dua sisi tegak 5 dan 5, dua sisi miring 10 dan 10.</div></li>
+<li><div class="st-t">Hitung keliling</div><div class="st-b">$$K = 12 + 5 + 5 + 10 + 10 = 42\ \text{m}$$</div></li>
+<li><div class="st-t">Tulis jawaban</div><div class="st-b"><div class="ans-final"><b>Jawaban:</b> keliling $42$ m dan luas $108\ \text{m}^2$.</div></div></li>
+</ol>
+<div class="box cepat"><b class="bt">⚡ Cara Cepat</b>
+Luas: $60 + 48 = 108$. Keliling: telusuri garis tepi luar dengan jari, satu kali putaran, lalu jumlahkan. Sisi yang "tertutup" di dalam (12 m yang menempel) dicoret.</div>
+</div></details>
+<div class="box try"><b class="bt">✎ Coba sendiri</b>Seorang siswa menghitung keliling $= 12 + 12 + 5 + 5 + 10 + 10 = 54$ m. Di mana letak kesalahannya?
+<details class="reveal"><summary>Lihat jawaban</summary><div class="ans">Sisi atas persegi panjang (12 m) ikut dihitung, padahal sisi itu menempel pada segitiga. Seharusnya $54 - 12 = 42$ m.</div></details></div>
+</div>
+
+<!-- Contoh 5 -->
+<div class="example" id="c5">
+<div class="ex-head"><span class="ex-no">Contoh 5</span><span class="lv lv2">Level 2</span><span class="ex-kind">Menerapkan: persegi panjang + setengah lingkaran</span></div>
+<p class="q">Sebuah taman berbentuk persegi panjang 20 m × 14 m, dengan setengah lingkaran berdiameter 14 m menempel pada salah satu sisi lebarnya. Tentukan luas dan keliling taman. ($\pi = \frac{22}{7}$)</p>
+<figure class="fig"><svg class="sv" viewBox="-35 0 425 215" width="400" role="img" aria-label="Taman: persegi panjang ditambah setengah lingkaran">
+<path class="fy" d="M270 20A84 84 0 0 1 270 188Z"/>
+<rect class="fc" x="30" y="20" width="240" height="168"/>
+<path class="ln" d="M270 20A84 84 0 0 1 270 188"/>
+<line class="dsh" x1="270" y1="20" x2="270" y2="188"/>
+<line class="ln" x1="270" y1="104" x2="354" y2="104"/><circle class="fn" cx="270" cy="104" r="3"/>
+<text x="150" y="108" class="m b">persegi panjang</text>
+<text x="312" y="98" class="m s">r = 7 m</text><text x="312" y="130" class="m s">½ lingkaran</text>
+<text x="150" y="208" class="m b">20 m</text><text x="20" y="108" class="e b">14 m</text>
+</svg><figcaption>Gambar 1.11. Taman: persegi panjang ditambah setengah lingkaran</figcaption></figure>
+<details class="reveal"><summary>Lihat pembahasan</summary><div class="solution">
+<div class="sol-h"><span class="pill">Cara Lengkap</span> langkah demi langkah</div>
+<ol class="steps">
+<li><div class="st-t">Cari jari-jari setengah lingkaran</div><div class="st-b">Diameter 14 m, maka $r = 14 \div 2 = 7$ m.</div></li>
+<li><div class="st-t">Hitung luas persegi panjang</div><div class="st-b">$$L_1 = 20 \times 14 = 280\ \text{m}^2$$</div></li>
+<li><div class="st-t">Hitung luas setengah lingkaran</div><div class="st-b">$$\begin{aligned}L_2 &= \tfrac{1}{2}\pi r^{2}\\ &= \tfrac{1}{2} \times \tfrac{22}{7} \times 7 \times 7\\ &= 77\ \text{m}^2\end{aligned}$$</div></li>
+<li><div class="st-t">Jumlahkan untuk luas taman</div><div class="st-b">$$L = 280 + 77 = 357\ \text{m}^2$$</div></li>
+<li><div class="st-t">Tentukan garis tepi luar untuk keliling</div><div class="st-b">Sisi 14 m yang ditempeli setengah lingkaran <b>tidak dihitung</b>. Yang dihitung: dua sisi 20 m, satu sisi 14 m di seberangnya, dan <b>busur</b> setengah lingkaran.
+$$\text{busur} = \tfrac{1}{2} \times 2\pi r = \pi r = \tfrac{22}{7} \times 7 = 22\ \text{m}$$</div></li>
+<li><div class="st-t">Hitung keliling</div><div class="st-b">$$K = 20 + 20 + 14 + 22 = 76\ \text{m}$$</div></li>
+<li><div class="st-t">Tulis jawaban</div><div class="st-b"><div class="ans-final"><b>Jawaban:</b> luas $357\ \text{m}^2$ dan keliling $76$ m.</div></div></li>
+</ol>
+<div class="box cepat"><b class="bt">⚡ Cara Cepat</b>
+Setengah lingkaran: luas $= \frac{1}{2}\pi r^{2}$, panjang busur $= \pi r$ (tanpa angka 2). Dengan $r = 7$: luas $= 77$ dan busur $= 22$ langsung terbaca.</div>
+</div></details>
+</div>
+
+<!-- Contoh 6 -->
+<div class="example" id="c6">
+<div class="ex-head"><span class="ex-no">Contoh 6</span><span class="lv lv2">Level 2</span><span class="ex-kind">Menerapkan: segitiga + lingkaran</span></div>
+<p class="q">Sebuah bangun "es krim" tersusun dari segitiga sama kaki (alas 14 cm, sisi sama panjang 25 cm, tinggi 24 cm) dan setengah lingkaran berdiameter 14 cm di atas alas segitiga. Tentukan keliling dan luasnya. ($\pi = \frac{22}{7}$)</p>
+<figure class="fig"><svg class="sv" viewBox="0 0 260 380" width="240" role="img" aria-label="Gabungan segitiga dan setengah lingkaran">
+<path class="fy" d="M40 110A70 70 0 0 1 180 110Z"/>
+<polygon class="fc" points="40,110 180,110 110,350"/>
+<path class="ln" d="M40 110A70 70 0 0 1 180 110"/>
+<line class="dsh" x1="110" y1="110" x2="110" y2="350"/><path class="rt" d="M110 122H122V110" style="transform:translateY(0)"/>
+<text x="110" y="70" class="m b">½ lingkaran</text>
+<text x="110" y="100" class="m s">(diameter 14 cm)</text>
+<text x="120" y="152" class="r">24 cm</text>
+<text x="56" y="236" class="e">25 cm</text><text x="168" y="236">25 cm</text>
+<text x="110" y="372" class="m s">(r = 7 cm)</text>
+</svg><figcaption>Gambar 1.12. Gabungan segitiga dan setengah lingkaran</figcaption></figure>
+<details class="reveal"><summary>Lihat pembahasan</summary><div class="solution">
+<div class="sol-h"><span class="pill">Cara Lengkap</span> langkah demi langkah</div>
+<ol class="steps">
+<li><div class="st-t">Cari jari-jari setengah lingkaran</div><div class="st-b">Diameter 14 cm, maka $r = 7$ cm.</div></li>
+<li><div class="st-t">Hitung luas segitiga</div><div class="st-b">$$L_{\text{segitiga}} = \tfrac{1}{2} \times 14 \times 24 = 168\ \text{cm}^2$$</div></li>
+<li><div class="st-t">Hitung luas setengah lingkaran</div><div class="st-b">$$L_{\text{½ lingkaran}} = \tfrac{1}{2} \times \tfrac{22}{7} \times 7 \times 7 = 77\ \text{cm}^2$$</div></li>
+<li><div class="st-t">Jumlahkan luas</div><div class="st-b">$$L = 168 + 77 = 245\ \text{cm}^2$$</div></li>
+<li><div class="st-t">Tentukan garis tepi luar untuk keliling</div><div class="st-b">Alas segitiga (14 cm) menempel pada setengah lingkaran, jadi <b>tidak dihitung</b>. Yang dihitung: dua sisi miring dan busur.
+$$\text{busur} = \pi r = \tfrac{22}{7} \times 7 = 22\ \text{cm}$$</div></li>
+<li><div class="st-t">Hitung keliling</div><div class="st-b">$$K = 25 + 25 + 22 = 72\ \text{cm}$$</div></li>
+<li><div class="st-t">Tulis jawaban</div><div class="st-b"><div class="ans-final"><b>Jawaban:</b> luas $245\ \text{cm}^2$ dan keliling $72$ cm.</div></div></li>
+</ol>
+<div class="box cepat"><b class="bt">⚡ Cara Cepat</b>
+Pola yang sama dengan Contoh 5: sisi yang menempel dicoret, busur setengah lingkaran $= \pi r = 22$. Keliling $= 25 + 25 + 22 = 72$.</div>
+</div></details>
+</div>
+
+<!-- Contoh 7 -->
+<div class="example" id="c7">
+<div class="ex-head"><span class="ex-no">Contoh 7</span><span class="lv lv2">Level 2</span><span class="ex-kind">Menerapkan: daerah arsiran</span></div>
+<p class="q">Dari sebuah persegi bersisi 14 cm, dipotong empat seperempat lingkaran berjari-jari 7 cm pada keempat sudutnya. Tentukan luas daerah yang diarsir. ($\pi = \frac{22}{7}$)</p>
+<figure class="fig"><svg class="sv" viewBox="0 0 270 250" width="260" role="img" aria-label="Persegi dikurangi empat seperempat lingkaran">
+<defs><pattern id="h13" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="rgba(255,211,0,.35)"/><line x1="0" y1="0" x2="0" y2="8" stroke="#c99a00" stroke-width="2"/></pattern></defs>
+<rect x="30" y="20" width="210" height="210" style="fill:url(#h13);stroke:#022050;stroke-width:2"/>
+<path class="fw" d="M30 20L135 20A105 105 0 0 1 30 125Z"/>
+<path class="fw" d="M240 20L135 20A105 105 0 0 0 240 125Z"/>
+<path class="fw" d="M240 230L240 125A105 105 0 0 0 135 230Z"/>
+<path class="fw" d="M30 230L135 230A105 105 0 0 0 30 125Z"/>
+<text x="135" y="130" class="m b">daerah arsiran</text>
+<text x="135" y="247" class="m s">sisi persegi 14 cm, r = 7 cm</text>
+</svg><figcaption>Gambar 1.13. Persegi dikurangi empat seperempat lingkaran</figcaption></figure>
+<details class="reveal"><summary>Lihat pembahasan</summary><div class="solution">
+<div class="sol-h"><span class="pill">Cara Lengkap</span> langkah demi langkah</div>
+<ol class="steps">
+<li><div class="st-t">Ketahui kuncinya</div><div class="st-b">Empat seperempat lingkaran yang sama besar $= $ <b>satu lingkaran penuh</b> berjari-jari 7 cm ($4 \times \frac{1}{4} = 1$).</div></li>
+<li><div class="st-t">Hitung luas persegi</div><div class="st-b">$$L_{\text{persegi}} = 14 \times 14 = 196\ \text{cm}^2$$</div></li>
+<li><div class="st-t">Hitung luas lingkaran penuh</div><div class="st-b">$$L_{\text{lingkaran}} = \tfrac{22}{7} \times 7 \times 7 = 154\ \text{cm}^2$$</div></li>
+<li><div class="st-t">Kurangkan (karena bagian itu dipotong)</div><div class="st-b">$$L_{\text{arsir}} = 196 - 154 = 42\ \text{cm}^2$$</div></li>
+<li><div class="st-t">Tulis jawaban</div><div class="st-b"><div class="ans-final"><b>Jawaban:</b> $42\ \text{cm}^2$.</div></div></li>
+</ol>
+<div class="box cepat"><b class="bt">⚡ Cara Cepat</b>
+Daerah arsiran $=$ persegi $-$ satu lingkaran. Langsung: $196 - 154 = 42$. Tidak perlu menghitung satu per satu seperempat lingkaran.</div>
+</div></details>
+</div>
+
+<!-- Contoh 8 -->
+<div class="example" id="c8">
+<div class="ex-head"><span class="ex-no">Contoh 8</span><span class="lv lv2">Level 2</span><span class="ex-kind">Memodelkan: soal cerita</span></div>
+<p class="q">Lantai ruang tamu berukuran 6 m × 4,5 m akan dipasang keramik 30 cm × 30 cm. Satu dus berisi 10 keramik dan harganya Rp60.000. Berapa banyak keramik dan berapa biaya membeli keramik?</p>
+<figure class="fig"><svg class="sv" viewBox="0 0 370 290" width="360" role="img" aria-label="Lantai 6 m kali 4,5 m dengan keramik 30 cm kali 30 cm">
+<defs><pattern id="g114" width="15" height="15" patternUnits="userSpaceOnUse" x="30" y="30"><path d="M15 0H0V15" class="gr"/></pattern></defs>
+<rect class="fc" x="30" y="30" width="300" height="225"/><rect x="30" y="30" width="300" height="225" fill="url(#g114)"/>
+<rect class="fy" x="30" y="30" width="15" height="15"/>
+<text x="180" y="22" class="m b">6 m = 600 cm → 20 keramik</text>
+<text x="346" y="142" class="s" transform="rotate(90 346 142)" style="text-anchor:middle">4,5 m = 450 cm → 15 keramik</text>
+<text x="180" y="276" class="m s">kotak kuning = 1 keramik (30 cm × 30 cm)</text>
+</svg><figcaption>Gambar 1.14. Lantai 6 m × 4,5 m dengan keramik 30 cm × 30 cm</figcaption></figure>
+<details class="reveal"><summary>Lihat pembahasan</summary><div class="solution">
+<div class="sol-h"><span class="pill">Cara Lengkap</span> langkah demi langkah</div>
+<ol class="steps">
+<li><div class="st-t">Samakan satuan (ubah ke cm)</div><div class="st-b">$6\ \text{m} = 600\ \text{cm}$ dan $4{,}5\ \text{m} = 450\ \text{cm}$.</div></li>
+<li><div class="st-t">Hitung keramik yang muat sepanjang dan selebar lantai</div><div class="st-b">$$\begin{aligned}\text{sepanjang lantai} &= 600 \div 30 = 20\\ \text{selebar lantai} &= 450 \div 30 = 15\end{aligned}$$</div></li>
+<li><div class="st-t">Hitung banyak keramik</div><div class="st-b">$$20 \times 15 = 300\ \text{buah}$$</div></li>
+<li><div class="st-t">Hitung banyak dus</div><div class="st-b">$$300 \div 10 = 30\ \text{dus}$$</div></li>
+<li><div class="st-t">Hitung biaya</div><div class="st-b">$$30 \times 60.000 = 1.800.000$$</div></li>
+<li><div class="st-t">Tulis jawaban</div><div class="st-b"><div class="ans-final"><b>Jawaban:</b> 300 keramik, biaya Rp1.800.000.</div></div></li>
+</ol>
+<div class="box cepat"><b class="bt">⚡ Cara Cepat</b>
+Pakai luas: luas lantai $= 6 \times 4{,}5 = 27\ \text{m}^2$, luas satu keramik $= 0{,}3 \times 0{,}3 = 0{,}09\ \text{m}^2$, jadi $27 \div 0{,}09 = 300$.</div>
+</div></details>
+</div>
+</section>
+
+<!-- ===================== E ===================== -->
+<section class="sec" id="E">
+<div class="sec-title"><span class="letter">E</span><h2>Level 3 — Penalaran</h2></div>
+<p>Pada level ini kamu <b>menganalisis</b>, <b>membandingkan strategi</b>, <b>menarik kesimpulan</b>, <b>menyusun generalisasi</b>, dan <b>menjustifikasi</b> (memberi alasan). Jawaban tidak cukup hanya angka; kamu harus bisa menjelaskan <i>kenapa</i>.</p>
+
+<!-- Contoh 9 -->
+<div class="example" id="c9">
+<div class="ex-head"><span class="ex-no">Contoh 9</span><span class="lv lv3">Level 3</span><span class="ex-kind">Menganalisis dan generalisasi</span></div>
+<p class="q">Sepotong kawat sepanjang 40 cm dibentuk menjadi empat bangun berbeda (kawat dipakai habis). Bangun manakah yang luasnya paling besar, dan apa kesimpulannya? (Gunakan $\pi = 3{,}14$)</p>
+<figure class="fig"><svg class="sv" viewBox="0 0 560 215" width="560" role="img" aria-label="Keliling sama 40 cm, luas berbeda-beda">
+<rect class="fc" x="20" y="45" width="80" height="80"/><text x="60" y="90" class="m b">10 × 10</text><text x="60" y="150" class="m">Persegi</text><text x="60" y="170" class="m b">L = 100</text>
+<rect class="fc" x="130" y="61" width="96" height="64"/><text x="178" y="98" class="m b">12 × 8</text><text x="178" y="150" class="m">Persegi panjang</text><text x="178" y="170" class="m b">L = 96</text>
+<rect class="fc" x="256" y="85" width="120" height="40"/><text x="316" y="110" class="m b">15 × 5</text><text x="316" y="150" class="m">Persegi panjang</text><text x="316" y="170" class="m b">L = 75</text>
+<circle class="fy" cx="458" cy="82" r="51"/><text x="458" y="86" class="m b">r ≈ 6,37</text><text x="458" y="150" class="m">Lingkaran</text><text x="458" y="170" class="m b">L ≈ 127,4</text>
+<text x="280" y="20" class="m b">Keliling semuanya 40 cm</text>
+<text x="280" y="200" class="m s">(digambar dengan skala yang sama: 1 cm = 8 satuan gambar)</text>
+</svg><figcaption>Gambar 1.15. Keliling sama (40 cm), luas berbeda-beda</figcaption></figure>
+<details class="reveal"><summary>Lihat pembahasan</summary><div class="solution">
+<div class="sol-h"><span class="pill">Cara Lengkap</span> langkah demi langkah</div>
+<ol class="steps">
+<li><div class="st-t">Pahami soalnya</div><div class="st-b">Keempat bangun memiliki keliling yang sama, yaitu 40 cm. Kita hitung luas masing-masing, lalu bandingkan.</div></li>
+<li><div class="st-t">Persegi</div><div class="st-b">$4s = 40$, maka $s = 10$ cm. $$L = 10 \times 10 = 100\ \text{cm}^2$$</div></li>
+<li><div class="st-t">Persegi panjang 12 × 8</div><div class="st-b">Cek keliling: $2(12 + 8) = 40$ ✓. $$L = 12 \times 8 = 96\ \text{cm}^2$$</div></li>
+<li><div class="st-t">Persegi panjang 15 × 5</div><div class="st-b">Cek keliling: $2(15 + 5) = 40$ ✓. $$L = 15 \times 5 = 75\ \text{cm}^2$$</div></li>
+<li><div class="st-t">Lingkaran</div><div class="st-b">Keliling $2\pi r = 40$, maka
+$$r = \frac{40}{2 \times 3{,}14} = \frac{40}{6{,}28} \approx 6{,}37\ \text{cm}$$
+$$L = \pi r^{2} \approx 3{,}14 \times 40{,}6 \approx 127{,}4\ \text{cm}^2$$</div></li>
+<li><div class="st-t">Bandingkan dan simpulkan</div><div class="st-b"><div class="ans-final"><b>Kesimpulan:</b> bangun yang paling luas adalah <b>lingkaran</b> ($\approx 127{,}4\ \text{cm}^2$).</div></div></li>
+</ol>
+<div class="box cepat"><b class="bt">⚡ Cara Cepat</b>
+<p>Dua pola yang berlaku umum untuk keliling yang sama:</p>
+<ul>
+<li>Di antara persegi panjang, makin mendekati <b>persegi</b> makin luas ($75 \to 96 \to 100$).</li>
+<li>Di antara semua bangun, <b>lingkaran</b> paling luas.</li>
+</ul>
+<p>Pintasan luas lingkaran dari keliling: $L = \dfrac{K^{2}}{4\pi} = \dfrac{1600}{12{,}56} \approx 127{,}4$.</p></div>
+</div></details>
+<div class="box tip"><b class="bt">★ Generalisasi</b><b>Keliling sama tidak berarti luas sama.</b> Luas bergantung pada bentuk bangun.</div>
+</div>
+
+<!-- Contoh 10 -->
+<div class="example" id="c10">
+<div class="ex-head"><span class="ex-no">Contoh 10</span><span class="lv lv3">Level 3</span><span class="ex-kind">Menjustifikasi</span></div>
+<p class="q">Titik $C_{1}$, $C_{2}$, $C_{3}$ terletak pada garis $\ell$ yang sejajar dengan garis $k$ yang memuat AB. Seorang siswa berkata, "Ketiga segitiga berbeda bentuknya, jadi luasnya pasti berbeda." Benarkah? Berikan alasan.</p>
+<figure class="fig"><svg class="sv" viewBox="0 0 470 195" width="470" role="img" aria-label="Tiga segitiga dengan alas AB sama dan tinggi sama">
+<line class="ln" x1="15" y1="150" x2="455" y2="150"/><line class="ln" x1="15" y1="40" x2="455" y2="40"/>
+<polygon points="140,150 300,150 90,40" style="fill:rgba(0,214,216,.18);stroke:#00a0a3;stroke-width:2"/>
+<polygon points="140,150 300,150 215,40" style="fill:rgba(255,211,0,.25);stroke:#c99a00;stroke-width:2"/>
+<polygon points="140,150 300,150 390,40" style="fill:rgba(107,76,230,.15);stroke:#6b4ce6;stroke-width:2"/>
+<line class="dsh" x1="215" y1="40" x2="215" y2="150"/><path class="rt" d="M215 138H227V150"/>
+<text x="90" y="30" class="m b">C₁</text><text x="215" y="30" class="m b">C₂</text><text x="390" y="30" class="m b">C₃</text>
+<text x="128" y="170" class="e b">A</text><text x="308" y="170" class="b">B</text>
+<text x="446" y="32" class="e b">ℓ</text><text x="446" y="142" class="e b">k</text>
+<text x="224" y="100" class="s r">t (sama)</text><text x="220" y="184" class="m s">alas AB sama</text>
+</svg><figcaption>Gambar 1.16. Tiga segitiga dengan alas AB sama dan tinggi sama</figcaption></figure>
+<details class="reveal"><summary>Lihat pembahasan</summary><div class="solution">
+<div class="sol-h"><span class="pill">Cara Lengkap</span> langkah demi langkah</div>
+<ol class="steps">
+<li><div class="st-t">Ingat rumus luas segitiga</div><div class="st-b">$$L = \tfrac{1}{2} \times \text{alas} \times \text{tinggi}$$ Luas <b>hanya bergantung pada alas dan tinggi</b>, bukan pada letak titik puncaknya.</div></li>
+<li><div class="st-t">Bandingkan alasnya</div><div class="st-b">Ketiga segitiga memiliki alas yang sama, yaitu AB.</div></li>
+<li><div class="st-t">Bandingkan tingginya</div><div class="st-b">$C_{1}$, $C_{2}$, $C_{3}$ berada pada garis yang sejajar dengan AB. Jarak antara dua garis sejajar selalu tetap, sehingga tinggi ketiga segitiga juga sama.</div></li>
+<li><div class="st-t">Simpulkan</div><div class="st-b"><div class="ans-final"><b>Kesimpulan:</b> pernyataan siswa <b>salah</b>. Ketiga segitiga memiliki luas yang sama walaupun bentuknya berbeda.</div></div></li>
+</ol>
+<div class="box cepat"><b class="bt">⚡ Cara Cepat</b>
+Alas sama + tinggi sama (puncak di garis sejajar) $\Rightarrow$ <b>luas sama</b>. Bentuk yang berbeda tidak mengubah luas.</div>
+</div></details>
+</div>
+
+<!-- Contoh 11 -->
+<div class="example" id="c11">
+<div class="ex-head"><span class="ex-no">Contoh 11</span><span class="lv lv3">Level 3</span><span class="ex-kind">Generalisasi: perubahan ukuran</span></div>
+<p class="q">Sebuah foto berukuran 10 cm × 15 cm diperbesar sehingga setiap sisinya menjadi 3 kali lebih panjang. Berapa kali luas foto semula? Tuliskan aturan umumnya.</p>
+<figure class="fig"><svg class="sv" viewBox="0 0 360 185" width="350" role="img" aria-label="Sisi diperbesar 2 kali: keliling 2 kali, luas 4 kali">
+<rect class="fy" x="20" y="95" width="60" height="40"/>
+<text x="50" y="155" class="m">sisi 1 kali</text><text x="50" y="172" class="m b">luas = 1</text>
+<path d="M95 115h38" stroke="#022050" stroke-width="2.5" fill="none"/><path d="M125 106l10 9-10 9" stroke="#022050" stroke-width="2.5" fill="none"/>
+<rect class="fc" x="150" y="55" width="120" height="80"/>
+<line class="gr" x1="210" y1="55" x2="210" y2="135"/><line class="gr" x1="150" y1="95" x2="270" y2="95"/>
+<rect class="fy" x="150" y="95" width="60" height="40"/>
+<text x="210" y="155" class="m">semua sisi 2 kali</text><text x="210" y="172" class="m b">luas = 4 (2² = 4)</text>
+<text x="210" y="42" class="m s">keliling juga 2 kali</text>
+<text x="310" y="95" class="m s">k kali →</text><text x="310" y="115" class="m b">K × k</text><text x="310" y="135" class="m b">L × k²</text>
+</svg><figcaption>Gambar 1.17. Sisi diperbesar 2 kali: keliling 2 kali, luas 4 kali</figcaption></figure>
+<details class="reveal"><summary>Lihat pembahasan</summary><div class="solution">
+<div class="sol-h"><span class="pill">Cara Lengkap</span> langkah demi langkah</div>
+<ol class="steps">
+<li><div class="st-t">Hitung luas foto semula</div><div class="st-b">$$L_{\text{awal}} = 10 \times 15 = 150\ \text{cm}^2$$</div></li>
+<li><div class="st-t">Hitung ukuran foto baru</div><div class="st-b">Setiap sisi 3 kali: $10 \times 3 = 30$ dan $15 \times 3 = 45$.
+$$L_{\text{baru}} = 30 \times 45 = 1.350\ \text{cm}^2$$</div></li>
+<li><div class="st-t">Bandingkan</div><div class="st-b">$$\frac{1.350}{150} = 9 = 3^{2}$$</div></li>
+<li><div class="st-t">Rumuskan aturan umum</div><div class="st-b"><div class="ans-final"><b>Aturan umum:</b> jika semua sisi diperbesar $k$ kali, maka <b>keliling menjadi $k$ kali</b> dan <b>luas menjadi $k^{2}$ kali</b>.</div></div></li>
+</ol>
+<div class="box cepat"><b class="bt">⚡ Cara Cepat</b>
+Tidak perlu menghitung ukuran baru. Sisi 3 kali $\Rightarrow$ luas $3^{2} = 9$ kali. Langsung terjawab: <b>9 kali</b>.</div>
+</div></details>
+<div class="box try"><b class="bt">✎ Coba sendiri</b>Luas sebuah bangun menjadi 4 kali lipat. Sisinya menjadi berapa kali?
+<details class="reveal"><summary>Lihat jawaban</summary><div class="ans">2 kali (karena $2^{2} = 4$).</div></details></div>
+</div>
+</section>
+
+<!-- ===================== F ===================== -->
+<section class="sec" id="F">
+<div class="sec-title"><span class="letter">F</span><h2>Kesalahan yang Sering Terjadi</h2></div>
+<div class="tbl-wrap"><table>
+<thead><tr><th>Kesalahan</th><th>Yang benar</th></tr></thead>
+<tbody>
+<tr><td>Menukar keliling dengan luas</td><td>Baca kata kunci soal (pagar/tali = keliling, keramik/cat = luas).</td></tr>
+<tr><td>Memakai sisi miring sebagai tinggi</td><td>Tinggi harus tegak lurus alas (cari tanda siku-siku).</td></tr>
+<tr><td>Lupa $\frac{1}{2}$ pada segitiga, trapesium, belah ketupat, dan layang-layang</td><td>Semua rumus luasnya memuat $\frac{1}{2}$.</td></tr>
+<tr><td>Memakai diameter sebagai jari-jari</td><td>Ubah dahulu: $r = d \div 2$.</td></tr>
+<tr><td>Pada keliling gabungan, ikut menghitung sisi yang menempel</td><td>Hanya hitung garis tepi luar.</td></tr>
+<tr><td>Satuan tidak sama atau salah ubah satuan luas</td><td>Samakan satuan lebih dulu; $1\ \text{m}^2 = 10.000\ \text{cm}^2$.</td></tr>
+<tr><td>Salah memilih $\pi$</td><td>Kelipatan 7 pakai $\frac{22}{7}$, selain itu pakai $3{,}14$.</td></tr>
+</tbody></table></div>
+
+<div class="box tip"><b class="bt">★ Ringkasan 1 halaman</b>
+<ul>
+<li>Persegi: $K = 4s$, $L = s^{2}$. Persegi panjang: $K = 2(p + l)$, $L = pl$.</li>
+<li>Segitiga: $L = \frac{1}{2}at$. Jajargenjang: $L = at$. Trapesium: $L = \frac{1}{2}(a + b)t$.</li>
+<li>Belah ketupat dan layang-layang: $L = \frac{1}{2}d_{1}d_{2}$.</li>
+<li>Lingkaran: $K = 2\pi r$, $L = \pi r^{2}$. Setengah lingkaran: luas $\frac{1}{2}\pi r^{2}$, busur $\pi r$.</li>
+<li>Gabungan: pecah, hitung, jumlahkan atau kurangkan. Keliling: hanya garis tepi luar.</li>
+<li>Ukuran diperbesar $k$ kali: keliling $\times k$, luas $\times k^{2}$.</li>
+</ul></div>
+</section>
+
+<!-- ===================== G ===================== -->
+<section class="sec" id="G">
+<div class="sec-title"><span class="letter">G</span><h2>Bank Prediksi Soal</h2></div>
+<p>Kerjakan tanpa melihat pembahasan. Targetkan <b>sekitar 3 menit per soal</b>. Pada soal TKA yang memakai bentuk (kompleks, kategori), pastikan setiap pernyataan diperiksa satu per satu. <b>Jawab dulu, lalu pembahasan (Cara Lengkap dan Cara Cepat) akan muncul.</b></p>
+
+<div class="scorebar" id="scorebar" aria-live="polite">
+  <span>Terjawab <b id="sc-done">0</b>/12</span>
+  <span>Benar <b id="sc-ok">0</b></span>
+  <div class="bar"><i id="sc-bar"></i></div>
+  <button class="btn ghost" id="sc-reset" type="button" style="padding:5px 14px;font-size:13px;color:#fff;border-color:#fff;background:transparent">Ulangi semua</button>
+</div>
+
+<div class="lvl-head"><span class="lv lv1">Level 1</span> Pengetahuan dan Pemahaman</div>
+
+<div class="qcard" id="s1" data-q="s1">
+<div class="ex-head"><span class="ex-no">Soal 1</span><span class="lv lv1">Level 1</span><span class="ex-kind">Menghitung</span></div>
+<p class="q">Luas trapesium pada gambar adalah ....</p>
+<figure class="fig"><svg class="sv" viewBox="0 0 290 150" width="290" role="img" aria-label="Trapesium dengan sisi sejajar 10 cm dan 18 cm, tinggi 8 cm">
+<polygon class="fc" points="30,120 246,120 198,24 78,24"/>
+<line class="dsh" x1="78" y1="24" x2="78" y2="120"/><path class="rt" d="M78 108H90V120"/>
+<text x="138" y="16" class="m b">10 cm</text><text x="138" y="142" class="m b">18 cm</text><text x="86" y="76" class="r b">8 cm</text>
+</svg><figcaption>Gambar 1.18. Trapesium dengan sisi sejajar 10 cm dan 18 cm, tinggi 8 cm</figcaption></figure>
+<div class="qui"></div></div>
+
+<div class="qcard" id="s2" data-q="s2">
+<div class="ex-head"><span class="ex-no">Soal 2</span><span class="lv lv1">Level 1</span><span class="ex-kind">Mengidentifikasi</span></div>
+<p class="q">Pada segitiga ABC berikut, ruas garis yang merupakan <b>tinggi</b> dengan alas BC adalah ....</p>
+<figure class="fig"><svg class="sv" viewBox="0 0 290 190" width="290" role="img" aria-label="Segitiga ABC dengan titik D dan E pada BC">
+<polygon class="fc" points="30,150 250,150 110,20"/>
+<line class="ln" x1="110" y1="20" x2="110" y2="150"/><line class="ln" x1="110" y1="20" x2="175" y2="150"/>
+<path class="rt" d="M110 138H122V150"/>
+<text x="110" y="12" class="m b">A</text><text x="18" y="164" class="b">B</text><text x="256" y="164" class="b">C</text>
+<text x="102" y="172" class="e b">D</text><text x="178" y="172" class="b">E</text>
+</svg><figcaption>Gambar 1.19. Segitiga ABC dengan titik D dan E pada BC</figcaption></figure>
+<div class="qui"></div></div>
+
+<div class="qcard" id="s3" data-q="s3">
+<div class="ex-head"><span class="ex-no">Soal 3</span><span class="lv lv1">Level 1</span><span class="ex-kind">Mengelompokkan · Pilihan ganda kategori</span></div>
+<p class="q">Tentukan Benar atau Salah. (Gunakan $\pi = \frac{22}{7}$ bila perlu.)</p>
+<div class="qui"></div></div>
+
+<div class="qcard" id="s4" data-q="s4">
+<div class="ex-head"><span class="ex-no">Soal 4</span><span class="lv lv1">Level 1</span><span class="ex-kind">Memahami informasi</span></div>
+<p class="q">Perhatikan tiga bidang tanah berikut. Tanah dengan luas terbesar dan selisih luasnya dengan tanah yang paling kecil adalah ....</p>
+<figure class="fig"><svg class="sv" viewBox="0 0 520 190" width="520" role="img" aria-label="Tiga bidang tanah">
+<rect class="fc" x="20" y="54" width="96" height="96"/><text x="68" y="106" class="m b">Tanah A</text><text x="68" y="170" class="m">12 m × 12 m</text>
+<rect class="fy" x="160" y="70" width="128" height="80"/><text x="224" y="114" class="m b">Tanah B</text><text x="224" y="170" class="m">16 m × 10 m</text>
+<polygon points="330,150 490,150 380,30" style="fill:rgba(107,76,230,.18);stroke:#022050;stroke-width:2"/>
+<line class="dsh" x1="380" y1="30" x2="380" y2="150"/><path class="rt" d="M380 138H392V150"/>
+<text x="388" y="100" class="r">15 m</text><text x="436" y="138" class="m b">Tanah C</text><text x="410" y="170" class="m">alas 20 m</text>
+</svg><figcaption>Gambar 1.20. Tiga bidang tanah (A persegi, B persegi panjang, C segitiga)</figcaption></figure>
+<div class="qui"></div></div>
+
+<div class="lvl-head"><span class="lv lv2">Level 2</span> Aplikasi</div>
+
+<div class="qcard" id="s5" data-q="s5">
+<div class="ex-head"><span class="ex-no">Soal 5</span><span class="lv lv2">Level 2</span><span class="ex-kind">Memodelkan</span></div>
+<p class="q">Sebuah lapangan berbentuk persegi panjang 100 m × 28 m dengan setengah lingkaran di kedua ujung lebarnya (lihat gambar). Seorang atlet berlari mengelilingi lapangan sejauh 2.016 m. Banyak putaran yang ditempuh adalah .... ($\pi = \frac{22}{7}$)</p>
+<figure class="fig"><svg class="sv" viewBox="-50 0 590 150" width="560" role="img" aria-label="Lapangan dengan dua ujung setengah lingkaran">
+<path class="fy" d="M75 20A49 49 0 0 0 75 118Z"/><path class="fy" d="M425 20A49 49 0 0 1 425 118Z"/>
+<rect class="fc" x="75" y="20" width="350" height="98"/>
+<path class="ln" d="M75 20A49 49 0 0 0 75 118M425 20A49 49 0 0 1 425 118"/>
+<text x="250" y="74" class="m b">persegi panjang 100 m × 28 m</text>
+<text x="250" y="142" class="m b">100 m</text><text x="22" y="140" class="m s">½ lingkaran</text><text x="478" y="140" class="m s">½ lingkaran</text>
+<text x="75" y="10" class="m s">28 m</text>
+</svg><figcaption>Gambar 1.21. Lapangan dengan dua ujung setengah lingkaran</figcaption></figure>
+<div class="qui"></div></div>
+
+<div class="qcard" id="s6" data-q="s6">
+<div class="ex-head"><span class="ex-no">Soal 6</span><span class="lv lv2">Level 2</span><span class="ex-kind">Menerapkan</span></div>
+<p class="q">Sebuah jendela berbentuk persegi panjang 70 cm × 100 cm dengan setengah lingkaran di bagian atasnya. Luas seluruh kaca jendela adalah .... ($\pi = \frac{22}{7}$)</p>
+<figure class="fig"><svg class="sv" viewBox="0 0 220 310" width="200" role="img" aria-label="Jendela: persegi panjang dan setengah lingkaran">
+<path class="fy" d="M40 100A70 70 0 0 1 180 100Z"/>
+<rect class="fc" x="40" y="100" width="140" height="200"/>
+<path class="ln" d="M40 100A70 70 0 0 1 180 100"/>
+<line class="dsh" x1="40" y1="100" x2="180" y2="100"/>
+<text x="110" y="64" class="m s">½ lingkaran</text><text x="110" y="205" class="m b">70 cm × 100 cm</text>
+<text x="110" y="92" class="m s">d = 70 cm</text><text x="30" y="205" class="e b" transform="rotate(-90 30 205)" style="text-anchor:middle">100 cm</text>
+</svg><figcaption>Gambar 1.22. Jendela: persegi panjang dan setengah lingkaran</figcaption></figure>
+<div class="qui"></div></div>
+
+<div class="qcard" id="s7" data-q="s7">
+<div class="ex-head"><span class="ex-no">Soal 7</span><span class="lv lv2">Level 2</span><span class="ex-kind">Menerapkan</span></div>
+<p class="q">Sebuah foto berukuran 30 cm × 20 cm dipasang pada bingkai selebar 3 cm di sekelilingnya. Luas bingkai (bagian yang bukan foto) adalah ....</p>
+<figure class="fig"><svg class="sv" viewBox="0 0 330 250" width="320" role="img" aria-label="Foto dan bingkai">
+<rect class="fy" x="16" y="16" width="288" height="208"/>
+<rect class="fc" x="40" y="40" width="240" height="160"/>
+<text x="160" y="116" class="m b">foto 30 cm × 20 cm</text>
+<text x="160" y="238" class="m s">lebar bingkai 3 cm di setiap sisi</text>
+<text x="28" y="124" class="m s">3</text><text x="292" y="124" class="m s">3</text><text x="160" y="32" class="m s">3</text>
+</svg><figcaption>Gambar 1.23. Foto dan bingkai</figcaption></figure>
+<div class="qui"></div></div>
+
+<div class="qcard" id="s8" data-q="s8">
+<div class="ex-head"><span class="ex-no">Soal 8</span><span class="lv lv2">Level 2</span><span class="ex-kind">Menginterpretasikan · Pilihan ganda kompleks</span></div>
+<p class="q">Jajargenjang ABCD memiliki AB = 15 cm, AD = BC = 9 cm, dan tinggi dari D ke AB adalah 8 cm. Pilih <b>semua</b> pernyataan yang benar.</p>
+<figure class="fig"><svg class="sv" viewBox="-30 0 310 150" width="300" role="img" aria-label="Jajargenjang ABCD">
+<polygon class="fc" points="20,120 170,120 211,40 61,40"/>
+<line class="dsh" x1="61" y1="40" x2="61" y2="120"/><path class="rt" d="M61 108H73V120"/>
+<text x="10" y="134" class="b">A</text><text x="174" y="134" class="b">B</text><text x="215" y="36" class="b">C</text><text x="46" y="34" class="b">D</text>
+<text x="95" y="140" class="m b">15 cm</text><text x="26" y="86" class="e">9 cm</text><text x="200" y="86">9 cm</text><text x="68" y="84" class="r b">8 cm</text>
+</svg><figcaption>Gambar 1.24. Jajargenjang ABCD</figcaption></figure>
+<div class="qui"></div></div>
+
+<div class="lvl-head"><span class="lv lv3">Level 3</span> Penalaran</div>
+
+<div class="qcard" id="s9" data-q="s9">
+<div class="ex-head"><span class="ex-no">Soal 9</span><span class="lv lv3">Level 3</span><span class="ex-kind">Menganalisis</span></div>
+<p class="q">Seutas kawat sepanjang 88 cm dibentuk menjadi sebuah lingkaran, lalu kawat yang sama dibentuk menjadi sebuah persegi. Selisih luas lingkaran dan luas persegi adalah .... ($\pi = \frac{22}{7}$)</p>
+<figure class="fig"><svg class="sv" viewBox="0 0 380 170" width="370" role="img" aria-label="Kawat 88 cm dibentuk lingkaran atau persegi">
+<circle class="fy" cx="100" cy="72" r="46"/><text x="100" y="76" class="m b">lingkaran</text><text x="100" y="140" class="m">keliling = 88 cm</text>
+<text x="190" y="80" class="m b">atau</text>
+<rect class="fc" x="240" y="30" width="84" height="84"/><text x="282" y="76" class="m b">persegi</text><text x="282" y="140" class="m">keliling = 88 cm</text>
+<text x="190" y="162" class="m s">kawat yang sama</text>
+</svg><figcaption>Gambar 1.25. Kawat 88 cm dibentuk lingkaran atau persegi</figcaption></figure>
+<div class="qui"></div></div>
+
+<div class="qcard" id="s10" data-q="s10">
+<div class="ex-head"><span class="ex-no">Soal 10</span><span class="lv lv3">Level 3</span><span class="ex-kind">Menyimpulkan · Pilihan ganda kategori</span></div>
+<p class="q">Persegi panjang 12 cm × 8 cm diperbesar menjadi 24 cm × 16 cm. Tentukan Benar atau Salah.</p>
+<figure class="fig"><svg class="sv" viewBox="0 0 330 170" width="320" role="img" aria-label="Persegi panjang sebelum dan sesudah diperbesar">
+<rect class="fy" x="16" y="70" width="72" height="48"/><text x="52" y="98" class="m b">12 × 8</text><text x="52" y="138" class="m s">semula</text>
+<path d="M102 94h34" stroke="#022050" stroke-width="2.5" fill="none"/><path d="M128 85l10 9-10 9" stroke="#022050" stroke-width="2.5" fill="none"/>
+<rect class="fc" x="150" y="38" width="144" height="96"/><text x="222" y="90" class="m b">24 × 16</text><text x="222" y="154" class="m s">sesudah diperbesar</text>
+</svg><figcaption>Gambar 1.26. Persegi panjang sebelum dan sesudah diperbesar</figcaption></figure>
+<div class="qui"></div></div>
+
+<div class="qcard" id="s11" data-q="s11">
+<div class="ex-head"><span class="ex-no">Soal 11</span><span class="lv lv3">Level 3</span><span class="ex-kind">Mengevaluasi</span></div>
+<p class="q">Tiga segitiga memiliki alas AB = 10 cm, dan titik puncaknya berada pada garis yang sejajar dengan AB berjarak 6 cm (lihat gambar). Dani berkata, "Luas ketiganya sama." Sari berkata, "Luasnya berbeda karena bentuknya berbeda." Pernyataan yang paling tepat adalah ....</p>
+<figure class="fig"><svg class="sv" viewBox="0 0 440 190" width="440" role="img" aria-label="Tiga segitiga di antara dua garis sejajar">
+<line class="ln" x1="10" y1="150" x2="430" y2="150"/><line class="ln" x1="10" y1="40" x2="430" y2="40"/>
+<polygon points="130,150 290,150 80,40" style="fill:rgba(0,214,216,.18);stroke:#00a0a3;stroke-width:2"/>
+<polygon points="130,150 290,150 205,40" style="fill:rgba(255,211,0,.25);stroke:#c99a00;stroke-width:2"/>
+<polygon points="130,150 290,150 370,40" style="fill:rgba(107,76,230,.15);stroke:#6b4ce6;stroke-width:2"/>
+<line class="dsh" x1="205" y1="40" x2="205" y2="150"/><path class="rt" d="M205 138H217V150"/>
+<text x="118" y="170" class="e b">A</text><text x="298" y="170" class="b">B</text>
+<text x="212" y="100" class="s r">6 cm</text><text x="210" y="184" class="m b">AB = 10 cm</text>
+</svg><figcaption>Gambar 1.27. Tiga segitiga di antara dua garis sejajar</figcaption></figure>
+<div class="qui"></div></div>
+
+<div class="qcard" id="s12" data-q="s12">
+<div class="ex-head"><span class="ex-no">Soal 12</span><span class="lv lv3">Level 3</span><span class="ex-kind">Memecahkan masalah · Isian singkat</span></div>
+<p class="q">Sebuah taman berbentuk persegi panjang dengan panjang 2 kali lebarnya dan keliling 72 m. Di tengah taman terdapat kolam berbentuk persegi bersisi 6 m. Luas taman di luar kolam adalah ... m².</p>
+<figure class="fig"><svg class="sv" viewBox="0 0 280 160" width="270" role="img" aria-label="Taman dengan kolam persegi">
+<rect class="fc" x="30" y="20" width="220" height="110"/>
+<rect class="fw" x="115" y="48" width="50" height="54" style="fill:#bfe9ff"/>
+<text x="140" y="80" class="m s">kolam</text><text x="140" y="94" class="m s">6 × 6</text>
+<text x="140" y="148" class="m b">p = 2l</text><text x="22" y="80" class="e b">l</text>
+<text x="140" y="38" class="m s">keliling taman = 72 m</text>
+</svg><figcaption>Gambar 1.28. Taman dengan kolam persegi</figcaption></figure>
+<div class="qui"></div></div>
+
+<div class="card" id="final" style="display:none;text-align:center">
+  <h3 style="margin-top:0">Hasil latihanmu</h3>
+  <p id="final-t" style="font-size:19px;font-weight:700"></p>
+  <p id="final-m"></p>
+</div>
+
+<div class="pager">
+  <a class="btn" href="pengukuran.html" style="text-decoration:none;display:inline-block">Kembali ke Dashboard</a>
+  <a class="btn ghost" href="index.html" style="text-decoration:none;display:inline-block">Beranda</a>
+</div>
+</section>
+
+</main>
+
+<footer>
+  <div><b>VisualMath.Lim</b> · Bimbingan Belajar · TKA Matematika Wajib SMA</div>
+  <div style="margin-top:6px"><a href="index.html">Home</a> · <a href="pengukuran.html">Dashboard Pengukuran</a></div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script>
+(function(){
+'use strict';
+var R = String.raw;
+
+/* ---------- util ---------- */
+function esc(s){return s;}
+function math(el){
+  try{
+    if(window.renderMathInElement){
+      window.renderMathInElement(el||document.body,{
+        delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
+        throwOnError:false
+      });
+    }
+  }catch(e){}
+}
+function stepsHtml(arr){
+  return '<ol class="steps">'+arr.map(function(s){
+    return '<li><div class="st-t">'+s[0]+'</div><div class="st-b">'+s[1]+'</div></li>';
+  }).join('')+'</ol>';
+}
+function explain(q){
+  return '<div class="sol-h"><span class="pill">Cara Lengkap</span> langkah demi langkah</div>'+
+    stepsHtml(q.steps)+
+    '<div class="box cepat"><b class="bt">⚡ Cara Cepat</b>'+q.quick+'</div>'+
+    (q.trap?'<div class="box warn trap"><b class="bt">⚠ Pengecoh yang sering muncul</b>'+q.trap+'</div>':'');
+}
+function normNum(s){
+  s=String(s).toLowerCase().replace(/[^0-9.,\-]/g,'');
+  if(!s) return NaN;
+  if(s.indexOf(',')>-1){ s=s.replace(/\./g,'').replace(',','.'); }
+  else if(/^\d{1,3}(\.\d{3})+$/.test(s)){ s=s.replace(/\./g,''); }
+  return parseFloat(s);
+}
+var LET='ABCDE';
+
+/* ---------- A.5 Uji kesiapan ---------- */
+var READY=[
+ {q:R`$2{,}5\ \text{m} = \ \ldots\ \text{cm}$`,a:250,unit:'cm',
+  e:R`1 m = 100 cm, jadi $2{,}5 \times 100 = 250$ cm.`},
+ {q:R`$3\ \text{m}^2 = \ \ldots\ \text{cm}^2$`,a:30000,unit:'cm²',
+  e:R`Luas diubah dengan $\times 10.000$ (bukan $\times 100$): $3 \times 10.000 = 30.000\ \text{cm}^2$.`},
+ {q:R`Segitiga siku-siku bersisi tegak 6 cm dan 8 cm. Panjang sisi miringnya ... cm`,a:10,unit:'cm',
+  e:R`$c = \sqrt{6^{2} + 8^{2}} = \sqrt{36 + 64} = \sqrt{100} = 10$. (Tripel 6-8-10.)`},
+ {q:R`$\frac{22}{7} \times 14 = \ \ldots$`,a:44,unit:'',
+  e:R`14 dibagi 7 sama dengan 2, jadi $22 \times 2 = 44$.`},
+ {q:R`$\frac{1}{2} \times (8 + 12) \times 5 = \ \ldots$`,a:50,unit:'',
+  e:R`Kurung dulu: $8 + 12 = 20$. Lalu $\frac{1}{2} \times 20 = 10$, dan $10 \times 5 = 50$.`}
+];
+var readyBox=document.getElementById('ready');
+var readyOk={};
+READY.forEach(function(r,i){
+  var d=document.createElement('div');
+  d.className='qcard'; d.style.padding='14px 16px'; d.style.margin='10px 0';
+  d.innerHTML='<div class="ex-head"><span class="ex-no">'+(i+1)+'</span></div><p class="q" style="margin:.2em 0">'+r.q+'</p>'+
+   '<div class="short-in"><input type="text" inputmode="decimal" autocomplete="off" aria-label="Jawaban soal '+(i+1)+'" placeholder="Jawabanmu">'+(r.unit?'<span>'+r.unit+'</span>':'')+
+   '<button class="btn" type="button">Periksa</button></div><div class="verdict"></div>';
+  readyBox.appendChild(d);
+  var inp=d.querySelector('input'),btn=d.querySelector('button'),v=d.querySelector('.verdict');
+  function check(){
+    var n=normNum(inp.value);
+    if(isNaN(n)){inp.focus();return;}
+    var ok=Math.abs(n-r.a)<1e-9;
+    v.className='verdict '+(ok?'ok':'bad');
+    v.innerHTML=(ok?'✔ Benar! ':'✘ Belum tepat. ')+'Jawaban yang benar: <b>'+r.a.toLocaleString('id-ID')+(r.unit?' '+r.unit:'')+'</b>.<div style="font-weight:600;margin-top:4px">'+r.e+'</div>';
+    d.className='qcard '+(ok?'done-ok':'done-bad');
+    readyOk[i]=ok; math(v);
+    var n2=Object.keys(readyOk).length,k=0; for(var x in readyOk) if(readyOk[x]) k++;
+    if(n2===5){
+      var fin=document.getElementById('ready-sum');
+      fin.style.display='block';
+      fin.innerHTML=k>=4?('<b>Skor '+k+'/5. Siap lanjut ke bagian B!</b>'):('<b>Skor '+k+'/5.</b> Ulangi bagian A.2 sampai A.4 sebelum lanjut.');
+    }
+  }
+  btn.addEventListener('click',check);
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter')check();});
+});
+(function(){var s=document.createElement('div');s.id='ready-sum';s.className='box tip';s.style.display='none';readyBox.appendChild(s);})();
+
+/* ---------- Bank soal G ---------- */
+var Q={
+s1:{type:'mcq',opts:['14 cm²','80 cm²','112 cm²','144 cm²','224 cm²'],key:2,
+ steps:[
+  ['Tulis yang diketahui',R`Dari gambar: dua sisi sejajar $a = 10$ cm dan $b = 18$ cm, tinggi $t = 8$ cm (garis putus-putus yang bertanda siku-siku).`],
+  ['Tulis rumus luas trapesium',R`$$L = \tfrac{1}{2}(a + b) \times t$$`],
+  ['Masukkan angka dan hitung',R`$$\begin{aligned}L &= \tfrac{1}{2}(10 + 18) \times 8\\ &= \tfrac{1}{2} \times 28 \times 8\\ &= 14 \times 8\\ &= 112\end{aligned}$$`],
+  ['Pilih jawaban',R`Luasnya $112\ \text{cm}^2$, yaitu pilihan <b>C</b>.`]],
+ quick:R`Jumlahkan dua sisi sejajar, <b>setengahkan</b>, lalu kalikan tinggi: $\frac{10 + 18}{2} = 14$, kemudian $14 \times 8 = 112$.`,
+ trap:R`14 (lupa dikali tinggi), 80 ($10 \times 8$), 144 ($18 \times 8$), 224 (lupa $\frac{1}{2}$).`},
+
+s2:{type:'mcq',opts:['AB','AC','AD','AE','DE'],key:2,
+ steps:[
+  ['Ingat arti tinggi','Tinggi segitiga adalah garis dari titik sudut yang <b>tegak lurus</b> terhadap alas (membentuk sudut siku-siku). Alasnya BC, jadi garisnya ditarik dari titik A.'],
+  ['Cari tanda siku-siku pada gambar','Hanya garis AD yang memiliki tanda siku-siku di titik D.'],
+  ['Periksa pilihan lain','AB dan AC adalah sisi segitiga, bukan tinggi. AE menuju titik E yang bukan titik tegak lurus (miring). DE terletak pada alas BC.'],
+  ['Pilih jawaban','Tinggi dengan alas BC adalah AD, yaitu pilihan <b>C</b>.']],
+ quick:'Cari tanda <b>siku-siku (⌐)</b> pada gambar. Garis yang bertanda siku-siku dan berujung di alas adalah tinggi.',
+ trap:'AE terlihat mirip AD, tetapi tidak bertanda siku-siku (miring). Jangan memilih sisi miring sebagai tinggi.'},
+
+s3:{type:'cat',rows:[
+  {t:R`(a) Luas lingkaran berjari-jari 7 cm adalah 154 cm².`,v:true,w:R`$\frac{22}{7} \times 7 \times 7 = 154$. <b>Benar.</b>`},
+  {t:R`(b) Keliling persegi dengan sisi 9 cm adalah 81 cm.`,v:false,w:R`Keliling persegi $= 4 \times 9 = 36$ cm, bukan 81 (81 adalah luasnya, $9 \times 9$). <b>Salah.</b>`},
+  {t:R`(c) Persegi panjang 3 m × 2 m memiliki luas 60.000 cm².`,v:true,w:R`$3 \times 2 = 6\ \text{m}^2$. Karena $1\ \text{m}^2 = 10.000\ \text{cm}^2$, maka $6\ \text{m}^2 = 60.000\ \text{cm}^2$. <b>Benar.</b>`}],
+ steps:[
+  ['Periksa pernyataan (a)',R`Lingkaran $r = 7$: $$L = \pi r^{2} = \tfrac{22}{7} \times 7 \times 7 = 154\ \text{cm}^2$$ Pernyataan (a) <b>Benar</b>.`],
+  ['Periksa pernyataan (b)',R`Persegi sisi 9: $$K = 4s = 4 \times 9 = 36\ \text{cm}$$ Angka 81 adalah luasnya. Pernyataan (b) <b>Salah</b>.`],
+  ['Periksa pernyataan (c)',R`Luas $= 3 \times 2 = 6\ \text{m}^2$, lalu ubah satuan: $$6 \times 10.000 = 60.000\ \text{cm}^2$$ Pernyataan (c) <b>Benar</b>.`],
+  ['Tulis kunci','(a) Benar, (b) Salah, (c) Benar.']],
+ quick:R`(a) Hafal: $r = 7$ ⇒ luas $154$. (b) Keliling persegi $= 4 \times$ sisi; 81 adalah $9^{2}$, itu <b>luas</b>. (c) $1\ \text{m}^2 = 10.000\ \text{cm}^2$, jadi $6 \times 10.000 = 60.000$.`},
+
+s4:{type:'mcq',opts:['Tanah A, selisih 16 m²','Tanah B, selisih 10 m²','Tanah B, selisih 16 m²','Tanah C, selisih 6 m²','Tanah B, selisih 6 m²'],key:2,
+ steps:[
+  ['Hitung luas Tanah A (persegi)',R`$$L_A = 12 \times 12 = 144\ \text{m}^2$$`],
+  ['Hitung luas Tanah B (persegi panjang)',R`$$L_B = 16 \times 10 = 160\ \text{m}^2$$`],
+  ['Hitung luas Tanah C (segitiga)',R`Alas 20 m, tinggi 15 m (bertanda siku-siku). $$L_C = \tfrac{1}{2} \times 20 \times 15 = 150\ \text{m}^2$$`],
+  ['Urutkan luasnya','$160 > 150 > 144$. Terbesar: <b>Tanah B</b>. Terkecil: <b>Tanah A</b>.'],
+  ['Hitung selisih terbesar dan terkecil',R`$$160 - 144 = 16\ \text{m}^2$$ Jawaban: Tanah B, selisih $16\ \text{m}^2$ (pilihan <b>C</b>).`]],
+ quick:R`Tiga luas: 144, 160, 150. Terbesar B, terkecil A, selisih $160 - 144 = 16$. Hanya pilihan C yang memuat "Tanah B" dan "selisih 16".`,
+ trap:R`Selisih 10 adalah $160 - 150$ (B dengan C), selisih 6 adalah $150 - 144$ (C dengan A). Soal meminta selisih dengan yang paling <b>kecil</b>.`},
+
+s5:{type:'mcq',opts:['5 putaran','6 putaran','7 putaran','8 putaran','9 putaran'],key:2,
+ steps:[
+  ['Tulis yang diketahui','Lapangan: persegi panjang 100 m × 28 m dengan dua setengah lingkaran di ujung lebarnya. Jarak lari total 2.016 m. Ditanya: banyak putaran.'],
+  ['Gabungkan dua setengah lingkaran',R`Dua setengah lingkaran bersama-sama membentuk <b>satu lingkaran</b> berdiameter 28 m (sama dengan lebar lapangan).`],
+  ['Hitung keliling satu putaran',R`Satu putaran = dua sisi lurus + keliling lingkaran: $$\begin{aligned}K &= 2 \times 100 + \pi d\\ &= 200 + \tfrac{22}{7} \times 28\\ &= 200 + 88\\ &= 288\ \text{m}\end{aligned}$$`],
+  ['Hitung banyak putaran',R`$$\text{putaran} = \frac{2.016}{288} = 7$$`],
+  ['Pilih jawaban','Atlet menempuh <b>7 putaran</b> (pilihan <b>C</b>).']],
+ quick:R`Dua setengah lingkaran $=$ satu lingkaran ($d = 28$), jadi $K = 200 + 88 = 288$. Cek pilihan: $288 \times 7 = 2.016$ ✓.`,
+ trap:R`Jangan hanya memakai keliling lingkaran (88 m) atau lupa dua sisi lurus 100 m. Lintasan mengitari <b>seluruh</b> garis tepi.`},
+
+s6:{type:'mcq',opts:['7.925 cm²','8.050 cm²','8.925 cm²','9.850 cm²','10.850 cm²'],key:2,
+ steps:[
+  ['Tulis yang diketahui',R`Persegi panjang $70 \times 100$ cm. Di atasnya ada setengah lingkaran dengan diameter 70 cm (sama dengan lebar jendela), sehingga $r = 70 \div 2 = 35$ cm.`],
+  ['Hitung luas persegi panjang',R`$$L_1 = 70 \times 100 = 7.000\ \text{cm}^2$$`],
+  ['Hitung luas setengah lingkaran',R`$$\begin{aligned}L_2 &= \tfrac{1}{2}\pi r^{2}\\ &= \tfrac{1}{2} \times \tfrac{22}{7} \times 35 \times 35\\ &= \tfrac{1}{2} \times 22 \times 5 \times 35\\ &= 11 \times 175\\ &= 1.925\ \text{cm}^2\end{aligned}$$`],
+  ['Jumlahkan',R`$$L = 7.000 + 1.925 = 8.925\ \text{cm}^2$$ Pilihan <b>C</b>.`]],
+ quick:R`$\frac{22}{7} \times 35 = 110$, lalu $110 \times 35 \div 2 = 1.925$. Total $7.000 + 1.925 = 8.925$.`,
+ trap:R`10.850 muncul bila memakai lingkaran penuh (lupa $\frac{1}{2}$): $7.000 + 3.850$.`},
+
+s7:{type:'mcq',opts:['156 cm²','300 cm²','336 cm²','600 cm²','936 cm²'],key:2,
+ steps:[
+  ['Hitung luas foto',R`$$L_{\text{foto}} = 30 \times 20 = 600\ \text{cm}^2$$`],
+  ['Hitung ukuran luar (foto + bingkai)',R`Bingkai 3 cm ada di <b>kedua sisi</b>, jadi tiap ukuran bertambah $3 + 3 = 6$ cm: $$30 + 6 = 36 \quad\text{dan}\quad 20 + 6 = 26$$`],
+  ['Hitung luas keseluruhan',R`$$L_{\text{luar}} = 36 \times 26 = 936\ \text{cm}^2$$`],
+  ['Kurangkan luas foto',R`$$L_{\text{bingkai}} = 936 - 600 = 336\ \text{cm}^2$$ Pilihan <b>C</b>.`]],
+ quick:R`Tambahkan lebar bingkai di <b>kedua sisi</b> ($3 + 3 = 6$ cm), bukan hanya satu sisi. Cara lain: atas + bawah $2 \times (36 \times 3) = 216$, kiri + kanan $2 \times (20 \times 3) = 120$, jumlah $336$.`,
+ trap:R`300 muncul bila empat pojok bingkai terlupa ($2 \times 30 \times 3 + 2 \times 20 \times 3$). 936 adalah luas keseluruhan (lupa dikurangi luas foto).`},
+
+s8:{type:'multi',opts:[
+  {t:'Keliling jajargenjang adalah 48 cm.',v:true,w:R`$K = 2(15 + 9) = 48$ cm. <b>Benar.</b>`},
+  {t:'Luas jajargenjang adalah 120 cm².',v:true,w:R`Luas $=$ alas $\times$ tinggi $= 15 \times 8 = 120\ \text{cm}^2$. <b>Benar.</b>`},
+  {t:'Luas jajargenjang adalah 15 × 9 = 135 cm².',v:false,w:'9 cm adalah sisi miring, bukan tinggi. <b>Salah.</b>'},
+  {t:'Jika BC dijadikan alas, tinggi yang bersesuaian lebih dari 13 cm.',v:true,w:R`$120 = 9 \times t \Rightarrow t = \frac{120}{9} \approx 13{,}3$ cm (lebih dari 13). <b>Benar.</b>`},
+  {t:'Tinggi terhadap alas BC juga 8 cm.',v:false,w:'Tinggi bergantung pada alas yang dipilih. Untuk alas BC, tingginya berbeda. <b>Salah.</b>'}],
+ steps:[
+  ['Periksa pernyataan A (keliling)',R`$$K = 2(AB + AD) = 2(15 + 9) = 48\ \text{cm}$$ A <b>benar</b>.`],
+  ['Periksa pernyataan B dan C (luas)',R`Tinggi yang diketahui (8 cm) tegak lurus AB. $$L = a \times t = 15 \times 8 = 120\ \text{cm}^2$$ B <b>benar</b>. C <b>salah</b> karena 9 cm adalah sisi miring, bukan tinggi.`],
+  ['Periksa pernyataan D dan E (alas BC)',R`Luas tetap 120. Jika alas $BC = 9$: $$120 = 9 \times t \;\Rightarrow\; t = \frac{120}{9} \approx 13{,}3\ \text{cm}$$ D <b>benar</b> (lebih dari 13). E <b>salah</b> karena tingginya bukan 8 cm.`],
+  ['Tulis kunci','Pernyataan yang benar: <b>A, B, dan D</b>.']],
+ quick:R`Luas yang sama bisa ditulis dengan alas berbeda: $15 \times 8 = 9 \times t$. Alas lebih pendek ⇒ tinggi lebih besar ($\approx 13{,}3$).`},
+
+s9:{type:'mcq',opts:['44 cm²','88 cm²','132 cm²','176 cm²','616 cm²'],key:2,
+ steps:[
+  ['Bentuk menjadi lingkaran',R`Keliling lingkaran $= 88$ cm, jadi $\pi d = 88$: $$\tfrac{22}{7} \times d = 88 \;\Rightarrow\; d = 88 \times \tfrac{7}{22} = 28\ \text{cm}$$ sehingga $r = 14$ cm. $$L_{\text{lingkaran}} = \tfrac{22}{7} \times 14 \times 14 = 616\ \text{cm}^2$$`],
+  ['Bentuk menjadi persegi',R`Keliling persegi $= 88$ cm: $$4s = 88 \;\Rightarrow\; s = 22\ \text{cm}$$ $$L_{\text{persegi}} = 22 \times 22 = 484\ \text{cm}^2$$`],
+  ['Hitung selisih',R`$$616 - 484 = 132\ \text{cm}^2$$ Pilihan <b>C</b>.`]],
+ quick:R`Dari $K = 88$: lingkaran ⇒ $r = 14$; persegi ⇒ $s = 88 \div 4 = 22$. Luasnya $616$ dan $484$, selisih $132$. Lingkaran selalu lebih luas daripada persegi yang kelilingnya sama (lihat Contoh 9).`,
+ trap:R`616 hanyalah luas lingkaran. Soal meminta <b>selisih</b> luas lingkaran dan persegi.`},
+
+s10:{type:'cat',rows:[
+  {t:'(a) Keliling bangun baru menjadi 2 kali keliling semula.',v:true,w:R`Keliling semula $2(12 + 8) = 40$ cm, keliling baru $2(24 + 16) = 80$ cm. Jadi 2 kali. <b>Benar.</b>`},
+  {t:'(b) Luas bangun baru menjadi 2 kali luas semula.',v:false,w:R`Luas semula $12 \times 8 = 96\ \text{cm}^2$, luas baru $24 \times 16 = 384\ \text{cm}^2$. Jadi 4 kali, bukan 2 kali. <b>Salah.</b>`},
+  {t:'(c) Agar luas menjadi 9 kali luas semula, setiap sisi harus diperpanjang 3 kali.',v:true,w:R`Luas bertambah $k^{2}$ kali. Agar $k^{2} = 9$, maka $k = 3$. <b>Benar.</b>`}],
+ steps:[
+  ['Cari faktor perbesaran',R`$24 \div 12 = 2$ dan $16 \div 8 = 2$, jadi $k = 2$.`],
+  ['Periksa (a) keliling',R`$$K_{\text{lama}} = 2(12 + 8) = 40,\qquad K_{\text{baru}} = 2(24 + 16) = 80$$ $80 \div 40 = 2$ kali. (a) <b>Benar</b>.`],
+  ['Periksa (b) luas',R`$$L_{\text{lama}} = 12 \times 8 = 96,\qquad L_{\text{baru}} = 24 \times 16 = 384$$ $384 \div 96 = 4$ kali, bukan 2 kali. (b) <b>Salah</b>.`],
+  ['Periksa (c)',R`Luas menjadi $k^{2}$ kali. Jika $k^{2} = 9$ maka $k = 3$. (c) <b>Benar</b>.`],
+  ['Tulis kunci','(a) Benar, (b) Salah, (c) Benar.']],
+ quick:R`Sisi diperbesar $k$ kali ⇒ keliling $\times k$, luas $\times k^{2}$. Di sini $k = 2$: keliling $\times 2$, luas $\times 4$. Untuk (c): $k^{2} = 9 \Rightarrow k = 3$.`},
+
+s11:{type:'mcq',opts:[
+  R`Dani benar; luas masing-masing 30 cm² karena alas dan tingginya sama.`,
+  R`Dani benar; luas masing-masing 60 cm² karena alas dan tingginya sama.`,
+  'Sari benar; segitiga yang lebih miring luasnya lebih besar.',
+  'Sari benar; segitiga yang lebih miring luasnya lebih kecil.',
+  'Tidak dapat ditentukan karena sudut-sudutnya berbeda.'],key:0,
+ steps:[
+  ['Ingat bahwa luas hanya bergantung pada alas dan tinggi',R`$$L = \tfrac{1}{2} \times \text{alas} \times \text{tinggi}$$ Bentuk atau kemiringan segitiga tidak ikut menentukan luas.`],
+  ['Bandingkan alas dan tinggi',R`Alas ketiganya sama, yaitu $AB = 10$ cm. Titik puncak berada pada garis yang sejajar dengan AB berjarak 6 cm, sehingga tinggi ketiganya sama, yaitu 6 cm (jarak dua garis sejajar selalu tetap).`],
+  ['Hitung luas satu segitiga',R`$$L = \tfrac{1}{2} \times 10 \times 6 = 30\ \text{cm}^2$$`],
+  ['Nilai pernyataan Dani dan Sari','Ketiga segitiga luasnya sama, jadi <b>Dani benar</b> dan luas masing-masing 30 cm² (pilihan <b>A</b>).']],
+ quick:R`Alas sama + tinggi sama ⇒ luas sama. Cukup hitung sekali: $\frac{1}{2} \times 10 \times 6 = 30$.`,
+ trap:R`Pilihan B lupa $\frac{1}{2}$ ($10 \times 6 = 60$). Pilihan C, D, dan E salah karena kemiringan atau sudut tidak memengaruhi luas.`},
+
+s12:{type:'short',key:252,unit:'m²',
+ steps:[
+  ['Buat permisalan',R`Misalkan lebar taman $= l$. Panjang 2 kali lebar, jadi $p = 2l$.`],
+  ['Pakai rumus keliling untuk mencari $l$',R`$$\begin{aligned}K &= 2(p + l)\\ 72 &= 2(2l + l)\\ 72 &= 2 \times 3l\\ 72 &= 6l\\ l &= 12\end{aligned}$$ Maka $l = 12$ m dan $p = 2 \times 12 = 24$ m.`],
+  ['Hitung luas taman',R`$$L_{\text{taman}} = 24 \times 12 = 288\ \text{m}^2$$`],
+  ['Hitung luas kolam',R`$$L_{\text{kolam}} = 6 \times 6 = 36\ \text{m}^2$$`],
+  ['Kurangkan',R`$$L = 288 - 36 = 252\ \text{m}^2$$ Jawaban: <b>252</b>.`]],
+ quick:R`Mulai dari satu variabel: tulis panjang dalam lebar ($p = 2l$), sehingga keliling menjadi $6l = 72$, maka $l = 12$ dan $p = 24$. Hasil akhir: $24 \times 12 - 36 = 288 - 36 = 252$.`}
+};
+
+var QIDS=['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12'];
+var results={};
+
+function updateScore(){
+  var done=0,ok=0;
+  QIDS.forEach(function(id){ if(id in results){done++; if(results[id]) ok++;} });
+  document.getElementById('sc-done').textContent=done;
+  document.getElementById('sc-ok').textContent=ok;
+  document.getElementById('sc-bar').style.width=(done/12*100)+'%';
+  var fin=document.getElementById('final');
+  if(done===12){
+    fin.style.display='block';
+    document.getElementById('final-t').textContent='Skor: '+ok+' dari 12 soal benar ('+Math.round(ok/12*100)+'%)';
+    document.getElementById('final-m').textContent = ok>=10 ? 'Mantap! Kamu sudah siap untuk lanjut ke materi berikutnya.'
+      : ok>=7 ? 'Bagus. Pelajari lagi pembahasan soal yang salah, terutama bagian Cara Lengkap.'
+      : 'Jangan khawatir. Ulangi bagian A sampai F pelan-pelan, lalu coba lagi soalnya.';
+  } else fin.style.display='none';
+  try{
+    localStorage.setItem('vm_pengukuran_materi1',JSON.stringify({answered:done,correct:ok,total:12,time:Date.now()}));
+  }catch(e){}
+}
+
+function build(id){
+  var card=document.getElementById(id), q=Q[id], ui=card.querySelector('.qui');
+  delete results[id];
+  card.classList.remove('done-ok','done-bad');
+  var html='';
+  if(q.type==='mcq'){
+    html+='<div class="opts">'+q.opts.map(function(o,i){
+      return '<button type="button" class="opt" data-i="'+i+'"><span class="k">'+LET[i]+'</span><span class="t">'+o+'</span></button>';
+    }).join('')+'</div>';
+  } else if(q.type==='cat'){
+    html+='<p style="font-style:italic;margin:.3em 0;color:var(--muted)">Tentukan Benar atau Salah untuk setiap pernyataan.</p>'+q.rows.map(function(r,i){
+      return '<div class="cat-row" data-i="'+i+'"><div>'+r.t+'</div><div class="pick"><label><input type="radio" name="'+id+'_'+i+'" value="1"><span>Benar</span></label><label><input type="radio" name="'+id+'_'+i+'" value="0"><span>Salah</span></label></div><div class="why" hidden></div></div>';
+    }).join('')+'<div style="margin-top:12px"><button type="button" class="btn chk">Periksa jawaban</button></div>';
+  } else if(q.type==='multi'){
+    html+='<p style="font-style:italic;margin:.3em 0;color:var(--muted)">Pilih semua jawaban yang benar (lebih dari satu).</p>'+q.opts.map(function(o,i){
+      return '<label class="multi-row" data-i="'+i+'"><input type="checkbox" value="'+i+'"><span><b>'+LET[i]+'.</b> '+o.t+'</span><div class="why" hidden></div></label>';
+    }).join('')+'<div style="margin-top:12px"><button type="button" class="btn chk">Periksa jawaban</button></div>';
+  } else {
+    html+='<div class="short-in"><b>Jawaban:</b><input type="text" inputmode="decimal" autocomplete="off" aria-label="Jawaban isian" placeholder="ketik angkanya"><span>'+q.unit+'</span><button type="button" class="btn chk">Periksa</button></div>';
+  }
+  html+='<div class="verdict" role="status"></div><div class="explain">'+explain(q)+'</div><div style="margin-top:12px"><button type="button" class="btn ghost retry" hidden>Coba lagi soal ini</button></div>';
+  ui.innerHTML=html;
+  math(ui);
+
+  var verdict=ui.querySelector('.verdict'), ex=ui.querySelector('.explain'), retry=ui.querySelector('.retry');
+  function finish(ok,msg){
+    results[id]=ok;
+    card.classList.add(ok?'done-ok':'done-bad');
+    verdict.className='verdict '+(ok?'ok':'bad');
+    verdict.innerHTML=msg;
+    ex.classList.add('show'); retry.hidden=false;
+    math(verdict); updateScore();
+  }
+  retry.addEventListener('click',function(){ build(id); card.scrollIntoView({behavior:'smooth',block:'start'}); updateScore(); });
+
+  if(q.type==='mcq'){
+    ui.querySelectorAll('.opt').forEach(function(b){
+      b.addEventListener('click',function(){
+        var i=+b.dataset.i, ok=i===q.key;
+        ui.querySelectorAll('.opt').forEach(function(x){
+          x.disabled=true;
+          if(+x.dataset.i===q.key) x.classList.add('ok');
+        });
+        if(!ok) b.classList.add('bad');
+        finish(ok, ok?('✔ Benar! Jawabanmu <b>'+LET[i]+'</b> tepat. Lihat pembahasannya di bawah.')
+                     :('✘ Belum tepat. Kamu memilih <b>'+LET[i]+'</b>, kunci yang benar adalah <b>'+LET[q.key]+'</b>. Pelajari pembahasannya di bawah.'));
+      });
+    });
+  } else if(q.type==='cat'){
+    var chk=ui.querySelector('.chk');
+    chk.addEventListener('click',function(){
+      var allAns=true; q.rows.forEach(function(r,i){ if(!ui.querySelector('input[name="'+id+'_'+i+'"]:checked')) allAns=false; });
+      if(!allAns){ verdict.className='verdict bad'; verdict.textContent='Jawab semua pernyataan dulu ya.'; return; }
+      var good=0;
+      q.rows.forEach(function(r,i){
+        var pick=ui.querySelector('input[name="'+id+'_'+i+'"]:checked').value==='1';
+        var row=ui.querySelector('.cat-row[data-i="'+i+'"]'), ok=pick===r.v;
+        if(ok) good++;
+        row.classList.add(ok?'ok':'bad');
+        var w=row.querySelector('.why'); w.hidden=false; w.innerHTML=(ok?'✔ ':'✘ ')+r.w;
+        row.querySelectorAll('input').forEach(function(x){x.disabled=true;});
+      });
+      chk.disabled=true; math(ui);
+      var all=good===q.rows.length;
+      finish(all, all?'✔ Semua pernyataan benar! Lihat pembahasannya di bawah.':('✘ '+good+' dari '+q.rows.length+' pernyataan tepat. Soal dianggap benar jika semuanya tepat. Pelajari pembahasannya di bawah.'));
+    });
+  } else if(q.type==='multi'){
+    var chk2=ui.querySelector('.chk');
+    chk2.addEventListener('click',function(){
+      var any=ui.querySelector('input:checked');
+      if(!any){ verdict.className='verdict bad'; verdict.textContent='Pilih minimal satu jawaban dulu ya.'; return; }
+      var all=true;
+      q.opts.forEach(function(o,i){
+        var row=ui.querySelector('.multi-row[data-i="'+i+'"]'), cb=row.querySelector('input');
+        var ok=cb.checked===o.v; if(!ok) all=false;
+        row.classList.add(ok?'ok':'bad'); cb.disabled=true;
+        var w=row.querySelector('.why'); w.hidden=false; w.innerHTML=(o.v?'✔ ':'✘ ')+o.w;
+      });
+      chk2.disabled=true; math(ui);
+      finish(all, all?'✔ Tepat! Semua jawaban benar sudah kamu pilih (A, B, D).':'✘ Belum tepat. Kunci yang benar: <b>A, B, dan D</b>. Perhatikan alasan di tiap pernyataan.');
+    });
+  } else {
+    var inp=ui.querySelector('input[type=text]'), chk3=ui.querySelector('.chk');
+    function go(){
+      var n=normNum(inp.value);
+      if(isNaN(n)){ inp.focus(); return; }
+      var ok=Math.abs(n-q.key)<1e-9;
+      inp.disabled=true; chk3.disabled=true;
+      finish(ok, ok?('✔ Benar! Jawabannya <b>'+q.key+'</b> '+q.unit+'.'):('✘ Belum tepat. Jawabanmu '+inp.value+', kunci yang benar adalah <b>'+q.key+'</b> '+q.unit+'.'));
+    }
+    chk3.addEventListener('click',go);
+    inp.addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+}
+QIDS.forEach(build);
+document.getElementById('sc-reset').addEventListener('click',function(){
+  QIDS.forEach(build); updateScore();
+  document.getElementById('G').scrollIntoView({behavior:'smooth'});
+});
+
+/* ---------- header, progress, scrollspy ---------- */
+function setHdh(){
+  var h=document.getElementById('hd').offsetHeight;
+  document.documentElement.style.setProperty('--hdh',h+'px');
+}
+setHdh(); window.addEventListener('resize',setHdh); window.addEventListener('load',setHdh);
+var pg=document.getElementById('pg');
+function onScroll(){
+  var d=document.documentElement, max=d.scrollHeight-d.clientHeight;
+  pg.style.width=(max>0?(d.scrollTop/max*100):0)+'%';
+}
+window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+var links=[].slice.call(document.querySelectorAll('#toc a'));
+if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){ a.classList.toggle('act',a.getAttribute('href')==='#'+e.target.id); });
+        var act=document.querySelector('#toc a.act');
+        if(act&&act.scrollIntoView){ try{ act.parentNode.scrollTo({left:act.offsetLeft-20,behavior:'smooth'}); }catch(_){} }
+      }
+    });
+  },{rootMargin:'-30% 0px -60% 0px'});
+  document.querySelectorAll('section.sec').forEach(function(s){io.observe(s);});
+}
+
+/* ---------- render rumus untuk seluruh halaman ---------- */
+function renderAll(){ math(document.body); }
+renderAll();
+})();
+</script>
+</body>
+</html>
